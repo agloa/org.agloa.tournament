@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <extension key="org.agloa.tournament" type="module">
+  <downloadUrl>https://github.com/agloa/org.agloa.tournament.git</downloadUrl>
   <file>tournament</file>
   <name>CiviTournament</name>
   <description>CiviCRM extension to extend tournaments from CiviEvent</description>
@@ -9,8 +10,8 @@
     <email>CIO@AGLOA.org</email>
   </maintainer>
   <urls>
-    <url desc="Main Extension Page">https://github.com/agloa/org.agloa.tournament/wiki</url>
-    <url desc="Documentation">https://github.com/agloa/org.agloa.tournament</url>
+    <url desc="Main Extension Page">https://github.com/agloa/org.agloa.tournament</url>
+    <url desc="Documentation">https://github.com/agloa/org.agloa.tournament/wiki</url>
     <url desc="Support">https://github.com/agloa/org.agloa.tournament/issues</url>
     <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
   </urls>
