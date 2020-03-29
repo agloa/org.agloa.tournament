@@ -2,8 +2,8 @@
 
   angular.module('tournament').config(function($routeProvider) {
       $routeProvider.when('/tournament', {
-        controller: 'TournamentTournamentCtrl',
-        templateUrl: '~/tournament/TournamentCtrl.html',
+        controller: 'TournamentCtrl',
+        templateUrl: '~/tournament/Ctrl.html',
 
         // If you need to look up data when opening the page, list it out
         // under "resolve".
@@ -23,10 +23,10 @@
   //   $scope -- This is the set of variables shared between JS and HTML.
   //   crmApi, crmStatus, crmUiHelp -- These are services provided by civicrm-core.
   //   myContact -- The current contact, defined above in config().
-  angular.module('tournament').controller('TournamentTournamentCtrl', function($scope, crmApi, crmStatus, crmUiHelp, myContact) {
+  angular.module('tournament').controller('TournamentCtrl', function($scope, crmApi, crmStatus, crmUiHelp, myContact) {
     // The ts() and hs() functions help load strings for this module.
     var ts = $scope.ts = CRM.ts('tournament');
-    var hs = $scope.hs = crmUiHelp({file: 'CRM/tournament/TournamentCtrl'}); // See: templates/CRM/tournament/TournamentCtrl.hlp
+    var hs = $scope.hs = crmUiHelp({file: 'CRM/tournament/Ctrl'}); // See: templates/CRM/tournament/Ctrl.hlp
 
     // We have myContact available in JS. We also want to reference it in HTML.
     $scope.myContact = myContact;
