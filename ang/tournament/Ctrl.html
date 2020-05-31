@@ -1,23 +1,15 @@
 <div class="crm-container">
   <div crm-ui-debug="myContact"></div>
 
-  <h1 crm-page-title>{{ts('About %1', {1: myContact.first_name + ' ' + myContact.last_name})}}</h1>
+  <h1 crm-page-title>{{ts('Tournament Dashboard')}}</h1>
 
   <form name="myForm" crm-ui-id-scope>
 
-    <div class="help">
-      <p>{{ts('This is an auto-generated skeletal page.')}}</p>
+    <p ng-show="myContact.display_name">{{ ts('Welcome, %1. This page will guide you through the steps of tournament registration.', {1: myContact.display_name}) }}</p>
 
-      <p>{{ts('To view more debugging information, edit the URL and include "?angularDebug=1".')}}</p>
-    </div>
+    <p ng-show="!myContact.display_name"><a href="~/login">{{ ts('Log in first.') }}</a></p>
 
-    <div crm-ui-accordion="{title: ts('Greeting')}">
-      <p ng-show="myContact.first_name">{{ ts('Hello, %1.', {1: myContact.first_name}) }}</p>
-
-      <p ng-show="!myContact.first_name">{{ ts('Hello, stranger.') }}</p>
-    </div>
-
-    <div crm-ui-accordion="{title: ts('About Me')}">
+    <div crm-ui-accordion="{title: ts('Your Contact Data (If you are new to this system, the first step is to double-check your contact information. You probably only need to do this once, ever.)')}">              
       <div class="crm-block">
         <div class="crm-group">
           <div crm-ui-field="{name: 'myForm.first_name', title: ts('Name'), help: hs('full_name')}">

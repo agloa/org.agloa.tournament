@@ -5,13 +5,12 @@
         controller: 'TournamentCtrl',
         templateUrl: '~/tournament/Ctrl.html',
 
-        // If you need to look up data when opening the page, list it out
-        // under "resolve".
+        // If you need to look up data when opening the page, list it out under "resolve".
         resolve: {
           myContact: function(crmApi) {
             return crmApi('Contact', 'getsingle', {
               id: 'user_contact_id',
-              return: ['first_name', 'last_name']
+              return: ['first_name', 'last_name', 'display_name']
             });
           }
         }
