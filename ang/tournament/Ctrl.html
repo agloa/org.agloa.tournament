@@ -1,29 +1,42 @@
 <div class="crm-container">
-  <div crm-ui-debug="myContact"></div>
+  <div crm-ui-debug="$ctrl"></div>
 
-  <h1 crm-page-title>{{ts('Tournament Dashboard')}}</h1>
+  <h2 crm-page-title>{{ts('Tournament Dashboard')}}</h2>
+    <p>Welcome, {{$ctrl.display_name}}. This app will guide you through the steps of tournament registration.</p>
+
+    <h3>Tasks</h3>
+
+<ol>
+  <li>
+    <div ng-click="$ctrl.togglePersonVisibility()" title=
+    "If you are new to this system, the first step is to double-check your contact information. You probably only need to do this once, ever."
+    ><i ng-class="$ctrl.personArrowClass"></i>Update your contact information, last updated on {{$ctrl.modified_date}}</div>
+      <person ng-if="$ctrl.includePersonForm" id="$ctrl.user.id"></person>
+  </li>
+  <li>Billing Organizations (e.g., School Districts)
+    The next step is to double-check your organization's contact information. You probably only need to do this once, ever.
+    You are a contact for these organizations:
+  </li>
+</ol>
 
   <form name="myForm" crm-ui-id-scope>
 
-    <p ng-show="myContact.display_name">{{ ts('Welcome, %1. This page will guide you through the steps of tournament registration.', {1: myContact.display_name}) }}</p>
-
-    <p ng-show="!myContact.display_name"><a href="~/login">{{ ts('Log in first.') }}</a></p>
-
-    <div crm-ui-accordion="{title: ts('Your Contact Data (If you are new to this system, the first step is to double-check your contact information. You probably only need to do this once, ever.)')}">              
+    <div crm-ui-accordion="{title: ts('Your Contact Data')}">        
+              If you are new to this system, the first step is to double-check your contact information. You probably only need to do this once, ever.
       <div class="crm-block">
         <div class="crm-group">
           <div crm-ui-field="{name: 'myForm.first_name', title: ts('Name'), help: hs('full_name')}">
             <input
               crm-ui-id="myForm.first_name"
               name="first_name"
-              ng-model="myContact.first_name"
+              ng-model="$ctrl.first_name"
               class="crm-form-text"
               placeholder="{{ts('First')}}"
               />
             <input
               crm-ui-id="myForm.last_name"
               name="last_name"
-              ng-model="myContact.last_name"
+              ng-model="$ctrl.last_name"
               class="crm-form-text"
               placeholder="{{ts('Last')}}"
               />
