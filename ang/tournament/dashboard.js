@@ -3,7 +3,7 @@
   angular.module('tournament').config(function($routeProvider) {
       $routeProvider.when('/tournament', {
         controller: 'TournamentCtrl',
-        templateUrl: '~/tournament/Ctrl.html',
+        templateUrl: '~/tournament/dashboard.template.html',
 
         // If you need to look up data when opening the page, list it out under "resolve".
         resolve: {
@@ -25,7 +25,7 @@
   angular.module('tournament').controller('TournamentCtrl', function($scope, crmApi, crmStatus, crmUiHelp, $ctrl) {
     // The ts() and hs() functions help load strings for this module.
     var ts = $scope.ts = CRM.ts('tournament');
-    var hs = $scope.hs = crmUiHelp({file: 'CRM/tournament/Ctrl'}); // See: templates/CRM/tournament/Ctrl.hlp
+    var hs = $scope.hs = crmUiHelp({file: 'CRM/tournament/Dashboard'}); // See: templates/CRM/tournament/Ctrl.hlp
 
     // We have $ctrl available in JS. We also want to reference it in HTML.
     $scope.$ctrl = $ctrl;
