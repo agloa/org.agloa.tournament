@@ -13,7 +13,7 @@ angular.module('tournament').component('dashboard', {
       self.includePersonForm = false;
 
       // User service returns additional data for userId
-      // self.user = User.get({userId:self.userId});
+      self.user = {displayName: "Mike Steigerwald", lastUpdatedDate: "06/13/2019"};// User.get({userId:self.userId});
 
       self.togglePersonVisibility = function togglePersonVisibility() {
         this.includePersonForm = !this.includePersonForm;

@@ -6,7 +6,7 @@
 return array (
   'js' => 
   array (
-    0 => 'ang/app.module.js',
+    0 => 'ang/app.js',
     1 => 'ang/tournament/*.js',
     2 => 'ang/tournament/*/*.js',
   ),
