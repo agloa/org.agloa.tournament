@@ -1,7 +1,7 @@
 <!-- HTML5 view of the Dashboard module. -->
 
 <h2>Dashboard</h2>
-<p>Welcome, {{$ctrl.user.displayName}}. This app will guide you through the steps of tournament registration.</p>
+<p>Welcome, {{$ctrl.user.display_name}}. This app will guide you through the steps of tournament registration.</p>
 
 <h3>Tasks</h3>
 
@@ -9,7 +9,7 @@
   <li>
     <div ng-click="$ctrl.togglePersonVisibility()" title=
     "If you are new to this system, the first step is to double-check your contact information. You probably only need to do this once, ever."
-    ><i ng-class="$ctrl.personArrowClass"></i>Update your contact information, last updated on {{$ctrl.user.lastUpdatedDate}}</div>
+    ><i ng-class="$ctrl.personArrowClass"></i>Update your contact information, last updated on {{$ctrl.user.modified_date}}</div>
       <person ng-if="$ctrl.includePersonForm" id="$ctrl.user.id"></person>
   </li>
   <li>Billing Organizations (e.g., School Districts)
