@@ -38,6 +38,19 @@ angular.module('tournament').factory('person', function ($q, crmApi) {
             "option_group_id": "individual_suffix",
             "is_active": 1
         })
+      },
+
+      save: (person) => {
+        return crmApi('Contact', 'create', {
+        "id": person.id,
+        "last_name": person.last_name,
+        "first_name": person.first_name,
+        "middle_name": person.middle_name,
+        "prefix_id": person.prefix_id,
+        "suffix_id": person.suffix_id,
+        "gender_id": person.gender_id,
+        "birth_date": person.birth_date
+        });
       }
   }
 });

@@ -24,8 +24,7 @@
   </input>
   <label for="suffix_id" class="sr-only">Suffix</label>
   <select
-    id="suffix_id" name="suffix_id"
-    class="crm-form-select"
+    id="suffix_id" name="suffix_id" class="crm-form-select"
     select="{placeholder: '', allowClear:true}"
     ng-options="option.value as option.label for option in $ctrl.suffixes"
     ng-model="$ctrl.selectedPerson.suffix_id">
@@ -34,9 +33,9 @@
   <input type="date" id="personForm.birth_date" 
     name="birth_date" ng-model="$ctrl.selectedPerson.birth_date">
   </input>
-  <label for="personForm.gender_id" class="sr-only">Gender</label>
-  <select id="personForm.gender_id"
-    name="gender_id" class="crm-form-select"
+  <label for="gender_id" class="sr-only">Gender</label>
+  <select 
+    id="gender_id" name="gender_id" class="crm-form-select"
     ng-options="option.value as option.label for option in $ctrl.genders"
     ng-model="$ctrl.selectedPerson.gender_id">
   </select>

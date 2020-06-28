@@ -34,9 +34,9 @@ angular.module('tournament').component('person', {
 
       person.get(self.id).then(
             // Success
-            (result) => { self.setSelectedPerson(result);            },
+            (result) => { self.setSelectedPerson(result); },
             // Failure
-            (error) => { CRM.alert(ts('Could not get person record ID of %1, error = %2', {1: self.id, 2: error}),ts('Not Found'),'error');             }
+            (error) => { CRM.alert(ts('Could not get person record ID of %1, error = %2', {1: self.id, 2: error}),ts('Not Found'),'error'); }
         );
 
       self.setSelectedPerson = (person) => {
@@ -56,8 +56,13 @@ angular.module('tournament').component('person', {
         self.suffixes = options.values;
       };
 
-      self.save = function save() {
-        alert('Saving...' + JSON.stringify(self.selectedPerson));
+      self.save = () =>  {
+          person.save(self.selectedPerson).then(
+            // Success
+            (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
+            // Failure
+            (error)  => { CRM.alert(ts('Could not save person record ID = %1, error = %2', {1: self.selectedPerson.id, 2: error}),ts('Database Error'),'error'); }
+          );
       }
     }
   ]
