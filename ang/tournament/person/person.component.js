@@ -11,7 +11,19 @@ angular.module('tournament').component('person', {
           self.id = $routeParams.id;
       }
 
-      // person service returns data for person id
+      // person service get options for dropdowns
+      person.getOptions().then(
+        // Success
+        function(result){
+            self.setOptions(result);
+        },
+        // Failure
+        function (error) { 
+            CRM.alert(ts('Could not get person dropdown options error = %1', {1: error}),ts('Not Found'),'error'); 
+        }
+      )
+
+      // person service get returns data for person id
       person.get(self.id)
         .then(
             // Success
@@ -27,6 +39,15 @@ angular.module('tournament').component('person', {
       self.setSelectedPerson = function setSelectedPerson(person) {
         self.selectedPerson = person;
         self.selectedPerson.birth_date = new Date(self.selectedPerson.birth_date);
+      };
+
+      self.setOptions = function setOptions(options) {
+        // ng-options="option.value as option.label for option in $ctrl.people.prefixes"
+        self.people = {
+            genders : options.values[0]["api.OptionValue.get"].values,
+            prefixes: options.values[1]["api.OptionValue.get"].values,
+            suffixes: options.values[2]["api.OptionValue.get"].values
+        };
       };
 
       self.save = function save() {
