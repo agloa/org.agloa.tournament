@@ -46,15 +46,22 @@ angular.module('tournament').component('person', {
 
       self.setGenders = (options) => {
         self.genders = options.values;
+        addDeselectOption(self.genders);
       };
 
       self.setPrefixes = (options) => {
         self.prefixes = options.values;
+        addDeselectOption(self.prefixes);
       };
 
       self.setSuffixes = (options) => {
         self.suffixes = options.values;
+        addDeselectOption(self.suffixes);
       };
+      
+      function addDeselectOption(options){
+        return options.push({value:"", label:""});
+      }  
 
       self.save = () =>  {
           person.save(self.selectedPerson).then(
