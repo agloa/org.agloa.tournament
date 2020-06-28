@@ -11,43 +11,49 @@ angular.module('tournament').component('person', {
           self.id = $routeParams.id;
       }
 
-      // person service get options for dropdowns
-      person.getOptions().then(
+      person.getGenders().then(
         // Success
-        function(result){
-            self.setOptions(result);
-        },
+        (result) => {self.setGenders(result);},
         // Failure
-        function (error) { 
-            CRM.alert(ts('Could not get person dropdown options error = %1', {1: error}),ts('Not Found'),'error'); 
-        }
+        (error)  =>  { CRM.alert(ts('Could not get gender options error = %1', {1: error}),ts('Not Found'),'error'); }
       )
 
-      // person service get returns data for person id
-      person.get(self.id)
-        .then(
+      person.getPrefixes().then(
+        // Success
+        (result) => {self.setPrefixes(result);},
+        // Failure
+        (error)  => { CRM.alert(ts('Could not get prefix options error = %1', {1: error}),ts('Not Found'),'error'); }
+      )
+
+      person.getSuffixes().then(
+        // Success
+        (result) => {self.setSuffixes(result);},
+        // Failure
+        (error) => { CRM.alert(ts('Could not get suffix options error = %1', {1: error}),ts('Not Found'),'error'); }
+      )
+
+      person.get(self.id).then(
             // Success
-            function(result) { 
-                self.setSelectedPerson(result);
-            },
+            (result) => { self.setSelectedPerson(result);            },
             // Failure
-            function (error) { 
-                CRM.alert(ts('Could not get person record ID of %1, error = %2', {1: self.id, 2: error}),ts('Not Found'),'error'); 
-            }
+            (error) => { CRM.alert(ts('Could not get person record ID of %1, error = %2', {1: self.id, 2: error}),ts('Not Found'),'error');             }
         );
 
-      self.setSelectedPerson = function setSelectedPerson(person) {
+      self.setSelectedPerson = (person) => {
         self.selectedPerson = person;
         self.selectedPerson.birth_date = new Date(self.selectedPerson.birth_date);
       };
 
-      self.setOptions = function setOptions(options) {
-        // ng-options="option.value as option.label for option in $ctrl.people.prefixes"
-        self.people = {
-            genders : options.values[0]["api.OptionValue.get"].values,
-            prefixes: options.values[1]["api.OptionValue.get"].values,
-            suffixes: options.values[2]["api.OptionValue.get"].values
-        };
+      self.setGenders = (options) => {
+        self.genders = options.values;
+      };
+
+      self.setPrefixes = (options) => {
+        self.prefixes = options.values;
+      };
+
+      self.setSuffixes = (options) => {
+        self.suffixes = options.values;
       };
 
       self.save = function save() {
