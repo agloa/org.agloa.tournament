@@ -1,6 +1,6 @@
-(function(angular, $, _) {
+(function(angular) {
   // Declare a list of dependencies.
-  angular.module('tournament', ['crmUi', 'crmUtil', 'ngRoute']);
+  angular.module('tournament', ['ngRoute']);
 
   angular.module('tournament').config(['$routeProvider', function($routeProvider) {
 
@@ -23,4 +23,4 @@
   })
 }]);
 
-})(angular, CRM.$, CRM._);
+})(angular);
