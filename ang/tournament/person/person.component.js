@@ -7,36 +7,36 @@ angular.module('tournament').component('person', {
     function PersonController($routeParams, person) {
       var self = this;
             
-      if ($routeParams.id !== undefined) {
-          self.id = $routeParams.id;
+      if ($routeParams.personId !== undefined) {
+          self.id = $routeParams.personId;
       }
 
       person.getGenders().then(
         // Success
         (result) => {self.setGenders(result);},
         // Failure
-        (error)  =>  { CRM.alert(ts('Could not get gender options error = %1', {1: error}),ts('Not Found'),'error'); }
+        (error)  =>  { CRM.alert(ts('Could not get gender options error = ' + error),ts('Not Found'),'error'); }
       )
 
       person.getPrefixes().then(
         // Success
         (result) => {self.setPrefixes(result);},
         // Failure
-        (error)  => { CRM.alert(ts('Could not get prefix options error = %1', {1: error}),ts('Not Found'),'error'); }
+        (error)  => { CRM.alert(ts('Could not get prefix options error = ' + error),ts('Not Found'),'error'); }
       )
 
       person.getSuffixes().then(
         // Success
         (result) => {self.setSuffixes(result);},
         // Failure
-        (error) => { CRM.alert(ts('Could not get suffix options error = %1', {1: error}),ts('Not Found'),'error'); }
+        (error) => { CRM.alert(ts('Could not get suffix options error = ' + error),ts('Not Found'),'error'); }
       )
 
       person.get(self.id).then(
             // Success
             (result) => { self.setSelectedPerson(result); },
             // Failure
-            (error) => { CRM.alert(ts('Could not get person record ID of %1, error = %2', {1: self.id, 2: error}),ts('Not Found'),'error'); }
+            (error) => { CRM.alert(ts('Could not get person record ID = ' + self.id + ', error = ' + error),ts('Not Found'),'error'); }
         );
 
       self.setSelectedPerson = (person) => {
@@ -68,7 +68,7 @@ angular.module('tournament').component('person', {
             // Success
             (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
             // Failure
-            (error)  => { CRM.alert(ts('Could not save person record ID = %1, error = %2', {1: self.selectedPerson.id, 2: error}),ts('Database Error'),'error'); }
+            (error)  => { CRM.alert(ts('Could not save person record ID = ' + self.id + ', error = ' + error),ts('Database Error'),'error'); }
           );
       }
     }
