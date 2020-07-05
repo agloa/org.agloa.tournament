@@ -1,4 +1,4 @@
-angular.module('tournament').factory('person', function ($q, crmApi) {
+angular.module('tournament').factory('personService', function ($q, crmApi) {
   return{
       // Get an individual contact record
       // @param id Contact id  (per APIv3)

@@ -3,7 +3,7 @@
 angular.module('tournament').component('person', {
   templateUrl: '~/tournament/person/person.template.html',
   bindings: {id: '<'},
-  controller: ['$routeParams', 'person',
+  controller: ['$routeParams', 'personService',
     function PersonController($routeParams, person) {
       var self = this;
             
