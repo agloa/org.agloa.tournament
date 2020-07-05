@@ -1,7 +1,7 @@
 angular.module('tournament').component('dashboard', {
   templateUrl: '~/tournament/dashboard/dashboard.template.html',
-  controller: ['$routeParams', 'crmApi', 'personService',
-    function DashboardController($routeParams, crmApi, person) {
+  controller: ['$routeParams', 'personService',
+    function DashboardController($routeParams, person) {
       var self = this;
       self.personArrowClass = "arrowRight";
       self.userId = "user_contact_id";
