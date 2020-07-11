@@ -1,0 +1,65 @@
+<form name="addressForm">
+  <div>
+    <label for="addressForm.street_address">Address</label>
+    <input id="addressForm.street_address" name="street_address"
+      ng-model="$ctrl.selectedAddress.street_address" class="crm-form-text"
+      placeholder="Address" required>
+    </input>
+    <label for="addressForm.supplemental_address_1" class="sr-only">Address 1</label>
+    <input id="addressForm.supplemental_address_1" name="supplemental_address_1"
+      ng-model="$ctrl.selectedAddress.supplemental_address_1" class="crm-form-text"
+      placeholder="cont." >
+    </input>
+    <label for="addressForm.supplemental_address_2" class="sr-only">Address 2</label>
+    <input id="addressForm.supplemental_address_2" name="supplemental_address_2"
+      ng-model="$ctrl.selectedAddress.supplemental_address_2" class="crm-form-text"
+      placeholder="cont." >
+    </input>
+    <label for="addressForm.supplemental_address_3" class="sr-only">Address 3</label>
+    <input id="addressForm.supplemental_address_3" name="supplemental_address_3"
+      ng-model="$ctrl.selectedAddress.supplemental_address_3" class="crm-form-text"
+      placeholder="cont." >
+    </input>
+  </div>
+
+  <div>
+    <label for="addressForm.city">City</label>
+    <input
+      id="addressForm.city" name="city"
+      ng-model="$ctrl.selectedAddress.city" class="crm-form-text"
+      placeholder="City" required>
+    </input>
+    <label for="addressForm.country_id">Country</label>
+    <select required id="addressForm.country_id" name="country_id"
+      class="big crm-form-select"
+      select="{placeholder: '', allowClear:true}"
+      ng-options="option.id as option.name for option in $ctrl.countries"
+      ng-model="$ctrl.selectedAddress.country_id">
+    </select>
+    <div ng-show="$ctrl.selectedAddress.country_id" class="inline">
+      <label for="addressForm.state_province_id">State/Province</label>
+      <select required id="addressForm.state_province_id" name="state_province_id"
+        class="big crm-form-select"
+        select="{placeholder: '', allowClear:true}"
+        ng-options="option.id as option.name for option in $ctrl.regions | filter:{country_id:$ctrl.selectedAddress.country_id}
+        "
+        ng-model="$ctrl.selectedAddress.state_province_id">
+      </select>
+    </div>
+  </div>
+  <div>
+    <label for="addressForm.postal_code">Postal Code</label>
+    <input
+      id="addressForm.postal_code" name="postal_code"
+      ng-model="$ctrl.selectedAddress.postal_code" class="crm-form-text"
+      placeholder="Postal Code" required>
+    </input>
+    <label for="addressForm.postal_code_suffix">Postal Code Suffix</label>
+    <input
+      id="addressForm.postal_code_suffix" name="postal_code_suffix"
+      ng-model="$ctrl.selectedAddress.postal_code_suffix" class="crm-form-text"
+      placeholder="Postal Code Suffix" >
+    </input>
+  </div>
+
+</form>
