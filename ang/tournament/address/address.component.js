@@ -20,7 +20,7 @@ angular.module('tournament').component('address', {
 
       address.getStateProvinces().then(
         // Success
-        (result) => {self.setStateProvinces(result);},
+        (result) => {self.setRegions(result);},
         // Failure
         (error)  => { CRM.alert(ts('Could not get states/provinces, error = %1', {1: error}),ts('Not Found'),'error'); }
       )
@@ -38,17 +38,11 @@ angular.module('tournament').component('address', {
 
       self.setCountries = (options) => {
         self.countries = options;
-        addDeselectOption(self.countries);
       };
 
-      self.setStateProvinces = (options) => {
-        self.stateProvinces = options;
-        addDeselectOption(self.stateProvinces);
+      self.setRegions = (options) => {
+        self.regions = options;
       };
-      
-      function addDeselectOption(options){
-        return options.push({value:"", label:""});
-      }  
 
       self.save = () =>  {
         address.save(self.selectedAddress).then(

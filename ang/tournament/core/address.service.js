@@ -6,7 +6,7 @@ angular.module('tournament').factory('address', function ($q, crmApi) {
     //
     // returns an array of (id,name) pairs for each available country.
     //
-    function getCountryLimit() {
+    function getAvailableCountries() {
         return crmApi('Setting', 'get', {"sequential": 1,"return": ["countryLimit"]}).then(
             // Success
             function(result){  return result.values; },
@@ -27,6 +27,7 @@ angular.module('tournament').factory('address', function ($q, crmApi) {
                 "is_primary": 1
             });
         },      
+
         // Get an address record
         // @param id (per APIv3)
         // @return Promise of address (per APIv3)
@@ -37,10 +38,11 @@ angular.module('tournament').factory('address', function ($q, crmApi) {
                 "id": id
             });
         },
+
         // Get values/labels for option groups: countries
         // @return Promise of option groups/values (per APIv3)
         getCountries: () => {
-            return getCountryLimit().then( 
+            return getAvailableCountries().then( 
                     // Success
                     function(result) {
                         return crmApi('Country', 'get', {
@@ -60,22 +62,23 @@ angular.module('tournament').factory('address', function ($q, crmApi) {
                 function(result) { CRM.alert(ts('Unable to get available countries.'), ts('Not Found'),'error');},
             );
         },
+
         // Get values/labels for option groups: countries
         // @return Promise of option groups/values (per APIv3)
-        getStateProvinces: () => {
-            return getCountryLimit().then( 
+        getStateProvinces: (country_id) => {
+            return getAvailableCountries().then( 
                     // Success
                     function(result) {
                         return crmApi('StateProvince', 'get', {
                                 "sequential": 1,
-                                "id": {"IN":result[0].countryLimit},
+                                "country_id": {"IN":result[0].countryLimit},
                                 "options": {"limit":0}
-                                })
+                            })
                         .then(
                             // Success
                             function(result) { return result.values;},
                             // Failure
-                            function(result) { CRM.alert(ts('Unable to get state/province options.'), ts('Not Found'),'error');},
+                            function(result) { CRM.alert(ts('Unable to get states/provinces.'), ts('Not Found'),'error');},
                         );
                     },
 
