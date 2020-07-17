@@ -19,14 +19,14 @@ angular.module('tournament').component('address', {
         // Success
         (result) => {self.setCountries(result);},
         // Failure
-        (error)  =>  { CRM.alert(ts('Could not get countries, error = %1', {1: error}),ts('Not Found'),'error'); }
+        (error)  =>  { CRM.alert(ts('Could not get countries, error = ' + error.error_message),ts('Not Found'),'error'); }
       )
 
       address.getStateProvinces().then(
         // Success
         (result) => {self.setRegions(result);},
         // Failure
-        (error)  => { CRM.alert(ts('Could not get states/provinces, error = %1', {1: error}),ts('Not Found'),'error'); }
+        (error)  => { CRM.alert(ts('Could not get states/provinces, error = ' + error.error_message),ts('Not Found'),'error'); }
       )
 
       if (self.contact_id !== undefined) {
@@ -34,7 +34,7 @@ angular.module('tournament').component('address', {
         // Success
         (result) => { self.setSelectedAddress(result.values[0]); },
         // Failure
-        (error) => { CRM.alert(ts('Could not get address record ID = ' + self.contact_id + ' error = ' + error), ts('Error'), 'error'); }
+        (error) => { CRM.alert(ts('Could not get address record ID = ' + self.contact_id + ' error = ' + error.error_message), ts('Error'), 'error'); }
         );     
       }
 
@@ -43,7 +43,7 @@ angular.module('tournament').component('address', {
         // Success
         (result) => { self.setSelectedAddress(result.values[0]); },
         // Failure
-        (error) => { CRM.alert(ts('Could not get address record ID = ' + self.address_id + ' error = ' + error), ts('Error'), 'error'); }
+        (error) => { CRM.alert(ts('Could not get address record ID = ' + self.address_id + ' error = ' + error.error_message), ts('Error'), 'error'); }
         );     
       }
      
@@ -64,7 +64,7 @@ angular.module('tournament').component('address', {
         // Success
         (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
         // Failure
-        (error)  => { CRM.alert(ts('Could not save address record ID = ' + self.selectedAddress.id + ' error = ' + error), ts('Database error'), 'error'); }
+        (error)  => { CRM.alert(ts('Could not save address record ID = ' + self.selectedAddress.id + ' error = ' + error.error_message), ts('Database error'), 'error'); }
         );
       }
     }
