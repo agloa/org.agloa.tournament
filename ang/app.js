@@ -6,9 +6,7 @@
 
   // Configure the module route(s)
   // Use this method to configure services by injecting their providers, e.g. for adding routes to the $routeProvider.
-  $routeProvider.when('/tournament', {
-    template: '<dashboard></dashboard>'
-  })
+  $routeProvider
   .when('/tournament/dashboard/:userId?', {
     template: '<dashboard></dashboard>'
   })
@@ -20,6 +18,8 @@
   })
   .when('/tournament/phone/:phoneId', {
     template: '<phone></phone>'
+  }).otherwise( {
+    template: '<dashboard></dashboard>'
   })
 }]);
 
