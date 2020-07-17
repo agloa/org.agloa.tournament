@@ -16,6 +16,9 @@
   .when('/tournament/address/:addressId', {
     template: '<address></address>'
   })
+  .when('/tournament/person/address/:contact_id', {
+    template: '<address></address>'
+  })
   .when('/tournament/phone/:phoneId', {
     template: '<phone></phone>'
   }).otherwise( {

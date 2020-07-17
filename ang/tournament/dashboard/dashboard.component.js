@@ -1,5 +1,6 @@
+const dashboardTemplateUrl = (location.search.includes("?page=CiviCRM") ? "~" : location.origin) + '/tournament/dashboard/dashboard.template.html';
 angular.module('tournament').component('dashboard', {
-  templateUrl: '~/tournament/dashboard/dashboard.template.html',
+  templateUrl: dashboardTemplateUrl,
   controller: ['$routeParams', 'personService',
     function DashboardController($routeParams, person) {
       var self = this;
