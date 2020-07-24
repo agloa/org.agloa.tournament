@@ -40,4 +40,9 @@
     ng-model="$ctrl.selectedPerson.gender_id">
   </select>
   <button ng-click="$ctrl.save()">Save</button>
+
+  <div ng-click="$ctrl.toggleAddressVisibility()" title="Update your address."> 
+    <i ng-class="$ctrl.addressArrowClass"></i>Update your address information. personId="{{$ctrl.selectedPerson.contact_id}}"
+    <address ng-if="$ctrl.includeAddressForm" personId="{{$ctrl.selectedPerson.contact_id}}"></address>
+  </div>
 </form>

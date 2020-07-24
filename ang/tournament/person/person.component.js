@@ -2,13 +2,27 @@
 
 angular.module('tournament').component('person', {
   templateUrl: '~/tournament/person/person.template.html',
-  bindings: {id: '<'},
+  bindings: {id: '@'},
   controller: ['$routeParams', 'personService',
     function PersonController($routeParams, person) {
       var self = this;
             
       if ($routeParams.personId !== undefined) {
           self.id = $routeParams.personId;
+      }
+      
+      self.addressArrowClass = "arrowRight";
+
+      // Don't include 'child' form until user requests it.
+      self.includeAddressForm = false;
+
+      self.toggleAddressVisibility = () => {
+        this.includeAddressForm = !this.includeAddressForm;
+        if (this.includeAddressForm) {
+          this.addressArrowClass = "arrowDown";
+        } else {
+          this.addressArrowClass = "arrowRight";
+        }
       }
 
       person.getGenders().then(
