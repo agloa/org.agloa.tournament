@@ -11,7 +11,8 @@ angular.module('tournament').factory('address', function ($q, crmApi) {
     ,"city","postal_code"
     ,"postal_code_suffix"
     ,"country_id"
-    ,"state_province_id"];
+    ,"state_province_id"
+    ];
 
     //
     // Get the IDs of countries limited to this domain.
