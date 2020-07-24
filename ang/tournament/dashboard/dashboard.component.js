@@ -31,7 +31,7 @@ angular.module('tournament').component('dashboard', {
             },
             // Failure
             function (error) { 
-                CRM.alert(ts('Could not get user record ID of %1, error = %2', {1: userId, 2: error}),ts('Not Found'),'error'); 
+                CRM.alert(ts('Could not get user record ID of ' + userId + ', error = ' + error.error_message),ts('Not Found'),'error'); 
             }
         );
     }
