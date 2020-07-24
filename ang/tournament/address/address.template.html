@@ -41,8 +41,7 @@
       <select required id="addressForm.state_province_id" name="state_province_id"
         class="big crm-form-select"
         select="{placeholder: '', allowClear:true}"
-        ng-options="option.id as option.name for option in $ctrl.regions | filter:{country_id:$ctrl.selectedAddress.country_id}
-        "
+        ng-options="option.id as option.name for option in $ctrl.regions | filter:{country_id:$ctrl.selectedAddress.country_id}"
         ng-model="$ctrl.selectedAddress.state_province_id">
       </select>
     </div>

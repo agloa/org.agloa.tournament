@@ -18,7 +18,7 @@
   .when('/tournament/address/:addressId', {
     template: '<address></address>'
   })
-  .when('/tournament/person/address/:contact_id', {
+  .when('/tournament/person/address/:personId', {
     template: '<address></address>'
   })
   .when('/tournament/phone/:phoneId', {

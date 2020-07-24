@@ -2,17 +2,17 @@
 
 angular.module('tournament').component('address', {    
   templateUrl: '~/tournament/address/address.template.html',
-  bindings: {addressId: '<', contact_id: '<'},
+  bindings: {addressId: '@', personId: '@'},
   controller: ['$routeParams', 'address',
     function addressController($routeParams, address) {
       var self = this;
-            
+
       if ($routeParams.addressId !== undefined) {
-        self.address_id = $routeParams.addressId;
+        self.addressId = $routeParams.addressId;
       }
             
-      if ($routeParams.contact_id !== undefined) {
-        self.contact_id = $routeParams.contact_id;
+      if ($routeParams.personId !== undefined) {
+        self.personId = $routeParams.personId;
       }
 
       address.getCountries().then(
@@ -29,21 +29,21 @@ angular.module('tournament').component('address', {
         (error)  => { CRM.alert(ts('Could not get states/provinces, error = ' + error.error_message),ts('Not Found'),'error'); }
       )
 
-      if (self.contact_id !== undefined) {
-        address.getContactAddress(self.contact_id).then(
+      if (self.personId !== undefined) {
+        address.getContactAddress(self.personId).then(
         // Success
         (result) => { self.setSelectedAddress(result.values[0]); },
         // Failure
-        (error) => { CRM.alert(ts('Could not get address record ID = ' + self.contact_id + ' error = ' + error.error_message), ts('Error'), 'error'); }
+        (error) => { CRM.alert(ts('Could not get address record for person ID = ' + self.personId + ' error = ' + error.error_message), ts('Error'), 'error'); }
         );     
       }
 
-      else if (self.address_id !== undefined) {
-        address.get(self.address_id).then(
+      else if (self.addressId !== undefined) {
+        address.get(self.addressId).then(
         // Success
         (result) => { self.setSelectedAddress(result.values[0]); },
         // Failure
-        (error) => { CRM.alert(ts('Could not get address record ID = ' + self.address_id + ' error = ' + error.error_message), ts('Error'), 'error'); }
+        (error) => { CRM.alert(ts('Could not get address record ID = ' + self.addressId + ' error = ' + error.error_message), ts('Error'), 'error'); }
         );     
       }
      
