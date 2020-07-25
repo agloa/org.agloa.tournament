@@ -5,20 +5,21 @@
 
 return array (
   'js' => 
-  array (
-    0 => 'ang/app.js',
-    1 => 'ang/tournament/*.js',
-    2 => 'ang/tournament/*/*.js',
-  ),
+    array (
+        0 => 'ang/app.js',
+        1 => 'ang/tournament/core/services/*.service.js',
+        3 => 'ang/tournament/*.js',
+        4 => 'ang/tournament/*/*.js',
+    ),
   'css' => 
-  array (
-    0 => 'ang/tournament.css',
-  ),
+    array (
+        0 => 'ang/tournament.css',
+    ),
   'partials' => 
-  array (
-    0 => 'ang/tournament',
-  ),
+    array (
+        0 => 'ang/tournament',
+    ),
   'settings' => 
-  array (
-  ),
+    array (
+    ),
 );
