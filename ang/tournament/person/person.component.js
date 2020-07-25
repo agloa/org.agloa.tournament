@@ -1,7 +1,8 @@
 'use strict';
 
+const personTemplateUrl = (location.search.includes("?page=CiviCRM") ? "~" : location.origin) + '/tournament/person/person.template.html';
 angular.module('tournament').component('person', {
-  templateUrl: '~/tournament/person/person.template.html',
+  templateUrl: personTemplateUrl,
   bindings: {id: '@'},
   controller: ['$routeParams', 'personService',
     function PersonController($routeParams, person) {
