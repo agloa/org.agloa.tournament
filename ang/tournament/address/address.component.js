@@ -2,7 +2,7 @@
 
 angular.module('tournament').component('address', {    
   templateUrl: '~/tournament/address/address.template.html',
-  bindings: {addressId: '@', personId: '@'},
+  bindings: {person: '@', id: '@'},
   controller: ['$routeParams', 'address',
     function addressController($routeParams, address) {
       var self = this;
@@ -12,7 +12,7 @@ angular.module('tournament').component('address', {
       }
             
       if ($routeParams.personId !== undefined) {
-        self.personId = $routeParams.personId;
+        self.person = $routeParams.personId;
       }
 
       address.getCountries().then(
@@ -29,12 +29,12 @@ angular.module('tournament').component('address', {
         (error)  => { CRM.alert(ts('Could not get states/provinces, error = ' + error.error_message),ts('Not Found'),'error'); }
       )
 
-      if (self.personId !== undefined) {
-        address.getContactAddress(self.personId).then(
+      if (self.person !== undefined) {
+        address.getContactAddress(self.person).then(
         // Success
         (result) => { self.setSelectedAddress(result.values[0]); },
         // Failure
-        (error) => { CRM.alert(ts('Could not get address record for person ID = ' + self.personId + ' error = ' + error.error_message), ts('Error'), 'error'); }
+        (error) => { CRM.alert(ts('Could not get address record for person ID = ' + self.person + ' error = ' + error.error_message), ts('Error'), 'error'); }
         );     
       }
 

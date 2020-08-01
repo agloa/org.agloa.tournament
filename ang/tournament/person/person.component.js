@@ -44,14 +44,14 @@ angular.module('tournament').component('person', {
         // Success
         (result) => {self.setSuffixes(result);},
         // Failure
-        (error) => { CRM.alert(ts('Could not get suffix options error = ' + error),ts('Not Found'),'error'); }
+        (error) => { CRM.alert(ts('Could not get suffix options error = ' + error.error_message), ts('Not Found'),'error'); }
       )
 
       person.get(self.id).then(
             // Success
             (result) => { self.setSelectedPerson(result); },
             // Failure
-            (error) => { CRM.alert(ts('Could not get person record ID = ' + self.id + ', error = ' + error),ts('Not Found'),'error'); }
+            (error) => { CRM.alert(ts('Could not get person record ID = ' + self.id + ', error = ' + error.error_message),ts('Not Found'),'error'); }
         );
 
       self.setSelectedPerson = (person) => {
@@ -83,7 +83,7 @@ angular.module('tournament').component('person', {
             // Success
             (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
             // Failure
-            (error)  => { CRM.alert(ts('Could not save person record ID = ' + self.id + ', error = ' + error),ts('Database Error'),'error'); }
+            (error)  => { CRM.alert(ts('Could not save person record ID = ' + self.id + ', error = ' + error.error_message), ts('Database Error'),'error'); }
           );
       }
     }
