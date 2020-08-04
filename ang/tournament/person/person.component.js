@@ -25,6 +25,20 @@ angular.module('tournament').component('person', {
           this.addressArrowClass = "arrowRight";
         }
       }
+      
+      self.phoneArrowClass = "arrowRight";
+
+      // Don't include 'child' form until user requests it.
+      self.includePhoneForm = false;
+
+      self.togglePhoneVisibility = () => {
+        this.includePhoneForm = !this.includePhoneForm;
+        if (this.includePhoneForm) {
+          this.phoneArrowClass = "arrowDown";
+        } else {
+          this.phoneArrowClass = "arrowRight";
+        }
+      }
 
       person.getGenders().then(
         // Success

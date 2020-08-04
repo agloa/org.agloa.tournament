@@ -1,48 +1,53 @@
 <form name="personForm">
-  <label for="prefix_id" class="sr-only">Prefix</label>
-  <select id="prefix_id" name="prefix_id" class="crm-form-select"
-    select="{placeholder: '', allowClear:true}"
-    ng-options="option.value as option.label for option in $ctrl.prefixes"
-    ng-model="$ctrl.selectedPerson.prefix_id">
-  </select>
-  <label for="first_name" class="sr-only">First</label>
-  <input id="first_name" name="first_name" type="text"
-    ng-model="$ctrl.selectedPerson.first_name" class="crm-form-text"
-    placeholder="First" required">
-  </input>
-  <label for="middle_name" class="sr-only">Middle</label>
-  <input type="text"
-    id="middle_name" name="middle_name"
-    ng-model="$ctrl.selectedPerson.middle_name" class="crm-form-text"
-    placeholder="Middle">
-  </input>
-  <label for="last_name" class="sr-only">Last</label>
-  <input type="text"
-    id="last_name" name="last_name"
-    ng-model="$ctrl.selectedPerson.last_name" class="crm-form-text"
-    placeholder="Last" required>
-  </input>
-  <label for="suffix_id" class="sr-only">Suffix</label>
-  <select
-    id="suffix_id" name="suffix_id" class="crm-form-select"
-    select="{placeholder: '', allowClear:true}"
-    ng-options="option.value as option.label for option in $ctrl.suffixes"
-    ng-model="$ctrl.selectedPerson.suffix_id">
-  </select>
-  <label for="personForm.birth_date" class="sr-only">Birth Date</label>
-  <input type="date" id="personForm.birth_date" class="crm-form-text crm-form-date"
-    name="birth_date" ng-model="$ctrl.selectedPerson.birth_date">
-  </input>
-  <label for="gender_id" class="sr-only">Gender</label>
-  <select 
-    id="gender_id" name="gender_id" class="crm-form-select"
-    ng-options="option.value as option.label for option in $ctrl.genders"
-    ng-model="$ctrl.selectedPerson.gender_id">
-  </select>
-  <button ng-click="$ctrl.save()">Save</button>
+    <label for="prefix_id" class="sr-only">Prefix</label>
+    <select id="prefix_id" name="prefix_id" class="crm-form-select"
+        select="{placeholder: '', allowClear:true}"
+        ng-options="option.value as option.label for option in $ctrl.prefixes"
+        ng-model="$ctrl.selectedPerson.prefix_id">
+    </select>
+    <label for="first_name" class="sr-only">First</label>
+    <input id="first_name" name="first_name" type="text"
+        ng-model="$ctrl.selectedPerson.first_name" class="crm-form-text"
+        placeholder="First" required">
+    </input>
+    <label for="middle_name" class="sr-only">Middle</label>
+    <input type="text"
+        id="middle_name" name="middle_name"
+        ng-model="$ctrl.selectedPerson.middle_name" class="crm-form-text"
+        placeholder="Middle">
+    </input>
+    <label for="last_name" class="sr-only">Last</label>
+    <input type="text"
+        id="last_name" name="last_name"
+        ng-model="$ctrl.selectedPerson.last_name" class="crm-form-text"
+        placeholder="Last" required>
+    </input>
+    <label for="suffix_id" class="sr-only">Suffix</label>
+    <select
+        id="suffix_id" name="suffix_id" class="crm-form-select"
+        select="{placeholder: '', allowClear:true}"
+        ng-options="option.value as option.label for option in $ctrl.suffixes"
+        ng-model="$ctrl.selectedPerson.suffix_id">
+    </select>
+    <label for="personForm.birth_date" class="sr-only">Birth Date</label>
+    <input type="date" id="personForm.birth_date" class="crm-form-text crm-form-date"
+        name="birth_date" ng-model="$ctrl.selectedPerson.birth_date">
+    </input>
+    <label for="gender_id" class="sr-only">Gender</label>
+    <select 
+        id="gender_id" name="gender_id" class="crm-form-select"
+        ng-options="option.value as option.label for option in $ctrl.genders"
+        ng-model="$ctrl.selectedPerson.gender_id">
+    </select>
+    <button ng-click="$ctrl.save()">Save</button>
 
-  <div ng-click="$ctrl.toggleAddressVisibility()" title="Update your address."> 
-    <i ng-class="$ctrl.addressArrowClass"></i>
+    <div ng-click="$ctrl.toggleAddressVisibility()">
+        <i ng-class="$ctrl.addressArrowClass"></i>Update address
+    </div>
     <address ng-if="$ctrl.includeAddressForm" person="{{$ctrl.selectedPerson.contact_id}}"></address>
-  </div>
+
+    <div ng-click="$ctrl.togglePhoneVisibility()"> 
+        <i ng-class="$ctrl.phoneArrowClass"></i>Update your phone
+    </div>
+    <phone ng-if="$ctrl.includePhoneForm" person="{{$ctrl.selectedPerson.contact_id}}"></phone>
 </form>

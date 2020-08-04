@@ -1,0 +1,11 @@
+<form name="phoneForm">
+  <div>
+    <label for="phoneForm.phone">Phone</label>
+    <input id="phoneForm.phone" name="phone"
+      ng-model="$ctrl.selectedPhone.phone" class="crm-form-text"
+      placeholder="Phone" required>
+    </input>
+  </div>
+
+  <button ng-click="$ctrl.save()">Save</button>
+</form>
