@@ -39,6 +39,16 @@ angular.module('tournament').component('person', {
           this.phoneVisibilityClass = "hiddenBranch";
         }
       }
+      
+      self.emailVisibilityClass = "hiddenBranch";
+
+      // Don't include 'child' component until user requests it.
+      self.includeEmailForm = false;
+
+      self.toggleEmailVisibility = () => {
+        this.includeEmailForm = !this.includeEmailForm;
+        this.emailVisibilityClass = (this.includeEmailForm) ? "visibleBranch" :"hiddenBranch";
+      }
 
       person.getGenders().then(
         // Success
