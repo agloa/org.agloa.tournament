@@ -12,31 +12,31 @@ angular.module('tournament').component('person', {
           self.id = $routeParams.personId;
       }
       
-      self.addressArrowClass = "arrowRight";
+      self.addressVisibilityClass = "hiddenBranch";
 
-      // Don't include 'child' form until user requests it.
+      // Don't include 'child' component until user requests it.
       self.includeAddressForm = false;
 
       self.toggleAddressVisibility = () => {
         this.includeAddressForm = !this.includeAddressForm;
         if (this.includeAddressForm) {
-          this.addressArrowClass = "arrowDown";
+          this.addressVisibilityClass = "visibleBranch";
         } else {
-          this.addressArrowClass = "arrowRight";
+          this.addressVisibilityClass = "hiddenBranch";
         }
       }
       
-      self.phoneArrowClass = "arrowRight";
+      self.phoneVisibilityClass = "hiddenBranch";
 
-      // Don't include 'child' form until user requests it.
+      // Don't include 'child' component until user requests it.
       self.includePhoneForm = false;
 
       self.togglePhoneVisibility = () => {
         this.includePhoneForm = !this.includePhoneForm;
         if (this.includePhoneForm) {
-          this.phoneArrowClass = "arrowDown";
+          this.phoneVisibilityClass = "visibleBranch";
         } else {
-          this.phoneArrowClass = "arrowRight";
+          this.phoneVisibilityClass = "hiddenBranch";
         }
       }
 

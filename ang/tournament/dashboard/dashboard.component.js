@@ -6,7 +6,7 @@ angular.module('tournament').component('dashboard', {
   controller: ['$routeParams', 'personService',
     function DashboardController($routeParams, person) {
       var self = this;
-      self.personArrowClass = "arrowRight";
+      self.personVisibilityClass = "hiddenBranch";
       self.userId = "user_contact_id";
       
       // e.g., dashboard/43
@@ -17,22 +17,22 @@ angular.module('tournament').component('dashboard', {
       // Don't include 'child' form until user requests it.
       self.includePersonForm = false;
 
-      self.togglePersonVisibility = function togglePersonVisibility() {
+      self.togglePersonVisibility = () => {
         this.includePersonForm = !this.includePersonForm;
         if (this.includePersonForm) {
-          this.personArrowClass = "arrowDown";
+          this.personVisibilityClass = "visibleBranch";
         } else {
-          this.personArrowClass = "arrowRight";
+          this.personVisibilityClass = "hiddenBranch";
         }
       }
 
       self.user = person.get(self.userId).then(
             // Success
-            function(result) { 
+            (result) => { 
                 self.user = result;
             },
             // Failure
-            function (error) { 
+            (error) => { 
                 CRM.alert(ts('Could not get user record ID of ' + userId + ', error = ' + error.error_message),ts('Not Found'),'error'); 
             }
         );

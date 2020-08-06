@@ -40,14 +40,14 @@
         ng-model="$ctrl.selectedPerson.gender_id">
     </select>
     <button ng-click="$ctrl.save()">Save</button>
-
-    <div ng-click="$ctrl.toggleAddressVisibility()">
-        <i ng-class="$ctrl.addressArrowClass"></i>Update address
-    </div>
-    <address ng-if="$ctrl.includeAddressForm" person="{{$ctrl.selectedPerson.contact_id}}"></address>
-
-    <div ng-click="$ctrl.togglePhoneVisibility()"> 
-        <i ng-class="$ctrl.phoneArrowClass"></i>Update your phone
-    </div>
-    <phone ng-if="$ctrl.includePhoneForm" person="{{$ctrl.selectedPerson.contact_id}}"></phone>
 </form>
+
+<div ng-click="$ctrl.toggleAddressVisibility()">
+    <i ng-class="$ctrl.addressVisibilityClass"></i>Update address info
+</div>
+<address ng-if="$ctrl.includeAddressForm" person="{{$ctrl.selectedPerson.contact_id}}"></address>
+
+<div ng-click="$ctrl.togglePhoneVisibility()"> 
+    <i ng-class="$ctrl.phoneVisibilityClass"></i>Update phone info
+</div>
+<phone ng-if="$ctrl.includePhoneForm" person="{{$ctrl.selectedPerson.contact_id}}"></phone>
