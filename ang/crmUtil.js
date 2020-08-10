@@ -1,4 +1,12 @@
 
+function ts(english) {
+  return english;
+}
+
+CRM.alert = (message, title, severity) => {
+  alert(message);
+}
+
 angular.module('tournament').factory('crmApi', function($q) {
     var crmApi = function(entity, action, params, message) {
       // JSON serialization in CRM.api3 is not aware of Angular metadata like $$hash, so use angular.toJson()
