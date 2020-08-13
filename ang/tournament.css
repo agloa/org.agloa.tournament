@@ -23,7 +23,7 @@
   padding-right: 0.3em;
 }
 
-.arrowRight, .arrowDown {
+.visibleBranch, .hiddenBranch {
     border: solid black;
     border-width: 0 3px 3px 0;
     display: inline-block;
@@ -31,9 +31,14 @@
     margin-right: 3px;
 }
   
-.arrowRight {
+.hiddenBranch {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
+}
+  
+.visibleBranch {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
 }
   
 .left {
@@ -44,9 +49,4 @@
 .up {
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
-}
-  
-.arrowDown {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
 }
