@@ -9,14 +9,16 @@ CRM.alert = (message, title, severity) => {
 
 angular.module('tournament').factory('crmApi', function($q) {
     return function(entity, action, params, message) {
+      if (typeof entity === 'string') {
+        entityType = entity;
+      } else {
+        entityType = JSON.stringify(entity);
+      }
 
-      return new Promise(function(resolve, reject) {
-        if (typeof entity === 'string') {
-          entityType = entity;
-        } else {
-          entityType = JSON.stringify(entity);
-        }
+      var deferred = $q.defer();
+      var p;
 
+      p = new Promise(function(resolve, reject) {
         switch(entityType) {
           default:
             switch(action) {
@@ -34,7 +36,21 @@ angular.module('tournament').factory('crmApi', function($q) {
             }
         }
 
-      })
-        
+      });
+
+      p.then(
+        function(result) {
+          if (result.is_error) {
+            deferred.reject(result);
+          } else {
+            deferred.resolve(result);
+          }
+        },
+        function(error) {
+          deferred.reject(error);
+        }
+      );
+
+      return deferred.promise;        
     };
 });
