@@ -27,15 +27,15 @@ angular.module('tournament').component('dashboard', {
       }
 
       self.user = person.get(self.userId).then(
-            // Success
-            (result) => { 
-                self.user = result;
-            },
-            // Failure
-            (error) => { 
-                CRM.alert(ts('Could not get user record ID of ' + self.userId + ', error = ' + error.error_message),ts('Not Found'),'error'); 
-            }
-        );
+          // Success
+          (result) => { 
+              self.user = result;
+          },
+          // Failure
+          (error) => { 
+              CRM.alert(ts('Could not get user record ID of ' + self.userId + ', error = ' + error.error_message),ts('Not Found'),'error'); 
+          }
+      );
     }
   ]
 });
