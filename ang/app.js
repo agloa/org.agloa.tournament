@@ -23,6 +23,15 @@
         .when('/tournament/phone/:phoneId', {
             template: '<phone></phone>'
         })
+        .when('/tournament/person/phone/:personId', {
+            template: '<phone></phone>'
+        })
+        .when('/tournament/email/:emailId', {
+            template: '<email></email>'
+        })
+        .when('/tournament/person/email/:personId', {
+            template: '<email></email>'
+        })
         .when('/tournament/phone/:phoneId', {
             template: '<dashboard></dashboard>'
         }).otherwise( {
