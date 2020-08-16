@@ -24,7 +24,7 @@ angular.module('tournament').factory('address', function ($q, crmApi) {
             // Success
             function(result){  return result.values; },
             // Failure
-            function(result) { CRM.alert(ts('Unable to load available countries.'), ts('Not Found'),'error'); }
+            function(error) { CRM.alert(ts('Unable to load available countries. Error = ', error.error_message), ts('Not Found'),'error'); }
         );
     }
 
