@@ -1,7 +1,8 @@
 'use strict';
 
+const addressTemplateUrl = locationRoot() + '/tournament/address/address.template.html';
 angular.module('tournament').component('address', {    
-  templateUrl: '~/tournament/address/address.template.html',
+  templateUrl: addressTemplateUrl,
   bindings: {person: '@', id: '@'},
   controller: ['$routeParams', 'address',
     function addressController($routeParams, address) {

@@ -1,6 +1,6 @@
 'use strict';
 
-const dashboardTemplateUrl = (location.search.includes("?page=CiviCRM") ? "~" : location.origin) + '/tournament/dashboard/dashboard.template.html';
+const dashboardTemplateUrl = locationRoot() + '/tournament/dashboard/dashboard.template.html';
 angular.module('tournament').component('dashboard', {
   templateUrl: dashboardTemplateUrl,
   controller: ['$routeParams', 'personService',
