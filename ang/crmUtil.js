@@ -18,14 +18,6 @@ angular.module('tournament').factory('crmApi', function ($q) {
     var deferred = $q.defer();
     var p = new Promise(function (resolve, reject) {
       switch (entityType) {
-        case "Setting":
-          switch (action) {
-            default:
-              switch (params.return[0]) {
-                case "countryLimit":
-                  resolve({values: [{countryLimit: ["1228","1101","1208"]}]})
-              }
-          }
         case "Contact":
           switch (action) {
             default:
@@ -79,42 +71,81 @@ angular.module('tournament').factory('crmApi', function ($q) {
                   resolve({
                     values: [
                       {
-                          label: "Jr.",
-                          value: 1
+                        label: "Jr.",
+                        value: 1
                       },
                       {
-                          label: "Sr.",
-                          value: 2
+                        label: "Sr.",
+                        value: 2
                       },
                       {
-                          label: "II",
-                          value: 3
+                        label: "II",
+                        value: 3
                       },
                       {
-                          label: "III",
-                          value: 4
+                        label: "III",
+                        value: 4
                       },
                       {
-                          label: "IV",
-                          value: 5
+                        label: "IV",
+                        value: 5
                       },
                       {
-                          label: "V",
-                          value: 6
+                        label: "V",
+                        value: 6
                       },
                       {
-                          label: "VI",
-                          value: 7
+                        label: "VI",
+                        value: 7
                       },
                       {
-                          label: "VII",
-                          value: 8
+                        label: "VII",
+                        value: 8
                       }
-                  ]
+                    ]
                   })
               }
           }
-        }
+
+        case "Setting":
+          switch (action) {
+            default:
+              switch (params.return[0]) {
+                case "countryLimit":
+                  resolve({ values: [{ countryLimit: ["1228", "1101", "1208"] }] })
+              }
+          }
+
+        case "Country":
+          switch (action) {
+            default:
+              resolve({
+                values: [
+                  {
+                    id: "1101",
+                    name: "India",
+                    iso_code: "IN",
+                    region_id: "4",
+                    is_province_abbreviated: "0"
+                  },
+                  {
+                    id: "1208",
+                    name: "Taiwan",
+                    iso_code: "TW",
+                    region_id: "4",
+                    is_province_abbreviated: "0"
+                  },
+                  {
+                    id: "1228",
+                    name: "United States",
+                    iso_code: "US",
+                    region_id: "2",
+                    is_province_abbreviated: "1"
+                  }
+                ]
+              })
+          }
+      }
     });
 
     p.then(
