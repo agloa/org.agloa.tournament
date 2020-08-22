@@ -3,7 +3,7 @@
   angular.module('tournament', ['ngRoute']);
   angular.module('tournament').value('version', '0.1');
 
-  angular.module('tournament').config(['$routeProvider', function($routeProvider) {
+  angular.module('tournament').config(['$routeProvider', ($routeProvider) => {
 
     // Configure the module route(s)
     // Use this method to configure services by injecting their providers, e.g. for adding routes to the $routeProvider.
@@ -32,9 +32,10 @@
         .when('/tournament/person/email/:personId', {
             template: '<email></email>'
         })
-        .when('/tournament/phone/:phoneId', {
+        .when('/tournament', {
             template: '<dashboard></dashboard>'
-        }).otherwise( {
+        })
+        .otherwise( {
             template: '<dashboard></dashboard>'
         })
   }]);
