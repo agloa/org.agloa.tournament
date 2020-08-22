@@ -1,7 +1,8 @@
 'use strict';
 
+const phoneTemplateUrl = locationRoot() + '/tournament/phone/phone.template.html';
 angular.module('tournament').component('phone', {    
-  templateUrl: '~/tournament/phone/phone.template.html',
+  templateUrl: phoneTemplateUrl,
   bindings: {person: '@', id: '@'},
   controller: ['$routeParams', 'phone',
     function phoneController($routeParams, phone) {

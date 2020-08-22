@@ -1,7 +1,8 @@
 'use strict';
 
+const emailTemplateUrl = locationRoot() + '/tournament/email/email.template.html';
 angular.module('tournament').component('email', {    
-  templateUrl: '~/tournament/email/email.template.html',
+  templateUrl: emailTemplateUrl,
   bindings: {person: '@', id: '@'},
   controller: ['$routeParams', 'email',
     function emailController($routeParams, email) {
