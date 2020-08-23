@@ -1,7 +1,7 @@
 'use strict';
 
 const personTemplateUrl = locationRoot() + '/tournament/person/person.template.html';
-angular.module('tournament').component('person', {
+angular.module('tournament').component('trnPerson', {
   templateUrl: personTemplateUrl,
   bindings: {id: '@'},
   controller: ['$routeParams', 'personService',

@@ -10,7 +10,7 @@
     <div ng-click="$ctrl.togglePersonVisibility()" title=
     "If you are new to this system, the first step is to double-check your contact information. You probably only need to do this once, ever."
     ><i ng-class="$ctrl.personVisibilityClass"></i>Update your contact information, last updated on {{$ctrl.user.modified_date}}</div>
-      <person ng-if="$ctrl.includePersonForm" id="{{$ctrl.user.id}}"></person>
+      <trn-person class="crm-loading-element" ng-if="$ctrl.includePersonForm" id="{{$ctrl.user.id}}"></trn-person>
   </li>
   <li>Billing Organizations (e.g., School Districts)
     The next step is to double-check your organization's contact information. You probably only need to do this once, ever.

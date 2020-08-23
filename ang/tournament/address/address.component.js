@@ -1,19 +1,22 @@
 'use strict';
 
 const addressTemplateUrl = locationRoot() + '/tournament/address/address.template.html';
-angular.module('tournament').component('address', {
+angular.module('tournament').component('trnAddress', {
   templateUrl: addressTemplateUrl,
-  bindings: { person: '@', id: '@' },
+  bindings: { personId: '@', addressId: '@' },
   controller: ['$routeParams', 'address',
     function addressController($routeParams, address) {
       var self = this;
 
+      self.contact_id = self.personId;
+      self.id = self.addressId;
+
       if ($routeParams.addressId !== undefined) {
-        self.addressId = $routeParams.addressId;
+        self.id = $routeParams.addressId;
       }
 
       if ($routeParams.personId !== undefined) {
-        self.person = $routeParams.personId;
+        self.contact_id = $routeParams.personId;
       }
 
       address.getCountries().then(
@@ -30,7 +33,7 @@ angular.module('tournament').component('address', {
         (error) => { CRM.alert(ts('Could not get states/provinces, error = ' + error.error_message), ts('Not Found'), 'error'); }
       )
 
-      address.get(self.person, self.addressId).then(
+      address.get(self.contact_id, self.id).then(
         // Success
         (result) => { self.setSelectedAddress(result.values[0]); },
         // Failure

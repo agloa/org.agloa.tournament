@@ -1,9 +1,9 @@
 'use strict';
 
 const emailTemplateUrl = locationRoot() + '/tournament/email/email.template.html';
-angular.module('tournament').component('email', {    
+angular.module('tournament').component('trnEmail', {    
   templateUrl: emailTemplateUrl,
-  bindings: {person: '@', id: '@'},
+  bindings: {personId: '@', id: '@'},
   controller: ['$routeParams', 'email',
     function emailController($routeParams, email) {
       var self = this;
@@ -13,11 +13,11 @@ angular.module('tournament').component('email', {
       }
             
       if ($routeParams.personId !== undefined) {
-        self.person = $routeParams.personId;
+        self.personId = $routeParams.personId;
       }
 
-      if (self.person !== undefined) {
-        email.getContactEmail(self.person).then(
+      if (self.personId !== undefined) {
+        email.getContactEmail(self.personId).then(
         // Success
         (result) => { self.setSelectedEmail(result.values[0]); },
         // Failure

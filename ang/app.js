@@ -9,34 +9,34 @@
     // Use this method to configure services by injecting their providers, e.g. for adding routes to the $routeProvider.
     $routeProvider
         .when('/tournament/dashboard/:userId?', {
-            template: '<dashboard></dashboard>'
+            template: '<trn-dashboard></trn-dashboard>'
         })
         .when('/tournament/person/:personId', {
-            template: '<person></person>'
+            template: '<trn-person></trn-person>'
         })
         .when('/tournament/address/:addressId', {
-            template: '<address></address>'
+            template: '<trn-address></trn-address>'
         })
         .when('/tournament/person/address/:personId', {
-            template: '<address></address>'
+            template: '<trn-address></trn-address>'
         })
         .when('/tournament/phone/:phoneId', {
-            template: '<phone></phone>'
+            template: '<trn-phone></trn-phone>'
         })
         .when('/tournament/person/phone/:personId', {
-            template: '<phone></phone>'
+            template: '<trn-phone></trn-phone>'
         })
         .when('/tournament/email/:emailId', {
-            template: '<email></email>'
+            template: '<trn-email></trn-email>'
         })
         .when('/tournament/person/email/:personId', {
-            template: '<email></email>'
+            template: '<trn-trn-email></trn-email>'
         })
         .when('/tournament', {
-            template: '<dashboard></dashboard>'
+            template: '<trn-dashboard></trn-dashboard>'
         })
         .otherwise( {
-            template: '<dashboard></dashboard>'
+            template: '<trn-dashboard></trn-dashboard>'
         })
   }]);
 

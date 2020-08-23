@@ -1,7 +1,7 @@
 'use strict';
 
 const dashboardTemplateUrl = locationRoot() + '/tournament/dashboard/dashboard.template.html';
-angular.module('tournament').component('dashboard', {
+angular.module('tournament').component('trnDashboard', {
   templateUrl: dashboardTemplateUrl,
   controller: ['$routeParams', 'personService',
     function DashboardController($routeParams, person) {

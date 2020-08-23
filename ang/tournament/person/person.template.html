@@ -43,10 +43,10 @@
 </form>
 
 <span ng-click="$ctrl.toggleAddressVisibility()"><i ng-class="$ctrl.addressVisibilityClass"></i>Update address info</span>
-<address ng-if="$ctrl.includeAddressForm" person="{{$ctrl.selectedPerson.contact_id}}"></address>
+<trn-address ng-if="$ctrl.includeAddressForm" person-id="{{$ctrl.selectedPerson.contact_id}}"></trn-address>
 
 <span ng-click="$ctrl.togglePhoneVisibility()" ><i ng-class="$ctrl.phoneVisibilityClass"></i>Update phone info</span>
-<phone ng-if="$ctrl.includePhoneForm" person="{{$ctrl.selectedPerson.contact_id}}"></phone>
+<trn-phone ng-if="$ctrl.includePhoneForm" person-id="{{$ctrl.selectedPerson.contact_id}}"></trn-phone>
 
 <span ng-click="$ctrl.toggleEmailVisibility()" ><i ng-class="$ctrl.emailVisibilityClass"></i>Update email info</span>
-<email ng-if="$ctrl.includeEmailForm" person="{{$ctrl.selectedPerson.contact_id}}"></email>
+<trn-email ng-if="$ctrl.includeEmailForm" person-id="{{$ctrl.selectedPerson.contact_id}}"></trn-email>

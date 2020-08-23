@@ -1,9 +1,9 @@
 'use strict';
 
 const phoneTemplateUrl = locationRoot() + '/tournament/phone/phone.template.html';
-angular.module('tournament').component('phone', {    
+angular.module('tournament').component('trnPhone', {    
   templateUrl: phoneTemplateUrl,
-  bindings: {person: '@', id: '@'},
+  bindings: {personId: '@', id: '@'},
   controller: ['$routeParams', 'phone',
     function phoneController($routeParams, phone) {
       var self = this;
@@ -13,7 +13,7 @@ angular.module('tournament').component('phone', {
       }
             
       if ($routeParams.personId !== undefined) {
-        self.person = $routeParams.personId;
+        self.personId = $routeParams.personId;
       }
 
       phone.getPhoneTypes().then(
@@ -23,8 +23,8 @@ angular.module('tournament').component('phone', {
         (error)  =>  { CRM.alert(ts('Could not get phone types, error = ' + error.error_message),ts('Not Found'),'error'); }
       )
 
-      if (self.person !== undefined) {
-        phone.getContactPhone(self.person).then(
+      if (self.personId !== undefined) {
+        phone.getContactPhone(self.personId).then(
         // Success
         (result) => { self.setSelectedPhone(result.values[0]); },
         // Failure
