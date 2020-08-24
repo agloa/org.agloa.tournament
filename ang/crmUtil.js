@@ -34,25 +34,27 @@ angular.module('tournament').factory('crmApi', function ($q) {
                 contact_id: 2,
                 id: 2
               })
-        }
+          }
         case "Address":
           switch (action) {
             default:
               resolve({
-                id: "1",
-                contact_id: "2",
-                location_type_id: "3",
-                is_primary: "1",
-                is_billing: "0",
-                street_address: "1870 Shady Beach Ave.",
-                city: "Minneapolis",
-                state_province_id: "1022",
-                postal_code_suffix: "6900",
-                postal_code: "55113",
-                country_id: "1228",
-                id: params.id
+                values: [{
+                  id: "1",
+                  contact_id: "2",
+                  location_type_id: "3",
+                  is_primary: "1",
+                  is_billing: "0",
+                  street_address: "1870 Shady Beach Ave.",
+                  city: "Minneapolis",
+                  state_province_id: "1022",
+                  postal_code_suffix: "6900",
+                  postal_code: "55113",
+                  country_id: "1228",
+                  id: params.id
+                }]
               })
-        }
+          }
         case "OptionValue":
           switch (action) {
             default:
@@ -124,7 +126,7 @@ angular.module('tournament').factory('crmApi', function ($q) {
                     ]
                   })
               }
-        }
+          }
 
         case "Setting":
           switch (action) {
@@ -133,7 +135,7 @@ angular.module('tournament').factory('crmApi', function ($q) {
                 case "countryLimit":
                   resolve({ values: [{ countryLimit: ["1228", "1101", "1208"] }] })
               }
-        }
+          }
 
         case "Country":
           switch (action) {
@@ -163,7 +165,7 @@ angular.module('tournament').factory('crmApi', function ($q) {
                   }
                 ]
               })
-        }
+          }
       }
     });
 
