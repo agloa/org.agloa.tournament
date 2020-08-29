@@ -10,18 +10,22 @@ module.exports = function(config) {
       'app/lib/angular-resource/angular-resource.js',
       'app/lib/angular-route/angular-route.js',
       'node_modules/angular-mocks/angular-mocks.js',
-      'CRM.js',
-      'Common.js',
-      'crmUtil.js',
       'app.js',
+      'crmUtil.js',
       '**/*.module.js',
       '**/*.service.js',
       '*!(.module|.spec).js',
       '!(app/lib)/**/*!(.module|.spec).js',
       '**/*.spec.js',
       
-  // <script src="app/lib/jquery/dist/jquery.js"></script>
-  // <script src="tournament/dashboard/dashboard.component.js"></script>
+      "tournament/core/util.js",
+      "tournament/core/services/*.service.js",
+    
+      "tournament/dashboard/dashboard.component.js",
+      "tournament/person/person.component.js",
+      "tournament/address/address.component.js",
+      "tournament/phone/phone.component.js",
+      "tournament/email/email.component.js",
     ],
 
     autoWatch: true,
