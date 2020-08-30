@@ -16,16 +16,17 @@ module.exports = function(config) {
       '**/*.service.js',
       '*!(.module|.spec).js',
       '!(app/lib)/**/*!(.module|.spec).js',
-      '**/*.spec.js',
+      // '**/*.spec.js',
+      "tournament/core/*/*.spec.js",
       
       "tournament/core/util.js",
-      "tournament/core/services/*.service.js",
     
       "tournament/dashboard/dashboard.component.js",
       "tournament/person/person.component.js",
       "tournament/address/address.component.js",
       "tournament/phone/phone.component.js",
       "tournament/email/email.component.js",
+
     ],
 
     autoWatch: true,
