@@ -1,0 +1,7 @@
+<!-- HTML5 view of the Billing Organizations component. -->
+You are a contact for these organizations:
+<ol>
+    <li ng-repeat="organization in $ctrl.billingOrganizations track by organization.id">
+        {{organization.organization_name}}, last modified on {{organization.modified_date}}.
+      </li>
+</ol>
