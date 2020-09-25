@@ -11,8 +11,8 @@ angular.module('tournament').factory('billingContact', function ($q, crmApi) {
 
         crmApi('RelationshipType', 'get', params).then(
             (relationshipType) => {
-                if (relationshipType.count > 0) {
-                    return relationshipType[0];
+                if (relationshipType.values.length > 0) {
+                    return relationshipType.values[0];
                 } else {
                     crmApi('RelationshipType', 'create', {
                         "name_a_b": "Billing contact for",
@@ -41,19 +41,12 @@ angular.module('tournament').factory('billingContact', function ($q, crmApi) {
 
     return {
         get: (contact_id) => {
-            crmApi('Relationship', 'get', {
+            return crmApi('Relationship', 'get', {
                 "sequential": 1,
                 "return": ["contact_id_b.id","contact_id_b.modified_date","contact_id_b.organization_name"],
                 "contact_id_a": contact_id,
                 "relationship_type_id": getRelationshipType()
-            }).then(
-                (relationships) => {
-                    return relationships;
-                },
-                (error) => {
-                    CRM.alert(ts('Could not get Billing organizations for contact id = ' + contact_id +
-                        ' , error = ' + error.error_message), ts('Error'), 'error');
-                });
+            });
         },
         save: (individual_id, organization_id) => {
             crmApi('Relationship', 'create', {
