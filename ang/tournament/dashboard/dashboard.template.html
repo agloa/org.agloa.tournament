@@ -7,14 +7,24 @@
 
 <ol>
   <li>
-    <div ng-click="$ctrl.togglePersonVisibility()" title=
-    "If you are new to this system, the first step is to double-check your contact information. You probably only need to do this once, ever."
-    ><i ng-class="$ctrl.personVisibilityClass"></i>Update your contact information, last updated on {{$ctrl.user.modified_date}}</div>
-      <trn-person class="crm-loading-element" ng-if="$ctrl.includePersonForm" id="{{$ctrl.user.id}}"></trn-person>
+    <div ng-click="$ctrl.togglePersonVisibility()"
+      title="If you are new to this system, the first step is to double-check your contact information. You probably only need to do this once, ever.">
+      <i ng-class="$ctrl.personVisibilityClass"></i>Update your contact information, last updated on
+      {{$ctrl.user.modified_date}}.
+    </div>
+    <trn-person class="crm-loading-element" ng-if="$ctrl.includePersonForm" id="{{$ctrl.user.id}}">
+    </trn-person>
   </li>
-  <li>Billing Organizations (e.g., School Districts)
-    The next step is to double-check your organization's contact information. You probably only need to do this once, ever.
-    You are a contact for these organizations:
+  <li>
+    <div ng-click="$ctrl.toggleBillingOrganizationVisibility()"
+      title="The next step is to double-check your organization's contact information. You probably only need to do this once, ever.">
+      <i ng-class="$ctrl.billingOrganizationVisibilityClass"></i>Update your organization's information.
+    </div>
+    <trn-billingorganizations class="crm-loading-element" ng-if="$ctrl.includeBillingOrganizationForm"
+      id="{{$ctrl.user.id}}">
+    </trn-billingorganizations>
+
+
   </li>
 </ol>
 
@@ -25,7 +35,8 @@ This only enters them into the database. it doesn't mean they are committed to a
 You have access to contacts in these groups:
 
 4. Register Contacts for Tournament
-Once you have entered all the contacts for your group(s), you can register them to attend the tournament. Be sure to indicate which competitions they will enter. That's important for the team registration step.
+Once you have entered all the contacts for your group(s), you can register them to attend the tournament. Be sure to
+indicate which competitions they will enter. That's important for the team registration step.
 
 5. Combine Registered Players into Teams
 Once you have registered all the players for your district/league, you can combine them into teams.

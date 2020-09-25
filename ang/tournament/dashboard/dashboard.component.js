@@ -7,6 +7,7 @@ angular.module('tournament').component('trnDashboard', {
     function DashboardController($routeParams, person) {
       var self = this;
       self.personVisibilityClass = "hiddenBranch";
+      self.billingOrganizationVisibilityClass = "hiddenBranch";
       self.userId = "user_contact_id";
       
       // e.g., dashboard/43
@@ -16,6 +17,7 @@ angular.module('tournament').component('trnDashboard', {
 
       // Don't include 'child' form until user requests it.
       self.includePersonForm = false;
+      self.includeBillingOrganizationForm = false;
 
       self.togglePersonVisibility = () => {
         this.includePersonForm = !this.includePersonForm;
@@ -23,6 +25,15 @@ angular.module('tournament').component('trnDashboard', {
           this.personVisibilityClass = "visibleBranch";
         } else {
           this.personVisibilityClass = "hiddenBranch";
+        }
+      }
+
+      self.toggleBillingOrganizationVisibility = () => {
+        this.includeBillingOrganizationForm = !this.includeBillingOrganizationForm;
+        if (this.includeBillingOrganizationForm) {
+          this.billingOrganizationVisibilityClass = "visibleBranch";
+        } else {
+          this.billingOrganizationVisibilityClass = "hiddenBranch";
         }
       }
 
