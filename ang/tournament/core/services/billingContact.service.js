@@ -43,7 +43,7 @@ angular.module('tournament').factory('billingContact', function ($q, crmApi) {
         get: (contact_id) => {
             crmApi('Relationship', 'get', {
                 "sequential": 1,
-                "return": ["contact_id_b"],
+                "return": ["contact_id_b.id","contact_id_b.modified_date","contact_id_b.organization_name"],
                 "contact_id_a": contact_id,
                 "relationship_type_id": getRelationshipType()
             }).then(
@@ -69,6 +69,19 @@ angular.module('tournament').factory('billingContact', function ($q, crmApi) {
                         ' , error = ' + error.error_message), ts('Error'), 'error');
                 });
         },
+        delete: (individual_id, organization_id) => {
+            crmApi('Relationship', 'delete', {
+                "contact_id_a": individual_id,
+                "contact_id_b": organization_id,
+                "relationship_type_id": getRelationshipType()
+            }).then(
+                (relationship) => {
+                    return relationship.id;
+                }, (error) => {
+                    CRM.alert(ts('Could not delete Billing organization relationship for contact id = ' + contact_id +
+                        ', organization id =' + organization_id +
+                        ' , error = ' + error.error_message), ts('Error'), 'error');
+                });
+        }
     }
-}
 });
