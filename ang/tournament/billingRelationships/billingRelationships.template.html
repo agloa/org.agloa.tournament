@@ -2,9 +2,16 @@
 <div ng-show="$ctrl.billingOrganizations.length > 0">
 You are a contact for these organizations:
 <ol>
-    <li ng-repeat="organization in $ctrl.billingOrganizations track by organization.id">
-        {{organization.organization_name}}, last updated on {{organization.modified_date}}.
+    <li ng-repeat="relationship in $ctrl.billingRelationships track by organization.id">
+        {{relationship.organization_name}}, last updated on {{relationship.modified_date}}.
     </li>
 </ol>
 </div>
-Request access to billing organization: 
+<form name="billingOrganizationAccessRequestForm">
+    <label for="billingOrganizationsSelect">Request access to billing organization: : </label>
+    <select name="billingOrganizationsSelect" id="billingOrganizationsSelect">
+      <option value="">---Please select---</option> <!-- not selected / blank option -->
+      <option ng-repeat="organization in $ctrl.billingOrganizations" value="{{organization.contact_id}}">{{organization.organization_name}}</option>
+      <option value="newBillingOrganization">New Billing Organization</option>
+    </select>
+</form>
