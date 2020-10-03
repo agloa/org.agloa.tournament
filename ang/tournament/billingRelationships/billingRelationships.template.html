@@ -1,0 +1,10 @@
+<!-- HTML5 view of the Billing Organizations component. -->
+<div ng-show="$ctrl.billingOrganizations.length > 0">
+You are a contact for these organizations:
+<ol>
+    <li ng-repeat="organization in $ctrl.billingOrganizations track by organization.id">
+        {{organization.organization_name}}, last updated on {{organization.modified_date}}.
+    </li>
+</ol>
+</div>
+Request access to billing organization: 
