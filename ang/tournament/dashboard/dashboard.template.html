@@ -12,19 +12,14 @@
       <i ng-class="$ctrl.personVisibilityClass"></i>Update your contact information, last updated on
       {{$ctrl.user.modified_date}}.
     </div>
-    <trn-person class="crm-loading-element" ng-if="$ctrl.includePersonForm" id="{{$ctrl.user.id}}">
-    </trn-person>
+    <trn-person class="crm-loading-element" ng-if="$ctrl.includePersonForm" id="{{$ctrl.user.id}}"></trn-person>
   </li>
   <li>
-    <div ng-click="$ctrl.toggleBillingOrganizationVisibility()"
+    <div ng-click="$ctrl.toggleBillingRelationshipsVisibility()"
       title="The next step is to double-check your organization's contact information. You probably only need to do this once, ever.">
-      <i ng-class="$ctrl.billingOrganizationVisibilityClass"></i>Update your organization's information.
+      <i ng-class="$ctrl.billingRelationshipsVisibilityClass"></i>Update your organization's information.
     </div>
-    <trn-billing-organizations class="crm-loading-element" ng-if="$ctrl.includeBillingOrganizationForm"
-      id="{{$ctrl.user.id}}">
-    </trn-billing-organizations>
-
-
+    <trn-billing-relationships class="crm-loading-element" ng-if="$ctrl.includeBillingRelationships" id="{{$ctrl.user.id}}"></trn-billing-relationships>
   </li>
 </ol>
 
