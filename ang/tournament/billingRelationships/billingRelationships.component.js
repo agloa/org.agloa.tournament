@@ -50,6 +50,10 @@ angular.module('tournament').component('trnBillingRelationships', {
             self.setBillingOrganizations = (values) => {
                 self.billingOrganizations = values;
             };
+
+            self.requestAccess = () => {
+                alert("Request Submitted");
+            }
         }
     ]
 });
