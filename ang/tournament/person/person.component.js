@@ -3,15 +3,15 @@
 const personTemplateUrl = locationRoot() + '/tournament/person/person.template.html';
 angular.module('tournament').component('trnPerson', {
   templateUrl: personTemplateUrl,
-  bindings: {id: '@'},
+  bindings: { id: '@' },
   controller: ['$routeParams', 'personService',
     function PersonController($routeParams, person) {
       var self = this;
-            
+
       if ($routeParams.personId !== undefined) {
-          self.id = $routeParams.personId;
+        self.id = $routeParams.personId;
       }
-      
+
       self.addressVisibilityClass = "hiddenBranch";
 
       // Don't include 'child' component until user requests it.
@@ -25,7 +25,7 @@ angular.module('tournament').component('trnPerson', {
           this.addressVisibilityClass = "hiddenBranch";
         }
       }
-      
+
       self.phoneVisibilityClass = "hiddenBranch";
 
       // Don't include 'child' component until user requests it.
@@ -39,7 +39,7 @@ angular.module('tournament').component('trnPerson', {
           this.phoneVisibilityClass = "hiddenBranch";
         }
       }
-      
+
       self.emailVisibilityClass = "hiddenBranch";
 
       // Don't include 'child' component until user requests it.
@@ -47,36 +47,35 @@ angular.module('tournament').component('trnPerson', {
 
       self.toggleEmailVisibility = () => {
         this.includeEmailForm = !this.includeEmailForm;
-        this.emailVisibilityClass = (this.includeEmailForm) ? "visibleBranch" :"hiddenBranch";
+        this.emailVisibilityClass = (this.includeEmailForm) ? "visibleBranch" : "hiddenBranch";
       }
 
+      person.get(self.id).then(
+        // Success
+        (result) => { self.setSelectedPerson(result); },
+        // Failure
+        (error) => { CRM.alert(ts('Could not get person record ID = ' + self.id + ', error = ' + error.error_message), ts('Not Found'), 'error'); }
+      );
       person.getGenders().then(
         // Success
-        (result) => {self.setGenders(result);},
+        (result) => { self.setGenders(result); },
         // Failure
-        (error)  =>  { CRM.alert(ts('Could not get gender options error = ' + error),ts('Not Found'),'error'); }
+        (error) => { CRM.alert(ts('Could not get gender options error = ' + error), ts('Not Found'), 'error'); }
       )
 
       person.getPrefixes().then(
         // Success
-        (result) => {self.setPrefixes(result);},
+        (result) => { self.setPrefixes(result); },
         // Failure
-        (error)  => { CRM.alert(ts('Could not get prefix options error = ' + error),ts('Not Found'),'error'); }
+        (error) => { CRM.alert(ts('Could not get prefix options error = ' + error), ts('Not Found'), 'error'); }
       )
 
       person.getSuffixes().then(
         // Success
-        (result) => {self.setSuffixes(result);},
+        (result) => { self.setSuffixes(result); },
         // Failure
-        (error) => { CRM.alert(ts('Could not get suffix options error = ' + error.error_message), ts('Not Found'),'error'); }
+        (error) => { CRM.alert(ts('Could not get suffix options error = ' + error.error_message), ts('Not Found'), 'error'); }
       )
-
-      person.get(self.id).then(
-            // Success
-            (result) => { self.setSelectedPerson(result); },
-            // Failure
-            (error) => { CRM.alert(ts('Could not get person record ID = ' + self.id + ', error = ' + error.error_message),ts('Not Found'),'error'); }
-        );
 
       self.setSelectedPerson = (person) => {
         self.selectedPerson = person;
@@ -97,18 +96,18 @@ angular.module('tournament').component('trnPerson', {
         self.suffixes = options.values;
         addDeselectOption(self.suffixes);
       };
-      
-      function addDeselectOption(options){
-        return options.push({value:"", label:""});
-      }  
 
-      self.save = () =>  {
-          person.save(self.selectedPerson).then(
-            // Success
-            (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
-            // Failure
-            (error)  => { CRM.alert(ts('Could not save person record ID = ' + self.id + ', error = ' + error.error_message), ts('Database Error'),'error'); }
-          );
+      function addDeselectOption(options) {
+        return options.push({ value: "", label: "" });
+      }
+
+      self.save = () => {
+        person.save(self.selectedPerson).then(
+          // Success
+          (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
+          // Failure
+          (error) => { CRM.alert(ts('Could not save person record ID = ' + self.id + ', error = ' + error.error_message), ts('Database Error'), 'error'); }
+        );
       }
     }
   ]

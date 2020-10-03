@@ -1,34 +1,61 @@
 'use strict';
 
-describe('person', function () {
-  beforeEach(module('tournament'));
-  var personData = [
-    { id: 2, last: 'Steigerwald', first: 'Michael' },
-  ];
-  var personService;
+describe('person service', function () {
+  var person;
 
   // Add a custom equality tester before each test
   beforeEach(function () {
-    jasmine.addCustomEqualityTester(angular.equals);
+    jasmine.addCustomEqualityTester(angular.equals);      
+  });
+  
+  beforeEach(module('tournament'));
+
+  beforeEach(
+    inject( function (_personService_) 
+      { person = _personService_; }
+    )
+  );
+
+  it('should get person data', (done) => {
+    var expectedPerson = [
+      { id: 2, last: 'Steigerwald', first: 'Michael' },
+    ];
+
+    person.get(2)
+      .then(
+        (result) => {
+          expect(result).toEqual(expectedPerson);
+          done();
+        },
+        (error) => {
+          console.log("Error getting person data:" + error);
+          done();
+        }
+      );
   });
 
+  xit('should get gender values', () => {
+    var expectedValues = {
+      values: [
+        { label: "Female", value: 11 },
+        { label: "Male", value: 2 },
+        { label: "Other", value: 3 }
+      ]
+    };
 
-  // The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
-  // This allows us to inject a service and assign it to a variable with the same name
-  // as the service while avoiding a name conflict.
-
-  // Instantiate the service and "train" `$personService` before each test
-  beforeEach(inject(function (_personService_) {
-    // $personService.expectGET('2').respond(personData);
-    personService = _personService_;
-  }));
-
-  it('should fetch person data', function () {
-    personService.get(2).finally(
-      (person) => {
-        expect(person).toEqual(personData);
+    person.getGenders().then(
+      // Success
+      (genders) => {
+        expect(genders).toEqual(expectedValues);
+      },
+      // Failure
+      (error) => {
+        CRM.alert(ts('Could not get gender options error = ' + error), ts('Not Found'), 'error');
       }
     );
+
+    expect(genders).toEqual(expectedValues);
+
   });
 
 });
