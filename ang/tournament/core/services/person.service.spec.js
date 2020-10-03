@@ -1,6 +1,10 @@
 'use strict';
 
-describe('person service', function () {
+describe('person', function () {
+  beforeEach(module('tournament'));
+  var expectedPerson = [
+    { id: 2, last: 'Steigerwald', first: 'Michael' },
+  ];
   var person;
 
   // Add a custom equality tester before each test

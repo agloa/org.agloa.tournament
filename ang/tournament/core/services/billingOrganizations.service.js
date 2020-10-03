@@ -1,15 +1,15 @@
-angular.module('tournament').factory('billingContact', function ($q, crmApi) {
+angular.module('tournament').factory('billingOrganizations', function ($q, crmApi) {
     function getContactType() {
         const params = {
-            "name": "Billing Organization",
+            "label": "Billing Organization",
             "parent_id": "Organization",
             "is_active": 1
         };
 
         crmApi('ContactType', 'get', params).then(
             (result) => {
-                if (result.values.length > 0) {
-                    return result.values[0];
+                if (result.count > 0) {
+                    return result.id;
                 } else {
                     crmApi('ContactType', 'create', {
                         "name": "billingOrganization",
@@ -35,16 +35,11 @@ angular.module('tournament').factory('billingContact', function ($q, crmApi) {
 
     return {
         getAll: () => {
-            crmApi('Contact', 'get', {
+            return crmApi('Contact', 'get', {
                 "sequential": 1,
                 "return": ["id", "organization_name"],
-                "contact_sub_type": getContactType()
-            }).then(
-                (result) => {
-                    return result.values;
-                }, (error) => {
-                    CRM.alert(ts('Could not get billing organizations, error = ' + error.error_message), ts('Error'), 'error');
-                });
+                "contact_sub_type": "billingOrganization"
+            });
         },
         save: (organizationName) => {
             ('Contact', 'create', {

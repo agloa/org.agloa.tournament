@@ -3,8 +3,8 @@
 const personTemplateUrl = locationRoot() + '/tournament/person/person.template.html';
 angular.module('tournament').component('trnPerson', {
   templateUrl: personTemplateUrl,
-  bindings: { id: '@' },
-  controller: ['$routeParams', 'personService',
+  bindings: {id: '@'},
+  controller: ['$routeParams', 'person', 
     function PersonController($routeParams, person) {
       var self = this;
 

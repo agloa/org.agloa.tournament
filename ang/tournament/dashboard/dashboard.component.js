@@ -3,11 +3,11 @@
 const dashboardTemplateUrl = locationRoot() + '/tournament/dashboard/dashboard.template.html';
 angular.module('tournament').component('trnDashboard', {
   templateUrl: dashboardTemplateUrl,
-  controller: ['$routeParams', 'personService',
+  controller: ['$routeParams', 'person',
     function DashboardController($routeParams, person) {
       var self = this;
       self.personVisibilityClass = "hiddenBranch";
-      self.billingOrganizationVisibilityClass = "hiddenBranch";
+      self.billingRelationshipsVisibilityClass = "hiddenBranch";
       self.userId = "user_contact_id";
       
       // e.g., dashboard/43
@@ -17,7 +17,7 @@ angular.module('tournament').component('trnDashboard', {
 
       // Don't include 'child' form until user requests it.
       self.includePersonForm = false;
-      self.includeBillingOrganizationForm = false;
+      self.includeBillingRelationships = false;
 
       self.togglePersonVisibility = () => {
         this.includePersonForm = !this.includePersonForm;
@@ -28,12 +28,12 @@ angular.module('tournament').component('trnDashboard', {
         }
       }
 
-      self.toggleBillingOrganizationVisibility = () => {
-        this.includeBillingOrganizationForm = !this.includeBillingOrganizationForm;
-        if (this.includeBillingOrganizationForm) {
-          this.billingOrganizationVisibilityClass = "visibleBranch";
+      self.toggleBillingRelationshipsVisibility = () => {
+        this.includeBillingRelationships = !this.includeBillingRelationships;
+        if (this.includeBillingRelationships) {
+          this.billingRelationshipsVisibilityClass = "visibleBranch";
         } else {
-          this.billingOrganizationVisibilityClass = "hiddenBranch";
+          this.billingRelationshipsVisibilityClass = "hiddenBranch";
         }
       }
 

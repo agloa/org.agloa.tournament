@@ -11,9 +11,6 @@
             .when('/tournament/dashboard/:userId?', {
                 template: '<trn-dashboard></trn-dashboard>'
             })
-            .when('/tournament/billingOrganizations/:userId?', {
-                template: '<trn-billingorganizations></trn-billingorganizations>'
-            })
             .when('/tournament/person/:personId', {
                 template: '<trn-person></trn-person>'
             })
@@ -34,6 +31,9 @@
             })
             .when('/tournament/person/email/:personId', {
                 template: '<trn-email></trn-email>'
+            })
+            .when('/tournament/person/billingRelationships/:personId?', {
+                template: '<trn-billingRelationships></trn-billingRelationships>'
             })
             .when('/tournament', {
                 template: '<trn-dashboard></trn-dashboard>'
