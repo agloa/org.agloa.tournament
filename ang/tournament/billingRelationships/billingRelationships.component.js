@@ -4,8 +4,8 @@ const billingRelationshipsTemplateUrl = locationRoot() + '/tournament/billingRel
 angular.module('tournament').component('trnBillingRelationships', {
     templateUrl: billingRelationshipsTemplateUrl,
     bindings: { id: '@' },
-    controller: ['$routeParams', 'billingRelationships', 'billingOrganizations',
-        ($routeParams, billingRelationships, billingOrganizations) => {
+    controller: ['$routeParams', 'billingRelationships', 'billingOrganizations', '$scope',
+        ($routeParams, billingRelationships, billingOrganizations, $scope) => {
             var self = this;
             self.userId = "user_contact_id";
 
@@ -51,8 +51,8 @@ angular.module('tournament').component('trnBillingRelationships', {
                 self.billingOrganizations = values;
             };
 
-            self.requestAccess = () => {
-                alert("Request Submitted");
+            $scope.requestAccess = (requestedOrganization) => {
+                alert("Request Submitted arg = " + requestedOrganization);
             }
         }
     ]

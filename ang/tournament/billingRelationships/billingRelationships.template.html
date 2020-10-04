@@ -1,4 +1,4 @@
-<!-- HTML5 view of the Billing Organizations component. -->
+<!-- HTML5 view of the Billing Relatioships component. -->
 <div ng-show="$ctrl.billingRelationships.length > 0">
 You are a contact for these organizations:
 <ol>
@@ -11,8 +11,8 @@ You are a contact for these organizations:
     <label for="billingOrganizationsSelect">Request access to billing organization:</label>
     <select name="billingOrganizationsSelect" id="billingOrganizationsSelect" ng-model="$ctrl.requestedOrganization">
       <option value="">- select -</option> <!-- not selected / blank option -->
+      <option value="newBillingOrganization">Request New Billing Organization</option>
       <option ng-repeat="organization in $ctrl.billingOrganizations" value="{{organization.contact_id}}">{{organization.organization_name}}</option>
-      <option value="newBillingOrganization">New Billing Organization</option>
     </select>
-    <button ng-show="$ctrl.requestedOrganization.length > 0" ng-click="alert('$ctrl')">Request</button>
+    <button ng-show="$ctrl.requestedOrganization.length > 0" ng-click="requestAccess($ctrl.requestedOrganization)">Request</button>
 </form>
