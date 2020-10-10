@@ -6,8 +6,6 @@ angular.module('tournament').component('trnDashboard', {
   controller: ['$routeParams', 'person',
     function DashboardController($routeParams, person) {
       var self = this;
-      self.personVisibilityClass = "hiddenBranch";
-      self.billingRelationshipsVisibilityClass = "hiddenBranch";
       self.userId = "user_contact_id";
       
       // e.g., dashboard/43
@@ -21,20 +19,10 @@ angular.module('tournament').component('trnDashboard', {
 
       self.togglePersonVisibility = () => {
         this.includePersonForm = !this.includePersonForm;
-        if (this.includePersonForm) {
-          this.personVisibilityClass = "visibleBranch";
-        } else {
-          this.personVisibilityClass = "hiddenBranch";
-        }
       }
 
       self.toggleBillingRelationshipsVisibility = () => {
         this.includeBillingRelationships = !this.includeBillingRelationships;
-        if (this.includeBillingRelationships) {
-          this.billingRelationshipsVisibilityClass = "visibleBranch";
-        } else {
-          this.billingRelationshipsVisibilityClass = "hiddenBranch";
-        }
       }
 
       self.user = person.get(self.userId).then(

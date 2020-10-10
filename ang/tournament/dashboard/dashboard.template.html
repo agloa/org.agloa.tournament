@@ -7,19 +7,21 @@
 
 <ol>
   <li>
-    <div ng-click="$ctrl.togglePersonVisibility()"
-      title="If you are new to this system, the first step is to double-check your contact information. You probably only need to do this once, ever.">
-      <i ng-class="$ctrl.personVisibilityClass"></i>Update your contact information, last updated on
-      {{$ctrl.user.modified_date}}.
-    </div>
+    <details ng-click="$ctrl.togglePersonVisibility()">
+      <summary
+        title="If you are new to this system, the first step is to double-check your contact information. You probably only need to do this once, ever.">
+        Update your contact information, last updated on {{$ctrl.user.modified_date}}.</summary>
+    </details>
     <trn-person class="crm-loading-element" ng-if="$ctrl.includePersonForm" id="{{$ctrl.user.id}}"></trn-person>
   </li>
   <li>
-    <div ng-click="$ctrl.toggleBillingRelationshipsVisibility()"
-      title="The next step is to double-check your organization's contact information. You probably only need to do this once, ever.">
-      <i ng-class="$ctrl.billingRelationshipsVisibilityClass"></i>Update your organization's information.
-    </div>
-    <trn-billing-relationships class="crm-loading-element" ng-if="$ctrl.includeBillingRelationships" id="{{$ctrl.user.id}}"></trn-billing-relationships>
+    <details ng-click="$ctrl.toggleBillingRelationshipsVisibility()">
+      <summary
+        title="The next step is to double-check your organization's contact information. You probably only need to do this once, ever.">
+        <i ng-class="$ctrl.billingRelationshipsVisibilityClass"></i>Update your organization's information.
+    </details>
+    <trn-billing-relationships class="crm-loading-element" ng-if="$ctrl.includeBillingRelationships"
+      id="{{$ctrl.user.id}}"></trn-billing-relationships>
   </li>
 </ol>
 
