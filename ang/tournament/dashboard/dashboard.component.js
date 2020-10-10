@@ -14,15 +14,15 @@ angular.module('tournament').component('trnDashboard', {
       }
 
       // Don't include 'child' form until user requests it.
-      self.includePersonForm = false;
-      self.includeBillingRelationships = false;
+      self.includePerson = false;
+      self.includeOrganizations = false;
 
-      self.togglePersonVisibility = () => {
-        this.includePersonForm = !this.includePersonForm;
+      self.personClicked = () => {
+        this.includePerson = !this.includePerson;
       }
 
-      self.toggleBillingRelationshipsVisibility = () => {
-        this.includeBillingRelationships = !this.includeBillingRelationships;
+      self.organizationsClicked = () => {
+        this.includeOrganizations = !this.includeOrganizations;
       }
 
       self.user = person.get(self.userId).then(
@@ -32,7 +32,7 @@ angular.module('tournament').component('trnDashboard', {
           },
           // Failure
           (error) => { 
-              CRM.alert(ts('Could not get user record ID of ' + self.userId + ', error = ' + error.error_message),ts('Not Found'),'error'); 
+              CRM.alert(ts('Could not get user record ID of ' + self.user.id + ', error = ' + error.error_message),ts('Not Found'),'error'); 
           }
       );
     }
