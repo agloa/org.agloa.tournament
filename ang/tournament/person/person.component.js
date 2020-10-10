@@ -11,43 +11,26 @@ angular.module('tournament').component('trnPerson', {
       if ($routeParams.personId !== undefined) {
         self.id = $routeParams.personId;
       }
-
-      self.addressVisibilityClass = "hiddenBranch";
-
+      
       // Don't include 'child' component until user requests it.
-      self.includeAddressForm = false;
+      self.includeAddress = false;
 
-      self.toggleAddressVisibility = () => {
-        this.includeAddressForm = !this.includeAddressForm;
-        if (this.includeAddressForm) {
-          this.addressVisibilityClass = "visibleBranch";
-        } else {
-          this.addressVisibilityClass = "hiddenBranch";
-        }
+      self.addressClicked = () => {
+        this.includeAddress = !this.includeAddress;
       }
 
-      self.phoneVisibilityClass = "hiddenBranch";
-
       // Don't include 'child' component until user requests it.
-      self.includePhoneForm = false;
+      self.includePhone = false;
 
-      self.togglePhoneVisibility = () => {
-        this.includePhoneForm = !this.includePhoneForm;
-        if (this.includePhoneForm) {
-          this.phoneVisibilityClass = "visibleBranch";
-        } else {
-          this.phoneVisibilityClass = "hiddenBranch";
-        }
+      self.phoneClicked = () => {
+        this.includePhone = !this.includePhone;
       }
 
-      self.emailVisibilityClass = "hiddenBranch";
-
       // Don't include 'child' component until user requests it.
-      self.includeEmailForm = false;
+      self.includeEmail = false;
 
-      self.toggleEmailVisibility = () => {
-        this.includeEmailForm = !this.includeEmailForm;
-        this.emailVisibilityClass = (this.includeEmailForm) ? "visibleBranch" : "hiddenBranch";
+      self.emailClicked = () => {
+        this.includeEmail = !this.includeEmail;
       }
 
       person.get(self.id).then(

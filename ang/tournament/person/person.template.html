@@ -42,11 +42,11 @@
     <button ng-click="$ctrl.save()">Save</button>
 </form>
 
-<span ng-click="$ctrl.toggleAddressVisibility()"><i ng-class="$ctrl.addressVisibilityClass"></i>Update address info</span>
-<trn-address ng-if="$ctrl.includeAddressForm" person-id="{{$ctrl.selectedPerson.contact_id}}"></trn-address>
+<details ng-click="$ctrl.addressClicked()"><summary>Update address info</summary></details>
+<trn-address ng-if="$ctrl.includeAddress" person-id="{{$ctrl.selectedPerson.contact_id}}"></trn-address>
 
-<span ng-click="$ctrl.togglePhoneVisibility()" ><i ng-class="$ctrl.phoneVisibilityClass"></i>Update phone info</span>
-<trn-phone ng-if="$ctrl.includePhoneForm" person-id="{{$ctrl.selectedPerson.contact_id}}"></trn-phone>
+<details ng-click="$ctrl.phoneClicked()"><summary>Update phone info</summary></details>
+<trn-phone ng-if="$ctrl.includePhone" person-id="{{$ctrl.selectedPerson.contact_id}}"></trn-phone>
 
-<span ng-click="$ctrl.toggleEmailVisibility()" ><i ng-class="$ctrl.emailVisibilityClass"></i>Update email info</span>
-<trn-email ng-if="$ctrl.includeEmailForm" person-id="{{$ctrl.selectedPerson.contact_id}}"></trn-email>
+<details ng-click="$ctrl.emailClicked()"><summary>Update email info</summary></details>
+<trn-email ng-if="$ctrl.includeEmail" person-id="{{$ctrl.selectedPerson.contact_id}}"></trn-email>
