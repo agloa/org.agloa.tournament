@@ -22,31 +22,3 @@
   content: "|";
   padding-right: 0.3em;
 }
-
-.visibleBranch, .hiddenBranch {
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-    margin-right: 3px;
-}
-  
-.hiddenBranch {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-}
-  
-.visibleBranch {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-}
-  
-.left {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-}
-  
-.up {
-    transform: rotate(-135deg);
-    -webkit-transform: rotate(-135deg);
-}
