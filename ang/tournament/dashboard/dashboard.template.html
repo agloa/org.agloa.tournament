@@ -20,7 +20,7 @@ Welcome, {{$ctrl.user.display_name}}. This app will guide you through the steps 
         title="The next step is to double-check your organization's contact information. You probably only need to do this once, ever.">
         Update your organization's information.
     </details>
-    <trn-billing-relationships ng-if="$ctrl.includeOrganizations" id="{{$ctrl.user.id}}"></trn-billing-relationships>
+    <trn-relationships ng-if="$ctrl.includeOrganizations" id="{{$ctrl.user.id}}"></trn-relationships>
   </li>
 </ol>
 
