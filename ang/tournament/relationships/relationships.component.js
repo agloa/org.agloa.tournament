@@ -8,6 +8,7 @@ angular.module('tournament').component('trnRelationships', {
         function ($routeParams, relationships) {
             var self = this;
             self.userId = "user_contact_id";
+            self.showOrganization = false;
 
             // e.g., relationships/43
             if ($routeParams.userId !== undefined) {
@@ -34,7 +35,11 @@ angular.module('tournament').component('trnRelationships', {
 
             self.setRelationships = (relationships) => {
                 self.relationships = relationships;
-            };       
+            };
+
+            self.organizationClicked = () => {
+                this.showOrganization = !this.showOrganization;
+            }
         }
     ]
 });

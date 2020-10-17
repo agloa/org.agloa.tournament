@@ -17,7 +17,7 @@ Welcome, {{$ctrl.user.display_name}}. This app will guide you through the steps 
   <li>
     <details ng-click="$ctrl.organizationsClicked()">
       <summary
-        title="The next step is to double-check your organization's contact information. You probably only need to do this once, ever.">
+        title="The next step is to double-check your organization's (e.g., school/district) contact information. You probably only need to do this once, ever.">
         Update your organization's information.
     </details>
     <trn-relationships ng-if="$ctrl.includeOrganizations" id="{{$ctrl.user.id}}"></trn-relationships>

@@ -1,4 +1,4 @@
-angular.module('tournament').factory('email', function ($q, crmApi) {
+angular.module('tournament').factory('email', function (crmApi) {
     var returnFields = ["id","contact_id","location_type_id","is_primary","is_billing","email"];
 
     return {     

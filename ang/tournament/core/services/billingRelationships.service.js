@@ -1,4 +1,4 @@
-angular.module('tournament').factory('billingRelationships', function ($q, crmApi) {
+angular.module('tournament').factory('billingRelationships', function (crmApi) {
     function getRelationshipType() {
         crmApi('RelationshipType', 'get', {
             "sequential": 1,
