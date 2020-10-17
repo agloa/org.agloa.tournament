@@ -5,7 +5,7 @@ angular.module('tournament').component('trnRelationships', {
     templateUrl: relationshipsTemplateUrl,
     bindings: { id: '@' },
     controller: ['$routeParams', 'billingRelationships',
-        ($routeParams, relationships) => {
+        function RelationshipsController($routeParams, relationships) {
             var self = this;
             self.userId = "user_contact_id";
 

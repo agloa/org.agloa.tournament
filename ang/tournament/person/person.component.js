@@ -4,7 +4,7 @@ const personTemplateUrl = locationRoot() + '/tournament/person/person.template.h
 angular.module('tournament').component('trnPerson', {
   templateUrl: personTemplateUrl,
   bindings: {id: '@'},
-  controller: ['$routeParams', 'person', 
+  controller: ['$routeParams', 'person',
     function PersonController($routeParams, person) {
       var self = this;
 

@@ -4,9 +4,9 @@ const accessRequestTemplateUrl = locationRoot() + '/tournament/accessRequest/acc
 angular.module('tournament').component('trnAccessRequest', {
     templateUrl: accessRequestTemplateUrl,
     controller: ['billingOrganizations', '$scope',
-        (organizations, $scope) => {
+        function AccessRequestController(organizations, $scope) {
             var self = this;
-            self.showNewOrganizationGroupForm = true;
+            self.showOrganization = false;
             $scope.newOrganizationValue = "newOrganization";
 
             organizations.getAll().then(
@@ -24,11 +24,11 @@ angular.module('tournament').component('trnAccessRequest', {
                 self.organizations = values;
             };
 
-            $scope.requestAccess = (requestedOrganization) => {
+            self.requestAccess = (requestedOrganization) => {
                 if (requestedOrganization === $scope.newOrganizationValue) {
-                    self.showNewOrganizationGroupForm = true;
+                    self.showOrganization = true;
                 }
-            }      
+            }; 
         }
     ]
 });

@@ -5,7 +5,7 @@ angular.module('tournament').component('trnEmail', {
   templateUrl: emailTemplateUrl,
   bindings: {personId: '@', id: '@'},
   controller: ['$routeParams', 'email',
-    function emailController($routeParams, email) {
+    function EmailController($routeParams, email) {
       var self = this;
 
       if ($routeParams.emailId !== undefined) {
