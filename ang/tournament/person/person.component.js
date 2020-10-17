@@ -5,7 +5,7 @@ angular.module('tournament').component('trnPerson', {
   templateUrl: personTemplateUrl,
   bindings: {id: '@'},
   controller: ['$routeParams', 'person',
-    function PersonController($routeParams, person) {
+    function ($routeParams, person) {
       var self = this;
 
       if ($routeParams.personId !== undefined) {

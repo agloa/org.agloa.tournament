@@ -5,7 +5,7 @@ angular.module('tournament').component('trnAddress', {
   templateUrl: addressTemplateUrl,
   bindings: { personId: '@', addressId: '@' },
   controller: ['$routeParams', 'address',
-    function AddressController($routeParams, address) {
+    function ($routeParams, address) {
       var self = this;
 
       self.contact_id = self.personId;

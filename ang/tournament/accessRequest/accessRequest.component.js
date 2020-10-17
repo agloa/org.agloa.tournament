@@ -4,7 +4,7 @@ const accessRequestTemplateUrl = locationRoot() + '/tournament/accessRequest/acc
 angular.module('tournament').component('trnAccessRequest', {
     templateUrl: accessRequestTemplateUrl,
     controller: ['billingOrganizations', '$scope',
-        function AccessRequestController(organizations, $scope) {
+        function (organizations, $scope) {
             var self = this;
             self.showOrganization = false;
             $scope.newOrganizationValue = "newOrganization";

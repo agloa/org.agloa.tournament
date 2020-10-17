@@ -4,7 +4,7 @@ const dashboardTemplateUrl = locationRoot() + '/tournament/dashboard/dashboard.t
 angular.module('tournament').component('trnDashboard', {
   templateUrl: dashboardTemplateUrl,
   controller: ['$routeParams', 'person',
-    function DashboardController($routeParams, person) {
+    function ($routeParams, person) {
       var self = this;
       self.userId = "user_contact_id";
       

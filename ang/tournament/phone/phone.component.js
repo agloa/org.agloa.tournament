@@ -5,7 +5,7 @@ angular.module('tournament').component('trnPhone', {
   templateUrl: phoneTemplateUrl,
   bindings: {personId: '@', id: '@'},
   controller: ['$routeParams', 'phone',
-    function PhoneController($routeParams, phone) {
+    function ($routeParams, phone) {
       var self = this;
 
       if ($routeParams.phoneId !== undefined) {

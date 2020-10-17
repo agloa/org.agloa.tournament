@@ -5,7 +5,7 @@ angular.module('tournament').component('trnOrganization', {
   templateUrl: organizationTemplateUrl,
   bindings: {id: '@'},
   controller: ['$routeParams', 'organization', 
-    function OrganizationController($routeParams, organization) {
+    function ($routeParams, organization) {
       var self = this;
 
       if ($routeParams.organizationId !== undefined) {

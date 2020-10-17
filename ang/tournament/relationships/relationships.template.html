@@ -3,7 +3,10 @@
     You are a contact for these organizations:
     <ol>
         <li ng-repeat="relationship in $ctrl.relationships track by relationship.id">
-            {{relationship.organization_name}}, last updated on {{relationship.modified_date}}.
+            <details>
+                <summary>{{relationship.organization_name}}, last updated on {{relationship.modified_date}}.</summary>
+            </details>
+            <trn-organization ng-if="$ctrl.showOrganization" relationshipId="relationship.id"></trn-organization>
         </li>
     </ol>
 </div>
