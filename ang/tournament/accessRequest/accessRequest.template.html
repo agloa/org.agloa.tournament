@@ -1,21 +1,11 @@
-<form name="accessRequestForm">
-    <label for="organizationsSelect" class="sr-only">Request access to organization:</label>
-    <select name="organizationsSelect" id="organizationsSelect" class="crm-form-select"
-        ng-model="$ctrl.requestedOrganization">
-        <option value="">- select -</option>
-        <option value="{{newOrganizationValue}}">Request New Organization</option>
-        <option ng-repeat="organization in $ctrl.organizations" value="{{organization.contact_id}}">
-            {{organization.organization_name}}</option>
-    </select>
-    <button ng-show="$ctrl.requestedOrganization.length > 0"
-        ng-click="requestAccess($ctrl.requestedOrganization)">Request
-    </button>
-    <div ng-show="$ctrl.showNewBillingOrganizationGroupForm">
-        <form name="billingOrganizationRequestForm">
-            <label for="organization_name" class="sr-only">Organization Name</label>
-            <input type="text" id="organization_name" name="organization_name" ng-model="$ctrl.selectedPerson.last_name"
-                class="crm-form-text" placeholder="Organization Name" required>
-            </input>
-        </form>
-    </div>
-</form>
+<label for="organizationsSelect" class="sr-only">Request access to organization:</label>
+<select name="organizationsSelect" id="organizationsSelect" class="crm-form-select"
+    ng-model="$ctrl.requestedOrganization">
+    <option value="">- select -</option>
+    <option value="{{newOrganizationValue}}">Request New Organization</option>
+    <option ng-repeat="organization in $ctrl.organizations" value="{{organization.contact_id}}">
+        {{organization.organization_name}}</option>
+</select> 
+<button ng-show="$ctrl.requestedOrganization.length > 0"
+    ng-click="$ctrl.requestAccess($ctrl.requestedOrganization)">Request</button>
+<trn-organization ng-if="$ctrl.showOrganization"></trn-organization>

@@ -1,0 +1,13 @@
+<form name="organizationForm">
+    <label for="organization_name" class="sr-only">Last</label>
+    <input type="text" id="organization_name" name="organization_name"
+        ng-model="$ctrl.selectedOrganization.organization_name" class="crm-form-text" placeholder="Name" required>
+    </input>
+
+    <trn-address organization-id="{{$ctrl.selectedOrganization.contact_id}}"></trn-address>
+
+    <trn-phone organization-id="{{$ctrl.selectedOrganization.contact_id}}"></trn-phone>
+
+    <trn-email organization-id="{{$ctrl.selectedOrganization.contact_id}}"></trn-email>
+    <button ng-click="$ctrl.save()">Save</button>
+</form>
