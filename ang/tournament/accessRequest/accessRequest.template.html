@@ -1,11 +1,8 @@
 <label for="organizationsSelect" class="sr-only">Request access to organization:</label>
-<select name="organizationsSelect" id="organizationsSelect" class="crm-form-select"
-    ng-model="$ctrl.requestedOrganization">
-    <option value="">- select -</option>
-    <option value="{{newOrganizationValue}}">Request New Organization</option>
-    <option ng-repeat="organization in $ctrl.organizations" value="{{organization.contact_id}}">
-        {{organization.organization_name}}</option>
+<select name="organizationsSelect" id="organizationsSelect" class="crm-form-select" ng-model="$ctrl.selectedOrganization">
+    <option value="">- Request Access to a Different Organization -</option>
+    <option value="{{newOrganizationValue}}">Request a new Organization ...</option>
+    <option ng-repeat="organization in $ctrl.organizations" value="{{organization.contact_id}}">{{organization.organization_name}}</option>
 </select> 
-<button ng-show="$ctrl.requestedOrganization.length > 0"
-    ng-click="$ctrl.requestAccess($ctrl.requestedOrganization)">Request</button>
+<button ng-show="$ctrl.selectedOrganization.length > 0" ng-click="$ctrl.requestAccess($ctrl.selectedOrganization)">Request</button>
 <trn-organization ng-if="$ctrl.showOrganization"></trn-organization>
