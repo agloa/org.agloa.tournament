@@ -15,8 +15,8 @@ describe('person', function () {
   beforeEach(module('tournament'));
 
   beforeEach(
-    inject( function (_personService_) 
-      { person = _personService_; }
+    inject( function (_person_) 
+      { person = _person_; }
     )
   );
 
@@ -24,6 +24,8 @@ describe('person', function () {
     var expectedPerson = [
       { id: 2, last: 'Steigerwald', first: 'Michael' },
     ];
+
+    var p = person.get(2);
 
     person.get(2)
       .then(
