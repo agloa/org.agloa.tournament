@@ -3,7 +3,7 @@
 const emailTemplateUrl = locationRoot() + '/tournament/email/email.template.html';
 angular.module('tournament').component('trnEmail', {    
   templateUrl: emailTemplateUrl,
-  bindings: {personId: '@', id: '@'},
+  bindings: {contactId: '@', id: '@'},
   controller: ['$routeParams', 'email',
     function ($routeParams, email) {
       var self = this;
@@ -12,16 +12,16 @@ angular.module('tournament').component('trnEmail', {
         self.emailId = $routeParams.emailId;
       }
             
-      if ($routeParams.personId !== undefined) {
-        self.personId = $routeParams.personId;
+      if ($routeParams.contactId !== undefined) {
+        self.contactId = $routeParams.contactId;
       }
 
-      if (self.personId !== undefined) {
-        email.getContactEmail(self.personId).then(
+      if (self.contactId !== undefined) {
+        email.getContactEmail(self.contactId).then(
         // Success
         (result) => { self.setSelectedEmail(result.values[0]); },
         // Failure
-        (error) => { CRM.alert(ts('Could not get email record for person ID = ' + self.person + ' error = ' + error.error_message), ts('Error'), 'error'); }
+        (error) => { CRM.alert(ts('Could not get email record for contact ID = ' + self.contactId + ' error = ' + error.error_message), ts('Error'), 'error'); }
         );     
       }
 

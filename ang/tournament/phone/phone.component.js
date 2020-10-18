@@ -3,7 +3,7 @@
 const phoneTemplateUrl = locationRoot() + '/tournament/phone/phone.template.html';
 angular.module('tournament').component('trnPhone', {    
   templateUrl: phoneTemplateUrl,
-  bindings: {personId: '@', id: '@'},
+  bindings: {contactId: '@', id: '@'},
   controller: ['$routeParams', 'phone',
     function ($routeParams, phone) {
       var self = this;
@@ -12,8 +12,8 @@ angular.module('tournament').component('trnPhone', {
         self.phoneId = $routeParams.phoneId;
       }
             
-      if ($routeParams.personId !== undefined) {
-        self.personId = $routeParams.personId;
+      if ($routeParams.contactId !== undefined) {
+        self.contactId = $routeParams.contactId;
       }
 
       phone.getPhoneTypes().then(
@@ -23,12 +23,12 @@ angular.module('tournament').component('trnPhone', {
         (error)  =>  { CRM.alert(ts('Could not get phone types, error = ' + error.error_message),ts('Not Found'),'error'); }
       )
 
-      if (self.personId !== undefined) {
-        phone.getContactPhone(self.personId).then(
+      if (self.contactId !== undefined) {
+        phone.getContactPhone(self.contactId).then(
         // Success
         (result) => { self.setSelectedPhone(result.values[0]); },
         // Failure
-        (error) => { CRM.alert(ts('Could not get phone record for person ID = ' + self.person + ' error = ' + error.error_message), ts('Error'), 'error'); }
+        (error) => { CRM.alert(ts('Could not get phone record for contact ID = ' + self.contactId + ' error = ' + error.error_message), ts('Error'), 'error'); }
         );     
       }
 
