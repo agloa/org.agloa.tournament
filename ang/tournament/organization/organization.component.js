@@ -3,8 +3,7 @@
 const organizationTemplateUrl = locationRoot() + '/tournament/organization/organization.template.html';
 angular.module('tournament').component('trnOrganization', {
   templateUrl: organizationTemplateUrl,
-  bindings: {id: '@'},
-  bindings: {relationshipId: '@'},
+  bindings: {id: '@', relationship: '@'},
   controller: ['$routeParams', 'organization', 
     function ($routeParams, organization) {
       var self = this;

@@ -6,7 +6,7 @@
             <details ng-click="$ctrl.organizationClicked()">
                 <summary>{{relationship.organization_name}}, last updated on {{relationship.modified_date}}.</summary>
             </details>
-            <trn-organization ng-if="$ctrl.showOrganization" relationshipId="relationship.id"></trn-organization>
+            <trn-organization ng-if="$ctrl.showOrganization" relationship="{{relationship.id}}"></trn-organization>
         </li>
     </ol>
 </div>

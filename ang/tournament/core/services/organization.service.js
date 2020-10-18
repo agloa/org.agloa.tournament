@@ -1,21 +1,24 @@
 angular.module('tournament').factory('organization', function ($q, crmApi) {
     return {
-        getAll: () => {
-            return crmApi('Contact', 'get', {
-                "sequential": 1,
-                "return": ["id", "organization_name"],
+        // Get an organizational contact record
+        // @param id Contact id  (per APIv3)
+        // @return Promise of Contact (per APIv3)
+        get: (id) => {
+            return crmApi('Contact', 'getsingle', {
+                "return": ["organization_name"],
+                "id": id
             });
         },
-        save: (organizationName, contact_sub_type) => {
+        save: (organization_name, contact_sub_type) => {
             ('Contact', 'create', {
                 "contact_type": "Organization",
                 "contact_sub_type": contact_sub_type,
-                "organization_name": organizationName
+                "organization_name": organization_name
             }).then(
                 (result) => {
                     return result.id;
                 }, (error) => {
-                    CRM.alert(ts('Could not save Organization ' + organizationName + ' , error = ' + error.error_message), ts('Error'), 'error');
+                    CRM.alert(ts('Could not save Organization ' + organization_name + ' , error = ' + error.error_message), ts('Error'), 'error');
                 });
         },
         delete: (id) => {
