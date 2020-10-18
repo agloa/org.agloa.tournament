@@ -3,7 +3,7 @@
 const organizationTemplateUrl = locationRoot() + '/tournament/organization/organization.template.html';
 angular.module('tournament').component('trnOrganization', {
   templateUrl: organizationTemplateUrl,
-  bindings: {id: '@', relationship: '@'},
+  bindings: {id: '@', relationshipId: '@'},
   controller: ['$routeParams', 'organization', 
     function ($routeParams, organization) {
       var self = this;
@@ -21,7 +21,6 @@ angular.module('tournament').component('trnOrganization', {
 
       self.setSelectedOrganization = (organization) => {
         self.selectedOrganization = organization;
-        self.selectedOrganization.birth_date = new Date(self.selectedOrganization.birth_date);
       };
 
       self.save = () => {
