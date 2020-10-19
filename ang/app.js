@@ -11,29 +11,29 @@
             .when('/tournament/dashboard/:userId?', {
                 template: '<trn-dashboard></trn-dashboard>'
             })
-            .when('/tournament/person/:personId', {
+            .when('/tournament/person/:id', {
                 template: '<trn-person></trn-person>'
             })
-            .when('/tournament/address/:addressId', {
+            .when('/tournament/address/:id', {
                 template: '<trn-address></trn-address>'
             })
-            .when('/tournament/person/address/:personId', {
+            .when('/tournament/person/address/:contactId', {
                 template: '<trn-address></trn-address>'
             })
-            .when('/tournament/phone/:phoneId', {
+            .when('/tournament/phone/:id', {
                 template: '<trn-phone></trn-phone>'
             })
-            .when('/tournament/person/phone/:personId', {
+            .when('/tournament/person/phone/:contactId', {
                 template: '<trn-phone></trn-phone>'
             })
-            .when('/tournament/email/:emailId', {
+            .when('/tournament/email/:id', {
                 template: '<trn-email></trn-email>'
             })
-            .when('/tournament/person/email/:personId', {
+            .when('/tournament/person/email/:contactId', {
                 template: '<trn-email></trn-email>'
             })
-            .when('/tournament/person/billingRelationships/:personId?', {
-                template: '<trn-billingRelationships></trn-billingRelationships>'
+            .when('/tournament/person/relationships/:contactId?', {
+                template: '<trn-relationships></trn-relationships>'
             })
             .when('/tournament', {
                 template: '<trn-dashboard></trn-dashboard>'
