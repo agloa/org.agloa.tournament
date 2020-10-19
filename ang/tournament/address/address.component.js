@@ -3,12 +3,10 @@
 const addressTemplateUrl = locationRoot() + '/tournament/address/address.template.html';
 angular.module('tournament').component('trnAddress', {
   templateUrl: addressTemplateUrl,
-  bindings: { contactId: '@', addressId: '@' },
+  bindings: { contactId: '@', id: '@' },
   controller: ['$routeParams', 'address',
     function ($routeParams, address) {
       var self = this;
-
-      self.id = self.addressId;
 
       if ($routeParams.addressId !== undefined) {
         self.id = $routeParams.addressId;
