@@ -5,7 +5,7 @@
     </input>
     <button ng-click="$ctrl.save()">Save</button>
 
-    <trn-address organization-id="{{$ctrl.selectedOrganization.contact_id}}"></trn-address>
-    <trn-phone organization-id="{{$ctrl.selectedOrganization.contact_id}}"></trn-phone>
-    <trn-email organization-id="{{$ctrl.selectedOrganization.contact_id}}"></trn-email>
+    <trn-address contact-id="{{$ctrl.selectedOrganization.id}}"></trn-address>
+    <trn-phone contact-id="{{$ctrl.selectedOrganization.id}}"></trn-phone>
+    <trn-email contact-id="{{$ctrl.selectedOrganization.id}}"></trn-email>
 </form>

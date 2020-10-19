@@ -43,10 +43,10 @@
 </form>
 
 <details ng-click="$ctrl.addressClicked()"><summary>Update address info</summary></details>
-<trn-address ng-if="$ctrl.includeAddress" contact-id="{{$ctrl.selectedPerson.contact_id}}"></trn-address>
+<trn-address ng-if="$ctrl.includeAddress" contact-id="{{$ctrl.selectedPerson.id}}"></trn-address>
 
 <details ng-click="$ctrl.phoneClicked()"><summary>Update phone info</summary></details>
-<trn-phone ng-if="$ctrl.includePhone" contact-id="{{$ctrl.selectedPerson.contact_id}}"></trn-phone>
+<trn-phone ng-if="$ctrl.includePhone" contact-id="{{$ctrl.selectedPerson.id}}"></trn-phone>
 
 <details ng-click="$ctrl.emailClicked()"><summary>Update email info</summary></details>
-<trn-email ng-if="$ctrl.includeEmail" contact-id="{{$ctrl.selectedPerson.contact_id}}"></trn-email>
+<trn-email ng-if="$ctrl.includeEmail" contact-id="{{$ctrl.selectedPerson.id}}"></trn-email>
