@@ -3,13 +3,13 @@
 const personTemplateUrl = locationRoot() + '/tournament/person/person.template.html';
 angular.module('tournament').component('trnPerson', {
   templateUrl: personTemplateUrl,
-  bindings: {id: '@'},
+  bindings: {contactId: '@'},
   controller: ['$routeParams', 'person',
     function ($routeParams, person) {
       var self = this;
 
-      if ($routeParams.personId !== undefined) {
-        self.id = $routeParams.personId;
+      if ($routeParams.contactId !== undefined) {
+        self.contactId = $routeParams.contactId;
       }
       
       // Don't include 'child' component until user requests it.
@@ -33,11 +33,11 @@ angular.module('tournament').component('trnPerson', {
         this.includeEmail = !this.includeEmail;
       }
 
-      person.get(self.id).then(
+      person.get(self.contactId).then(
         // Success
         (result) => { self.setSelectedPerson(result); },
         // Failure
-        (error) => { CRM.alert(ts('Could not get person record ID = ' + self.id + ', error = ' + error.error_message), ts('Not Found'), 'error'); }
+        (error) => { CRM.alert(ts('Could not get person record ID = ' + self.contactId + ', error = ' + error.error_message), ts('Not Found'), 'error'); }
       );
       person.getGenders().then(
         // Success
@@ -89,7 +89,7 @@ angular.module('tournament').component('trnPerson', {
           // Success
           (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
           // Failure
-          (error) => { CRM.alert(ts('Could not save person record ID = ' + self.id + ', error = ' + error.error_message), ts('Database Error'), 'error'); }
+          (error) => { CRM.alert(ts('Could not save person record ID = ' + self.contactId + ', error = ' + error.error_message), ts('Database Error'), 'error'); }
         );
       }
     }
