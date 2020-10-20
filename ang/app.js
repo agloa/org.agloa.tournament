@@ -11,7 +11,7 @@
             .when('/tournament/dashboard/:userId?', {
                 template: '<trn-dashboard></trn-dashboard>'
             })
-            .when('/tournament/person/:id', {
+            .when('/tournament/person/:contactId', {
                 template: '<trn-person></trn-person>'
             })
             .when('/tournament/address/:id', {
