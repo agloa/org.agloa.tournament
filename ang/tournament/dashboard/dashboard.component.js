@@ -18,11 +18,11 @@ angular.module('tournament').component('trnDashboard', {
       self.includeOrganizations = false;
 
       self.personClicked = () => {
-        this.includePerson = !this.includePerson;
+        this.displayPerson = !this.displayPerson;
       }
 
       self.organizationsClicked = () => {
-        this.includeOrganizations = !this.includeOrganizations;
+        this.displayOrganizations = !this.displayOrganizations;
       }
 
       self.user = person.get(self.contact_id).then(
@@ -30,6 +30,7 @@ angular.module('tournament').component('trnDashboard', {
           (result) => { 
               self.user = result;
               self.display_name = result.display_name;
+              self.modified_date = result.modified_date;
           },
           // Failure
           (error) => { 
