@@ -6,11 +6,11 @@ angular.module('tournament').component('trnDashboard', {
   controller: ['$routeParams', 'person',
     function ($routeParams, person) {
       var self = this;
-      self.userId = "user_contact_id";
+      self.contact_id = "user_contact_id";
       
       // e.g., dashboard/43
       if ($routeParams.userId !== undefined) {
-          self.userId = $routeParams.userId;
+          self.contact_id = $routeParams.userId;
       }
 
       // Don't include 'child' form until user requests it.
@@ -25,14 +25,15 @@ angular.module('tournament').component('trnDashboard', {
         this.includeOrganizations = !this.includeOrganizations;
       }
 
-      self.user = person.get(self.userId).then(
+      self.user = person.get(self.contact_id).then(
           // Success
           (result) => { 
               self.user = result;
+              self.display_name = result.display_name;
           },
           // Failure
           (error) => { 
-              CRM.alert(ts('Could not get user record ID of ' + self.user.id + ', error = ' + error.error_message),ts('Not Found'),'error'); 
+              CRM.alert(ts('Could not get user record ID of ' + self.contact_id + ', error = ' + error.error_message),ts('Not Found'),'error'); 
           }
       );
     }

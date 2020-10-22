@@ -1,7 +1,7 @@
 <!-- HTML5 view of the Dashboard module. -->
 
 <h2>Dashboard</h2>
-Welcome, {{$ctrl.user.display_name}}. This app will guide you through the steps of tournament registration.
+Welcome, {{$ctrl.display_name}}. This app will guide you through the steps of tournament registration.
 
 <h3>Tasks</h3>
 
@@ -12,7 +12,7 @@ Welcome, {{$ctrl.user.display_name}}. This app will guide you through the steps 
         title="If you are new to this system, the first step is to double-check your contact information. You probably only need to do this once, ever.">
         Update your contact information, last updated on {{$ctrl.user.modified_date}}.</summary>
     </details>
-    <trn-person ng-if="$ctrl.includePerson" contact-id="{{$ctrl.user.id}}"></trn-person>
+    <trn-person ng-if="$ctrl.includePerson" contact-id="{{$ctrl.contact-id}}"></trn-person>
   </li>
   <li>
     <details ng-click="$ctrl.organizationsClicked()">
@@ -20,7 +20,7 @@ Welcome, {{$ctrl.user.display_name}}. This app will guide you through the steps 
         title="The next step is to double-check your organization's (e.g., school/district) contact information. You probably only need to do this once, ever.">
         Update your organization's information.
     </details>
-    <trn-relationships ng-if="$ctrl.includeOrganizations" contact-id="{{$ctrl.user.id}}"></trn-relationships>
+    <trn-relationships ng-if="$ctrl.includeOrganizations" contact-id="{{$ctrl.contact-id}}"></trn-relationships>
   </li>
 </ol>
 
