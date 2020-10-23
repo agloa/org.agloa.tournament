@@ -28,7 +28,7 @@ angular.module('tournament').component('trnDashboard', {
       self.user = person.get(self.contactId).then(
           // Success
           (result) => { 
-              self.user = result;
+              self.contactId = result.id;
               self.display_name = result.display_name;
               self.modified_date = result.modified_date;
           },
