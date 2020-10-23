@@ -3,12 +3,12 @@
     <select id="prefix_id" name="prefix_id" class="crm-form-select"
         select="{placeholder: '', allowClear:true}"
         ng-options="option.value as option.label for option in $ctrl.prefixes"
-        ng-model="$ctrl.selectedPerson.prefix_id">
+        ng-model="$ctrl.selectedPerson.prefix">
     </select>
     <label for="first_name" class="sr-only">First</label>
     <input id="first_name" name="first_name" type="text"
         ng-model="$ctrl.selectedPerson.first_name" class="crm-form-text"
-        placeholder="First" required">
+        placeholder="First" required>
     </input>
     <label for="middle_name" class="sr-only">Middle</label>
     <input type="text"
@@ -27,7 +27,7 @@
         id="suffix_id" name="suffix_id" class="crm-form-select"
         select="{placeholder: '', allowClear:true}"
         ng-options="option.value as option.label for option in $ctrl.suffixes"
-        ng-model="$ctrl.selectedPerson.suffix_id">
+        ng-model="$ctrl.selectedPerson.suffix">
     </select>
     <label for="personForm.birth_date" class="sr-only">Birth Date</label>
     <input type="date" id="personForm.birth_date" class="crm-form-text crm-form-date"
@@ -37,7 +37,7 @@
     <select 
         id="gender_id" name="gender_id" class="crm-form-select"
         ng-options="option.value as option.label for option in $ctrl.genders"
-        ng-model="$ctrl.selectedPerson.gender_id">
+        ng-model="$ctrl.selectedPerson.gender">
     </select>
     <button ng-click="$ctrl.save()">Save</button>
 </form>

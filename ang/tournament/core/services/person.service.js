@@ -46,9 +46,9 @@ angular.module('tournament').factory('person', function (crmApi) {
       "last_name": person.last_name,
       "first_name": person.first_name,
       "middle_name": person.middle_name,
-      "prefix_id": person.prefix_id,
-      "suffix_id": person.suffix_id,
-      "gender_id": person.gender_id,
+      "prefix_id": person.prefix,
+      "suffix_id": person.suffix,
+      "gender_id": person.gender,
       "birth_date": person.birth_date
       });
     }
