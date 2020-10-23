@@ -12,25 +12,25 @@ angular.module('tournament').component('trnPerson', {
         self.contactId = $routeParams.contactId;
       }
       
-      // Don't include 'child' component until user requests it.
-      self.includeAddress = false;
+      // Don't display 'child' component until user requests it.
+      self.displayAddress = false;
 
       self.addressClicked = () => {
-        this.includeAddress = !this.includeAddress;
+        this.displayAddress = !this.displayAddress;
       }
 
-      // Don't include 'child' component until user requests it.
-      self.includePhone = false;
+      // Don't display 'child' component until user requests it.
+      self.displayPhone = false;
 
       self.phoneClicked = () => {
-        this.includePhone = !this.includePhone;
+        this.displayPhone = !this.displayPhone;
       }
 
-      // Don't include 'child' component until user requests it.
-      self.includeEmail = false;
+      // Don't display 'child' component until user requests it.
+      self.displayEmail = false;
 
       self.emailClicked = () => {
-        this.includeEmail = !this.includeEmail;
+        this.displayEmail = !this.displayEmail;
       }
 
       person.get(self.contactId).then(
@@ -61,8 +61,13 @@ angular.module('tournament').component('trnPerson', {
       )
 
       self.setSelectedPerson = (person) => {
-        self.selectedPerson = person;
-        self.selectedPerson.birth_date = new Date(self.selectedPerson.birth_date);
+        self.last_name = person.last_name;
+        self.first_name = person.first_name;
+        self.middle_name = person.middle_name;
+        self.prefix = person.prefix_id;
+        self.suffix = person.suffix_id;
+        self.gender = person.gender_id;
+        self.birth_date = new Date(person.birth_date);
       };
 
       self.setGenders = (options) => {
@@ -85,7 +90,7 @@ angular.module('tournament').component('trnPerson', {
       }
 
       self.save = () => {
-        person.save(self.selectedPerson).then(
+        person.save(self).then(
           // Success
           (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
           // Failure
