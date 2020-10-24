@@ -39,6 +39,7 @@ angular.module('tournament').component('trnPerson', {
         // Failure
         (error) => { CRM.alert(ts('Could not get person record ID = ' + self.contactId + ', error = ' + error.error_message), ts('Not Found'), 'error'); }
       );
+      
       person.getGenders().then(
         // Success
         (result) => { self.setGenders(result); },
