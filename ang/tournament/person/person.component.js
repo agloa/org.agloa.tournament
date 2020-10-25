@@ -3,7 +3,7 @@
 const personTemplateUrl = locationRoot() + '/tournament/person/person.template.html';
 angular.module('tournament').component('trnPerson', {
   templateUrl: personTemplateUrl,
-  bindings: {contactId: '@'},
+  bindings: { contactId: '@' },
   controller: ['$routeParams', 'person',
     function ($routeParams, person) {
       var self = this;
@@ -11,7 +11,7 @@ angular.module('tournament').component('trnPerson', {
       if ($routeParams.contactId !== undefined) {
         self.contactId = $routeParams.contactId;
       }
-      
+
       // Don't display 'child' component until user requests it.
       self.displayAddress = false;
 
@@ -39,7 +39,7 @@ angular.module('tournament').component('trnPerson', {
         // Failure
         (error) => { CRM.alert(ts('Could not get person record ID = ' + self.contactId + ', error = ' + error.error_message), ts('Not Found'), 'error'); }
       );
-      
+
       person.getGenders().then(
         // Success
         (result) => { self.setGenders(result); },
@@ -91,7 +91,20 @@ angular.module('tournament').component('trnPerson', {
       }
 
       self.save = () => {
-        person.save(self).then(
+        var personRecord =
+        {
+          "id": self.contactId,
+          "contact_type": "Individual",
+          "last_name": self.last_name,
+          "first_name": self.first_name,
+          "middle_name": self.middle_name,
+          "prefix_id": self.prefix,
+          "suffix_id": self.suffix,
+          "gender_id": self.gender,
+          "birth_date": self.birth_date
+        }
+
+        person.save(personRecord).then(
           // Success
           (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
           // Failure

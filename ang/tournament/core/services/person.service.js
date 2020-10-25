@@ -41,17 +41,7 @@ angular.module('tournament').factory('person', function (crmApi) {
     },
 
     save: (person) => {
-      return crmApi('Contact', 'create', {
-      "id": person.id,
-      "contact_type": "Individual",
-      "last_name": person.last_name,
-      "first_name": person.first_name,
-      "middle_name": person.middle_name,
-      "prefix_id": person.prefix,
-      "suffix_id": person.suffix,
-      "gender_id": person.gender,
-      "birth_date": person.birth_date
-      });
+      return crmApi('Contact', 'create', person );
     }
   }
 });
