@@ -12,6 +12,8 @@ angular.module('tournament').component('trnPerson', {
         self.contactId = $routeParams.contactId;
       }
 
+      self.id = self.contactId;
+
       // Don't display 'child' component until user requests it.
       self.displayAddress = false;
 
