@@ -38,7 +38,15 @@ angular.module('tournament').component('trnAddress', {
       );
 
       self.setSelectedAddress = (address) => {
-        self.selectedAddress = address;
+        self.street_address = address.street_address;
+        self.supplemental_address_1 = address.supplemental_address_1;
+        self.supplemental_address_2 = address.supplemental_address_2;
+        self.supplemental_address_3 = address.supplemental_address_3;
+        self.city = address.city;
+        self.country = address.country_id;
+        self.state_province = address.state_province_id;
+        self.postal_code = address.postal_code;
+        self.postal_code_suffix = address.postal_code_suffix;
       };
 
       self.setCountries = (options) => {
@@ -50,11 +58,11 @@ angular.module('tournament').component('trnAddress', {
       };
 
       self.save = () => {
-        address.save(self.selectedAddress).then(
+        address.save(self).then(
           // Success
           (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
           // Failure
-          (error) => { CRM.alert(ts('Could not save address record ID = ' + self.selectedAddress.id + ' error = ' + error.error_message), ts('Database error'), 'error'); }
+          (error) => { CRM.alert(ts('Could not save address record ID = ' + self.id + ' error = ' + error.error_message), ts('Database error'), 'error'); }
         );
       }
     }
