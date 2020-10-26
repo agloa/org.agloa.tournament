@@ -58,6 +58,7 @@ angular.module('tournament').component('trnAddress', {
       };
 
       self.save = () => {
+        self.contact_id = self.contactId;
         address.save(self).then(
           // Success
           (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
