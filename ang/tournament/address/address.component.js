@@ -47,7 +47,10 @@ angular.module('tournament').component('trnAddress', {
         self.state_province = address.state_province_id;
         self.postal_code = address.postal_code;
         self.postal_code_suffix = address.postal_code_suffix;
-      };
+        self.location_type_id = address.location_type_id;
+        self.is_primary = address.is_primary;
+        self.is_billing = address.is_billing;
+      }
 
       self.setCountries = (options) => {
         self.countries = options;
