@@ -44,7 +44,7 @@ angular.module('tournament').component('trnPhone', {
 
       self.save = () => {
         self.contact_id = self.contactId;
-        phone.save(self.selectedPhone).then(
+        phone.save(self).then(
           // Success
           (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
           // Failure
