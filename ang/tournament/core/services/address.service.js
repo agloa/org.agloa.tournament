@@ -34,18 +34,18 @@ angular.module('tournament').factory('address', function (crmApi) {
         // @param id (per APIv3)
         // @return Promise of address (per APIv3)
         get: (contact_id, id) => {
-            if (contact_id != undefined) {
+            if (id != undefined) {
+                return crmApi('Address', 'get', {
+                    "sequential": 1,
+                    "return": returnFields,
+                    "id": id
+                });
+            } else if (contact_id != undefined) {
                 return crmApi('Address', 'get', {
                     "sequential": 1,
                     "return": returnFields,
                     "contact_id": contact_id,
                     "is_primary": 1
-                });
-            } else if (id != undefined) {
-                return crmApi('Address', 'get', {
-                    "sequential": 1,
-                    "return": returnFields,
-                    "id": id
                 });
             }
         },

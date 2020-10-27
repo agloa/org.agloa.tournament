@@ -38,6 +38,7 @@ angular.module('tournament').component('trnAddress', {
       );
 
       self.setSelectedAddress = (address) => {
+        self.id = address.id;
         self.street_address = address.street_address;
         self.supplemental_address_1 = address.supplemental_address_1;
         self.supplemental_address_2 = address.supplemental_address_2;

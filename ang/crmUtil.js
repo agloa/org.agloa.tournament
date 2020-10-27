@@ -67,8 +67,7 @@ angular.module('tournament').factory('crmApi', function ($q) {
                                     state_province_id: "1022",
                                     postal_code_suffix: "6900",
                                     postal_code: "55113",
-                                    country_id: "1228",
-                                    id: params.id
+                                    country_id: "1228"
                                 }]
                             })
                     }
