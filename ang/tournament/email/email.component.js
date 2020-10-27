@@ -24,11 +24,16 @@ angular.module('tournament').component('trnEmail', {
       );
 
       self.setSelectedEmail = (email) => {
-        self.selectedEmail = email;
+        self.id = email.id;
+        self.location_type_id = email.location_type_id;
+        self.is_primary = email.is_primary;
+        self.is_billing = email.is_billing;
+        self.email = email.email;
       };
 
       self.save = () => {
-        email.save(self.selectedEmail).then(
+        self.contact_id = self.contactId;
+        email.save(self).then(
           // Success
           (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
           // Failure
