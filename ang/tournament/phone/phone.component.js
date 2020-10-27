@@ -31,7 +31,11 @@ angular.module('tournament').component('trnPhone', {
       );
 
       self.setSelectedPhone = (phone) => {
-        self.selectedPhone = phone;
+        self.id = phone.id;
+        self.location_type_id = phone.location_type_id;
+        self.is_primary = phone.is_primary;
+        self.is_billing = phone.is_billing;
+        self.phone = phone.phone;
       };
 
       self.setPhoneTypes = (options) => {
@@ -39,6 +43,7 @@ angular.module('tournament').component('trnPhone', {
       };
 
       self.save = () => {
+        self.contact_id = self.contactId;
         phone.save(self.selectedPhone).then(
           // Success
           (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
