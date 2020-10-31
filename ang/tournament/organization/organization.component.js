@@ -20,11 +20,11 @@ angular.module('tournament').component('trnOrganization', {
       );
 
       self.setSelectedOrganization = (organization) => {
-        self.selectedOrganization = organization;
+        self.organization_name = organization.organization_name;
       };
 
       self.save = () => {
-        organization.save(self.selectedOrganization).then(
+        organization.save(self).then(
           // Success
           (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
           // Failure

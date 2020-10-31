@@ -55,55 +55,106 @@ angular.module('tournament').factory('crmApi', function ($q) {
                 case "Address":
                     switch (action) {
                         default:
-                            resolve({
-                                values: [{
-                                    id: "1",
-                                    contact_id: "2",
-                                    location_type_id: "3",
-                                    is_primary: "1",
-                                    is_billing: "0",
-                                    street_address: "1870 Shady Beach Ave.",
-                                    city: "Minneapolis",
-                                    state_province_id: "1022",
-                                    postal_code_suffix: "6900",
-                                    postal_code: "55113",
-                                    country_id: "1228"
-                                }]
-                            })
+                            switch (params.contact_id) {
+                                case "1":
+                                    resolve({
+                                        values: [{
+                                            id: "3",
+                                            contact_id: "1",
+                                            location_type_id: "3",
+                                            is_primary: "1",
+                                            is_billing: "0",
+                                            street_address: "P. O. Box 3142",
+                                            city: "Tequesta",
+                                            state_province_id: "1008",
+                                            postal_code: "33469",
+                                            country_id: "1228"
+                                        }]
+                                    })
+                                case "2":
+                                    resolve({
+                                        values: [{
+                                            id: "1",
+                                            contact_id: "2",
+                                            location_type_id: "3",
+                                            is_primary: "1",
+                                            is_billing: "0",
+                                            street_address: "1870 Shady Beach Ave.",
+                                            city: "Minneapolis",
+                                            state_province_id: "1022",
+                                            postal_code_suffix: "6900",
+                                            postal_code: "55113",
+                                            country_id: "1228"
+                                        }]
+                                    })
+                            }
                     }
                 case "Phone":
                     switch (action) {
                         default:
-                            resolve({
-                                values: [
-                                    {
-                                        id: 1,
-                                        contact_id: 2,
-                                        location_type_id: 3,
-                                        is_primary: 1,
-                                        is_billing: 0,
-                                        phone: "612.875.1888",
-                                        phone_numeric: "6128751888",
-                                        phone_type_id: 2
-                                    }
-                                ]
-                            })
+                            switch (params.contact_id) {
+                                case "2":
+                                    resolve({
+                                        values: [
+                                            {
+                                                id: 1,
+                                                contact_id: 2,
+                                                location_type_id: 3,
+                                                is_primary: 1,
+                                                is_billing: 0,
+                                                phone: "612.875.1888",
+                                                phone_numeric: "6128751888",
+                                                phone_type_id: 2
+                                            }
+                                        ]
+                                    })
+                                case "1":
+                                    resolve({
+                                        values: [
+                                            {
+                                                id: 3,
+                                                contact_id: 1,
+                                                location_type_id: 3,
+                                                is_primary: 1,
+                                                is_billing: 0,
+                                                phone: "(313) 595-7560",
+                                                phone_numeric: "3135957560",
+                                                phone_type_id: 2
+                                            }
+                                        ]
+                                    })
+                            }
                     }
                 case "Email":
                     switch (action) {
-                        default:
-                            resolve({
-                                values: [{
-                                    id: 1,
-                                    contact_id: 2,
-                                    location_type_id: 3,
-                                    email: "cio@agloa.org",
-                                    is_primary: 1,
-                                    is_billing: 0,
-                                    on_hold: 0,
-                                    is_bulkmail: 0
-                                }]
-                            })
+                        default: switch (params.contact_id) {
+                            case "1":
+                                resolve({
+                                    values: [{
+                                        id: 1,
+                                        contact_id: 1,
+                                        location_type_id: 3,
+                                        email: "info@agloa.org",
+                                        is_primary: 1,
+                                        is_billing: 0,
+                                        on_hold: 0,
+                                        is_bulkmail: 0
+                                    }]
+                                })
+                            case "2":
+                                resolve({
+                                    values: [{
+                                        id: 1,
+                                        contact_id: 2,
+                                        location_type_id: 3,
+                                        email: "cio@agloa.org",
+                                        is_primary: 1,
+                                        is_billing: 0,
+                                        on_hold: 0,
+                                        is_bulkmail: 0
+                                    }]
+                                })
+                        }
                     }
                 case "OptionValue":
                     switch (action) {
