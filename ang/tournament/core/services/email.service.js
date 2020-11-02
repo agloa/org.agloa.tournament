@@ -7,7 +7,7 @@ angular.module('tournament').factory('email', function (crmApi) {
         // @param id (per APIv3)
         // @return Promise of email (per APIv3)
         get: (contact_id, id) => {
-            if (contact_id != undefined) {
+            if (contact_id) {
                 return crmApi('Email', 'get', {
                     "sequential": 1,
                     "return": returnFields,
@@ -15,11 +15,13 @@ angular.module('tournament').factory('email', function (crmApi) {
                     "is_primary": 1
                 });
             }
-            return crmApi('Email', 'get', {
-                "sequential": 1,
-                "return": returnFields,
-                "id": id
-            });
+            if (id) {
+                return crmApi('Email', 'get', {
+                    "sequential": 1,
+                    "return": returnFields,
+                    "id": id
+                });
+            }
         },
 
         save: (email) => {

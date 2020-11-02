@@ -9,36 +9,37 @@ describe('person', function () {
 
   // Add a custom equality tester before each test
   beforeEach(function () {
-    jasmine.addCustomEqualityTester(angular.equals);      
+    jasmine.addCustomEqualityTester(angular.equals);
   });
-  
+
   beforeEach(module('tournament'));
 
   beforeEach(
-    inject( function (_person_) 
-      { person = _person_; }
+    inject(function (_person_) { person = _person_; }
     )
   );
 
-  it('should get person data', (done) => {
+  it('should get person data', inject(function ($rootScope) {
     var expectedPerson = [
       { id: 2, last: 'Steigerwald', first: 'Michael' },
-    ];
+    ];    
 
-    var p = person.get(2);
+    var resolvedPerson;
 
-    person.get(2)
-      .then(
-        (result) => {
-          expect(result).toEqual(expectedPerson);
-          done();
-        },
-        (error) => {
-          console.log("Error getting person data:" + error);
-          done();
-        }
-      );
-  });
+    person.get(2).then(
+      // Success
+      (result) => { 
+        resolvedPerson = result; 
+      },
+      // Failure
+      (error) => { 
+        CRM.alert(ts('Could not get person record ID = 2 error = ' + error.error_message), ts('Not Found'), 'error'); 
+      }
+    );
+
+    $rootScope.$apply();
+    expect(resolvedPerson).toEqual(expectedPerson);
+  }));
 
   xit('should get gender values', () => {
     var expectedValues = {
