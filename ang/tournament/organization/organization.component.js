@@ -3,8 +3,8 @@
 const organizationTemplateUrl = locationRoot() + '/tournament/organization/organization.template.html';
 angular.module('tournament').component('trnOrganization', {
   templateUrl: organizationTemplateUrl,
-  bindings: {id: '@'},
-  controller: ['$routeParams', 'organization', 
+  bindings: { id: '@' },
+  controller: ['$routeParams', 'organization',
     function ($routeParams, organization) {
       var self = this;
 
@@ -12,12 +12,14 @@ angular.module('tournament').component('trnOrganization', {
         self.id = $routeParams.organizationId;
       }
 
-      organization.get(self.id).then(
-        // Success
-        (result) => { self.setSelectedOrganization(result); },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get organization record ID = ' + self.id + ', error = ' + error.error_message), ts('Not Found'), 'error'); }
-      );
+      if (self.id) {
+        organization.get(self.id).then(
+          // Success
+          (result) => { self.setSelectedOrganization(result); },
+          // Failure
+          (error) => { CRM.alert(ts('Could not get organization record ID = ' + self.id + ', error = ' + error.error_message), ts('Not Found'), 'error'); }
+        );
+      }
 
       self.setSelectedOrganization = (organization) => {
         self.organization_name = organization.organization_name;
