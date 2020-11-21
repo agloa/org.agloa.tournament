@@ -1,10 +1,6 @@
 'use strict';
 
 describe('person', function () {
-  beforeEach(module('tournament'));
-  var expectedPerson = [
-    { id: 2, last: 'Steigerwald', first: 'Michael' },
-  ];
   var person;
 
   // Add a custom equality tester before each test
@@ -19,50 +15,92 @@ describe('person', function () {
     )
   );
 
-  it('should get person data', inject(function ($rootScope) {
-    var expectedPerson = [
-      { id: 2, last: 'Steigerwald', first: 'Michael' },
-    ];    
-
-    var resolvedPerson;
-
-    person.get(2).then(
-      // Success
-      (result) => { 
-        resolvedPerson = result; 
-      },
-      // Failure
-      (error) => { 
-        CRM.alert(ts('Could not get person record ID = 2 error = ' + error.error_message), ts('Not Found'), 'error'); 
-      }
-    );
-
-    $rootScope.$apply();
-    expect(resolvedPerson).toEqual(expectedPerson);
+  it('should get person data', inject(function () {
+    expect(person.get(2)).toEqual({
+      sort_name: "Steigerwald, Michael",
+      display_name: "Mr. Michael Steigerwald",
+      last_name: "Steigerwald",
+      first_name: "Michael",
+      middle_name: "Francis",
+      birth_date: new Date(1961, 1, 4),
+      modified_date: "2020-03-21 17:52:19",
+      gender_id: 2,
+      prefix_id: 3,
+      contact_id: 2,
+      id: 2
+    });
   }));
 
-  xit('should get gender values', () => {
-    var expectedValues = {
+  it('should get gender values', () => {
+    expect(person.getGenders()).toEqual({
       values: [
-        { label: "Female", value: 11 },
+        { label: "Female", value: 1 },
         { label: "Male", value: 2 },
         { label: "Other", value: 3 }
       ]
-    };
+    });
+  });
 
-    person.getGenders().then(
-      // Success
-      (genders) => {
-        expect(genders).toEqual(expectedValues);
-      },
-      // Failure
-      (error) => {
-        CRM.alert(ts('Could not get gender options error = ' + error), ts('Not Found'), 'error');
-      }
-    );
+  it('should get prefixes', () => {
+    expect(person.getPrefixes()).toEqual({
+      values: [
+        {
+          value: 1,
+          label: "Mrs."
+        },
+        {
+          value: 2,
+          label: "Ms."
+        },
+        {
+          value: 3,
+          label: "Mr."
+        },
+        {
+          value: 4,
+          label: "Dr."
+        }
+      ]
+    })
+  });
 
-    expect(genders).toEqual(expectedValues);
-
+  it('should get suffixes', () => {
+    expect(person.getSuffixes()).toEqual({
+      values: [
+        {
+          label: "Jr.",
+          value: 1
+        },
+        {
+          label: "Sr.",
+          value: 2
+        },
+        {
+          label: "II",
+          value: 3
+        },
+        {
+          label: "III",
+          value: 4
+        },
+        {
+          label: "IV",
+          value: 5
+        },
+        {
+          label: "V",
+          value: 6
+        },
+        {
+          label: "VI",
+          value: 7
+        },
+        {
+          label: "VII",
+          value: 8
+        }
+      ]
+    })
   });
 
 });

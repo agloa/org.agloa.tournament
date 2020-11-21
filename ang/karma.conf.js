@@ -11,11 +11,12 @@ module.exports = function(config) {
       'app/lib/angular-route/angular-route.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'app.js',
-      'crmUtil.js',
-      '**/*.module.js',
+      // '**/*.module.js',
       '**/*.service.js',
-      '*!(.module|.spec).js',
-      '!(app/lib)/**/*!(.module|.spec).js',
+      // '*!(.module|.spec).js',
+      'crmUtilTest.js',
+      // '!(app/lib)/**/*!(.module|.spec).js',
+
       // '**/*.spec.js',
       "tournament/core/*/*.spec.js",
       
@@ -26,7 +27,6 @@ module.exports = function(config) {
       "tournament/address/address.component.js",
       "tournament/phone/phone.component.js",
       "tournament/email/email.component.js",
-
     ],
 
     autoWatch: true,
