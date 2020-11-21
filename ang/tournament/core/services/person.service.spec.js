@@ -16,7 +16,7 @@ describe('person', function () {
   );
 
   it('should get person data', inject(function () {
-    expect(person.get(2)).toEqual({
+    expect(person.get("2")).toEqual({
       sort_name: "Steigerwald, Michael",
       display_name: "Mr. Michael Steigerwald",
       last_name: "Steigerwald",
