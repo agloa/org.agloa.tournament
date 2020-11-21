@@ -27,26 +27,35 @@ angular.module('tournament').factory('crmApi', function ($q) {
             case "Contact":
                 switch (action) {
                     default:
-                        switch (params.id) {
-                            case "1":
+                        switch (params.contact_type) {
+                            case "Organization" :
                                 return {
                                     organization_name: "AGLOA.org",
                                     modified_date: "2020-09-21 17:52:19",
                                     id: 1
-                                }
+                                };
                             default:
-                                return {
-                                    sort_name: "Steigerwald, Michael",
-                                    display_name: "Mr. Michael Steigerwald",
-                                    last_name: "Steigerwald",
-                                    first_name: "Michael",
-                                    middle_name: "Francis",
-                                    birth_date: new Date(1961, 1, 4),
-                                    modified_date: "2020-03-21 17:52:19",
-                                    gender_id: 2,
-                                    prefix_id: 3,
-                                    contact_id: 2,
-                                    id: 2
+                                switch (params.id) {
+                                    case "1":
+                                        return {
+                                            organization_name: "AGLOA.org",
+                                            modified_date: "2020-09-21 17:52:19",
+                                            id: 1
+                                        }
+                                    default:
+                                        return {
+                                            sort_name: "Steigerwald, Michael",
+                                            display_name: "Mr. Michael Steigerwald",
+                                            last_name: "Steigerwald",
+                                            first_name: "Michael",
+                                            middle_name: "Francis",
+                                            birth_date: new Date(1961, 1, 4),
+                                            modified_date: "2020-03-21 17:52:19",
+                                            gender_id: 2,
+                                            prefix_id: 3,
+                                            contact_id: 2,
+                                            id: 2
+                                        }
                                 }
                         }
                 }
