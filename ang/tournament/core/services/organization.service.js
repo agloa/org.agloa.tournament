@@ -20,7 +20,7 @@ angular.module('tournament').factory('organization', function (crmApi) {
             }
         },
         save: (organization_name, contact_sub_type) => {
-            ('Contact', 'create', {
+            return crmApi ('Contact', 'create', {
                 "contact_type": "Organization",
                 "organization_name": organization_name,
                 "contact_sub_type": contact_sub_type
@@ -32,7 +32,7 @@ angular.module('tournament').factory('organization', function (crmApi) {
                 });
         },
         delete: (id) => {
-            crmApi('Contact', 'delete', { id }).then(
+            return crmApi('Contact', 'delete', { id }).then(
                 (result) => {
                     return result.id;
                 }, (error) => {
