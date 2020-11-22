@@ -10,7 +10,7 @@ angular.module('tournament').factory('organization', function (crmApi) {
                     "id": id
                 });
             }
-            else {                
+            else {
                 return crmApi('Contact', 'getsingle', {
                     "sequential": 1,
                     "return": ["id", "organization_name"],
@@ -19,17 +19,11 @@ angular.module('tournament').factory('organization', function (crmApi) {
                 });
             }
         },
-        save: (organization_name, contact_sub_type) => {
-            return crmApi ('Contact', 'create', {
-                "contact_type": "Organization",
-                "organization_name": organization_name,
-                "contact_sub_type": contact_sub_type
-            }).then(
-                (result) => {
-                    return result.id;
-                }, (error) => {
-                    CRM.alert(ts('Could not save Organization ' + organization_name + ' , error = ' + error.error_message), ts('Error'), 'error');
-                });
+        save: (organization) => {
+            if (!organization.contact_type){
+                organization.contact_type = "Organization";
+            }
+            return crmApi('Contact', 'create', organization);
         },
         delete: (id) => {
             return crmApi('Contact', 'delete', { id }).then(
