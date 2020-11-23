@@ -26,13 +26,11 @@ angular.module('tournament').factory('phone', function (crmApi) {
                     "is_primary": 1
                 });
             }
-            if (id) {
-                return crmApi('Phone', 'get', {
-                    "sequential": 1,
-                    "return": returnFields,
-                    "id": id
-                });
-            }
+            return crmApi('Phone', 'get', {
+                "sequential": 1,
+                "return": returnFields,
+                "id": id
+            });
         },
 
         save: (phone) => {

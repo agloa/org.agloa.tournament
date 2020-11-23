@@ -41,14 +41,12 @@ angular.module('tournament').factory('address', function (crmApi) {
                     "contact_id": contact_id,
                     "is_primary": 1
                 });
-            };
-            if (id) {
-                return crmApi('Address', 'get', {
-                    "sequential": 1,
-                    "return": returnFields,
-                    "id": id
-                });
             }
+            return crmApi('Address', 'get', {
+                "sequential": 1,
+                "return": returnFields,
+                "id": id
+            });
         },
 
         // Get values/labels for option groups: countries

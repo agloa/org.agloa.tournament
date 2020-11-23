@@ -15,13 +15,11 @@ angular.module('tournament').factory('email', function (crmApi) {
                     "is_primary": 1
                 });
             }
-            if (id) {
-                return crmApi('Email', 'get', {
-                    "sequential": 1,
-                    "return": returnFields,
-                    "id": id
-                });
-            }
+            return crmApi('Email', 'get', {
+                "sequential": 1,
+                "return": returnFields,
+                "id": id
+            });
         },
 
         save: (email) => {
