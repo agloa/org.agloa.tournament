@@ -1,52 +1,48 @@
 <form name="personForm">
     <label for="prefixSelect" class="sr-only">Prefix</label>
-    <select id="prefixSelect" name="prefixSelect" class="crm-form-select"
-        select="{placeholder: '', allowClear:true}"
-        ng-options="option.value as option.label for option in $ctrl.prefixes"
-        ng-model="$ctrl.prefix">
+    <select id="prefixSelect" name="prefixSelect" class="crm-form-select" select="{placeholder: '', allowClear:true}"
+        ng-options="option.value as option.label for option in $ctrl.prefixes" ng-model="$ctrl.prefix">
     </select>
     <label for="first_nameInput" class="sr-only">First</label>
-    <input id="first_nameInput" name="first_nameInput" type="text"
-        ng-model="$ctrl.first_name" class="crm-form-text"
+    <input id="first_nameInput" name="first_nameInput" type="text" ng-model="$ctrl.first_name" class="crm-form-text"
         placeholder="First" required>
     </input>
     <label for="middle_nameInput" class="sr-only">Middle</label>
-    <input type="text"
-        id="middle_nameInput" name="middle_nameInput"
-        ng-model="$ctrl.middle_name" class="crm-form-text"
+    <input type="text" id="middle_nameInput" name="middle_nameInput" ng-model="$ctrl.middle_name" class="crm-form-text"
         placeholder="Middle">
     </input>
     <label for="last_nameInput" class="sr-only">Last</label>
-    <input type="text"
-        id="last_nameInput" name="last_nameInput"
-        ng-model="$ctrl.last_name" class="crm-form-text"
+    <input type="text" id="last_nameInput" name="last_nameInput" ng-model="$ctrl.last_name" class="crm-form-text"
         placeholder="Last" required>
     </input>
     <label for="suffixSelect" class="sr-only">Suffix</label>
-    <select
-        id="suffixSelect" name="suffixSelect" class="crm-form-select"
-        select="{placeholder: '', allowClear:true}"
-        ng-options="option.value as option.label for option in $ctrl.suffixes"
-        ng-model="$ctrl.suffix">
+    <select id="suffixSelect" name="suffixSelect" class="crm-form-select" select="{placeholder: '', allowClear:true}"
+        ng-options="option.value as option.label for option in $ctrl.suffixes" ng-model="$ctrl.suffix">
     </select>
     <label for="birth_dateInput" class="sr-only">Birth Date</label>
-    <input type="date" id="birth_dateInput" class="crm-form-text crm-form-date"
-        name="birth_dateInput" ng-model="$ctrl.birth_date">
+    <input type="date" id="birth_dateInput" class="crm-form-text crm-form-date" name="birth_dateInput"
+        ng-model="$ctrl.birth_date">
     </input>
     <label for="genderSelect" class="sr-only">Gender</label>
-    <select 
-        id="genderSelect" name="genderSelect" class="crm-form-select"
-        ng-options="option.value as option.label for option in $ctrl.genders"
-        ng-model="$ctrl.gender">
+    <select id="genderSelect" name="genderSelect" class="crm-form-select"
+        ng-options="option.value as option.label for option in $ctrl.genders" ng-model="$ctrl.gender">
     </select>
     <button ng-click="$ctrl.save()">Save</button>
 </form>
 
-<details ng-click="$ctrl.addressClicked()"><summary>Update address info</summary></details>
-<trn-address ng-if="$ctrl.displayAddress" contact-id="{{$ctrl.id}}"></trn-address>
+<div ng-if="$ctrl.id">
+    <details ng-click="$ctrl.addressClicked()">
+        <summary>Update address info</summary>
+    </details>
+    <trn-address ng-if="$ctrl.displayAddress" contact-id="{{$ctrl.id}}"></trn-address>
 
-<details ng-click="$ctrl.phoneClicked()"><summary>Update phone info</summary></details>
-<trn-phone ng-if="$ctrl.displayPhone" contact-id="{{$ctrl.id}}"></trn-phone>
+    <details ng-click="$ctrl.phoneClicked()">
+        <summary>Update phone info</summary>
+    </details>
+    <trn-phone ng-if="$ctrl.displayPhone" contact-id="{{$ctrl.id}}"></trn-phone>
 
-<details ng-click="$ctrl.emailClicked()"><summary>Update email info</summary></details>
-<trn-email ng-if="$ctrl.displayEmail" contact-id="{{$ctrl.id}}"></trn-email>
+    <details ng-click="$ctrl.emailClicked()">
+        <summary>Update email info</summary>
+    </details>
+    <trn-email ng-if="$ctrl.displayEmail" contact-id="{{$ctrl.id}}"></trn-email>
+</div>
