@@ -19,6 +19,24 @@ angular.module('tournament').component('trnOrganization', {
           // Failure
           (error) => { CRM.alert(ts('Could not get organization record ID = ' + self.id + ', error = ' + error.error_message), ts('Not Found'), 'error'); }
         );
+      }      
+
+      // Don't display 'child' component until user requests it.
+      self.displayAddress = false;
+      self.addressClicked = () => {
+        this.displayAddress = !this.displayAddress;
+      }
+
+      // Don't display 'child' component until user requests it.
+      self.displayPhone = false;
+      self.phoneClicked = () => {
+        this.displayPhone = !this.displayPhone;
+      }
+
+      // Don't display 'child' component until user requests it.
+      self.displayEmail = false;
+      self.emailClicked = () => {
+        this.displayEmail = !this.displayEmail;
       }
 
       self.setSelectedOrganization = (organization) => {
