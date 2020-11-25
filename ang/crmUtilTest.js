@@ -28,7 +28,7 @@ angular.module('tournament').factory('crmApi', function ($q) {
                 switch (action) {
                     default:
                         switch (params.contact_type) {
-                            case "Organization" :
+                            case "Organization":
                                 return {
                                     organization_name: "AGLOA.org",
                                     modified_date: "2020-09-21 17:52:19",
@@ -278,6 +278,17 @@ angular.module('tournament').factory('crmApi', function ($q) {
                                 return ({ values: [{ countryLimit: ["1228", "1101", "1208"] }] })
                         }
                 }
+            case "EntityTag": {
+                return ({
+                    "values": [
+                        {
+                            "id": "1",
+                            "entity_id.id": "13",
+                            "entity_id.display_name": "test12345678901234567890"
+                        }
+                    ]
+                })
+            }
             case "Country":
                 switch (action) {
                     default:
