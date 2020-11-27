@@ -14,6 +14,9 @@
             .when('/tournament/person/:contactId', {
                 template: '<trn-person></trn-person>'
             })
+            .when('/tournament/organization/:contactId', {
+                template: '<trn-organization></trn-organization>'
+            })
             .when('/tournament/address/:id', {
                 template: '<trn-address></trn-address>'
             })
