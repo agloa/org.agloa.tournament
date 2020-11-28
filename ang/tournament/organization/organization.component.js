@@ -48,7 +48,12 @@ angular.module('tournament').component('trnOrganization', {
       };
 
       self.save = () => {
-        organization.save(self).then(
+        organization.save({
+          id: self.id, 
+          organization_name: self.organization_name, 
+          requiresApproval: self.requiresApproval,
+          requestorId: self.requestorId
+        }).then(
           // Success
           (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
           // Failure
