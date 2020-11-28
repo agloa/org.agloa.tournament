@@ -3,19 +3,21 @@
 const relationshipsTemplateUrl = locationRoot() + '/tournament/relationships/relationships.template.html';
 angular.module('tournament').component('trnRelationships', {
     templateUrl: relationshipsTemplateUrl,
-    bindings: { id: '@' },
+    bindings: {
+        id: '@',
+        contactId: '@'
+    },
     controller: ['$routeParams', 'billingRelationships',
         function ($routeParams, relationships) {
             var self = this;
-            self.userId = "user_contact_id";
             self.showOrganization = false;
 
             // e.g., relationships/43
-            if ($routeParams.userId !== undefined) {
-                self.userId = $routeParams.userId;
+            if ($routeParams.contactId !== undefined) {
+                self.contactId = $routeParams.contactId;
             }
 
-            relationships.get(self.userId).then(
+            relationships.get(self.contactId).then(
                 // Success
                 (result) => {
                     self.setRelationships(result.values.map((item) => {
@@ -29,7 +31,7 @@ angular.module('tournament').component('trnRelationships', {
                 },
                 // Failure
                 (error) => {
-                    CRM.alert(ts('Could not get relationships for contact ID: ' + self.id + ', error = ' + error.error_message), ts('Not Found'), 'error');
+                    CRM.alert(ts('Could not get relationships for contact ID: ' + self.contactId + ', error = ' + error.error_message), ts('Not Found'), 'error');
                 }
             );
 
