@@ -3,6 +3,9 @@
 const accessRequestTemplateUrl = locationRoot() + '/tournament/accessRequest/accessRequest.template.html';
 angular.module('tournament').component('trnAccessRequest', {
     templateUrl: accessRequestTemplateUrl,
+    bindings: { 
+      requestorId: '@' ,
+    },
     controller: ['billingOrganizations', '$scope',
         function (organizations, $scope) {
             var self = this;
