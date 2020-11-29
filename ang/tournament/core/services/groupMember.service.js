@@ -26,6 +26,15 @@ angular.module('tournament').factory('groupMember', function (crmApi) {
                 }, (error) => {
                     CRM.alert(ts('Could not delete groupMember id = ' + id + ' , error = ' + error.error_message), ts('Error'), 'error');
                 });
-        }
+        },
+        getStatuses: () => {
+            return {
+                values: [
+                    { label: "Pending", value: "Pending" },
+                    { label: "Added", value: "Added" },
+                    { label: "Removed", value: "Removed" }
+                ]
+            };
+        },
     }
 });
