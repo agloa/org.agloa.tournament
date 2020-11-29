@@ -16,7 +16,7 @@ CRM.alert = (message, title, severity) => {
 }
 
 angular.module('tournament').factory('crmApi', function ($q) {
-    return function (entity, action, params, message) {
+    return function (entity, action, params) {
         if (typeof entity === 'string') {
             entityType = entity;
         } else {
@@ -268,6 +268,25 @@ angular.module('tournament').factory('crmApi', function ($q) {
                                 }
                             ]
                         }
+                }
+            }
+            case "Group": {
+                return {
+                    "values": [
+                        {
+                            "id": "1",
+                            "name": "Administrators",
+                            "title": "Administrators",
+                            "description": "Contacts in this group are assigned Administrator role permissions.",
+                            "is_active": "1",
+                            "visibility": "User and User Admin Only",
+                            "group_type": [
+                                "1"
+                            ],
+                            "is_hidden": "0",
+                            "is_reserved": "0"
+                        }
+                    ]
                 }
             }
             case "Setting":

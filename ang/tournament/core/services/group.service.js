@@ -1,18 +1,27 @@
 angular.module('tournament').factory('group', function (crmApi) {
     return {
-        get: (id) => {
+        get: (id, title) => {
+            if (title) {
+                return crmApi('Group', 'get', {
+                    "sequential": 1,
+                    "return": ["title"],
+                    "title": title
+                });
+            }
+            if (id) {
+                return crmApi('Group', 'get', {
+                    "sequential": 1,
+                    "return": ["title"],
+                    "id": id
+                });
+            }
             return crmApi('Group', 'get', {
                 "sequential": 1,
-                "return": ["title"],
-                "id": id
+                "return": ["title"]
             });
         },
         save: (group) => {
-            if (!group.contact_type) {
-                group.contact_type = "Access Control";
-            }
-            // if new (no id) and requestor is not admin, org requires approval
-            return crmApi('Contact', 'create', group);
+            return crmApi('Group', 'create', group);
         },
         delete: (id) => {
             return crmApi('Group', 'delete', { id }).then(
