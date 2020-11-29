@@ -103,4 +103,11 @@ describe('person', function () {
     })
   });
 
+  it('save should send id to crmApi', () => {
+    var tournament = angular.module('tournament');
+    spyOn(tournament, "crmApi").and.returnValue(1);
+    person.save({});
+    expect(tournament.crmApi).toHaveBeenCalled();
+  })
+
 });
