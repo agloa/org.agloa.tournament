@@ -1,11 +1,25 @@
 angular.module('tournament').factory('groupMember', function (crmApi) {
     return {
-        get: (id) => {
+        get: (id, group_id, person_id) => {
             if (id) {
                 return crmApi('GroupContact', 'get', {
                     "sequential": 1,
                     "return": ["group_id", "contact_id", "status"],
                     "id": id
+                });
+            }
+            if (group_id) {
+                return crmApi('GroupContact', 'get', {
+                    "sequential": 1,
+                    "return": ["group_id", "contact_id", "status"],
+                    "group_id": group_id
+                });
+            }
+            if (person_id) {
+                return crmApi('GroupContact', 'get', {
+                    "sequential": 1,
+                    "return": ["group_id", "contact_id", "status"],
+                    "contact_id": person_id
                 });
             }
             return crmApi('GroupContact', 'get', {

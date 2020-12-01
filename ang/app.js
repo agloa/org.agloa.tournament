@@ -1,3 +1,4 @@
+
 (function (angular) {
     // Declare a list of dependencies.
     angular.module('tournament', ['ngRoute']);
@@ -40,6 +41,15 @@
             })
             .when('/tournament', {
                 template: '<trn-dashboard></trn-dashboard>'
+            })
+            .when('/tournament/groupMembers/:id?', {
+                template: '<trn-group-members></trn-group-members>'
+            })
+            .when('/tournament/groupMembers/group/:groupId?', {
+                template: '<trn-group-members></trn-group-members>'
+            })
+            .when('/tournament/groupMembers/person/:personId?', {
+                template: '<trn-group-members></trn-group-members>'
             })
             .otherwise({
                 template: '<trn-dashboard></trn-dashboard>'

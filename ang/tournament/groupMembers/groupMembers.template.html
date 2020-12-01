@@ -1,0 +1,12 @@
+<table>
+    <thead>
+        <th>Group</th>
+        <th>Person</th>
+        <th>Status</th>
+    </thead>
+    <tr ng-repeat="groupMember in $ctrl.groupMembers">
+        <td>{{ groupMember.group_id }}</td>
+        <td>{{ groupMember.contact_id }}</td>
+        <td>{{ groupMember.status }}</td>
+    </tr>
+</table>
