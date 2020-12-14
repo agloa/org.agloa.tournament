@@ -9,7 +9,7 @@ angular.module('tournament').component('trnAccessRequest', {
     controller: ['billingOrganizations', '$scope',
         function (organizations, $scope) {
             var self = this;
-            self.showOrganization = false;
+            self.showOrganizationRequest = false;
             $scope.newOrganizationValue = "newOrganization";
 
             organizations.getAll().then(
@@ -29,7 +29,7 @@ angular.module('tournament').component('trnAccessRequest', {
 
             self.requestAccess = (requestedOrganization) => {
                 if (requestedOrganization === $scope.newOrganizationValue) {
-                    self.showOrganization = true;
+                    self.showOrganizationRequest = true;
                 }
             }; 
         }

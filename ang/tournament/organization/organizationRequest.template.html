@@ -1,0 +1,74 @@
+<form name="organizationRequestForm">
+    <label for="organization_nameInput" class="sr-only">Organization Name</label>
+    <input type="text" id="organization_nameInput" name="organization_nameInput" ng-model="$ctrl.organization_name"
+        class="crm-form-text" placeholder="Organization Name" required>
+    </input>
+
+    <div id="emailDiv">
+        <label for="emailInput">email</label>
+        <input id="emailInput" name="emailInput" ng-model="$ctrl.email" class="crm-form-text" placeholder="email"
+            required>
+        </input>
+    </div>
+
+    <div id="addressDiv">
+        <div>
+            <label for="street_addressInput">Address</label>
+            <input id="street_addressInput" name="street_addressInput" ng-model="$ctrl.street_address"
+                class="crm-form-text" placeholder="Address" required>
+            </input>
+            <label for="supplemental_address_1Input" class="sr-only">Address 1</label>
+            <input id="supplemental_address_1Input" name="supplemental_address_1Input"
+                ng-model="$ctrl.supplemental_address_1" class="crm-form-text" placeholder="cont.">
+            </input>
+            <label for="supplemental_address_2Input" class="sr-only">Address 2</label>
+            <input id="supplemental_address_2Input" name="supplemental_address_2Input"
+                ng-model="$ctrl.supplemental_address_2" class="crm-form-text" placeholder="cont.">
+            </input>
+            <label for="supplemental_address_3Input" class="sr-only">Address 3</label>
+            <input id="supplemental_address_3Input" name="supplemental_address_3Input"
+                ng-model="$ctrl.supplemental_address_3" class="crm-form-text" placeholder="cont.">
+            </input>
+        </div>
+
+        <div>
+            <label for="cityInput">City</label>
+            <input id="cityInput" name="cityInput" ng-model="$ctrl.city" class="crm-form-text" placeholder="City"
+                required>
+            </input>
+            <label for="countrySelect">Country</label>
+            <select required id="countrySelect" name="countrySelect" class="big crm-form-select"
+                select="{placeholder: '', allowClear:true}"
+                ng-options="option.id as option.name for option in $ctrl.countries" ng-model="$ctrl.country">
+            </select>
+            <div ng-show="$ctrl.country" class="inline">
+                <label for="state_provinceSelect">State/Province</label>
+                <select required id="state_provinceSelect" name="state_provinceSelect" class="big crm-form-select"
+                    select="{placeholder: '', allowClear:true}"
+                    ng-options="option.id as option.name for option in $ctrl.regions | filter:{country_id:$ctrl.country_id}"
+                    ng-model="$ctrl.state_province">
+                </select>
+            </div>
+        </div>
+
+        <div>
+            <label for="postal_codeInput">Postal Code</label>
+            <input id="postal_codeInput" name="postal_codeInput" ng-model="$ctrl.postal_code" class="crm-form-text"
+                placeholder="Postal Code" required>
+            </input>
+            <label for="postal_code_suffix">Postal Code Suffix</label>
+            <input id="postal_code_suffixInput" name="postal_code_suffixInput" ng-model="$ctrl.postal_code_suffix"
+                class="crm-form-text" placeholder="Postal Code Suffix">
+            </input>
+        </div>
+
+    </div>
+
+    <div id="phoneDiv">
+        <label for="phoneInput">Phone</label>
+        <input id="phoneInput" name="phoneInput" ng-model="$ctrl.phone" class="crm-form-text" placeholder="Phone"
+            required></input>
+    </div>
+    
+    <button ng-click="$ctrl.save()">Save</button>
+</form>
