@@ -14,7 +14,7 @@ module.exports = function(config) {
       // '**/*.module.js',
       '**/*.service.js',
       // '*!(.module|.spec).js',
-      'crmUtilTest.js',
+      'crmUtil.js',
       // '!(app/lib)/**/*!(.module|.spec).js',
 
       // '**/*.spec.js',
