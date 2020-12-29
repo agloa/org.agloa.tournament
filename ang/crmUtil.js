@@ -11,12 +11,12 @@ function ts(english) {
     return english;
 }
 
-CRM.alert = (message, title, severity) => {
+CRM.alert = (message) => {
     alert(message);
 }
 
 angular.module('tournament').factory('crmApi', function ($q) {
-    return function (entity, action, params, message) {
+    return function (entity, action, params) {
         if (typeof entity === 'string') {
             entityType = entity;
         } else {
@@ -24,7 +24,7 @@ angular.module('tournament').factory('crmApi', function ($q) {
         }
 
         var deferred = $q.defer();
-        var p = new Promise(function (resolve, reject) {
+        var p = new Promise(function (resolve) {
             switch (entityType) {
                 case "Contact":
                     switch (action) {
@@ -256,7 +256,7 @@ angular.module('tournament').factory('crmApi', function ($q) {
                                 ]
                             })
                     }
-                }
+                    }
                 case "Relationship": {
                     switch (action) {
                         default:
@@ -271,7 +271,7 @@ angular.module('tournament').factory('crmApi', function ($q) {
                                 ]
                             })
                     }
-                }
+                    }
                 case "Group": {
                     return {
                         "values": [
@@ -290,7 +290,7 @@ angular.module('tournament').factory('crmApi', function ($q) {
                             }
                         ]
                     }
-                }
+                    }
                 case "Setting":
                     switch (action) {
                         default:
