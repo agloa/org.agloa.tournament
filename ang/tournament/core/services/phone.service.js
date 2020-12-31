@@ -1,6 +1,4 @@
 angular.module('tournament').factory('phone', function (crmApi) {
-    var returnFields = ["id", "contact_id", "location_type_id", "is_primary", "is_billing", "phone", "phone_type_id"];
-
     return {
         // Get values/labels for option groups: phone types (mobile, fax, etc.)
         // @return Promise of option groups/values (per APIv3)
@@ -21,15 +19,22 @@ angular.module('tournament').factory('phone', function (crmApi) {
             if (contact_id) {
                 return crmApi('Phone', 'get', {
                     "sequential": 1,
-                    "return": returnFields,
+                    "return":  ["id", "contact_id", "location_type_id", "is_primary", "is_billing", "phone", "phone_type_id"],
                     "contact_id": contact_id,
+                    "is_primary": 1
+                });
+            }
+            if (id) {
+                return crmApi('Phone', 'get', {
+                    "sequential": 1,
+                    "return":  ["id", "contact_id", "location_type_id", "is_primary", "is_billing", "phone", "phone_type_id"],
+                    "id": id,
                     "is_primary": 1
                 });
             }
             return crmApi('Phone', 'get', {
                 "sequential": 1,
-                "return": returnFields,
-                "id": id
+                "return":  ["id", "contact_id", "location_type_id", "is_primary", "is_billing", "phone", "phone_type_id"]
             });
         },
 
