@@ -2,32 +2,51 @@
 
 describe('email', function () {
   var email;
+  var crmApi;
 
   // Add a custom equality tester before each test
   beforeEach(function () {
+    // Add a custom equality tester before each test
     jasmine.addCustomEqualityTester(angular.equals);
+    module('tournament');
+
+    // This ***HAS*** to go before the beforeEach(inject(...)) block
+    crmApi = jasmine.createSpy('crmApiMock')
+
+    module(function ($provide) {
+      $provide.value('crmApi', crmApi);
+    });
+
+    inject(function (_email_) { email = _email_; });
   });
 
-  beforeEach(module('tournament'));
-
-  beforeEach(
-    inject(function (_email_) { email = _email_; }
-    )
-  );
-
-  it('should get email data', inject(function () {
-    expect(email.get("1")).toEqual({
-      values: [{
-        id: 1,
-        contact_id: 1,
-        location_type_id: 3,
-        email: "info@agloa.org",
-        is_primary: 1,
-        is_billing: 0,
-        on_hold: 0,
-        is_bulkmail: 0
-      }]
+  it('should get from crmApi', function () {
+    email.get();
+    expect(crmApi).toHaveBeenCalledWith('Email', 'get', {
+      "sequential": 1,
+      "return": ["id", "contact_id", "location_type_id", "is_primary", "is_billing", "email"]
     });
-  }));
+  });
+
+  it('should get by contact_id from crmApi', function () {
+    const contact_id = 1;
+    email.get(contact_id);
+    expect(crmApi).toHaveBeenCalledWith('Email', 'get', {
+      "sequential": 1,
+      "return": ["id", "contact_id", "location_type_id", "is_primary", "is_billing", "email"],
+      "contact_id": contact_id,
+      "is_primary": 1
+    });
+  });
+
+  it('should get by id from crmApi', function () {
+    const id = 1;
+    email.get(undefined, id);
+    expect(crmApi).toHaveBeenCalledWith('Email', 'get', {
+      "sequential": 1,
+      "return": ["id", "contact_id", "location_type_id", "is_primary", "is_billing", "email"],
+      "id": id
+    });
+  });
 
 });
