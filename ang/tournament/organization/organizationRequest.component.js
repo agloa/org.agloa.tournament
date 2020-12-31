@@ -4,7 +4,8 @@ const organizationRequestTemplateUrl = locationRoot() + '/tournament/organizatio
 angular.module('tournament').component('trnOrganizationRequest', {
   templateUrl: organizationRequestTemplateUrl,
   bindings: { 
-    requestorId: '@'
+    requestorId: '@',
+    onCancel: '&'
   },
 
   controller: ['organization','address',
@@ -33,9 +34,10 @@ angular.module('tournament').component('trnOrganizationRequest', {
         self.regions = options;
       };
 
-      self.save = () => {
+      self.save = function()  {
         organization.request({
           organization_name: self.organization_name,
+          group_name: self.group_name,
           email: self.email,
           street_address: self.street_address,
           supplemental_address_1: self.supplemental_address_1,
@@ -50,13 +52,17 @@ angular.module('tournament').component('trnOrganizationRequest', {
           requestorId: self.requestorId
         }).then(
           // Success
-          (result) => { 
+          () => { 
             CRM.alert(ts("Saved"), ts("Saved"), 'info');
           },
           // Failure
           (error) => { CRM.alert(ts('Could not request organization record for ' + self.organization_name + ', error = ' + error.error_message), ts('Database Error'), 'error'); }
         );
       }
+
+      self.cancel = function() {
+        self.onCancel();
+      };
     }
   ]
 });

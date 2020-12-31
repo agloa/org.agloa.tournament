@@ -43,7 +43,8 @@ angular.module('tournament').factory('billingRelationships', function (crmApi) {
                 "sequential": 1,
                 "return": ["contact_id_b.id", "contact_id_b.modified_date", "contact_id_b.organization_name"],
                 "contact_id_a": contact_id,
-                "relationship_type_id": getRelationshipType()
+                "is_permission_a_b": 1,
+                "contact_id_b.contact_type": "Organization"
             });
         },
         save: (individual_id, organization_id) => {

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('address', function () {
+xdescribe('address', function () {
   var address;
 
   // Add a custom equality tester before each test

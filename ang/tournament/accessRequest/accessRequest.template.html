@@ -5,4 +5,5 @@
     <option ng-repeat="organization in $ctrl.organizations" value="{{organization.contact_id}}">{{organization.organization_name}}</option>
 </select> 
 <button ng-show="$ctrl.selectedOrganization.length > 0" ng-click="$ctrl.requestAccess($ctrl.selectedOrganization)">Request</button>
-<trn-organization-request ng-if="$ctrl.showOrganizationRequest" requestor-id="{{$ctrl.requestorId}}"></trn-organization>
+<trn-organization-request ng-if="$ctrl.showOrganizationRequest" requestor-id="{{$ctrl.requestorId}}"
+onCancel="cancel()"></trn-organization>

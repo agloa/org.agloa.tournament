@@ -9,4 +9,29 @@
         <td>{{ groupMember.contact_id }}</td>
         <td>{{ groupMember.status }}</td>
     </tr>
+    <tfoot>
+        <form name="newGroupMemberForm">
+            <td> 
+                <select required id="groupSelect" name="groupSelect" class="big crm-form-select"
+                    select="{placeholder: '', allowClear:true}"
+                    ng-options="group.id as group.name for group in $ctrl.groups">
+                </select>
+            </td>
+            <td> 
+                <select required id="personSelect" name="personSelect" class="big crm-form-select"
+                    select="{placeholder: '', allowClear:true}"
+                    ng-options="person.id as person.name for person in $ctrl.people">
+                </select>
+            </td>
+            <td> 
+                <select required id="statusSelect" name="statusSelect" class="big crm-form-select"
+                    select="{placeholder: '', allowClear:true}"
+                    ng-options="status.id as status.name for status in $ctrl.statuses">
+                </select>
+            </td>
+            <td> 
+                <button ng-click="$ctrl.createGroupMember">Add</button>
+            </td>
+        </form>
+    </tfoot>
 </table>

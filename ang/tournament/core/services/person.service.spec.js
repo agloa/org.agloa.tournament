@@ -8,22 +8,26 @@ describe('person', function () {
     // Add a custom equality tester before each test
     jasmine.addCustomEqualityTester(angular.equals);
     module('tournament');
-  });
-
+    
   // This ***HAS*** to go before the beforeEach(inject(...)) block
-  beforeEach(function () {
     crmApi = jasmine.createSpy('crmApiMock')
 
     module(function ($provide) {
       $provide.value('crmApi', crmApi);
     });
-  });
-
-  beforeEach(function () {
+    
     inject(function (_person_) { person = _person_; });
   });
 
   it('should get from crmApi', function () {
+    person.get();
+    expect(crmApi).toHaveBeenCalledWith('Contact', 'get', {
+      "return": ["id","contact_sub_type","display_name","first_name","middle_name","last_name","prefix_id","suffix_id","gender_id","birth_date","modified_date","email","phone","street_address","supplemental_address_1","supplemental_address_2","supplemental_address_3","city","postal_code","postal_code_suffix","country_id","state_province_id"],
+      "contact_type": "Individual",
+    });
+  });
+
+  it('should get(id) from crmApi', function () {
     const id = 2;
     person.get(id);
     expect(crmApi).toHaveBeenCalledWith('Contact', 'getsingle', {
@@ -32,82 +36,51 @@ describe('person', function () {
     });
   });
 
-  xit('should get gender values', () => {
-    expect(person.getGenders()).toEqual({
-      values: [
-        { label: "Female", value: 1 },
-        { label: "Male", value: 2 },
-        { label: "Other", value: 3 }
-      ]
+  it('should get gender values', () => {
+    person.getGenders();
+    expect(crmApi).toHaveBeenCalledWith('OptionValue', 'get', {
+      "sequential": 1,
+      "return": ["value", "label"],
+      "option_group_id": "gender",
+      "is_active": 1
     });
   });
 
-  xit('should get prefixes', () => {
-    expect(person.getPrefixes()).toEqual({
-      values: [
-        {
-          value: 1,
-          label: "Mrs."
-        },
-        {
-          value: 2,
-          label: "Ms."
-        },
-        {
-          value: 3,
-          label: "Mr."
-        },
-        {
-          value: 4,
-          label: "Dr."
-        }
-      ]
-    })
+  it('should get prefixes', () => {
+    person.getPrefixes();
+    expect(crmApi).toHaveBeenCalledWith('OptionValue', 'get', {
+      "sequential": 1,
+      "return": ["value", "label"],
+      "option_group_id": "individual_prefix",
+      "is_active": 1
+    });
   });
 
-  xit('should get suffixes', () => {
-    expect(person.getSuffixes()).toEqual({
-      values: [
-        {
-          label: "Jr.",
-          value: 1
-        },
-        {
-          label: "Sr.",
-          value: 2
-        },
-        {
-          label: "II",
-          value: 3
-        },
-        {
-          label: "III",
-          value: 4
-        },
-        {
-          label: "IV",
-          value: 5
-        },
-        {
-          label: "V",
-          value: 6
-        },
-        {
-          label: "VI",
-          value: 7
-        },
-        {
-          label: "VII",
-          value: 8
-        }
-      ]
-    })
+  it('should get suffixes', () => {
+    person.getSuffixes();
+    expect(crmApi).toHaveBeenCalledWith('OptionValue', 'get', {
+      "sequential": 1,
+      "return": ["value", "label"],
+      "option_group_id": "individual_suffix",
+      "is_active": 1
+    });
   });
 
-  xit('save should send id to crmApi', () => {
-    var mockFactory = jasmine.createSpy('crmApiSpy', crmApi).and.callThrough();
-    person.save({});
-    expect(mockFactory).toHaveBeenCalled();
+  it('save should create person in crmApi', () => {
+    const testPerson = {
+      first_name: "test",
+      contact_type: "test",
+    };
+    const expectedPerson = testPerson;
+    person.save(testPerson);
+    expect(crmApi).toHaveBeenCalledWith('Contact', 'create', expectedPerson);
+  });
+
+  it('save should add person contact_type in crmApi', () => {
+    const testPerson = {};
+    const expectedPerson = {contact_type: "person"};
+    person.save(testPerson);
+    expect(crmApi).toHaveBeenCalledWith('Contact', 'create', expectedPerson);
   });
 
 });

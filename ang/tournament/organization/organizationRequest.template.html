@@ -1,14 +1,16 @@
 <form name="organizationRequestForm">
     <label for="organization_nameInput" class="sr-only">Organization Name</label>
     <input type="text" id="organization_nameInput" name="organization_nameInput" ng-model="$ctrl.organization_name"
-        class="crm-form-text" placeholder="Organization Name" required>
-    </input>
+        class="crm-form-text" placeholder="Organization Name" title="Formal name for, e.g., invoices" required></input>
+
+    <label for="group_nameInput" class="sr-only">Group Name</label>
+    <input type="text" id="group_nameInput" name="group_nameInput" ng-model="$ctrl.group_name"
+        class="crm-form-text" placeholder="Group Name" title="Name  used for, e.g., scheduling, standings, awards, etc." required></input>
 
     <div id="emailDiv">
         <label for="emailInput">email</label>
         <input id="emailInput" name="emailInput" ng-model="$ctrl.email" class="crm-form-text" placeholder="email"
-            required>
-        </input>
+            type="email" required></input>
     </div>
 
     <div id="addressDiv">
@@ -67,8 +69,10 @@
     <div id="phoneDiv">
         <label for="phoneInput">Phone</label>
         <input id="phoneInput" name="phoneInput" ng-model="$ctrl.phone" class="crm-form-text" placeholder="Phone"
-            required></input>
+            type="tel" required></input>
     </div>
-    
+
     <button ng-click="$ctrl.save()">Save</button>
+    <input id="resetButton" name="resetButton" type="reset"></input>
+    <button ng-click="$ctrl.dancel()">Cancel</button>
 </form>

@@ -15,24 +15,21 @@ angular.module('tournament').component('trnPerson', {
       self.id = self.contactId;
 
       // Don't display 'child' component until user requests it.
-      self.displayAddress = false;
-
-      self.addressClicked = () => {
-        this.displayAddress = !this.displayAddress;
+      self.displayEmail = false;
+      self.emailClicked = () => {
+        this.displayEmail = !this.displayEmail;
       }
 
       // Don't display 'child' component until user requests it.
       self.displayPhone = false;
-
       self.phoneClicked = () => {
         this.displayPhone = !this.displayPhone;
       }
 
       // Don't display 'child' component until user requests it.
-      self.displayEmail = false;
-
-      self.emailClicked = () => {
-        this.displayEmail = !this.displayEmail;
+      self.displayAddress = false;
+      self.addressClicked = () => {
+        this.displayAddress = !this.displayAddress;
       }
 
       person.get(self.contactId).then(
@@ -108,7 +105,7 @@ angular.module('tournament').component('trnPerson', {
 
         person.save(personRecord).then(
           // Success
-          (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
+          () => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
           // Failure
           (error) => { CRM.alert(ts('Could not save person record ID = ' + self.contactId + ', error = ' + error.error_message), ts('Database Error'), 'error'); }
         );

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('entityTag', function () {
+xdescribe('entityTag', function () {
   var entityTag;
 
   // Add a custom equality tester before each test
