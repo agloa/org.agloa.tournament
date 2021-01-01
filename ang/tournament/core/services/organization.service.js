@@ -11,7 +11,7 @@ angular.module('tournament').factory('organization', function (crmApi) {
                 });
             }
             else {
-                return crmApi('Contact', 'getsingle', {
+                return crmApi('Contact', 'get', {
                     "sequential": 1,
                     "return": ["id", "organization_name"],
                     "contact_type": "Organization",
@@ -20,10 +20,15 @@ angular.module('tournament').factory('organization', function (crmApi) {
             }
         },
         save: (organization) => {
-            if (!organization.contact_type){
+            if (!organization.contact_type) {
                 organization.contact_type = "Organization";
             }
-            return crmApi('Contact', 'create', organization);
+
+            return crmApi('Contact', 'create', {
+                'id': organization.id,
+                'organization_name': organization.organization_name,
+                'contact_type': organization.contact_type
+            });
         },
         delete: (id) => {
             return crmApi('Contact', 'delete', { id }).then(
