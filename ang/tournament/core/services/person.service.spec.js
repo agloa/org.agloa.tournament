@@ -9,7 +9,7 @@ describe('person', function () {
     jasmine.addCustomEqualityTester(angular.equals);
     module('tournament');
     
-  // This ***HAS*** to go before the beforeEach(inject(...)) block
+    // This ***HAS*** to go before the beforeEach(inject(...)) block
     crmApi = jasmine.createSpy('crmApiMock')
 
     module(function ($provide) {
