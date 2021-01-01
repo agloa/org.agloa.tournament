@@ -63,11 +63,6 @@ describe('address', function () {
     });
   });  
 
-  it('should get countries', () => {
-    address.getCountries();
-    expect(crmApi).toHaveBeenCalledWith('Setting', 'get', { "sequential": 1, "return": ["countryLimit"] });
-  });
-
   it('save should create address in crmApi', () => {
     const testAddress = {
       id: 1
