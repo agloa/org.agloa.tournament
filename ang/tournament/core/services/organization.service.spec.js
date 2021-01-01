@@ -1,6 +1,6 @@
 'use strict';
 
-xdescribe('organization', function () {
+describe('organization', function () {
   var organization;
   var crmApi;
 
@@ -41,12 +41,22 @@ xdescribe('organization', function () {
 
   it('save should create organization in crmApi', () => {
     const testOrganization = {
-      first_name: "test",
-      contact_type: "test",
+      id: 1,
+      organization_name: "organization_name",
     };
-    const expectedPerson = testPerson;
-    person.save(testPerson);
-    expect(crmApi).toHaveBeenCalledWith('Contact', 'create', expectedPerson);
+
+    const expextedOrganization = testOrganization;
+    expextedOrganization.contact_type = "Organization";
+
+    organization.save(testOrganization);
+    expect(crmApi).toHaveBeenCalledWith('Contact', 'create', expextedOrganization);
+  });
+
+  it('should delete organization in crmApi', () => {
+    const  id = 1;
+
+    organization.delete(id);
+    expect(crmApi).toHaveBeenCalledWith('Contact', 'delete', { id });
   });
 
 });
