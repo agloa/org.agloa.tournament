@@ -42,10 +42,17 @@ angular.module('tournament').factory('address', function (crmApi) {
                     "is_primary": 1
                 });
             }
+            if (id) {
+                return crmApi('Address', 'get', {
+                    "sequential": 1,
+                    "return": returnFields,
+                    "id": id,
+                    "is_primary": 1
+                });
+            }
             return crmApi('Address', 'get', {
                 "sequential": 1,
-                "return": returnFields,
-                "id": id
+                "return": returnFields
             });
         },
 
