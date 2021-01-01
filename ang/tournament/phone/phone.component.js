@@ -16,13 +16,6 @@ angular.module('tournament').component('trnPhone', {
         self.contactId = $routeParams.contactId;
       }
 
-      phone.getPhoneTypes().then(
-        // Success
-        (result) => { self.setPhoneTypes(result); },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get phone types, error = ' + error.error_message), ts('Not Found'), 'error'); }
-      );
-
       phone.get(self.contactId, self.id).then(
         // Success
         (result) => { self.setSelectedPhone(result.values[0]); },
@@ -36,10 +29,6 @@ angular.module('tournament').component('trnPhone', {
         self.is_primary = phone.is_primary;
         self.is_billing = phone.is_billing;
         self.phone = phone.phone;
-      };
-
-      self.setPhoneTypes = (options) => {
-        self.phoneTypes = options;
       };
 
       self.save = () => {

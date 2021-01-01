@@ -1,16 +1,5 @@
 angular.module('tournament').factory('phone', function (crmApi) {
     return {
-        // Get values/labels for option groups: phone types (mobile, fax, etc.)
-        // @return Promise of option groups/values (per APIv3)
-        getPhoneTypes: () => {
-            return crmApi('OptionValue', 'get', {
-                "sequential": 1,
-                "return": ["value", "label"],
-                "option_group_id": "phone_type",
-                "is_active": 1
-            });
-        },
-
         // Get an address record
         // @param contact_id  (per APIv3)
         // @param id (per APIv3)
