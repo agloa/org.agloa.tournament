@@ -31,12 +31,7 @@ angular.module('tournament').factory('organization', function (crmApi) {
             });
         },
         delete: (id) => {
-            return crmApi('Contact', 'delete', { id }).then(
-                (result) => {
-                    return result.id;
-                }, (error) => {
-                    CRM.alert(ts('Could not delete Organization id = ' + id + ' , error = ' + error.error_message), ts('Error'), 'error');
-                });
+            return crmApi('Contact', 'delete', { id });
         }
     }
 });

@@ -54,7 +54,6 @@ describe('organization', function () {
 
   it('should delete organization in crmApi', () => {
     const  id = 1;
-
     organization.delete(id);
     expect(crmApi).toHaveBeenCalledWith('Contact', 'delete', { id });
   });
