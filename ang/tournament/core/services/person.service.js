@@ -78,12 +78,7 @@ angular.module('tournament').factory('person', function (crmApi) {
     },
 
     delete: (id) => {
-      return crmApi('Contact', 'delete', { id }).then(
-        (result) => {
-          return result.id;
-        }, (error) => {
-          CRM.alert(ts('Could not delete Person id = ' + id + ' , error = ' + error.error_message), ts('Error'), 'error');
-        });
+      return crmApi('Contact', 'delete', { id });
     }
   }
 });

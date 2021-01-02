@@ -98,4 +98,10 @@ describe('person', function () {
     expect(crmApi).toHaveBeenCalledWith('Contact', 'create', expectedPerson);
   });
 
+  it('should delete Contact in crmApi', () => {
+    const  id = 1;
+    person.delete(id);
+    expect(crmApi).toHaveBeenCalledWith('Contact', 'delete', { id });
+  });
+
 });
