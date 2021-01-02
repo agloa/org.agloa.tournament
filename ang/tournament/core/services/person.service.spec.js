@@ -68,17 +68,32 @@ describe('person', function () {
 
   it('save should create person in crmApi', () => {
     const testPerson = {
-      first_name: "test",
-      contact_type: "test",
+      id: 1,
+      contact_sub_type: "person.contact_sub_type",
+      first_name: "person.first_name",
+      middle_name: "person.middle_name",
+      last_name: "person.last_name",
+      prefix_id: "person.prefix_id",
+      suffix_id: "person.suffix_id",
+      gender_id: "person.gender_id",
+      birth_date: "person.birth_date",
+      modified_date: "person.modified_date",
+      email: "person.email",
+      phone: "person.phone",
+      street_address: "person.street_address",
+      supplemental_address_1: "person.supplemental_address_1",
+      supplemental_address_2: "person.supplemental_address_2",
+      supplemental_address_3: "person.supplemental_address_3",
+      city: "person.city",
+      postal_code: "person.postal_code",
+      postal_code_suffix: "person.postal_code_suffix",
+      country_id: "person.country_id",
+      state_province_id: "person.state_province_id",
     };
-    const expectedPerson = testPerson;
-    person.save(testPerson);
-    expect(crmApi).toHaveBeenCalledWith('Contact', 'create', expectedPerson);
-  });
+    
+    let expectedPerson = testPerson;
+    expectedPerson.contact_type = "Individual";
 
-  it('save should add person contact_type in crmApi', () => {
-    const testPerson = {};
-    const expectedPerson = {contact_type: "person"};
     person.save(testPerson);
     expect(crmApi).toHaveBeenCalledWith('Contact', 'create', expectedPerson);
   });

@@ -6,12 +6,12 @@ angular.module('tournament').factory('person', function (crmApi) {
     get: (id) => {
       if (id) {
         return crmApi('Contact', 'getsingle', {
-          "return": ["id","contact_sub_type","display_name","first_name","middle_name","last_name","prefix_id","suffix_id","gender_id","birth_date","modified_date","email","phone","street_address","supplemental_address_1","supplemental_address_2","supplemental_address_3","city","postal_code","postal_code_suffix","country_id","state_province_id"],
+          "return": ["id", "contact_sub_type", "display_name", "first_name", "middle_name", "last_name", "prefix_id", "suffix_id", "gender_id", "birth_date", "modified_date", "email", "phone", "street_address", "supplemental_address_1", "supplemental_address_2", "supplemental_address_3", "city", "postal_code", "postal_code_suffix", "country_id", "state_province_id"],
           "id": id
         });
       }
       return crmApi('Contact', 'get', {
-        "return": ["id","contact_sub_type","display_name","first_name","middle_name","last_name","prefix_id","suffix_id","gender_id","birth_date","modified_date","email","phone","street_address","supplemental_address_1","supplemental_address_2","supplemental_address_3","city","postal_code","postal_code_suffix","country_id","state_province_id"],
+        "return": ["id", "contact_sub_type", "display_name", "first_name", "middle_name", "last_name", "prefix_id", "suffix_id", "gender_id", "birth_date", "modified_date", "email", "phone", "street_address", "supplemental_address_1", "supplemental_address_2", "supplemental_address_3", "city", "postal_code", "postal_code_suffix", "country_id", "state_province_id"],
         "contact_type": "Individual",
       });
     },
@@ -48,9 +48,33 @@ angular.module('tournament').factory('person', function (crmApi) {
 
     save: (person) => {
       if (!person.contact_type) {
-        person.contact_type = "person";
+        person.contact_type = "Individual";
       }
-      return crmApi('Contact', 'create', person);
+
+      return crmApi('Contact', 'create', {
+        id: person.id,
+        contact_type: person.contact_type,
+        contact_sub_type: person.contact_sub_type,
+        first_name: person.first_name,
+        middle_name: person.middle_name,
+        last_name: person.last_name,
+        prefix_id: person.prefix_id,
+        suffix_id: person.suffix_id,
+        gender_id: person.gender_id,
+        birth_date: person.birth_date,
+        modified_date: person.modified_date,
+        email: person.email,
+        phone: person.phone,
+        street_address: person.street_address,
+        supplemental_address_1: person.supplemental_address_1,
+        supplemental_address_2: person.supplemental_address_2,
+        supplemental_address_3: person.supplemental_address_3,
+        city: person.city,
+        postal_code: person.postal_code,
+        postal_code_suffix: person.postal_code_suffix,
+        country_id: person.country_id,
+        state_province_id: person.state_province_id
+      });
     },
 
     delete: (id) => {
