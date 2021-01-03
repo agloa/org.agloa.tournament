@@ -28,27 +28,69 @@
     <input type="date" id="birth_dateInput" class="crm-form-text crm-form-date" name="birth_dateInput"
         ng-model="$ctrl.birth_date">
     </input>
-    
+
     <label for="genderSelect" class="sr-only">Gender</label>
     <select id="genderSelect" name="genderSelect" class="crm-form-select"
         ng-options="option.value as option.label for option in $ctrl.genders" ng-model="$ctrl.gender">
     </select>
 
-    <div ng-if="$ctrl.id">
-        <details ng-click="$ctrl.emailClicked()">
-            <summary>Update email info</summary>
-        </details>
-        <trn-email ng-if="$ctrl.displayEmail" contact-id="{{$ctrl.id}}"></trn-email>
-        
-        <details ng-click="$ctrl.phoneClicked()">
-            <summary>Update phone info</summary>
-        </details>
-        <trn-phone ng-if="$ctrl.displayPhone" contact-id="{{$ctrl.id}}"></trn-phone>
+    <div><label for="emailInput">Email</label>
+        <input id="emailInput" name="emailInput" ng-model="$ctrl.email" placeholder="email" required type="email"
+            class="crm-form-text"></input>
+    </div>
 
-        <details ng-click="$ctrl.addressClicked()">
-            <summary>Update address info</summary>
-        </details>
-        <trn-address ng-if="$ctrl.displayAddress" contact-id="{{$ctrl.id}}"></trn-address>        
+    <div><label for="phoneInput">Phone</label>
+        <input id="phoneInput" name="phoneInput" ng-model="$ctrl.phone" placeholder="Phone" required type="tel"
+            class="crm-form-text"></input>
+    </div>
+
+    <div>
+        <label for="street_addressInput">Address</label>
+        <input id="street_addressInput" name="street_addressInput" ng-model="$ctrl.street_address" class="crm-form-text"
+            placeholder="Address" required>
+        </input>
+        <label for="supplemental_address_1Input" class="sr-only">Address 1</label>
+        <input id="supplemental_address_1Input" name="supplemental_address_1Input"
+            ng-model="$ctrl.supplemental_address_1" class="crm-form-text" placeholder="cont.">
+        </input>
+        <label for="supplemental_address_2Input" class="sr-only">Address 2</label>
+        <input id="supplemental_address_2Input" name="supplemental_address_2Input"
+            ng-model="$ctrl.supplemental_address_2" class="crm-form-text" placeholder="cont.">
+        </input>
+        <label for="supplemental_address_3Input" class="sr-only">Address 3</label>
+        <input id="supplemental_address_3Input" name="supplemental_address_3Input"
+            ng-model="$ctrl.supplemental_address_3" class="crm-form-text" placeholder="cont.">
+        </input>
+    </div>
+
+    <div>
+        <label for="cityInput">City</label>
+        <input id="cityInput" name="cityInput" ng-model="$ctrl.city" class="crm-form-text" placeholder="City" required>
+        </input>
+        <label for="countrySelect">Country</label>
+        <select required id="countrySelect" name="countrySelect" class="big crm-form-select"
+            select="{placeholder: '', allowClear:true}"
+            ng-options="option.id as option.name for option in $ctrl.countries" ng-model="$ctrl.country_id">
+        </select>
+        <div ng-show="$ctrl.country_id" class="inline">
+            <label for="state_provinceSelect">State/Province</label>
+            <select required id="state_provinceSelect" name="state_provinceSelect" class="big crm-form-select"
+                select="{placeholder: '', allowClear:true}"
+                ng-options="option.id as option.name for option in $ctrl.regions | filter:{country_id:$ctrl.country_id}"
+                ng-model="$ctrl.state_province_id">
+            </select>
+        </div>
+    </div>
+
+    <div>
+        <label for="postal_codeInput">Postal Code</label>
+        <input id="postal_codeInput" name="postal_codeInput" ng-model="$ctrl.postal_code" class="crm-form-text"
+            placeholder="Postal Code" required>
+        </input>
+        <label for="postal_code_suffix">Postal Code Suffix</label>
+        <input id="postal_code_suffixInput" name="postal_code_suffixInput" ng-model="$ctrl.postal_code_suffix"
+            class="crm-form-text" placeholder="Postal Code Suffix">
+        </input>
     </div>
 
     <button ng-click="$ctrl.save()">Save</button>
