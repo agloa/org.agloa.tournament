@@ -12,14 +12,16 @@ angular.module('tournament').component('trnPerson', {
         self.contactId = $routeParams.contactId;
       }
 
-      self.id = self.contactId;
+      self.$onInit = function () {
+        self.id = self.contactId;
 
-      person.get(self.contactId).then(
-        // Success
-        (result) => { self.setSelectedPerson(result); },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get person record ID = ' + self.contactId + ', error = ' + error.error_message), ts('Not Found'), 'error'); }
-      );
+        person.get(self.contactId).then(
+          // Success
+          (result) => { self.setSelectedPerson(result); },
+          // Failure
+          (error) => { CRM.alert(ts('Could not get person record ID = ' + self.contactId + ', error = ' + error.error_message), ts('Not Found'), 'error'); }
+        );
+      };      
 
       person.getGenders().then(
         // Success
@@ -27,7 +29,7 @@ angular.module('tournament').component('trnPerson', {
         // Failure
         (error) => { CRM.alert(ts('Could not get gender options error = ' + error), ts('Not Found'), 'error'); }
       )
-
+      
       person.getPrefixes().then(
         // Success
         (result) => { self.setPrefixes(result); },
@@ -142,7 +144,7 @@ angular.module('tournament').component('trnPerson', {
         );
       },
 
-      self.delete =  () => {
+      self.delete = () => {
         person.delete(self.contactId).then(
           // Success
           () => { CRM.alert(ts("Deleted"), ts("Deleted"), 'info'); },
