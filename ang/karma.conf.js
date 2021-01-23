@@ -18,7 +18,7 @@ module.exports = function(config) {
       // '!(app/lib)/**/*!(.module|.spec).js',
 
       // '**/*.spec.js',
-      "tournament/core/*/*.spec.js",
+      "unit-tests/core/*/*.spec.js",
       
       "tournament/core/util.js",
     
