@@ -7,11 +7,8 @@ return array (
     array (
         0 => 'ang/app.js',
         1 => 'ang/tournament/core/services/*.service.js',
-        2 => 'ang/tournament/core/util.js',
         3 => 'ang/tournament/*.js',
-        4 => 'ang/tournament/dashboard/dashboard.component.js',
-        5 => 'ang/tournament/person/person.component.js',
-        6 => 'ang/tournament/organization/organization.component.js',
+        4 => 'ang/tournament/*/*.js',
     ),
   'css' => 
     array (
