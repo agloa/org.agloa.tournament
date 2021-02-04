@@ -3,3 +3,4 @@ package-lock.json
 node_modules
 ang/.vscode/settings.json
 ang/debug.log
+ang/coverage
