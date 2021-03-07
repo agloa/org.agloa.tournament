@@ -47,7 +47,7 @@ angular.module('tournament').factory('person', function (crmApi) {
     },
 
     save: (person) => {
-      if (!person.contact_type) {
+      if (person.contact_type == undefined) {
         person.contact_type = "Individual";
       }
 

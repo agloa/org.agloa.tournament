@@ -66,7 +66,7 @@ describe('person', function () {
     });
   });
 
-  it('save should create person in crmApi', () => {
+  it('s save should create person in crmApi', () => {
     const testPerson = {
       id: 1,
       contact_sub_type: "person.contact_sub_type",
@@ -90,11 +90,12 @@ describe('person', function () {
       country_id: "person.country_id",
       state_province_id: "person.state_province_id",
     };
+
+    person.save(testPerson);
     
     let expectedPerson = testPerson;
     expectedPerson.contact_type = "Individual";
-
-    person.save(testPerson);
+    
     expect(crmApi).toHaveBeenCalledWith('Contact', 'create', expectedPerson);
   });
 
