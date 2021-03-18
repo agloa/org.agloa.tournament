@@ -78,6 +78,15 @@ describe('address', function () {
     });
   });
 
+  it('should get states and provinces', async function () {
+    await address.getStateProvinces();
+    expect(crmApi).toHaveBeenCalledWith('StateProvince', 'get', {
+      "sequential": 1,
+      "id": { "IN": [ '1228', '1101', '1208' ] },
+      "options": { "limit": 0 }
+    });
+  });
+
   it('save should create address in crmApi', () => {
     const testAddress = {
       id: 1
