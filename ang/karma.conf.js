@@ -40,8 +40,10 @@ module.exports = function (config) {
       'tournament/core/services/*.js': ['coverage']
     },
     coverageReporter: {
-      type: 'html',
-      dir: 'coverage'
+      reporters: [{
+        type: 'html',
+        dir: 'coverage'
+      }, { type: 'text' }]
     },
 
     plugins: [
