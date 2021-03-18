@@ -32,12 +32,13 @@ module.exports = function (config) {
 
     frameworks: ['jasmine'],
 
-    browsers: ['Chrome', 'Firefox'],
+    browsers: ['Chrome'],//, 'Firefox'],
 
     // Code coverage report
     reporters: ['progress', 'coverage'],
     preprocessors: {
-      'tournament/core/services/*.js': ['coverage']
+      'tournament/*/*.js': ['coverage'],
+      'tournament/*/*/*.js': ['coverage']
     },
     coverageReporter: {
       reporters: [{
