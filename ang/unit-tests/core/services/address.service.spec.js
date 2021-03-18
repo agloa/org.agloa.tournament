@@ -24,8 +24,14 @@ describe('address', function () {
     jasmine.addCustomEqualityTester(angular.equals);
     module('tournament');
 
-    // This ***HAS*** to go before the beforeEach(inject(...)) block
-    crmApi = jasmine.createSpy('crmApiMock')
+    // This ***MUST*** go before the beforeEach(inject(...)) block
+    crmApi = jasmine.createSpy('crmApiMock').and.returnValue(Promise.resolve(
+      {
+        values:[{
+          countryLimit: ["1228", "1101", "1208"]
+        }]
+      }
+      ));
 
     module(function ($provide) {
       $provide.value('crmApi', crmApi);
@@ -61,7 +67,16 @@ describe('address', function () {
       "id": id,
       "is_primary": 1
     });
-  });  
+  });
+
+  it('should get countries', async function () {
+    await address.getCountries();
+    expect(crmApi).toHaveBeenCalledWith('Country', 'get', {
+      "sequential": 1,
+      "id": { "IN": [ '1228', '1101', '1208' ] },
+      "options": { "limit": 0 }
+    });
+  });
 
   it('save should create address in crmApi', () => {
     const testAddress = {
