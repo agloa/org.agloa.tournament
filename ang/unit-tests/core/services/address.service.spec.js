@@ -76,14 +76,22 @@ describe('address', function () {
       "id": { "IN": [ '1228', '1101', '1208' ] },
       "options": { "limit": 0 }
     });
+    expect(crmApi).toHaveBeenCalledWith('Setting', 'get', {
+      "sequential": 1,
+      return: [ 'countryLimit' ]
+    });
   });
 
   it('should get states and provinces', async function () {
     await address.getStateProvinces();
     expect(crmApi).toHaveBeenCalledWith('StateProvince', 'get', {
       "sequential": 1,
-      "id": { "IN": [ '1228', '1101', '1208' ] },
+      "country_id": { "IN": [ '1228', '1101', '1208' ] },
       "options": { "limit": 0 }
+    });
+    expect(crmApi).toHaveBeenCalledWith('Setting', 'get', {
+      "sequential": 1,
+      return: [ 'countryLimit' ]
     });
   });
 
