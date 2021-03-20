@@ -12,20 +12,9 @@ module.exports = function (config) {
       'node_modules/angular-mocks/angular-mocks.js',
       'app.js',
       // '**/*.module.js',
-      '**/*.service.js',
+      'tournament/**/*.js',
       // '*!(.module|.spec).js',
       'crmUtil.js',
-      // '!(app/lib)/**/*!(.module|.spec).js',
-
-      'unit-tests/**/*.spec.js',
-
-      "tournament/core/util.js",
-
-      "tournament/dashboard/dashboard.component.js",
-      "tournament/person/person.component.js",
-      "tournament/address/address.component.js",
-      "tournament/phone/phone.component.js",
-      "tournament/email/email.component.js",
     ],
 
     autoWatch: true,
