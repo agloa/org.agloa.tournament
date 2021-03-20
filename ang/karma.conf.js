@@ -1,6 +1,14 @@
 //jshint strict: false
 module.exports = function (config) {
   config.set({
+    browsers: ['Chrome'],//, 'Firefox'],
+
+    plugins: [
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-jasmine',
+      'karma-coverage' // required for coverage
+    ],
 
     basePath: './',
 
@@ -11,17 +19,14 @@ module.exports = function (config) {
       'app/lib/angular-route/angular-route.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'app.js',
-      // '**/*.module.js',
+      'tournament/core/*.js',
       'tournament/**/*.js',
-      // '*!(.module|.spec).js',
       'crmUtil.js',
     ],
 
     autoWatch: true,
 
     frameworks: ['jasmine'],
-
-    browsers: ['Chrome'],//, 'Firefox'],
 
     // Code coverage report
     reporters: ['progress', 'coverage'],
@@ -35,13 +40,6 @@ module.exports = function (config) {
         dir: 'coverage'
       }, { type: 'text' }]
     },
-
-    plugins: [
-      'karma-chrome-launcher',
-      'karma-firefox-launcher',
-      'karma-jasmine',
-      'karma-coverage' // required for coverage
-    ]
 
   });
 };
