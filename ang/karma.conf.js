@@ -22,6 +22,7 @@ module.exports = function (config) {
       'tournament/core/*.js',
       'tournament/**/*.js',
       'crmUtil.js',
+      'unit-tests/**/*.js'
     ],
 
     autoWatch: true,

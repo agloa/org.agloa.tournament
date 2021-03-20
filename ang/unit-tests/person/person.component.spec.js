@@ -21,7 +21,7 @@ describe('person component', function () {
         });
     });
 
-    it('should call the `onDelete` binding, when deleting the hero', function () {
+    it('should get genders', function () {
         var onDeleteSpy = jasmine.createSpy('getGenders');
         var bindings = { contactId: 1 };
         var ctrl = $componentController('trnPerson', null, bindings);
