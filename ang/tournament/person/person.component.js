@@ -12,52 +12,6 @@ angular.module('tournament').component('trnPerson', {
         self.contactId = $routeParams.contactId;
       }
 
-      self.$onInit = function () {
-        self.id = self.contactId;
-
-        person.get(self.contactId).then(
-          // Success
-          (result) => { self.setSelectedPerson(result); },
-          // Failure
-          (error) => { CRM.alert(ts('Could not get person record ID = ' + self.contactId + ', error = ' + error.error_message), ts('Not Found'), 'error'); }
-        );
-      };      
-
-      person.getGenders().then(
-        // Success
-        (result) => { self.setGenders(result); },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get gender options error = ' + error), ts('Not Found'), 'error'); }
-      )
-      
-      person.getPrefixes().then(
-        // Success
-        (result) => { self.setPrefixes(result); },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get prefix options error = ' + error), ts('Not Found'), 'error'); }
-      )
-
-      person.getSuffixes().then(
-        // Success
-        (result) => { self.setSuffixes(result); },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get suffix options error = ' + error.error_message), ts('Not Found'), 'error'); }
-      )
-
-      address.getCountries().then(
-        // Success
-        (result) => { self.setCountries(result); },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get countries, error = ' + error.error_message), ts('Not Found'), 'error'); }
-      )
-
-      address.getStateProvinces().then(
-        // Success
-        (result) => { self.setRegions(result); },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get states/provinces, error = ' + error.error_message), ts('Not Found'), 'error'); }
-      )
-
       self.setSelectedPerson = (person) => {
         self.last_name = person.last_name;
         self.first_name = person.first_name;
@@ -78,7 +32,7 @@ angular.module('tournament').component('trnPerson', {
         self.supplemental_address_3 = person.supplemental_address_3,
         self.city = person.city,
         self.postal_code = person.postal_code,
-        self.postal_code_suffi = person.postal_code_suffix,
+        self.postal_code_suffix = person.postal_code_suffix,
         self.country_id = person.country_id,
         self.state_province_id = person.state_province_id
       };
@@ -151,7 +105,67 @@ angular.module('tournament').component('trnPerson', {
           // Failure
           (error) => { CRM.alert(ts('Could not delete person record ID = ' + self.contactId + ', error = ' + error.error_message), ts('Database Error'), 'error'); }
         )
-      }
+      }      
+
+      self.$onInit = function () {
+        self.id = self.contactId;
+
+        person.get(self.contactId).then(
+          // Success
+          (result) => { 
+            self.setSelectedPerson(result); 
+          },
+          // Failure
+          (error) => { 
+            CRM.alert(ts('Could not get person record ID = ' + self.contactId + ', error = ' + error.error_message), ts('Not Found'), 'error'); 
+          }
+        );
+      };      
+
+      person.getGenders().then(
+        // Success
+        (result) => { 
+          self.setGenders(result); 
+        },
+        // Failure
+        (error) => { CRM.alert(ts('Could not get gender options error = ' + error), ts('Not Found'), 'error'); }
+      )
+      
+      person.getPrefixes().then(
+        // Success
+        (result) => { 
+          self.setPrefixes(result); 
+        },
+        // Failure
+        (error) => { CRM.alert(ts('Could not get prefix options error = ' + error), ts('Not Found'), 'error'); }
+      )
+
+      person.getSuffixes().then(
+        // Success
+        (result) => { 
+          self.setSuffixes(result); 
+        },
+        // Failure
+        (error) => { CRM.alert(ts('Could not get suffix options error = ' + error.error_message), ts('Not Found'), 'error'); }
+      );
+
+      address.getCountries().then(
+        // Success
+        (result) => { 
+          self.setCountries(result); 
+        },
+        // Failure
+        (error) => { CRM.alert(ts('Could not get countries, error = ' + error.error_message), ts('Not Found'), 'error'); }
+      )
+
+      address.getStateProvinces().then(
+        // Success
+        (result) => { 
+          self.setRegions(result); 
+        },
+        // Failure
+        (error) => { CRM.alert(ts('Could not get states/provinces, error = ' + error.error_message), ts('Not Found'), 'error'); }
+      )
     }
   ]
 });
