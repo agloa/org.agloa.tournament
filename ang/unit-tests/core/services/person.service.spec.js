@@ -8,21 +8,21 @@ describe('person', function () {
     // Add a custom equality tester before each test
     jasmine.addCustomEqualityTester(angular.equals);
     module('tournament');
-    
+
     // This ***HAS*** to go before the beforeEach(inject(...)) block
     crmApi = jasmine.createSpy('crmApiMock')
 
     module(function ($provide) {
       $provide.value('crmApi', crmApi);
     });
-    
+
     inject(function (_person_) { person = _person_; });
   });
 
   it('should get from crmApi', function () {
     person.get();
     expect(crmApi).toHaveBeenCalledWith('Contact', 'get', {
-      "return": ["id","contact_sub_type","display_name","first_name","middle_name","last_name","prefix_id","suffix_id","gender_id","birth_date","modified_date","email","phone","street_address","supplemental_address_1","supplemental_address_2","supplemental_address_3","city","postal_code","postal_code_suffix","country_id","state_province_id"],
+      // "return": ["id","contact_sub_type","display_name","first_name","middle_name","last_name","prefix_id","suffix_id","gender_id","birth_date","modified_date","email","phone","street_address","supplemental_address_1","supplemental_address_2","supplemental_address_3","city","postal_code","postal_code_suffix","country_id","state_province_id"],
       "contact_type": "Individual",
     });
   });
@@ -31,7 +31,7 @@ describe('person', function () {
     const id = 2;
     person.get(id);
     expect(crmApi).toHaveBeenCalledWith('Contact', 'getsingle', {
-      "return": ["id","contact_sub_type","display_name","first_name","middle_name","last_name","prefix_id","suffix_id","gender_id","birth_date","modified_date","email","phone","street_address","supplemental_address_1","supplemental_address_2","supplemental_address_3","city","postal_code","postal_code_suffix","country_id","state_province_id"],
+      //"return": ["id","contact_sub_type","display_name","first_name","middle_name","last_name","prefix_id","suffix_id","gender_id","birth_date","modified_date","email","phone","street_address","supplemental_address_1","supplemental_address_2","supplemental_address_3","city","postal_code","postal_code_suffix","country_id","state_province_id"],
       "id": id
     });
   });
@@ -92,15 +92,15 @@ describe('person', function () {
     };
 
     person.save(testPerson);
-    
+
     let expectedPerson = testPerson;
     expectedPerson.contact_type = "Individual";
-    
+
     expect(crmApi).toHaveBeenCalledWith('Contact', 'create', expectedPerson);
   });
 
   it('should delete Contact in crmApi', () => {
-    const  id = 1;
+    const id = 1;
     person.delete(id);
     expect(crmApi).toHaveBeenCalledWith('Contact', 'delete', { id });
   });

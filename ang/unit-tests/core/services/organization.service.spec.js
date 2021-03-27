@@ -24,7 +24,7 @@ describe('organization', function () {
     organization.get();
     expect(crmApi).toHaveBeenCalledWith('Contact', 'get', {
       "sequential": 1,
-      "return": ["id", "organization_name"],
+      //"return": ["id", "organization_name"],
       "contact_type": "Organization",
       "contact_sub_type": contact_sub_type,
     });
@@ -34,7 +34,7 @@ describe('organization', function () {
     const id = 2;
     organization.get(id);
     expect(crmApi).toHaveBeenCalledWith('Contact', 'getsingle', {
-      "return": ["organization_name"],
+      //"return": ["organization_name"],
       "id": id
     });
   });
@@ -53,7 +53,7 @@ describe('organization', function () {
   });
 
   it('should delete organization in crmApi', () => {
-    const  id = 1;
+    const id = 1;
     organization.delete(id);
     expect(crmApi).toHaveBeenCalledWith('Contact', 'delete', { id });
   });
