@@ -1,12 +1,9 @@
 'use strict';
 
 describe('person component', function () {
-    var $componentController;
-    var $routeParams;
-    var person;
-    var address;
+    let personMock = jasmine.createSpy('personSaveMock').and.returnValue(Promise.resolve({}));
 
-    var genders = {
+    let genders = {
         values: [
             {
                 value: 'M',
@@ -19,7 +16,7 @@ describe('person component', function () {
         ]
     };
 
-    var prefixes = {
+    let prefixes = {
         values: [
             {
                 value: 1,
@@ -40,7 +37,7 @@ describe('person component', function () {
         ]
     };
 
-    var suffixes = {
+    let suffixes = {
         values: [
             {
                 label: "Jr.",
@@ -77,53 +74,27 @@ describe('person component', function () {
         ]
     };
 
-    var person = {
+    let person = {
         "contact_id": "2",
         "contact_type": "Individual",
-        "contact_sub_type": "",
         "sort_name": "Steigerwald, Michael",
         "display_name": "Mr. Michael Steigerwald",
-        "do_not_email": "0",
-        "do_not_phone": "0",
-        "do_not_mail": "0",
-        "do_not_sms": "0",
-        "do_not_trade": "0",
-        "is_opt_out": "0",
-        "legal_identifier": "",
-        "external_identifier": "",
-        "nick_name": "",
-        "legal_name": "",
-        "image_URL": "",
-        "preferred_communication_method": "",
-        "preferred_language": "en_US",
-        "preferred_mail_format": "Both",
         "first_name": "Michael",
         "middle_name": "Francis",
         "last_name": "Steigerwald",
         "prefix_id": "3",
         "suffix_id": "",
         "formal_title": "",
-        "communication_style_id": "1",
-        "job_title": "",
         "gender_id": "2",
-        "birth_date": "1961-02-05",
-        "is_deceased": "0",
-        "deceased_date": "",
-        "household_name": "",
-        "organization_name": "",
-        "sic_code": "",
-        "contact_is_deleted": "0",
-        "current_employer": "",
+        "birth_date": "1961-02-04",
         "address_id": "10",
-        "street_address": "P. O. Box 3142",
+        "street_address": "1870 Shady Beach Ave.",
         "supplemental_address_1": "",
         "supplemental_address_2": "",
         "supplemental_address_3": "",
         "city": "Roseville",
         "postal_code_suffix": "6900",
         "postal_code": "55113",
-        "geo_code_1": "",
-        "geo_code_2": "",
         "state_province_id": "1022",
         "country_id": "1228",
         "phone_id": "1",
@@ -131,13 +102,6 @@ describe('person component', function () {
         "phone": "(612) 875-1888",
         "email_id": "2",
         "email": "cio@agloa.org",
-        "on_hold": "0",
-        "im_id": "",
-        "provider_id": "",
-        "im": "",
-        "worldregion_id": "2",
-        "world_region": "America South, Central, North and Caribbean",
-        "languages": "English (United States)",
         "individual_prefix": "Mr.",
         "individual_suffix": "",
         "communication_style": "Formal",
@@ -148,7 +112,7 @@ describe('person component', function () {
         "id": "2"
     }
 
-    var countries = [
+    let countries = [
         {
             id: "1101",
             name: "India",
@@ -172,7 +136,7 @@ describe('person component', function () {
         }
     ]
 
-    var states_provinces = [
+    let states_provinces = [
         {
             id: "1005",
             name: "Colorado",
@@ -229,6 +193,9 @@ describe('person component', function () {
         },
     ]
 
+    let $componentController;
+    let $routeParams;
+
     beforeEach(function () {
         // Add a custom equality tester before each test
         jasmine.addCustomEqualityTester(angular.equals);
@@ -248,10 +215,12 @@ describe('person component', function () {
             },
             getSuffixes: function () {
                 return Promise.resolve(suffixes);
-            }
+            },
+            save: personMock,
+            delete: personMock
         };
 
-        address = {
+        let address = {
             getCountries: function () {
                 return Promise.resolve(countries);
             },
@@ -299,7 +268,7 @@ describe('person component', function () {
         expect(controller.id).toBe(contactId);
     });
 
-    it('should save', async function () {
+    it('should save by calling person service save', async function () {
         // Assemble
         let contactId = 1;
         var bindings = { contactId: 1 };
@@ -311,6 +280,22 @@ describe('person component', function () {
 
         // Act
         await controller.save();
+        expect(personMock).toHaveBeenCalled();
+    });
+
+    it('should delete by calling person service delete', async function () {
+        // Assemble
+        let contactId = 1;
+        var bindings = { contactId: 1 };
+
+        var controller = await $componentController('trnPerson', null, bindings);
+        expect(controller).toBeDefined();
+        await controller.$onInit();
+        expect(controller.id).toBe(contactId);
+
+        // Act
+        await controller.delete();
+        expect(personMock).toHaveBeenCalled();
     });
 
 });
