@@ -1,7 +1,8 @@
 'use strict';
 
 describe('person component', function () {
-    let personMock = jasmine.createSpy('personSaveMock').and.returnValue(Promise.resolve({}));
+    let personMock = jasmine.createSpy('personMock').and.returnValue(Promise.resolve({}));
+    let personService;
 
     let genders = {
         values: [
@@ -203,7 +204,7 @@ describe('person component', function () {
         module('tournament');
 
         // This ***MUST*** go before the inject(...) block
-        person = {
+        personService = {
             get: function () {
                 return Promise.resolve(person);
             },
@@ -230,7 +231,7 @@ describe('person component', function () {
         };
 
         module(function ($provide) {
-            $provide.value('person', person);
+            $provide.value('person', personService);
             $provide.value('address', address);
         });
 
