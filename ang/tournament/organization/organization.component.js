@@ -8,12 +8,12 @@ angular.module('tournament').component('trnOrganization', {
     requiresApproval: '@',
     requestorId: '@'
   },
-  controller: ['$routeParams', 'organization',
-    function ($routeParams, organization) {
+  controller: ['$routeParams', 'organization', 'address',
+    function ($routeParams, organization, address) {
       var self = this;
 
       if ($routeParams.organizationId !== undefined) {
-        self.id = $routeParams.organizationId;
+        self.contactId = $routeParams.organizationId;
       }
 
       self.setSelectedOrganization = (organization) => {
