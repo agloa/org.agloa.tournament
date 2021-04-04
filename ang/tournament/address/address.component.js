@@ -16,27 +16,6 @@ angular.module('tournament').component('trnAddress', {
         self.contactId = $routeParams.contactId;
       }
 
-      address.getCountries().then(
-        // Success
-        (result) => { self.setCountries(result); },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get countries, error = ' + error.error_message), ts('Not Found'), 'error'); }
-      )
-
-      address.getStateProvinces().then(
-        // Success
-        (result) => { self.setRegions(result); },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get states/provinces, error = ' + error.error_message), ts('Not Found'), 'error'); }
-      )
-
-      address.get(self.contactId, self.id).then(
-        // Success
-        (result) => { self.setSelectedAddress(result.values[0]); },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get address record, error = ' + error.error_message), ts('Error'), 'error'); }
-      );
-
       self.setSelectedAddress = (address) => {
         self.id = address.id;
         self.street_address = address.street_address;
@@ -69,7 +48,41 @@ angular.module('tournament').component('trnAddress', {
           // Failure
           (error) => { CRM.alert(ts('Could not save address record ID = ' + self.id + ' error = ' + error.error_message), ts('Database error'), 'error'); }
         );
-      }
+      };
+
+      self.delete = () => {
+        address.delete(self.id).then(
+          // Success
+          () => { CRM.alert(ts("Deleted"), ts("Deleted"), 'info'); },
+          // Failure
+          (error) => { CRM.alert(ts('Could not delete address record ID = ' + self.id + ', error = ' + error.error_message), ts('Database Error'), 'error'); }
+        )
+      };
+
+      self.$onInit = function () {
+        self.id = self.contactId;
+
+        address.get(self.contactId, self.id).then(
+          // Success
+          (result) => { self.setSelectedAddress(result.values[0]); },
+          // Failure
+          (error) => { CRM.alert(ts('Could not get address record, error = ' + error.error_message), ts('Error'), 'error'); }
+        );
+      };
+
+      address.getCountries().then(
+        // Success
+        (result) => { self.setCountries(result); },
+        // Failure
+        (error) => { CRM.alert(ts('Could not get countries, error = ' + error.error_message), ts('Not Found'), 'error'); }
+      );
+
+      address.getStateProvinces().then(
+        // Success
+        (result) => { self.setRegions(result); },
+        // Failure
+        (error) => { CRM.alert(ts('Could not get states/provinces, error = ' + error.error_message), ts('Not Found'), 'error'); }
+      );
     }
   ]
 });
