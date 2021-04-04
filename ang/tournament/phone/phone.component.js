@@ -8,20 +8,13 @@ angular.module('tournament').component('trnPhone', {
     function ($routeParams, phone) {
       var self = this;
 
-      if ($routeParams.id !== undefined) {
-        self.id = $routeParams.id;
+      if ($routeParams.phoneId !== undefined) {
+        self.id = $routeParams.phoneId;
       }
 
       if ($routeParams.contactId !== undefined) {
         self.contactId = $routeParams.contactId;
       }
-
-      phone.get(self.contactId, self.id).then(
-        // Success
-        (result) => { self.setSelectedPhone(result.values[0]); },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get phone record, error = ' + error.error_message), ts('Error'), 'error'); }
-      );
 
       self.setSelectedPhone = (phone) => {
         self.id = phone.id;
@@ -39,7 +32,27 @@ angular.module('tournament').component('trnPhone', {
           // Failure
           (error) => { CRM.alert(ts('Could not save phone record ID = ' + self.selectedPhone.id + ' error = ' + error.error_message), ts('Database error'), 'error'); }
         );
-      }
+      };
+
+      self.delete = () => {
+        phone.delete(self.id).then(
+          // Success
+          () => { CRM.alert(ts("Deleted"), ts("Deleted"), 'info'); },
+          // Failure
+          (error) => { CRM.alert(ts('Could not phone email record ID = ' + self.id + ', error = ' + error.error_message), ts('Database Error'), 'error'); }
+        )
+      };
+
+      self.$onInit = function () {
+        self.id = self.contactId;
+
+        phone.get(self.contactId, self.id).then(
+          // Success
+          (result) => { self.setSelectedPhone(result.values[0]); },
+          // Failure
+          (error) => { CRM.alert(ts('Could not get phone record, error = ' + error.error_message), ts('Error'), 'error'); }
+        );
+      };
     }
   ]
 });
