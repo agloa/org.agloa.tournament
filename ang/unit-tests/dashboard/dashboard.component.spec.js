@@ -65,4 +65,30 @@ describe('dashboard component', function () {
         expect(controller.contactId).toBe(contactId);
     });
 
+    it('should display Person', async function () {
+        // Assemble
+        $routeParams.userId = contactId;
+
+        // Act
+        var controller = await $componentController('trnDashboard', null);
+        expect(controller).toBeDefined();
+        controller.personClicked();
+
+        // Assert
+        expect(controller.displayPerson).toBe(true);
+    });
+
+    it('should display Organizations', async function () {
+        // Assemble
+        $routeParams.userId = contactId;
+
+        // Act
+        var controller = await $componentController('trnDashboard', null);
+        expect(controller).toBeDefined();
+        controller.organizationsClicked();
+
+        // Assert
+        expect(controller.displayOrganizations).toBe(true);
+    });
+
 });
