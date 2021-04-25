@@ -47,10 +47,10 @@ describe('email', function () {
       "return": ["id", "contact_id", "location_type_id", "is_primary", "is_billing", "email"],
       "id": id
     });
-  });  
+  });
 
   it('save should create email in crmApi', () => {
-    const testEmail = {      
+    const testEmail = {
       id: 1
       , contact_id: 1
       , location_type_id: 1

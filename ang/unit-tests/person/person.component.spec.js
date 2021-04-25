@@ -1,7 +1,7 @@
 'use strict';
 
 describe('person component', function () {
-    let personMock = jasmine.createSpy('personMock').and.returnValue(Promise.resolve({}));
+    const personMock = jasmine.createSpy('personMock').and.returnValue(Promise.resolve({}));
     let personService;
 
     let genders = {

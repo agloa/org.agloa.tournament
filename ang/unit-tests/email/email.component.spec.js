@@ -98,7 +98,7 @@ describe('email component', function () {
         expect(emailMock).toHaveBeenCalled();
     });
 
-    it('should delete by calling person service delete', async function () {
+    it('should delete by calling email service delete', async function () {
         // Assemble
         var bindings = { id: emailId };
 

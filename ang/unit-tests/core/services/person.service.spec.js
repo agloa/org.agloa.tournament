@@ -22,6 +22,7 @@ describe('person', function () {
   it('should get from crmApi', function () {
     person.get();
     expect(crmApi).toHaveBeenCalledWith('Contact', 'get', {
+      // TODO: put this back after CRM correctly accepts return with country_id and state_province_id
       // "return": ["id","contact_sub_type","display_name","first_name","middle_name","last_name","prefix_id","suffix_id","gender_id","birth_date","modified_date","email","phone","street_address","supplemental_address_1","supplemental_address_2","supplemental_address_3","city","postal_code","postal_code_suffix","country_id","state_province_id"],
       "contact_type": "Individual",
     });
@@ -31,6 +32,7 @@ describe('person', function () {
     const id = 2;
     person.get(id);
     expect(crmApi).toHaveBeenCalledWith('Contact', 'getsingle', {
+      // TODO: put this back after CRM correctly accepts return with country_id and state_province_id
       //"return": ["id","contact_sub_type","display_name","first_name","middle_name","last_name","prefix_id","suffix_id","gender_id","birth_date","modified_date","email","phone","street_address","supplemental_address_1","supplemental_address_2","supplemental_address_3","city","postal_code","postal_code_suffix","country_id","state_province_id"],
       "id": id
     });
