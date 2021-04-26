@@ -72,7 +72,9 @@ angular.module('tournament').component('trnOrganization', {
       }
 
       self.$onInit = function () {
-        self.id = self.contactId;
+        if (self.id == undefined && self.contactId != undefined) {
+          self.id = self.contactId;
+        }
 
         organization.get(self.id).then(
           // Success
