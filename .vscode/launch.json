@@ -1,34 +1,74 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
-        },
-        {
-            "type": "chrome",
-            "request": "launch",
-            "name": "Debug karma tests",
-            "url": "http://localhost:9876/debug.html",
-            "webRoot": "${workspaceFolder}",
-            "runtimeArgs": [
-              "--headless"
-            ],
-            "sourceMaps": true,
-            "sourceMapPathOverrides": {
-              "webpack:/*": "${webRoot}/*",
-              "/./*": "${webRoot}/*",
-              "/src/*": "${webRoot}/*",
-              "/*": "*",
-              "/./~/*": "${webRoot}/node_modules/*"
-            },
-            "port": 9223
-          }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/ang/app.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "pwa-node"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Debug karma tests",
+      "url": "http://localhost:9876/debug.html",
+      "webRoot": "${workspaceFolder}",
+      "runtimeArgs": [
+        "--headless"
+      ],
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:/*": "${webRoot}/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/*",
+        "/*": "*",
+        "/./~/*": "${webRoot}/node_modules/*"
+      },
+      "port": 9223
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "chrome Debug ang e2e tests",
+      "url": "http://localhost:8000",
+      "webRoot": "${workspaceFolder}ang",
+      "runtimeArgs": [
+        "--headless"
+      ],
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:/*": "${webRoot}/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/*",
+        "/*": "*",
+        "/./~/*": "${webRoot}/node_modules/*"
+      },
+      "port": 9223
+    },
+    {
+      "name": "node Debug ang e2e Tests",
+      "type": "node",
+      "request": "launch",
+      "args": [
+        "--inspect"
+      ],
+      "cwd": "${workspaceRoot}/ang",
+      "protocol": "inspector",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
 }

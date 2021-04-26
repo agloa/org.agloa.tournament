@@ -18,6 +18,21 @@ angular.module('tournament').component('trnOrganization', {
 
       self.setSelectedOrganization = (organization) => {
         self.organization_name = organization.organization_name;
+
+        self.contact_type = organization.contact_type;
+        self.contact_sub_type = organization.contact_sub_type;
+        self.modified_date = organization.modified_date;
+        self.email = organization.email;
+        self.phone = organization.phone;
+        self.street_address = organization.street_address;
+        self.supplemental_address_1 = organization.supplemental_address_1;
+        self.supplemental_address_2 = organization.supplemental_address_2;
+        self.supplemental_address_3 = organization.supplemental_address_3;
+        self.city = organization.city;
+        self.postal_code = organization.postal_code;
+        self.postal_code_suffix = organization.postal_code_suffix;
+        self.country_id = organization.country_id;
+        self.state_province_id = organization.state_province_id;
       };
 
       self.setCountries = (options) => {
