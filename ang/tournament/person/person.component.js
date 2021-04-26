@@ -21,20 +21,20 @@ angular.module('tournament').component('trnPerson', {
         self.gender = person.gender_id;
         self.birth_date = new Date(person.birth_date);
 
-        self.contact_type = person.contact_type,
-          self.contact_sub_type = person.contact_sub_type,
-          self.modified_date = person.modified_date,
-          self.email = person.email,
-          self.phone = person.phone,
-          self.street_address = person.street_address,
-          self.supplemental_address_1 = person.supplemental_address_1,
-          self.supplemental_address_2 = person.supplemental_address_2,
-          self.supplemental_address_3 = person.supplemental_address_3,
-          self.city = person.city,
-          self.postal_code = person.postal_code,
-          self.postal_code_suffix = person.postal_code_suffix,
-          self.country_id = person.country_id,
-          self.state_province_id = person.state_province_id
+        self.contact_type = person.contact_type;
+        self.contact_sub_type = person.contact_sub_type;
+        self.modified_date = person.modified_date;
+        self.email = person.email;
+        self.phone = person.phone;
+        self.street_address = person.street_address;
+        self.supplemental_address_1 = person.supplemental_address_1;
+        self.supplemental_address_2 = person.supplemental_address_2;
+        self.supplemental_address_3 = person.supplemental_address_3;
+        self.city = person.city;
+        self.postal_code = person.postal_code;
+        self.postal_code_suffix = person.postal_code_suffix;
+        self.country_id = person.country_id;
+        self.state_province_id = person.state_province_id;
       };
 
       self.setGenders = (options) => {
