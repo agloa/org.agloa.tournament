@@ -6,7 +6,7 @@ angular.module('tournament').factory('person', function (crmApi) {
     get: (id) => {
       if (id) {
         return crmApi('Contact', 'getsingle', {
-          "return": ["id", "contact_sub_type", "display_name", "first_name", "middle_name", "last_name", "prefix_id", "suffix_id", "gender_id", "birth_date", "modified_date", "email", "phone", "street_address", "supplemental_address_1", "supplemental_address_2", "supplemental_address_3", "city", "postal_code", "postal_code_suffix", "country_id", "state_province_id"],
+          //"return": ["id", "contact_sub_type", "display_name", "first_name", "middle_name", "last_name", "prefix_id", "suffix_id", "gender_id", "birth_date", "modified_date", "email", "phone", "street_address", "supplemental_address_1", "supplemental_address_2", "supplemental_address_3", "city", "postal_code", "postal_code_suffix", "country_id", "state_province_id"],
           "id": id
         });
       }
