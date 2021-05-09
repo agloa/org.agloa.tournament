@@ -63,17 +63,19 @@ angular.module('tournament').factory('person', function (crmApi) {
         gender_id: person.gender_id,
         birth_date: person.birth_date,
         modified_date: person.modified_date,
-        email: person.email,
-        phone: person.phone,
-        street_address: person.street_address,
-        supplemental_address_1: person.supplemental_address_1,
-        supplemental_address_2: person.supplemental_address_2,
-        supplemental_address_3: person.supplemental_address_3,
-        city: person.city,
-        postal_code: person.postal_code,
-        postal_code_suffix: person.postal_code_suffix,
-        country_id: person.country_id,
-        state_province_id: person.state_province_id
+        "api.Email.create": { email: person.email },
+        "api.Phone.create": { phone: person.phone },
+        "api.Address.create": {
+          street_address: person.street_address,
+          supplemental_address_1: person.supplemental_address_1,
+          supplemental_address_2: person.supplemental_address_2,
+          supplemental_address_3: person.supplemental_address_3,
+          city: person.city,
+          postal_code: person.postal_code,
+          postal_code_suffix: person.postal_code_suffix,
+          country_id: person.country_id,
+          state_province_id: person.state_province_id
+        }
       });
     },
 
