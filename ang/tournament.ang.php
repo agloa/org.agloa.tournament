@@ -7,8 +7,7 @@ return array (
     array (
         0 => 'ang/app.js',
         1 => 'ang/tournament/core/services/*.service.js',
-        3 => 'ang/tournament/*.js',
-        4 => 'ang/tournament/*/*.js',
+        2 => 'ang/tournament/*/*.js',
     ),
   'css' => 
     array (
