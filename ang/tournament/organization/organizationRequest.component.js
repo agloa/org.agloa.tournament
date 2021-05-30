@@ -1,6 +1,7 @@
 'use strict';
 
-const organizationRequestTemplateUrl = locationRoot() + '/tournament/organization/organizationRequest.template.html';
+const organizationRequestTemplateUrl = (location.search.includes("?page=CiviCRM") ? "~" : location.origin) + '/tournament/organization/organizationRequest.template.html';
+
 angular.module('tournament').component('trnOrganizationRequest', {
   templateUrl: organizationRequestTemplateUrl,
   bindings: { 

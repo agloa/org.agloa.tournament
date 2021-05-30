@@ -1,6 +1,7 @@
 'use strict';
 
-const phoneTemplateUrl = locationRoot() + '/tournament/phone/phone.template.html';
+const phoneTemplateUrl = (location.search.includes("?page=CiviCRM") ? "~" : location.origin) + '/tournament/phone/phone.template.html';
+
 angular.module('tournament').component('trnPhone', {
   templateUrl: phoneTemplateUrl,
   bindings: { contactId: '@', id: '@' },

@@ -1,6 +1,7 @@
 'use strict';
 
-const accessRequestTemplateUrl = locationRoot() + '/tournament/accessRequest/accessRequest.template.html';
+const accessRequestTemplateUrl = (location.search.includes("?page=CiviCRM") ? "~" : location.origin) + '/tournament/accessRequest/accessRequest.template.html';
+
 angular.module('tournament').component('trnAccessRequest', {
     templateUrl: accessRequestTemplateUrl,
     bindings: { 

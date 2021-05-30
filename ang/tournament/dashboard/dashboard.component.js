@@ -1,6 +1,7 @@
 'use strict';
 
-const dashboardTemplateUrl = locationRoot() + '/tournament/dashboard/dashboard.template.html';
+const dashboardTemplateUrl = (location.search.includes("?page=CiviCRM") ? "~" : location.origin) + '/tournament/dashboard/dashboard.template.html';
+
 angular.module('tournament').component('trnDashboard', {
   templateUrl: dashboardTemplateUrl,
   controller: ['$routeParams', 'person',
@@ -23,20 +24,26 @@ angular.module('tournament').component('trnDashboard', {
 
       self.organizationsClicked = () => {
         this.displayOrganizations = !this.displayOrganizations;
-      }
+      }      
 
+      self.setContact = (contact) => {
+          self.contactId = contact.id;
+          self.display_name = contact.display_name;
+          self.modified_date = contact.modified_date;
+      };
+
+      self.$onInit = function () {
       self.user = person.get(self.contactId).then(
         // Success
         (result) => {
-          self.contactId = result.id;
-          self.display_name = result.display_name;
-          self.modified_date = result.modified_date;
+            self.setContact(result[0]);
         },
         // Failure
         (error) => {
           CRM.alert(ts('Could not get user record ID of ' + self.contactId + ', error = ' + error.error_message), ts('Not Found'), 'error');
         }
       );
+      };
 
     }
   ]

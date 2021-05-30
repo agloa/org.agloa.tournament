@@ -1,6 +1,7 @@
 'use strict';
 
-const groupMembersTemplateUrl = locationRoot() + '/tournament/groupMembers/groupMembers.template.html';
+const groupMembersTemplateUrl = (location.search.includes("?page=CiviCRM") ? "~" : location.origin) + '/tournament/groupMembers/groupMembers.template.html';
+
 angular.module('tournament').component('trnGroupMembers', {
     templateUrl: groupMembersTemplateUrl,
     bindings: {
