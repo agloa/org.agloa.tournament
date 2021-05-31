@@ -1,44 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" ng-app="tournament">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tournament Administration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="app/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="tournament.css" />
 
-<head>
-  <meta charset="utf-8">
-  <title>Tournament Administration</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="app/lib/bootstrap/dist/css/bootstrap.css" />
-  <link rel="stylesheet" href="tournament.css">
-  
-  <script src="app/lib/jquery/dist/jquery.js"></script>
-  <script src="app/lib/angular/angular.js"></script>
-  <script src="app/lib/angular-route/angular-route.js"></script>
-  <script src="app/lib/angular-resource/angular-resource.js"></script>
+    <script src="app/lib/jquery/dist/jquery.js"></script>
+    <script src="app/lib/angular/angular.js"></script>
+    <script src="app/lib/angular-route/angular-route.js"></script>
+    <script src="app/lib/angular-resource/angular-resource.js"></script>
 
-  <script src="app.js"></script>
-  <script src="crmUtil.js"></script>
-  
-  <script src="tournament/core/util.js"></script>
-  <script src="tournament/core/services/person.service.js"></script>
-  <script src="tournament/core/services/address.service.js"></script>
-  <script src="tournament/core/services/email.service.js"></script>
-  <script src="tournament/core/services/phone.service.js"></script>
-  <script src="tournament/core/services/phone.service.js"></script>
-  <script src="tournament/core/services/organization.service.js"></script>
-  <script src="tournament/core/services/billingOrganizations.service.js"></script>
-  <script src="tournament/core/services/billingRelationships.service.js"></script>
+    <script src="app.js"></script>
+    <script src="crmUtil.js"></script>
 
-  <script src="tournament/dashboard/dashboard.component.js"></script>
-  <script src="tournament/person/person.component.js"></script>
-  <script src="tournament/address/address.component.js"></script>
-  <script src="tournament/phone/phone.component.js"></script>
-  <script src="tournament/email/email.component.js"></script>  
-  <script src="tournament/relationships/relationships.component.js"></script>
-  <script src="tournament/accessRequest/accessRequest.component.js"></script>  
-  <script src="tournament/organization/organization.component.js"></script>
-  <script src="tournament/organization/organizationRequest.component.js"></script>
-  <script src="tournament/groupMembers/groupMembers.component.js"></script>
+    <script src="tournament/core/services/person.service.js"></script>
+    <script src="tournament/core/services/address.service.js"></script>
+    <script src="tournament/core/services/email.service.js"></script>
+    <script src="tournament/core/services/phone.service.js"></script>
+    <script src="tournament/core/services/phone.service.js"></script>
+    <script src="tournament/core/services/organization.service.js"></script>
+    <script src="tournament/core/services/billingOrganizations.service.js"></script>
+    <script src="tournament/core/services/billingRelationships.service.js"></script>
 
-</head>
+    <script src="tournament/dashboard/dashboard.component.js"></script>
+    <script src="tournament/person/person.component.js"></script>
+    <script src="tournament/address/address.component.js"></script>
+    <script src="tournament/phone/phone.component.js"></script>
+    <script src="tournament/email/email.component.js"></script>
+    <script src="tournament/relationships/relationships.component.js"></script>
+    <script src="tournament/accessRequest/accessRequest.component.js"></script>
+    <script src="tournament/organization/organization.component.js"></script>
+    <script src="tournament/organization/organizationRequest.component.js"></script>
+    <script src="tournament/groupMembers/groupMembers.component.js"></script>
+  </head>
 
-<body>
-  <div ng-view></div>
-</body>
+  <body>
+    <div ng-view></div>
+  </body>
+</html>
