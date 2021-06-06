@@ -31,8 +31,8 @@ angular.module('tournament').component('trnPerson', {
         self.contact_type = person[0].contact_type;
         self.contact_sub_type = person[0].contact_sub_type;
         self.modified_date = person[0].modified_date;
-        //self.email = person[0]["email.email"];
-        //self.phone = person[0]["phone.phone"];
+        self.email = person[0]["email.email"];
+        self.phone = person[0]["phone.phone"];
         self.street_address = person[0]["address.street_address"];
         self.supplemental_address_1 = person[0]["address.supplemental_address_1"];
         self.supplemental_address_2 = person[0]["address.supplemental_address_2"];
