@@ -125,7 +125,9 @@ function crmApi(entityType, action, params) {
                                                 "address.state_province_id": 1022,
                                                 "address.country_id": 1228,
                                                 "address.postal_code": "55113",
-                                                "address.postal_code_suffix": "6900"
+                                                "address.postal_code_suffix": "6900",
+                                                "email.email": "cio@agloa.org",
+                                                "phone.phone": "(612)875-1888"
                                             }])
                                 }
                         }
