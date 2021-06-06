@@ -105,77 +105,28 @@ function crmApi(entityType, action, params) {
                                             "id": 1
                                         })
                                     default:
-                                        resolve({
-                                            modified_date: "2020-09-21 17:52:19",
-                                            "contact_id": 2,
-                                            "contact_type": "Individual",
-                                            "contact_sub_type": "",
-                                            "sort_name": "Steigerwald, Michael",
-                                            "display_name": "Mr. Michael Steigerwald",
-                                            "do_not_email": "0",
-                                            "do_not_phone": "0",
-                                            "do_not_mail": "0",
-                                            "do_not_sms": "0",
-                                            "do_not_trade": "0",
-                                            "is_opt_out": "0",
-                                            "legal_identifier": "",
-                                            "external_identifier": "",
-                                            "nick_name": "",
-                                            "legal_name": "",
-                                            "image_URL": "",
-                                            "preferred_communication_method": "",
-                                            "preferred_language": "en_US",
-                                            "preferred_mail_format": "Both",
-                                            "first_name": "Michael",
-                                            "middle_name": "Francis",
-                                            "last_name": "Steigerwald",
-                                            "prefix_id": 3,
-                                            "suffix_id": "",
-                                            "formal_title": "",
-                                            "communication_style_id": "1",
-                                            "job_title": "",
-                                            "gender_id": 2,
-                                            "birth_date": "1961-02-05",
-                                            "is_deceased": "0",
-                                            "deceased_date": "",
-                                            "household_name": "",
-                                            "organization_name": "",
-                                            "sic_code": "",
-                                            "contact_is_deleted": "0",
-                                            "current_employer": "",
-                                            "address_id": "10",
-                                            "street_address": "P. O. Box 3142",
-                                            "supplemental_address_1": "",
-                                            "supplemental_address_2": "",
-                                            "supplemental_address_3": "",
-                                            "city": "Roseville",
-                                            "postal_code_suffix": "6900",
-                                            "postal_code": "55113",
-                                            "geo_code_1": "",
-                                            "geo_code_2": "",
-                                            "state_province_id": "1022",
-                                            "country_id": 1228,
-                                            "phone_id": 1,
-                                            "phone_type_id": 2,
-                                            "phone": "(612) 875-1888",
-                                            "email_id": 2,
-                                            "email": "cio@agloa.org",
-                                            "on_hold": "0",
-                                            "im_id": "",
-                                            "provider_id": "",
-                                            "im": "",
-                                            "worldregion_id": "2",
-                                            "world_region": "America South, Central, North and Caribbean",
-                                            "languages": "English (United States)",
-                                            "individual_prefix": "Mr.",
-                                            "individual_suffix": "",
-                                            "communication_style": "Formal",
-                                            "gender": "Male",
-                                            "state_province_name": "Minnesota",
-                                            "state_province": "MN",
-                                            "country": "United States",
-                                            "id": 2
-                                        })
+                                        resolve(
+                                            [{
+                                                "id": 2,
+                                                "display_name": "Mr. Michael Steigerwald",
+                                                "first_name": "Michael",
+                                                "last_name": "Steigerwald",
+                                                "middle_name": "F",
+                                                "prefix_id": 3,
+                                                "suffix_id": null,
+                                                "gender_id": 2,
+                                                "birth_date": "1961-02-04",
+                                                "modified_date": "2021-05-16 11:56:19",
+                                                "address.street_address": "1870 Shady Beach Ave",
+                                                "address.supplemental_address_1": null,
+                                                "address.supplemental_address_2": null,
+                                                "address.supplemental_address_3": null,
+                                                "address.city": "Roseville",
+                                                "address.state_province_id": 1022,
+                                                "address.country_id": 1228,
+                                                "address.postal_code": "55113",
+                                                "address.postal_code_suffix": "6900"
+                                            }])
                                 }
                         }
                 }
@@ -286,75 +237,85 @@ function crmApi(entityType, action, params) {
             case "OptionValue":
                 switch (action) {
                     default:
-                        switch (params.option_group_id) {
+                        switch (params.where[0][2]) {
                             case "gender":
-                                resolve({
-                                    values: [
-                                        { label: "Female", value: 1 },
-                                        { label: "Male", value: 2 },
-                                        { label: "Other", value: 3 }
-                                    ]
-                                })
+                                resolve(
+                                    [
+                                        {
+                                            "id": 60,
+                                            "value": "1",
+                                            "label": "Female"
+                                        },
+                                        {
+                                            "id": 61,
+                                            "value": "2",
+                                            "label": "Male"
+                                        },
+                                        {
+                                            "id": 62,
+                                            "value": "3",
+                                            "label": "Other"
+                                        }
+                                    ]);
+                                break;
                             case "individual_prefix":
-                                resolve({
-                                    values: [
-                                        {
-                                            value: 1,
-                                            label: "Mrs."
-                                        },
-                                        {
-                                            value: 2,
-                                            label: "Ms."
-                                        },
-                                        {
-                                            value: 3,
-                                            label: "Mr."
-                                        },
-                                        {
-                                            value: 4,
-                                            label: "Dr."
-                                        }
-                                    ]
-                                })
+                                resolve([
+                                    {
+                                        value: "1",
+                                        label: "Mrs."
+                                    },
+                                    {
+                                        value: "2",
+                                        label: "Ms."
+                                    },
+                                    {
+                                        value: "3",
+                                        label: "Mr."
+                                    },
+                                    {
+                                        value: "4",
+                                        label: "Dr."
+                                    }
+                                ]);
+                                break;
                             case "individual_suffix":
-                                resolve({
-                                    values: [
-                                        {
-                                            label: "Jr.",
-                                            value: 1
-                                        },
-                                        {
-                                            label: "Sr.",
-                                            value: 2
-                                        },
-                                        {
-                                            label: "II",
-                                            value: 3
-                                        },
-                                        {
-                                            label: "III",
-                                            value: 4
-                                        },
-                                        {
-                                            label: "IV",
-                                            value: 5
-                                        },
-                                        {
-                                            label: "V",
-                                            value: 6
-                                        },
-                                        {
-                                            label: "VI",
-                                            value: 7
-                                        },
-                                        {
-                                            label: "VII",
-                                            value: 8
-                                        }
-                                    ]
-                                })
+                                resolve([
+                                    {
+                                        label: "Jr.",
+                                        value: "1"
+                                    },
+                                    {
+                                        label: "Sr.",
+                                        value: "2"
+                                    },
+                                    {
+                                        label: "II",
+                                        value: "3"
+                                    },
+                                    {
+                                        label: "III",
+                                        value: "4"
+                                    },
+                                    {
+                                        label: "IV",
+                                        value: "5"
+                                    },
+                                    {
+                                        label: "V",
+                                        value: "6"
+                                    },
+                                    {
+                                        label: "VI",
+                                        value: "7"
+                                    },
+                                    {
+                                        label: "VII",
+                                        value: "8"
+                                    }
+                                ]);
+                                break;
                         }
-                }
+                };
             case "RelationshipType": {
                 switch (action) {
                     default:
@@ -862,7 +823,7 @@ angular.module('tournament').factory('crmApi4', function ($q) {
                 if (result.is_error) {
                     deferred.reject(result);
                 } else {
-                    deferred.resolve([result]);
+                    deferred.resolve(result);
                 }
             },
             function (error) {
