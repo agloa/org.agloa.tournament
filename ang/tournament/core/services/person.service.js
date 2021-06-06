@@ -1,21 +1,20 @@
 angular.module('tournament').factory('person', function (crmApi, crmApi4) {
   return {
     // Get an individual contact record
-    // @param id Contact id  (per APIv3)
-    // @return Promise of Contact (per APIv3)
     get: (id) => {
-      if (id) {
         return crmApi4('Contact', 'get', {
-          select: ["display_name", "first_name", "last_name", "middle_name", "prefix_id", "suffix_id", "gender_id", "birth_date", "modified_date", "address.street_address", "address.supplemental_address_1", "address.supplemental_address_2", "address.supplemental_address_3", "address.city", "address.state_province_id", "address.country_id", "address.postal_code", "address.postal_code_suffix"],
-          join: [["Address AS address", false, null]],
+          select: ["display_name", "first_name", "last_name", "middle_name", "prefix_id", "suffix_id", "gender_id", "birth_date", "modified_date",
+            "email.email",
+            "phone.phone",
+            "address.street_address", "address.supplemental_address_1", "address.supplemental_address_2", "address.supplemental_address_3", "address.city", "address.state_province_id", "address.country_id", "address.postal_code", "address.postal_code_suffix"
+          ],
+          join: [
+              ["Email AS email", false, null],          
+          ["Phone AS phone", false, null],
+          ["Address AS address", false, null]
+          ],
           where: [["id", "=", id]]
-        })
-          //return crmApi('Contact', 'getsingle', {
-          //"return": ["id", "contact_sub_type", "display_name", "first_name", "middle_name", "last_name", "prefix_id", "suffix_id", "gender_id", "birth_date", "modified_date", "email", "phone", "street_address", "supplemental_address_1", "supplemental_address_2", "supplemental_address_3", "city", "postal_code", "postal_code_suffix", "country_id", "state_province_id"],
-          //"id": id
-          //})
-          ;
-      }
+        });
       return crmApi('Contact', 'get', {
         "return": ["id", "contact_sub_type", "display_name", "first_name", "middle_name", "last_name", "prefix_id", "suffix_id", "gender_id", "birth_date", "modified_date", "email", "phone", "street_address", "supplemental_address_1", "supplemental_address_2", "supplemental_address_3", "city", "postal_code", "postal_code_suffix", "country_id", "state_province_id"],
         "contact_type": "Individual",

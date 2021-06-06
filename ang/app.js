@@ -1,7 +1,7 @@
 
 (function (angular) {
     // Declare a list of dependencies.
-    angular.module('tournament', ['ngRoute']);
+    angular.module('tournament', ['ngRoute']);    
     angular.module('tournament').value('version', '0.1');
 
     angular.module('tournament').config(['$routeProvider', ($routeProvider) => {
