@@ -106,7 +106,7 @@ function crmApi(entityType, action, params) {
                                         })
                                     default:
                                         resolve(
-                                            {
+                                            [{
                                                 "id": 2,
                                                 "display_name": "Mr. Michael Steigerwald",
                                                 "first_name": "Michael",
@@ -126,7 +126,7 @@ function crmApi(entityType, action, params) {
                                                 "address.country_id": 1228,
                                                 "address.postal_code": "55113",
                                                 "address.postal_code_suffix": "6900"
-                                            })
+                                            }])
                                 }
                         }
                 }
@@ -237,75 +237,85 @@ function crmApi(entityType, action, params) {
             case "OptionValue":
                 switch (action) {
                     default:
-                        switch (params.option_group_id) {
+                        switch (params.where[0][2]) {
                             case "gender":
-                                resolve({
-                                    values: [
-                                        { label: "Female", value: 1 },
-                                        { label: "Male", value: 2 },
-                                        { label: "Other", value: 3 }
-                                    ]
-                                })
+                                resolve(
+                                    [
+                                        {
+                                            "id": 60,
+                                            "value": "1",
+                                            "label": "Female"
+                                        },
+                                        {
+                                            "id": 61,
+                                            "value": "2",
+                                            "label": "Male"
+                                        },
+                                        {
+                                            "id": 62,
+                                            "value": "3",
+                                            "label": "Other"
+                                        }
+                                    ]);
+                                break;
                             case "individual_prefix":
-                                resolve({
-                                    values: [
-                                        {
-                                            value: 1,
-                                            label: "Mrs."
-                                        },
-                                        {
-                                            value: 2,
-                                            label: "Ms."
-                                        },
-                                        {
-                                            value: 3,
-                                            label: "Mr."
-                                        },
-                                        {
-                                            value: 4,
-                                            label: "Dr."
-                                        }
-                                    ]
-                                })
+                                resolve([
+                                    {
+                                        value: "1",
+                                        label: "Mrs."
+                                    },
+                                    {
+                                        value: "2",
+                                        label: "Ms."
+                                    },
+                                    {
+                                        value: "3",
+                                        label: "Mr."
+                                    },
+                                    {
+                                        value: "4",
+                                        label: "Dr."
+                                    }
+                                ]);
+                                break;
                             case "individual_suffix":
-                                resolve({
-                                    values: [
-                                        {
-                                            label: "Jr.",
-                                            value: 1
-                                        },
-                                        {
-                                            label: "Sr.",
-                                            value: 2
-                                        },
-                                        {
-                                            label: "II",
-                                            value: 3
-                                        },
-                                        {
-                                            label: "III",
-                                            value: 4
-                                        },
-                                        {
-                                            label: "IV",
-                                            value: 5
-                                        },
-                                        {
-                                            label: "V",
-                                            value: 6
-                                        },
-                                        {
-                                            label: "VI",
-                                            value: 7
-                                        },
-                                        {
-                                            label: "VII",
-                                            value: 8
-                                        }
-                                    ]
-                                })
+                                resolve([
+                                    {
+                                        label: "Jr.",
+                                        value: "1"
+                                    },
+                                    {
+                                        label: "Sr.",
+                                        value: "2"
+                                    },
+                                    {
+                                        label: "II",
+                                        value: "3"
+                                    },
+                                    {
+                                        label: "III",
+                                        value: "4"
+                                    },
+                                    {
+                                        label: "IV",
+                                        value: "5"
+                                    },
+                                    {
+                                        label: "V",
+                                        value: "6"
+                                    },
+                                    {
+                                        label: "VI",
+                                        value: "7"
+                                    },
+                                    {
+                                        label: "VII",
+                                        value: "8"
+                                    }
+                                ]);
+                                break;
                         }
-                }
+                };
             case "RelationshipType": {
                 switch (action) {
                     default:
@@ -813,7 +823,7 @@ angular.module('tournament').factory('crmApi4', function ($q) {
                 if (result.is_error) {
                     deferred.reject(result);
                 } else {
-                    deferred.resolve([result]);
+                    deferred.resolve(result);
                 }
             },
             function (error) {
