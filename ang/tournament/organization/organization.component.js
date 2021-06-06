@@ -23,17 +23,23 @@ angular.module('tournament').component('trnOrganization', {
         self.contact_type = organization.contact_type;
         self.contact_sub_type = organization.contact_sub_type;
         self.modified_date = organization.modified_date;
-        self.email = organization.email;
-        self.phone = organization.phone;
-        self.street_address = organization.street_address;
-        self.supplemental_address_1 = organization.supplemental_address_1;
-        self.supplemental_address_2 = organization.supplemental_address_2;
-        self.supplemental_address_3 = organization.supplemental_address_3;
-        self.city = organization.city;
-        self.postal_code = organization.postal_code;
-        self.postal_code_suffix = organization.postal_code_suffix;
-        self.country_id = organization.country_id;
-        self.state_province_id = organization.state_province_id;
+        self.email = organization["email.email"];
+        self.phone = organization["phone.phone"];
+        self.street_address = organization["address.street_address"];
+        self.supplemental_address_1 = organization["address.supplemental_address_1"];
+        self.supplemental_address_2 = organization["address.supplemental_address_2"];
+        self.supplemental_address_3 = organization["address.supplemental_address_3"];
+        self.city = organization["address.city"];
+        self.postal_code = organization["address.postal_code"];
+        self.postal_code_suffix = organization["address.postal_code_suffix"];
+        
+        if (organization["address.country_id"] != null) {
+            self.country_id = organization["address.country_id"].toString();
+        }
+
+        if (organization["address.state_province_id"] != null) {
+            self.state_province_id = organization["address.state_province_id"].toString();
+        }
       };
 
       self.setCountries = (options) => {
@@ -95,7 +101,7 @@ angular.module('tournament').component('trnOrganization', {
         organization.get(self.id).then(
           // Success
           (result) => {
-            self.setSelectedOrganization(result);
+            self.setSelectedOrganization(result[0]);
           },
           // Failure
           (error) => {
