@@ -21,115 +21,54 @@ function crmApi(entityType, action, params) {
             case "Contact":
                 switch (action) {
                     default:
-                        switch (params.contact_type) {
-                            case "Organization":
-                                resolve({
-                                    organization_name: "AGLOA.org",
-                                    modified_date: "2020-09-21 17:52:19",
-                                    id: 1
-                                });
+                        switch (params.where[0][2]) {
+                            case "1":
+                                resolve(
+                                    [{
+                                        "id": 1,
+                                        "contact_sub_type": null,
+                                        "organization_name": "agloa.org",
+                                        "modified_date": "2021-04-25 17:31:59",
+                                        "email.email": "cio@agloa.org",
+                                        "phone.phone": "(313) 595-7560",
+                                        "address.street_address": "PO Box 3142",
+                                        "address.supplemental_address_1": null,
+                                        "address.supplemental_address_2": null,
+                                        "address.supplemental_address_3": null,
+                                        "address.city": "Tequesta",
+                                        "address.state_province_id": 1008,
+                                        "address.country_id": 1228,
+                                        "address.postal_code": "33469",
+                                        "address.postal_code_suffix": null
+                                    }])
                             default:
-                                switch (params.id) {
-                                    case "1":
-                                        resolve({
-                                            organization_name: "AGLOA.org",
-                                            modified_date: "2020-09-21 17:52:19",
-                                            id: 1,
-                                            "contact_id": "1",
-                                            "contact_type": "Organization",
-                                            "contact_sub_type": "",
-                                            "sort_name": "AGLOA.org",
-                                            "display_name": "AGLOA.org",
-                                            "do_not_email": "0",
-                                            "do_not_phone": "0",
-                                            "do_not_mail": "0",
-                                            "do_not_sms": "0",
-                                            "do_not_trade": "0",
-                                            "is_opt_out": "0",
-                                            "legal_identifier": "",
-                                            "external_identifier": "",
-                                            "nick_name": "",
-                                            "legal_name": "agloa.org",
-                                            "image_URL": "",
-                                            "preferred_communication_method": "",
-                                            "preferred_language": "en_US",
-                                            "preferred_mail_format": "Both",
-                                            "first_name": "",
-                                            "middle_name": "",
-                                            "last_name": "",
-                                            "prefix_id": "",
-                                            "suffix_id": "",
-                                            "formal_title": "",
-                                            "communication_style_id": "1",
-                                            "job_title": "",
-                                            "gender_id": "",
-                                            "birth_date": "",
-                                            "is_deceased": "0",
-                                            "deceased_date": "",
-                                            "household_name": "",
-                                            "organization_name": "AGLOA.org",
-                                            "sic_code": "",
-                                            "contact_is_deleted": "0",
-                                            "current_employer": "",
-                                            "address_id": "11",
-                                            "street_address": "PO Box 3142",
-                                            "supplemental_address_1": "",
-                                            "supplemental_address_2": "",
-                                            "supplemental_address_3": "",
-                                            "city": "Tequesta",
-                                            "postal_code_suffix": "",
-                                            "postal_code": "33469",
-                                            "geo_code_1": "",
-                                            "geo_code_2": "",
-                                            "state_province_id": "",
-                                            "country_id": "",
-                                            "phone_id": "2",
-                                            "phone_type_id": "",
-                                            "phone": "(313) 595-7560",
-                                            "email_id": 1,
-                                            "email": "cio@agloa.org",
-                                            "on_hold": "0",
-                                            "im_id": "",
-                                            "provider_id": "",
-                                            "im": "",
-                                            "worldregion_id": "",
-                                            "world_region": "",
-                                            "languages": "English (United States)",
-                                            "individual_prefix": "",
-                                            "individual_suffix": "",
-                                            "communication_style": "Formal",
-                                            "gender": "",
-                                            "state_province_name": "",
-                                            "state_province": "",
-                                            "country": "",
-                                            "id": 1
-                                        })
-                                    default:
-                                        resolve(
-                                            [{
-                                                "id": 2,
-                                                "display_name": "Mr. Michael Steigerwald",
-                                                "first_name": "Michael",
-                                                "last_name": "Steigerwald",
-                                                "middle_name": "F",
-                                                "prefix_id": 3,
-                                                "suffix_id": null,
-                                                "gender_id": 2,
-                                                "birth_date": "1961-02-04",
-                                                "modified_date": "2021-05-16 11:56:19",
-                                                "address.street_address": "1870 Shady Beach Ave",
-                                                "address.supplemental_address_1": null,
-                                                "address.supplemental_address_2": null,
-                                                "address.supplemental_address_3": null,
-                                                "address.city": "Roseville",
-                                                "address.state_province_id": 1022,
-                                                "address.country_id": 1228,
-                                                "address.postal_code": "55113",
-                                                "address.postal_code_suffix": "6900"
-                                            }])
-                                }
+                                resolve(
+                                    [{
+                                        "id": 2,
+                                        "display_name": "Mr. Michael Steigerwald",
+                                        "first_name": "Michael",
+                                        "last_name": "Steigerwald",
+                                        "middle_name": "F",
+                                        "prefix_id": 3,
+                                        "suffix_id": null,
+                                        "gender_id": 2,
+                                        "birth_date": "1961-02-04",
+                                        "modified_date": "2021-05-16 11:56:19",
+                                        "address.street_address": "1870 Shady Beach Ave",
+                                        "address.supplemental_address_1": null,
+                                        "address.supplemental_address_2": null,
+                                        "address.supplemental_address_3": null,
+                                        "address.city": "Roseville",
+                                        "address.state_province_id": 1022,
+                                        "address.country_id": 1228,
+                                        "address.postal_code": "55113",
+                                        "address.postal_code_suffix": "6900",
+                                        "email.email": "cio@agloa.org",
+                                        "phone.phone": "(612)875-1888"
+                                    }])
                         }
-                }
+                };
+                break;
             case "Address":
                 switch (action) {
                     default:
