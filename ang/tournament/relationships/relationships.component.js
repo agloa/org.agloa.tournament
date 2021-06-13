@@ -11,7 +11,6 @@ angular.module('tournament').component('trnRelationships', {
     controller: ['$routeParams', 'billingRelationships',
         function ($routeParams, relationships) {
             var self = this;
-            self.showOrganization = false;
 
             // e.g., relationships/43
             if ($routeParams.contactId !== undefined) {
@@ -20,9 +19,13 @@ angular.module('tournament').component('trnRelationships', {
 
             self.setRelationships = (relationships) => {
                 self.relationships = relationships;
+                relationships.forEach((relationship, index) => {
+                    const relationshipId = relationship.id;
+                    self.relationshipId = {show: false};
+                });
             };
 
-            self.organizationClicked = () => {
+            self.organizationClicked = (id) => {
                 this.showOrganization = !this.showOrganization;
             };
             
