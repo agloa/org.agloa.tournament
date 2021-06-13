@@ -18,31 +18,33 @@ angular.module('tournament').component('trnRelationships', {
                 self.contactId = $routeParams.contactId;
             }
 
-            relationships.get(self.contactId).then(
-                // Success
-                (result) => {
-                    self.setRelationships(result.values.map((item) => {
-                        return {
-                            id: item["contact_id_b.id"],
-                            modified_date: item["contact_id_b.modified_date"],
-                            organization_name: item["contact_id_b.organization_name"]
-                        };
-                    }
-                    ));
-                },
-                // Failure
-                (error) => {
-                    CRM.alert(ts('Could not get relationships for contact ID: ' + self.contactId + ', error = ' + error.error_message), ts('Not Found'), 'error');
-                }
-            );
-
             self.setRelationships = (relationships) => {
                 self.relationships = relationships;
             };
 
             self.organizationClicked = () => {
                 this.showOrganization = !this.showOrganization;
-            }
+            };
+            
+            self.$onInit = function () {
+                relationships.get(self.contactId).then(
+                    // Success
+                    (result) => {
+                        self.setRelationships(result.map((item) => {
+                            return {
+                                id: item["contact_id_b"],
+                                modified_date: item["contact_b.modified_date"],
+                                organization_name: item["contact_b.display_name"]
+                            };
+                        }
+                        ));
+                    },
+                    // Failure
+                    (error) => {
+                        CRM.alert(ts('Could not get relationships for contact ID: ' + self.contactId + ', error = ' + error.error_message), ts('Not Found'), 'error');
+                    }
+                );
+            };
         }
     ]
 });

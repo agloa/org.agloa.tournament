@@ -1,4 +1,4 @@
-angular.module('tournament').factory('billingRelationships', function (crmApi) {
+angular.module('tournament').factory('billingRelationships', function (crmApi, crmApi4) {
     function getRelationshipType() {
         crmApi('RelationshipType', 'get', {
             "sequential": 1,
@@ -39,13 +39,13 @@ angular.module('tournament').factory('billingRelationships', function (crmApi) {
 
     return {
         get: (contact_id) => {
-            return crmApi('Relationship', 'get', {
-                "sequential": 1,
-                "return": ["contact_id_b.id", "contact_id_b.modified_date", "contact_id_b.organization_name"],
-                "contact_id_a": contact_id,
-                "is_permission_a_b": 1,
-                "contact_id_b.contact_type": "Organization"
-            });
+            return crmApi4('Relationship', 'get', {
+  select: ["contact_id_b", "contact_b.modified_date", "contact_b.display_name"],
+  where: [["contact_id_a", "=", contact_id], ["is_permission_a_b", "=", 1], ["contact_b.contact_type", "=", "Organization"]],
+  limit: 25,
+  checkPermissions: false, // IGNORED: permissions are always enforced from client-side requests
+  current: true
+});
         },
         save: (individual_id, organization_id) => {
             crmApi('Relationship', 'create', {
