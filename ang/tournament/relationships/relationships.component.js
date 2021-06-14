@@ -8,6 +8,7 @@ angular.module('tournament').component('trnRelationships', {
         id: '@',
         contactId: '@'
     },
+
     controller: ['$routeParams', 'billingRelationships',
         function ($routeParams, relationships) {
             var self = this;
@@ -19,16 +20,19 @@ angular.module('tournament').component('trnRelationships', {
 
             self.setRelationships = (relationships) => {
                 self.relationships = relationships;
-                relationships.forEach((relationship, index) => {
-                    const relationshipId = relationship.id;
-                    self.relationshipId = {show: false};
+                relationships.forEach((relationship) => {
+                    self[`show_${relationship.id}`] = false;
                 });
             };
 
-            self.organizationClicked = (id) => {
-                this.showOrganization = !this.showOrganization;
+            self.organizationClicked = (relationshipId) => {
+                self[`show_${relationshipId}`] = !self[`show_${relationshipId}`];
             };
-            
+
+            self.showOrganization = (relationshipId) => {
+                return self[`show_${relationshipId}`];
+            }
+
             self.$onInit = function () {
                 relationships.get(self.contactId).then(
                     // Success
