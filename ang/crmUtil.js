@@ -41,6 +41,7 @@ function crmApi(entityType, action, params) {
                                         "address.postal_code": "33469",
                                         "address.postal_code_suffix": null
                                     }]);
+                                break;
                             case "13":
                                 resolve(
                                     [{
@@ -143,7 +144,8 @@ function crmApi(entityType, action, params) {
                                         "phone.phone_numeric": "9403673550",
                                         "phone.phone_type_id": null
                                     }]);
-                            case "15":
+
+                                break; case "15":
                                 resolve(
                                     [{
                                         "id": 15,
@@ -236,6 +238,100 @@ function crmApi(entityType, action, params) {
                                         "phone.phone_numeric": "9403673550",
                                         "phone.phone_type_id": null
                                     }]);
+                                break;
+                            case "billingOrganization":
+                                resolve([{
+                                    "id": 15,
+                                    "contact_type": "Organization",
+                                    "contact_sub_type": null,
+                                    "do_not_email": false,
+                                    "do_not_phone": false,
+                                    "do_not_mail": false,
+                                    "do_not_sms": false,
+                                    "do_not_trade": false,
+                                    "is_opt_out": false,
+                                    "legal_identifier": null,
+                                    "external_identifier": null,
+                                    "sort_name": "North Texas League of Academic Games",
+                                    "display_name": "North Texas League of Academic Games",
+                                    "nick_name": null,
+                                    "legal_name": null,
+                                    "image_URL": null,
+                                    "preferred_communication_method": null,
+                                    "preferred_language": "en_US",
+                                    "preferred_mail_format": "Both",
+                                    "hash": "16e44fdb85cf5247c8ac6ccdeda248fe",
+                                    "api_key": null,
+                                    "source": "Account Registration",
+                                    "communication_style_id": 1,
+                                    "email_greeting_id": null,
+                                    "email_greeting_custom": null,
+                                    "email_greeting_display": null,
+                                    "postal_greeting_id": null,
+                                    "postal_greeting_custom": null,
+                                    "postal_greeting_display": null,
+                                    "addressee_id": 3,
+                                    "addressee_custom": null,
+                                    "addressee_display": "North Texas League of Academic Games",
+                                    "organization_name": "North Texas League of Academic Games",
+                                    "sic_code": null,
+                                    "user_unique_id": null,
+                                    "is_deleted": false,
+                                    "created_date": "2021-05-08 15:03:35",
+                                    "modified_date": "2021-05-08 15:03:35",
+                                    "address.id": 14,
+                                    "address.contact_id": 15,
+                                    "address.location_type_id": 1,
+                                    "address.is_primary": true,
+                                    "address.is_billing": false,
+                                    "address.street_address": "2141 Lewis Canyon Dr",
+                                    "address.street_number": null,
+                                    "address.street_number_suffix": null,
+                                    "address.street_number_predirectional": null,
+                                    "address.street_name": null,
+                                    "address.street_type": null,
+                                    "address.street_number_postdirectional": null,
+                                    "address.street_unit": null,
+                                    "address.supplemental_address_1": null,
+                                    "address.supplemental_address_2": null,
+                                    "address.supplemental_address_3": null,
+                                    "address.city": "Prosper",
+                                    "address.county_id": null,
+                                    "address.state_province_id": 1042,
+                                    "address.postal_code_suffix": null,
+                                    "address.postal_code": "75078",
+                                    "address.usps_adc": null,
+                                    "address.country_id": 1228,
+                                    "address.geo_code_1": null,
+                                    "address.geo_code_2": null,
+                                    "address.manual_geo_code": false,
+                                    "address.timezone": null,
+                                    "address.name": null,
+                                    "address.master_id": null,
+                                    "email.id": 5,
+                                    "email.contact_id": 15,
+                                    "email.location_type_id": 1,
+                                    "email.email": "truth1837@icloud.com",
+                                    "email.is_primary": true,
+                                    "email.is_billing": false,
+                                    "email.on_hold": 0,
+                                    "email.is_bulkmail": false,
+                                    "email.hold_date": null,
+                                    "email.reset_date": null,
+                                    "email.signature_text": null,
+                                    "email.signature_html": null,
+                                    "phone.id": 5,
+                                    "phone.contact_id": 15,
+                                    "phone.location_type_id": 1,
+                                    "phone.is_primary": true,
+                                    "phone.is_billing": false,
+                                    "phone.mobile_provider_id": null,
+                                    "phone.phone": "9403673550",
+                                    "phone.phone_ext": null,
+                                    "phone.phone_numeric": "9403673550",
+                                    "phone.phone_type_id": null
+                                }]);
+                                break;
                             default:
                                 resolve(
                                     [{
