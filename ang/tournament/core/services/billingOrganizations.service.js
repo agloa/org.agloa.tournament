@@ -1,5 +1,5 @@
 angular.module('tournament').factory('billingOrganizations', function (crmApi) {
-   
+
     function getContactType() {
         const params = {
             "label": "Billing Organization",
@@ -35,12 +35,11 @@ angular.module('tournament').factory('billingOrganizations', function (crmApi) {
     };
 
     return {
-        getAll: () => {
-            return crmApi('Contact', 'get', {
-                "sequential": 1,
-                "return": ["id", "organization_name"],
-                "contact_sub_type": "billingOrganization"
-            });
+        get: (id) => {
+            crmApi4('Contact', 'get', {
+                select: ["id", "organization_name"],
+                where: [["contact_type", "=", "Organization"], ["contact_sub_type", "=", "billingOrganization"]]
+            })
         },
         save: (organizationName) => {
             ('Contact', 'create', {

@@ -4,8 +4,8 @@ const accessRequestTemplateUrl = (location.search.includes("?page=CiviCRM") ? "~
 
 angular.module('tournament').component('trnAccessRequest', {
     templateUrl: accessRequestTemplateUrl,
-    bindings: { 
-      requestorId: '@' ,
+    bindings: {
+        requestorId: '@',
     },
     controller: ['billingOrganizations', '$scope',
         function (organizations, $scope) {
@@ -13,7 +13,7 @@ angular.module('tournament').component('trnAccessRequest', {
             self.showOrganizationRequest = false;
             $scope.newOrganizationValue = "newOrganization";
 
-            organizations.getAll().then(
+            organizations.get().then(
                 // Success
                 (result) => {
                     self.setOrganizations(result.values);
@@ -32,7 +32,7 @@ angular.module('tournament').component('trnAccessRequest', {
                 if (requestedOrganization === $scope.newOrganizationValue) {
                     self.showOrganizationRequest = true;
                 }
-            }; 
+            };
         }
     ]
 });
