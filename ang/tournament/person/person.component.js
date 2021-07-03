@@ -18,21 +18,25 @@ angular.module('tournament').component('trnPerson', {
         self.first_name = person[0].first_name;
         self.middle_name = person[0].middle_name;
         if (person[0].prefix_id != null) {
-        self.prefix = person[0].prefix_id.toString();
+          self.prefix = person[0].prefix_id.toString();
         }
         if (person[0].suffix_id != null) {
-            self.suffix = person[0].suffix_id.toString();
+          self.suffix = person[0].suffix_id.toString();
         }
         if (person[0].gender_id != null) {
-        self.gender = person[0].gender_id.toString();
+          self.gender = person[0].gender_id.toString();
         }
         self.birth_date = new Date(person[0].birth_date);
 
         self.contact_type = person[0].contact_type;
         self.contact_sub_type = person[0].contact_sub_type;
         self.modified_date = person[0].modified_date;
+        self.emailId = person[0]["email.id"];
         self.email = person[0]["email.email"];
+        self.phoneId = person[0]["phone.id"];
         self.phone = person[0]["phone.phone"];
+
+        self.addressId = person[0]["address.id"];
         self.street_address = person[0]["address.street_address"];
         self.supplemental_address_1 = person[0]["address.supplemental_address_1"];
         self.supplemental_address_2 = person[0]["address.supplemental_address_2"];
@@ -41,10 +45,10 @@ angular.module('tournament').component('trnPerson', {
         self.postal_code = person[0]["address.postal_code"];
         self.postal_code_suffix = person[0]["address.postal_code_suffix"];
         if (person[0]["address.country_id"] != null) {
-        self.country_id = person[0]["address.country_id"].toString();
+          self.country_id = person[0]["address.country_id"].toString();
         }
         if (person[0]["address.state_province_id"] != null) {
-        self.state_province_id = person[0]["address.state_province_id"].toString();
+          self.state_province_id = person[0]["address.state_province_id"].toString();
         }
       };
 
@@ -88,8 +92,12 @@ angular.module('tournament').component('trnPerson', {
           birth_date: new Date(self.birth_date),
 
           email: self.email,
-          phone: self.phone,
+          emailId: self.emailId,
 
+          phone: self.phone,
+          phoneId: self.phoneId,
+
+          addressId: self.addressId,
           street_address: self.street_address,
           supplemental_address_1: self.supplemental_address_1,
           supplemental_address_2: self.supplemental_address_2,
@@ -132,50 +140,50 @@ angular.module('tournament').component('trnPerson', {
           }
         );
 
-      person.getGenders().then(
-        // Success
-        (result) => {
-          self.setGenders(result);
-        },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get gender options error = ' + error), ts('Not Found'), 'error'); }
-      );
+        person.getGenders().then(
+          // Success
+          (result) => {
+            self.setGenders(result);
+          },
+          // Failure
+          (error) => { CRM.alert(ts('Could not get gender options error = ' + error), ts('Not Found'), 'error'); }
+        );
 
-      person.getPrefixes().then(
-        // Success
-        (result) => {
-          self.setPrefixes(result);
-        },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get prefix options error = ' + error), ts('Not Found'), 'error'); }
-      );
+        person.getPrefixes().then(
+          // Success
+          (result) => {
+            self.setPrefixes(result);
+          },
+          // Failure
+          (error) => { CRM.alert(ts('Could not get prefix options error = ' + error), ts('Not Found'), 'error'); }
+        );
 
-      person.getSuffixes().then(
-        // Success
-        (result) => {
-          self.setSuffixes(result);
-        },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get suffix options error = ' + error.error_message), ts('Not Found'), 'error'); }
-      );
+        person.getSuffixes().then(
+          // Success
+          (result) => {
+            self.setSuffixes(result);
+          },
+          // Failure
+          (error) => { CRM.alert(ts('Could not get suffix options error = ' + error.error_message), ts('Not Found'), 'error'); }
+        );
 
-      address.getCountries().then(
-        // Success
-        (result) => {
-          self.setCountries(result);
-        },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get countries, error = ' + error.error_message), ts('Not Found'), 'error'); }
-      );
+        address.getCountries().then(
+          // Success
+          (result) => {
+            self.setCountries(result);
+          },
+          // Failure
+          (error) => { CRM.alert(ts('Could not get countries, error = ' + error.error_message), ts('Not Found'), 'error'); }
+        );
 
-      address.getStateProvinces().then(
-        // Success
-        (result) => {
-          self.setRegions(result);
-        },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get states/provinces, error = ' + error.error_message), ts('Not Found'), 'error'); }
-      );
+        address.getStateProvinces().then(
+          // Success
+          (result) => {
+            self.setRegions(result);
+          },
+          // Failure
+          (error) => { CRM.alert(ts('Could not get states/provinces, error = ' + error.error_message), ts('Not Found'), 'error'); }
+        );
       };
     }
   ]
