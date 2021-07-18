@@ -47,7 +47,7 @@ angular.module('tournament').factory('person', function (crmApi, crmApi4) {
 
       return crmApi4('Contact', 'save', {
         records: [{ "id": 2, "first_name": "Mike" }],
-        chain: { "name_me_0": ["Email", "save", { "records": [{ "contact_id": 2, "id": 2, "email": "mike@agloa.org" }] }] }
+        chain: { "emailSave": ["Email", "save", { "records": [{ "contact_id": 2, "id": 2, "email": "cio@agloa.org" }] }] }
       })
       // crmApi4('Contact', 'save', {
       //   records: [{
