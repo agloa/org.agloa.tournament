@@ -51,7 +51,7 @@ angular.module('tournament').factory('person', function (crmApi, crmApi4) {
           "first_name": person.first_name, "last_name": person.last_name, "middle_name": person.middle_name,
           "prefix_id": person.prefix_id, "suffix_id": person.suffix_id, "gender_id": person.gender_id, "birth_date": person.birth_date,
         }],
-        chain: { "emailSave": ["Email", "save", { "records": [{ "contact_id": person.id, "id": 2, "email": "cio@agloa.org" }] }] }
+        chain: { "emailSave": ["Email", "save", { "records": [{ "contact_id": person.id, "id": 2, "email": "m@agloa.org" }] }] }
       })
       // crmApi4('Contact', 'save', {
 
