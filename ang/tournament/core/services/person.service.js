@@ -45,7 +45,12 @@ angular.module('tournament').factory('person', function (crmApi, crmApi4) {
         person.contact_type = "Individual";
       }
 
-      crmApi4('Contact', 'save', {
+      return crmApi4('Contact', 'save', {
+        records: [{
+          "id": person.id,
+          "first_name": person.first_name, "last_name": person.last_name, "middle_name": person.middle_name,
+          "prefix_id": person.prefix_id, "suffix_id": person.suffix_id, "gender_id": person.gender_id, "birth_date": person.birth_date,
+        }],
         chain: {
           "emailSave": ["Email", "save", { "records": [{ "contact_id": "$id", "id": person.emailId, "email.email": person.email }] }],
           "phoneSave": ["Phone", "save", { "records": [{ "contact_id": "$id", "id": person.phoneId, "phone.phone": person.phone }] }],
