@@ -46,15 +46,15 @@ angular.module('tournament').factory('person', function (crmApi, crmApi4) {
       }
 
       return crmApi4('Contact', 'save', {
-        records: [{ "id": 2, "first_name": "Mike" }],
-        chain: { "emailSave": ["Email", "save", { "records": [{ "contact_id": 2, "id": 2, "email": "cio@agloa.org" }] }] }
+        records: [{
+          "id": person.id,
+          "first_name": person.first_name, "last_name": person.last_name, "middle_name": person.middle_name,
+          "prefix_id": person.prefix_id, "suffix_id": person.suffix_id, "gender_id": person.gender_id, "birth_date": person.birth_date,
+        }],
+        chain: { "emailSave": ["Email", "save", { "records": [{ "contact_id": person.id, "id": 2, "email": "cio@agloa.org" }] }] }
       })
       // crmApi4('Contact', 'save', {
-      //   records: [{
-      //     "id": person.id,
-      //     "first_name": person.first_name, "last_name": person.last_name, "middle_name": person.middle_name,
-      //     "prefix_id": person.prefix_id, "suffix_id": person.suffix_id, "gender_id": person.gender_id, "birth_date": person.birth_date,
-      //   }],
+
       //   chain: {
       //     "emailSave": ["Email", "save", { "records": [{ "contact_id": person.id, "id": person.emailId, "email.email": person.email }] }],
       //     "phoneSave": ["Phone", "save", { "records": [{ "contact_id": person.id, "id": person.phoneId, "phone.phone": person.phone }] }],
