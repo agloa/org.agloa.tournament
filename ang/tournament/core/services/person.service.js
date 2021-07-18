@@ -51,20 +51,25 @@ angular.module('tournament').factory('person', function (crmApi, crmApi4) {
           "first_name": person.first_name, "last_name": person.last_name, "middle_name": person.middle_name,
           "prefix_id": person.prefix_id, "suffix_id": person.suffix_id, "gender_id": person.gender_id, "birth_date": person.birth_date,
         }],
-        chain: {
-          "emailSave": ["Email", "save", { "records": [{ "contact_id": "$id", "email.id": person.emailId, "email.email": person.email }] }],
-          "phoneSave": ["Phone", "save", { "records": [{ "contact_id": "$id", "phone.id": person.phoneId, "phone.phone": person.phone }] }],
-          "addressSave": ["Address", "save", {
-            "records": [{
-              "contact_id": "$id", "address.id": person.addressId,
-              "address.street_address": person.street_address,
-              "address.supplemental_address_1": person.supplemental_address_1, "address.supplemental_address_2": person.supplemental_address_2, "address.supplemental_address_3": person.supplemental_address_3,
-              "address.city": person.city, "address.state_province_id": person.state_province_id, "address.country_id": person.country_id,
-              "address.postal_code": person.postal_code, "address.postal_code_suffix": person.postal_code_suffix
-            }]
-          }]
-        }
+        chain: { "name_me_0": ["Email", "save", { "records": [{ "contact_id": "$id", "email": "steiger1@umich.edu", "id": 2 }] }], "name_me_1": ["Phone", "save", { "records": [{ "contact_id": "$id", "phone": "6128751888", "id": null }] }] }
       })
+
+      // crmApi4('Contact', 'save', {
+
+      //   chain: {
+      //     "emailSave": ["Email", "save", { "records": [{ "contact_id": "$id", "email.id": person.emailId, "email.email": person.email }] }],
+      //     "phoneSave": ["Phone", "save", { "records": [{ "contact_id": "$id", "phone.id": person.phoneId, "phone.phone": person.phone }] }],
+      //     "addressSave": ["Address", "save", {
+      //       "records": [{
+      //         "contact_id": "$id", "address.id": person.addressId,
+      //         "address.street_address": person.street_address,
+      //         "address.supplemental_address_1": person.supplemental_address_1, "address.supplemental_address_2": person.supplemental_address_2, "address.supplemental_address_3": person.supplemental_address_3,
+      //         "address.city": person.city, "address.state_province_id": person.state_province_id, "address.country_id": person.country_id,
+      //         "address.postal_code": person.postal_code, "address.postal_code_suffix": person.postal_code_suffix
+      //       }]
+      //     }]
+      //   }
+      // })
     },
 
     delete: (id) => {
