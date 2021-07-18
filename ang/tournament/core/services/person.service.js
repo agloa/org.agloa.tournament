@@ -45,7 +45,7 @@ angular.module('tournament').factory('person', function (crmApi, crmApi4) {
         person.contact_type = "Individual";
       }
 
-      crmApi4('Contact', 'save', {
+      return crmApi4('Contact', 'save', {
         records: [{ "id": 2, "first_name": "Michael" }],
         chain: { "name_me_0": ["Email", "save", { "records": [{ "contact_id": "$id", "email": "steiger1@umich.edu", "id": 2 }] }], "name_me_1": ["Phone", "save", { "records": [{ "contact_id": "$id", "phone": "6128751888", "id": null }] }] }
       })
