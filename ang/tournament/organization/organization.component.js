@@ -23,8 +23,14 @@ angular.module('tournament').component('trnOrganization', {
         self.contact_type = organization.contact_type;
         self.contact_sub_type = organization.contact_sub_type;
         self.modified_date = organization.modified_date;
+
         self.email = organization["email.email"];
+        self.emailId = organization["email.id"];
+
         self.phone = organization["phone.phone"];
+        self.phoneId = organization["phone.id"];
+
+        self.addressId = organization["address.id"];
         self.street_address = organization["address.street_address"];
         self.supplemental_address_1 = organization["address.supplemental_address_1"];
         self.supplemental_address_2 = organization["address.supplemental_address_2"];
@@ -32,13 +38,13 @@ angular.module('tournament').component('trnOrganization', {
         self.city = organization["address.city"];
         self.postal_code = organization["address.postal_code"];
         self.postal_code_suffix = organization["address.postal_code_suffix"];
-        
+
         if (organization["address.country_id"] != null) {
-            self.country_id = organization["address.country_id"].toString();
+          self.country_id = organization["address.country_id"].toString();
         }
 
         if (organization["address.state_province_id"] != null) {
-            self.state_province_id = organization["address.state_province_id"].toString();
+          self.state_province_id = organization["address.state_province_id"].toString();
         }
       };
 
@@ -63,7 +69,12 @@ angular.module('tournament').component('trnOrganization', {
           organization_name: self.organization_name,
 
           email: self.email,
+          emailId: self.emailId,
+
           phone: self.phone,
+          phoneId: self.phoneId,
+
+          addressId: self.addressId,
 
           street_address: self.street_address,
           supplemental_address_1: self.supplemental_address_1,
