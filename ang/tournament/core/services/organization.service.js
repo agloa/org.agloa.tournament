@@ -5,9 +5,9 @@ angular.module('tournament').factory('organization', function (crmApi, crmApi4) 
             wherClause = id ? [["id", "=", id]] : [[1]];
             return crmApi4('Contact', 'get', {
                 select: ["id", "contact_sub_type", "organization_name", "modified_date",
-                    "email.email",
-                    "phone.phone",
-                    "address.street_address", "address.supplemental_address_1", "address.supplemental_address_2", "address.supplemental_address_3", "address.city", "address.state_province_id", "address.country_id", "address.postal_code", "address.postal_code_suffix"
+                    "email.id", "email.email",
+                    "phone.id", "phone.phone",
+                    "address.id", "address.street_address", "address.supplemental_address_1", "address.supplemental_address_2", "address.supplemental_address_3", "address.city", "address.state_province_id", "address.country_id", "address.postal_code", "address.postal_code_suffix"
                 ],
                 join: [
                     ["Email AS email", false, null],
