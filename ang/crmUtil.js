@@ -30,7 +30,10 @@ function crmApi(entityType, action, params) {
                                         "organization_name": "agloa.org",
                                         "modified_date": "2021-04-25 17:31:59",
                                         "email.email": "cio@agloa.org",
+                                        "email.id": 1,
                                         "phone.phone": "(313) 595-7560",
+                                        "phone.id": 2,
+                                        "address.id": 2,
                                         "address.street_address": "PO Box 3142",
                                         "address.supplemental_address_1": null,
                                         "address.supplemental_address_2": null,
@@ -346,6 +349,7 @@ function crmApi(entityType, action, params) {
                                         "birth_date": "1961-02-04",
                                         "modified_date": "2021-05-16 11:56:19",
                                         "address.street_address": "1870 Shady Beach Ave",
+                                        "address.id": 2,
                                         "address.supplemental_address_1": null,
                                         "address.supplemental_address_2": null,
                                         "address.supplemental_address_3": null,
@@ -355,7 +359,9 @@ function crmApi(entityType, action, params) {
                                         "address.postal_code": "55113",
                                         "address.postal_code_suffix": "6900",
                                         "email.email": "cio@agloa.org",
-                                        "phone.phone": "(612)875-1888"
+                                        "email.id": 1,
+                                        "phone.phone": "(612)875-1888",
+                                        "phone.id": 1
                                     }])
                         }
                 };
