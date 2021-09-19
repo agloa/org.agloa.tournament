@@ -91,4 +91,17 @@ describe('dashboard component', function () {
         expect(controller.displayOrganizations).toBe(true);
     });
 
+    it('should display registration groups.', async function () {
+        // Assemble
+        $routeParams.userId = contactId;
+
+        // Act
+        var controller = await $componentController('trnDashboard', null);
+        expect(controller).toBeDefined();
+        controller.registrationGroupsClicked();
+
+        // Assert
+        expect(controller.displayRegistrationGroups).toBe(true);
+    });
+
 });

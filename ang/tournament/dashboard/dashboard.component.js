@@ -17,6 +17,7 @@ angular.module('tournament').component('trnDashboard', {
       // Don't include 'child' form until user requests it.
       self.includePerson = false;
       self.includeOrganizations = false;
+      self.includeRegistrationGroups = false;
 
       self.personClicked = () => {
         this.displayPerson = !this.displayPerson;
@@ -24,25 +25,29 @@ angular.module('tournament').component('trnDashboard', {
 
       self.organizationsClicked = () => {
         this.displayOrganizations = !this.displayOrganizations;
-      }      
+      }
+
+      self.registrationGroupsClicked = () => {
+        this.displayRegistrationGroups = !this.displayRegistrationGroups;
+      }
 
       self.setContact = (contact) => {
-          self.contactId = contact.id;
-          self.display_name = contact.display_name;
-          self.modified_date = contact.modified_date;
+        self.contactId = contact.id;
+        self.display_name = contact.display_name;
+        self.modified_date = contact.modified_date;
       };
 
       self.$onInit = function () {
-      self.user = person.get(self.contactId).then(
-        // Success
-        (result) => {
+        self.user = person.get(self.contactId).then(
+          // Success
+          (result) => {
             self.setContact(result[0]);
-        },
-        // Failure
-        (error) => {
-          CRM.alert(ts('Could not get user record ID of ' + self.contactId + ', error = ' + error.error_message), ts('Not Found'), 'error');
-        }
-      );
+          },
+          // Failure
+          (error) => {
+            CRM.alert(ts('Could not get user record ID of ' + self.contactId + ', error = ' + error.error_message), ts('Not Found'), 'error');
+          }
+        );
       };
 
     }
