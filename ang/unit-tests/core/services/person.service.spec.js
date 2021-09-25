@@ -2,7 +2,7 @@
 
 describe('person', function () {
   var person;
-  var crmApi;
+  var crmApi4;
 
   beforeEach(function () {
     // Add a custom equality tester before each test
@@ -13,25 +13,25 @@ describe('person', function () {
     crmApi = jasmine.createSpy('crmApiMock')
 
     module(function ($provide) {
-      $provide.value('crmApi', crmApi);
+      $provide.value('crmApi4', crmApi4);
     });
 
     inject(function (_person_) { person = _person_; });
   });
 
-  it('should get from crmApi', function () {
+  it('should get from crmApi4', function () {
     person.get();
-    expect(crmApi).toHaveBeenCalledWith('Contact', 'get', {
+    expect(crmApi4).toHaveBeenCalledWith('Contact', 'get', {
       // TODO: put this back after CRM correctly accepts return with country_id and state_province_id
       // "return": ["id","contact_sub_type","display_name","first_name","middle_name","last_name","prefix_id","suffix_id","gender_id","birth_date","modified_date","email","phone","street_address","supplemental_address_1","supplemental_address_2","supplemental_address_3","city","postal_code","postal_code_suffix","country_id","state_province_id"],
       "contact_type": "Individual",
     });
   });
 
-  it('should get(id) from crmApi', function () {
+  it('should get(id) from crmApi4', function () {
     const id = 2;
     person.get(id);
-    expect(crmApi).toHaveBeenCalledWith('Contact', 'getsingle', {
+    expect(crmApi4).toHaveBeenCalledWith('Contact', 'getsingle', {
       // TODO: put this back after CRM correctly accepts return with country_id and state_province_id
       //"return": ["id","contact_sub_type","display_name","first_name","middle_name","last_name","prefix_id","suffix_id","gender_id","birth_date","modified_date","email","phone","street_address","supplemental_address_1","supplemental_address_2","supplemental_address_3","city","postal_code","postal_code_suffix","country_id","state_province_id"],
       "id": id
@@ -68,7 +68,7 @@ describe('person', function () {
     });
   });
 
-  it('s save should create person in crmApi', () => {
+  it('save should create person in crmApi4', () => {
     const testPerson = {
       id: 1,
       contact_sub_type: "person.contact_sub_type",
@@ -101,7 +101,7 @@ describe('person', function () {
     expect(crmApi).toHaveBeenCalledWith('Contact', 'create', expectedPerson);
   });
 
-  it('should delete Contact in crmApi', () => {
+  it('should delete Contact in crmApi4', () => {
     const id = 1;
     person.delete(id);
     expect(crmApi).toHaveBeenCalledWith('Contact', 'delete', { id });
