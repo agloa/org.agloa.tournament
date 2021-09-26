@@ -1,7 +1,7 @@
-angular.module('tournament').factory('organization', function (crmApi, crmApi4) {
+angular.module('tournament').factory('organization', function (crmApi4) {
     return {
         // Get an organizational contact record
-        get: (id, contact_sub_type) => {
+        get: (id) => {
             wherClause = id ? [["id", "=", id]] : [[1]];
             return crmApi4('Contact', 'get', {
                 select: ["id", "contact_sub_type", "organization_name", "modified_date",
