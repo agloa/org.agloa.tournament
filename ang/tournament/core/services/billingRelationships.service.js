@@ -1,26 +1,15 @@
-angular.module('tournament').factory('billingRelationships', function (crmApi, crmApi4) {
+angular.module('tournament').factory('billingRelationships', function (crmApi4) {
     function getRelationshipType() {
-        crmApi('RelationshipType', 'get', {
-            "sequential": 1,
-            "return": ["id"],
-            "contact_type_a": "Individual",
-            "contact_type_b": "Organization",
-            "is_active": 1,
-            "description": { "LIKE": "%Billing contact relationship%" }
+        crmApi4('RelationshipType', 'get', {
+            select: ["id"],
+            where: [["contact_type_a", "=", "Individual"], ["contact_type_b", "=", "Organization"], ["is_active", "=", true], ["description", "LIKE", "%Billing contact relationship%"]],
         }).then(
             (relationshipType) => {
                 if (relationshipType.values.length > 0) {
                     return relationshipType.values[0];
                 } else {
-                    crmApi('RelationshipType', 'create', {
-                        "name_a_b": "Billing contact for",
-                        "name_b_a": "Billing contact is",
-                        "label_a_b": "Billing contact for",
-                        "label_b_a": "Billing contact is",
-                        "description": "Billing contact relationship",
-                        "contact_type_a": "Individual",
-                        "contact_type_b": "Organization",
-                        "is_active": 1
+                    crmApi4('RelationshipType', 'create', {
+                        values: { "name_a_b": "Billing contact for", "name_b_a": "Billing contact is", "label_a_b": "Billing contact for", "label_b_a": "Billing contact is", "description": "Billing contact relationship", "contact_type_a": "Individual", "contact_type_b": "Organization", "is_active": true }
                     }).then(
                         (relationshipType) => {
                             return relationshipType.id;
@@ -39,19 +28,25 @@ angular.module('tournament').factory('billingRelationships', function (crmApi, c
 
     return {
         get: (contact_id) => {
+            let where = (contact_id) ? [
+                ["contact_id_a", "=", contact_id],
+                ["is_permission_a_b", "=", 1],
+                ["contact_b.contact_type", "=", "Organization"],
+                ["relationship_type_id", "=", getRelationshipType()]
+            ]
+                : ["relationship_type_id", "=", getRelationshipType()];
+
             return crmApi4('Relationship', 'get', {
-  select: ["contact_id_b", "contact_b.modified_date", "contact_b.display_name"],
-  where: [["contact_id_a", "=", contact_id], ["is_permission_a_b", "=", 1], ["contact_b.contact_type", "=", "Organization"]],
-  limit: 25,
-  checkPermissions: false, // IGNORED: permissions are always enforced from client-side requests
-  current: true
-});
+                select: ["contact_id_b", "contact_b.modified_date", "contact_b.display_name"],
+                where: where,
+                limit: 25,
+                checkPermissions: false, // IGNORED: permissions are always enforced from client-side requests
+                current: true
+            });
         },
         save: (individual_id, organization_id) => {
-            crmApi('Relationship', 'create', {
-                "contact_id_a": individual_id,
-                "contact_id_b": organization_id,
-                "relationship_type_id": getRelationshipType()
+            crmApi4('Relationship', 'create', {
+                values: { "contact_id_a": individual_id, "contact_id_b": organization_id, "relationship_type_id": getRelationshipType() }
             }).then(
                 (result) => {
                     return result.id;
@@ -62,10 +57,12 @@ angular.module('tournament').factory('billingRelationships', function (crmApi, c
                 });
         },
         delete: (individual_id, organization_id) => {
-            crmApi('Relationship', 'delete', {
-                "contact_id_a": individual_id,
-                "contact_id_b": organization_id,
-                "relationship_type_id": getRelationshipType()
+            crmApi4('Relationship', 'delete', {
+                where: [
+                    ["contact_id_a", "=", 2],
+                    ["contact_id_b", "=", 15],
+                    ["relationship_type_id", "=", getRelationshipType()]
+                ],
             }).then(
                 (relationship) => {
                     return relationship.id;
