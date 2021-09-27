@@ -5,8 +5,8 @@ angular.module('tournament').factory('billingRelationships', function (crmApi4) 
             where: [["contact_type_a", "=", "Individual"], ["contact_type_b", "=", "Organization"], ["is_active", "=", true], ["description", "LIKE", "%Billing contact relationship%"]],
         }).then(
             (relationshipType) => {
-                if (relationshipType.values.length > 0) {
-                    return relationshipType.values[0];
+                if (relationshipType.length > 0) {
+                    return relationshipType[0];
                 } else {
                     crmApi4('RelationshipType', 'create', {
                         values: { "name_a_b": "Billing contact for", "name_b_a": "Billing contact is", "label_a_b": "Billing contact for", "label_b_a": "Billing contact is", "description": "Billing contact relationship", "contact_type_a": "Individual", "contact_type_b": "Organization", "is_active": true }

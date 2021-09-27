@@ -556,20 +556,12 @@ function crmApi(entityType, action, params) {
                 switch (action) {
                     default:
                         resolve({
-                            "values": [
+                            [
                                 {
-                                    "id": "12",
-                                    "name_a_b": "Billing contact for",
-                                    "label_a_b": "Billing contact for",
-                                    "name_b_a": "Billing contact is",
-                                    "label_b_a": "Billing contact is",
-                                    "description": "Billing contact relationship",
-                                    "contact_type_a": "Individual",
-                                    "contact_type_b": "Organization",
-                                    "is_active": "1"
+                                    "id": "13"
                                 }
                             ]
-                        })
+                        )
                 }
             }
             case "Relationship": {
