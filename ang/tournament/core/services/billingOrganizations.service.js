@@ -1,4 +1,4 @@
-angular.module('tournament').factory('billingOrganizations', function (crmApi) {
+angular.module('tournament').factory('billingOrganizations', function (crmApi, crmApi4) {
 
     function getContactType() {
         const params = {
