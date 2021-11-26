@@ -1,8 +1,8 @@
 'use strict';
 
-describe('person', function () {
+fdescribe('Person service', function () {
   var person;
-  var crmApi4;
+  var CRM;
 
   beforeEach(function () {
     // Add a custom equality tester before each test
@@ -10,101 +10,114 @@ describe('person', function () {
     module('tournament');
 
     // This ***HAS*** to go before the beforeEach(inject(...)) block
-    crmApi = jasmine.createSpy('crmApiMock')
+    CRM = jasmine.createSpy('crmMock')
 
     module(function ($provide) {
-      $provide.value('crmApi4', crmApi4);
+      $provide.value('crmApi4', CRM);
     });
 
     inject(function (_person_) { person = _person_; });
   });
 
-  it('should get from crmApi4', function () {
+  it('gets from CRM.', function () {
     person.get();
-    expect(crmApi4).toHaveBeenCalledWith('Contact', 'get', {
-      // TODO: put this back after CRM correctly accepts return with country_id and state_province_id
-      // "return": ["id","contact_sub_type","display_name","first_name","middle_name","last_name","prefix_id","suffix_id","gender_id","birth_date","modified_date","email","phone","street_address","supplemental_address_1","supplemental_address_2","supplemental_address_3","city","postal_code","postal_code_suffix","country_id","state_province_id"],
-      "contact_type": "Individual",
-    });
+    expect(CRM).toHaveBeenCalledWith('Contact', 'get', {
+      select: ['display_name', 'first_name', 'last_name', 'middle_name', 'prefix_id', 'suffix_id', 'gender_id', 'birth_date', 'modified_date', 'email.id', 'email.email', 'phone.id', 'phone.phone', 'address.id', 'address.street_address', 'address.supplemental_address_1', 'address.supplemental_address_2', 'address.supplemental_address_3', 'address.city', 'address.state_province_id', 'address.country_id', 'address.postal_code', 'address.postal_code_suffix'],
+      join: [['Email AS email', false, null], ['Phone AS phone', false, null], ['Address AS address', false, null]],
+      where: [[1]]
+    }
+    );
   });
 
-  it('should get(id) from crmApi4', function () {
+  it('gets id from CRM.', function () {
     const id = 2;
     person.get(id);
-    expect(crmApi4).toHaveBeenCalledWith('Contact', 'getsingle', {
-      // TODO: put this back after CRM correctly accepts return with country_id and state_province_id
-      //"return": ["id","contact_sub_type","display_name","first_name","middle_name","last_name","prefix_id","suffix_id","gender_id","birth_date","modified_date","email","phone","street_address","supplemental_address_1","supplemental_address_2","supplemental_address_3","city","postal_code","postal_code_suffix","country_id","state_province_id"],
-      "id": id
+    expect(CRM).toHaveBeenCalledWith('Contact', 'get', {
+      select: ['display_name', 'first_name', 'last_name', 'middle_name', 'prefix_id', 'suffix_id', 'gender_id', 'birth_date', 'modified_date', 'email.id', 'email.email', 'phone.id', 'phone.phone', 'address.id', 'address.street_address', 'address.supplemental_address_1', 'address.supplemental_address_2', 'address.supplemental_address_3', 'address.city', 'address.state_province_id', 'address.country_id', 'address.postal_code', 'address.postal_code_suffix'],
+      join: [['Email AS email', false, null], ['Phone AS phone', false, null], ['Address AS address', false, null]],
+      where: [['id', '=', 2]]
     });
   });
 
-  it('should get gender values', () => {
+  it('gets gender values.', () => {
     person.getGenders();
-    expect(crmApi).toHaveBeenCalledWith('OptionValue', 'get', {
-      "sequential": 1,
-      "return": ["value", "label"],
-      "option_group_id": "gender",
-      "is_active": 1
+    expect(CRM).toHaveBeenCalledWith('OptionValue', 'get', {
+      select: ['value', 'label'],
+      where: [['option_group_id:name', '=', 'gender'], ['is_active', '=', true]]
     });
   });
 
-  it('should get prefixes', () => {
+  it('gets prefixes.', () => {
     person.getPrefixes();
-    expect(crmApi).toHaveBeenCalledWith('OptionValue', 'get', {
-      "sequential": 1,
-      "return": ["value", "label"],
-      "option_group_id": "individual_prefix",
-      "is_active": 1
+    expect(CRM).toHaveBeenCalledWith('OptionValue', 'get', {
+      select: ['value', 'label'],
+      where: [['option_group_id:name', '=', 'individual_prefix'], ['is_active', '=', true]]
     });
   });
 
-  it('should get suffixes', () => {
+  it('gets suffixes.', () => {
     person.getSuffixes();
-    expect(crmApi).toHaveBeenCalledWith('OptionValue', 'get', {
-      "sequential": 1,
-      "return": ["value", "label"],
-      "option_group_id": "individual_suffix",
-      "is_active": 1
+    expect(CRM).toHaveBeenCalledWith('OptionValue', 'get', {
+      select: ['value', 'label'],
+      where: [['option_group_id:name', '=', 'individual_suffix'], ['is_active', '=', true]]
     });
   });
 
-  it('save should create person in crmApi4', () => {
+  it('saves contact to CRM.', () => {
     const testPerson = {
       id: 1,
-      contact_sub_type: "person.contact_sub_type",
-      first_name: "person.first_name",
-      middle_name: "person.middle_name",
-      last_name: "person.last_name",
-      prefix_id: "person.prefix_id",
-      suffix_id: "person.suffix_id",
-      gender_id: "person.gender_id",
-      birth_date: "person.birth_date",
-      modified_date: "person.modified_date",
-      email: "person.email",
-      phone: "person.phone",
-      street_address: "person.street_address",
-      supplemental_address_1: "person.supplemental_address_1",
-      supplemental_address_2: "person.supplemental_address_2",
-      supplemental_address_3: "person.supplemental_address_3",
-      city: "person.city",
-      postal_code: "person.postal_code",
-      postal_code_suffix: "person.postal_code_suffix",
-      country_id: "person.country_id",
-      state_province_id: "person.state_province_id",
+      first_name: "Michael",
+      middle_name: "F.",
+      last_name: "Steigerwald",
+      prefix_id: 3,
+      suffix_id: undefined,
+      gender_id: 2,
+      birth_date: "1961-02-04",
+      modified_date: "2021-11-26",
+      email: "CIO@AGLOA.org",
+      phone: "(800)555-1212",
+      street_address: "1870 Shady Beach Ave.",
+      supplemental_address_1: undefined,
+      supplemental_address_2: undefined,
+      supplemental_address_3: undefined,
+      city: "Roseville",
+      postal_code: "55113",
+      postal_code_suffix: "6900",
+      country_id: 1228,
+      state_province_id: 1022,
     };
 
     person.save(testPerson);
 
-    let expectedPerson = testPerson;
-    expectedPerson.contact_type = "Individual";
+    let expectedPerson = {
+      records: [{
+        id: 1,
+        first_name: "Michael", last_name: "Steigerwald", middle_name: "F.",
+        prefix_id: 3, suffix_id: undefined, gender_id: 2, birth_date: "1961-02-04",
+        contact_type: "Individual", contact_sub_type: undefined
+      }],
+      chain: {
+        "emailSave": ["Email", "save", { records: [{ contact_id: 1, id: undefined, email: "CIO@AGLOA.org" }] }],
+        "phoneSave": ["Phone", "save", { records: [{ contact_id: 1, id: undefined, phone: "(800)555-1212" }] }],
+        "addressSave": ["Address", "save", {
+          records: [{
+            contact_id: 1, id: undefined,
+            street_address: "1870 Shady Beach Ave.",
+            supplemental_address_1: undefined, supplemental_address_2: undefined, supplemental_address_3: undefined,
+            city: "Roseville", state_province_id: 1022, country_id: 1228,
+            postal_code: "55113", postal_code_suffix: "6900"
+          }]
+        }]
+      }
+    }
 
-    expect(crmApi).toHaveBeenCalledWith('Contact', 'create', expectedPerson);
+    expect(CRM).toHaveBeenCalledWith('Contact', 'save', expectedPerson);
   });
 
-  it('should delete Contact in crmApi4', () => {
+  it('deletes contact from CRM.', () => {
     const id = 1;
     person.delete(id);
-    expect(crmApi).toHaveBeenCalledWith('Contact', 'delete', { id });
+    expect(CRM).toHaveBeenCalledWith('Contact', 'delete', { where: [['id', '=', 1]] });
   });
 
 });
