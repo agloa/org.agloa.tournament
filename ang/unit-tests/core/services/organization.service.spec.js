@@ -1,6 +1,6 @@
 'use strict';
 
-fdescribe('organization', function () {
+describe('organization', function () {
   var organization;
   var CRM;
 

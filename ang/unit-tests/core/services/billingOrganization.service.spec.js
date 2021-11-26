@@ -1,8 +1,8 @@
 'use strict';
 
-describe('billingOrganization', function () {
+fdescribe('Billing Organization service', function () {
   var organization;
-  var crmApi;
+  var CRM;
 
   beforeEach(function () {
     // Add a custom equality tester before each test
@@ -10,66 +10,42 @@ describe('billingOrganization', function () {
     module('tournament');
 
     // This ***HAS*** to go before the beforeEach(inject(...)) block
-    crmApi = jasmine.createSpy('crmApiMock')
+    CRM = jasmine.createSpy('crmMock')
 
     module(function ($provide) {
-      $provide.value('crmApi4', crmApi);
+      $provide.value('crmApi4', CRM);
     });
 
     inject(function (_organization_) { organization = _organization_; });
   });
 
-  it('should get from crmApi', function () {
-    var contact_sub_type;
+  it('gets all contacts from CRM.', function () {
     organization.get();
-    expect(crmApi).toHaveBeenCalledWith('Contact', 'get', {
-      select: ["id", "contact_sub_type", "organization_name", "modified_date",
-        "email.id", "email.email",
-        "phone.id", "phone.phone",
-        "address.id", "address.street_address", "address.supplemental_address_1", "address.supplemental_address_2", "address.supplemental_address_3", "address.city", "address.state_province_id", "address.country_id", "address.postal_code", "address.postal_code_suffix"
-      ],
-      join: [
-        ["Email AS email", false, null],
-        ["Phone AS phone", false, null],
-        ["Address AS address", false, null]
-      ],
-      where: [["contact_type", "=", "Organization"], ["contact_sub_type", "=", "billingOrganization"]]
+    expect(CRM).toHaveBeenCalledWith('Contact', 'get', {
+      select: ['id', 'contact_sub_type', 'organization_name', 'modified_date', 'email.id', 'email.email', 'phone.id', 'phone.phone', 'address.id', 'address.street_address', 'address.supplemental_address_1', 'address.supplemental_address_2', 'address.supplemental_address_3', 'address.city', 'address.state_province_id', 'address.country_id', 'address.postal_code', 'address.postal_code_suffix'],
+      join: [['Email AS email', false, null], ['Phone AS phone', false, null], ['Address AS address', false, null]],
+      where: [[1]]
     });
   });
 
-  it('should get(id) from crmApi', function () {
+  it('gets contact by id from CRM.', function () {
     const id = 6;
     organization.get(id);
-    expect(crmApi).toHaveBeenCalledWith('Contact', 'get', {
-      select: ["id", "contact_sub_type", "organization_name", "modified_date",
-        "email.id", "email.email",
-        "phone.id", "phone.phone",
-        "address.id", "address.street_address", "address.supplemental_address_1", "address.supplemental_address_2", "address.supplemental_address_3", "address.city", "address.state_province_id", "address.country_id", "address.postal_code", "address.postal_code_suffix"
-      ],
-      join: [
-        ["Email AS email", false, null],
-        ["Phone AS phone", false, null],
-        ["Address AS address", false, null]
-      ],
-      where: [
-        ["contact_type", "=", "Organization"],
-        ["contact_sub_type", "=", "billingOrganization"],
-        ["id", "=", id]
-      ]
+    expect(CRM).toHaveBeenCalledWith('Contact', 'get', {
+      select: ['id', 'contact_sub_type', 'organization_name', 'modified_date', 'email.id', 'email.email', 'phone.id', 'phone.phone', 'address.id', 'address.street_address', 'address.supplemental_address_1', 'address.supplemental_address_2', 'address.supplemental_address_3', 'address.city', 'address.state_province_id', 'address.country_id', 'address.postal_code', 'address.postal_code_suffix'],
+      join: [['Email AS email', false, null], ['Phone AS phone', false, null], ['Address AS address', false, null]],
+      where: [['id', '=', id]]
     });
   });
 
-  it('save should create organization in crmApi', () => {
+  it('saves contact to CRM.', () => {
     const testOrganization = {
       id: 1,
       organization_name: "organization_name",
     };
 
-    const expextedOrganization = testOrganization;
-    expextedOrganization.contact_type = "Organization";
-
     organization.save(testOrganization);
-    expect(crmApi).toHaveBeenCalledWith('Contact', 'save', {
+    expect(CRM).toHaveBeenCalledWith('Contact', 'save', {
       records: [{
         "id": testOrganization.id,
         "contact_type": testOrganization.contact_type,
@@ -93,10 +69,10 @@ describe('billingOrganization', function () {
     });
   });
 
-  it('should delete organization in crmApi', () => {
+  it('deletes organization from CRM.', () => {
     const id = 6;
     organization.delete(id);
-    expect(crmApi).toHaveBeenCalledWith('Contact', 'delete', { where: [["id", "=", id]] });
+    expect(CRM).toHaveBeenCalledWith('Contact', 'delete', { where: [["id", "=", id]] });
   });
 
 });
