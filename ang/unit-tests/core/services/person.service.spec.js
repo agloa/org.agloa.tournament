@@ -1,6 +1,6 @@
 'use strict';
 
-fdescribe('Person service', function () {
+describe('Person service', function () {
   var person;
   var CRM;
 
