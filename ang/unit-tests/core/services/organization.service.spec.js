@@ -1,6 +1,6 @@
 'use strict';
 
-describe('organization', function () {
+fdescribe('organization', function () {
   var organization;
   var CRM;
 
@@ -20,13 +20,11 @@ describe('organization', function () {
   });
 
   it('gets all from CRM', function () {
-    var contact_sub_type;
     organization.get();
     expect(CRM).toHaveBeenCalledWith('Contact', 'get', {
-      "sequential": 1,
-      //"return": ["id", "organization_name"],
-      "contact_type": "Organization",
-      "contact_sub_type": contact_sub_type,
+      select: ['id', 'contact_sub_type', 'organization_name', 'modified_date', 'email.id', 'email.email', 'phone.id', 'phone.phone', 'address.id', 'address.street_address', 'address.supplemental_address_1', 'address.supplemental_address_2', 'address.supplemental_address_3', 'address.city', 'address.state_province_id', 'address.country_id', 'address.postal_code', 'address.postal_code_suffix'],
+      join: [['Email AS email', false, null], ['Phone AS phone', false, null], ['Address AS address', false, null]],
+      where: [[1]]
     });
   });
 
