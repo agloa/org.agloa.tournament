@@ -4,78 +4,75 @@ describe('person component', function () {
     const personMock = jasmine.createSpy('personMock').and.returnValue(Promise.resolve({}));
     let personService;
 
-    let genders = {
-        values: [
-            {
-                value: 'M',
-                label: 'Male'
-            },
-            {
-                value: 'F',
-                label: 'Female'
-            },
-        ]
-    };
+    let genders = [
+        {
+            value: 'M',
+            label: 'Male'
+        },
+        {
+            value: 'F',
+            label: 'Female'
+        },
+    ]
+        ;
 
-    let prefixes = {
-        values: [
-            {
-                value: 1,
-                label: "Mrs."
-            },
-            {
-                value: 2,
-                label: "Ms."
-            },
-            {
-                value: 3,
-                label: "Mr."
-            },
-            {
-                value: 4,
-                label: "Dr."
-            }
-        ]
-    };
+    let prefixes = [
+        {
+            value: 1,
+            label: "Mrs."
+        },
+        {
+            value: 2,
+            label: "Ms."
+        },
+        {
+            value: 3,
+            label: "Mr."
+        },
+        {
+            value: 4,
+            label: "Dr."
+        }
+    ]
+        ;
 
-    let suffixes = {
-        values: [
-            {
-                label: "Jr.",
-                value: 1
-            },
-            {
-                label: "Sr.",
-                value: 2
-            },
-            {
-                label: "II",
-                value: 3
-            },
-            {
-                label: "III",
-                value: 4
-            },
-            {
-                label: "IV",
-                value: 5
-            },
-            {
-                label: "V",
-                value: 6
-            },
-            {
-                label: "VI",
-                value: 7
-            },
-            {
-                label: "VII",
-                value: 8
-            }
-        ]
-    };
+    let suffixes = [
+        {
+            label: "Jr.",
+            value: 1
+        },
+        {
+            label: "Sr.",
+            value: 2
+        },
+        {
+            label: "II",
+            value: 3
+        },
+        {
+            label: "III",
+            value: 4
+        },
+        {
+            label: "IV",
+            value: 5
+        },
+        {
+            label: "V",
+            value: 6
+        },
+        {
+            label: "VI",
+            value: 7
+        },
+        {
+            label: "VII",
+            value: 8
+        }
+    ]
+        ;
 
-    let person = {
+    let person = [{
         "contact_id": "2",
         "contact_type": "Individual",
         "sort_name": "Steigerwald, Michael",
@@ -111,7 +108,7 @@ describe('person component', function () {
         "state_province": "MN",
         "country": "United States",
         "id": "2"
-    }
+    }]
 
     let countries = [
         {
@@ -241,7 +238,7 @@ describe('person component', function () {
         });
     });
 
-    it('should bind contact id', async function () {
+    it('Binds contact id.', async function () {
         // Assemble
         let contactId = 1;
         var bindings = { contactId: 1 };
@@ -255,7 +252,7 @@ describe('person component', function () {
         expect(controller.id).toBe(contactId);
     });
 
-    it('should get contact id from routeParams', async function () {
+    it('Gets contact id from routeParams.', async function () {
         // Assemble
         let contactId = 1;
         $routeParams.contactId = contactId;
@@ -269,7 +266,7 @@ describe('person component', function () {
         expect(controller.id).toBe(contactId);
     });
 
-    it('should save by calling person service save', async function () {
+    it('Saves by calling person service save.', async function () {
         // Assemble
         let contactId = 1;
         var bindings = { contactId: 1 };
@@ -284,7 +281,7 @@ describe('person component', function () {
         expect(personMock).toHaveBeenCalled();
     });
 
-    it('should delete by calling person service delete', async function () {
+    it('Deletes by calling person service delete.', async function () {
         // Assemble
         let contactId = 1;
         var bindings = { contactId: 1 };

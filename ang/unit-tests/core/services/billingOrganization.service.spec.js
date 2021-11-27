@@ -1,6 +1,6 @@
 'use strict';
 
-fdescribe('Billing Organization service', function () {
+describe('Billing Organization service', function () {
   var organization;
   var CRM;
 

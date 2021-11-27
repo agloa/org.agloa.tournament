@@ -4,7 +4,7 @@ describe('organization component', function () {
     const organizationMock = jasmine.createSpy('organizationMock').and.returnValue(Promise.resolve({}));
     let organizationService;
 
-    let organization = {
+    let organization = [{
         organization_name: "AGLOA.org",
         modified_date: "2020-09-21 17:52:19",
         id: 1,
@@ -76,7 +76,7 @@ describe('organization component', function () {
         "state_province": "",
         "country": "",
         "id": 1
-    }
+    }]
 
     let countries = [
         {
@@ -197,7 +197,7 @@ describe('organization component', function () {
         });
     });
 
-    it('should bind contact id', async function () {
+    it('Binds contact id.', async function () {
         // Assemble
         let contactId = 1;
         var bindings = { contactId: 1 };
@@ -211,7 +211,7 @@ describe('organization component', function () {
         expect(controller.id).toBe(contactId);
     });
 
-    it('should get id from routeParams', async function () {
+    it('Gets id from routeParam.', async function () {
         // Assemble
         const organizationId = 1;
         $routeParams.organizationId = organizationId;
@@ -225,7 +225,7 @@ describe('organization component', function () {
         expect(controller.id).toBe(organizationId);
     });
 
-    it('should save by calling organization service save', async function () {
+    it('Saves by calling organization service save.', async function () {
         // Assemble
         let contactId = 1;
         var bindings = { contactId: 1 };
@@ -240,7 +240,7 @@ describe('organization component', function () {
         expect(organizationMock).toHaveBeenCalled();
     });
 
-    it('should delete by calling organization service delete', async function () {
+    it('Deletes by calling organization service delete.', async function () {
         // Assemble
         let contactId = 1;
         var bindings = { contactId: 1 };
