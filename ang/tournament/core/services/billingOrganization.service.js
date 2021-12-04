@@ -1,16 +1,16 @@
-angular.module('tournament').factory('billingOrganizations', function (crmApi4) {
+angular.module('tournament').factory('billingOrganization', function (crmApi4) {
     function getContactType() {
+        console.log("getContactType calling: " + crmApi4);
         crmApi4('ContactType', 'get', {
             select: ["id"],
             where: [["label", "=", "Billing Organization"], ["parent_id:name", "=", "Organization"], ["is_active", "=", true]],
-            limit: 25
         }).then(
             (result) => {
                 if (result.count > 0) {
                     return result.id;
                 } else {
                     crmApi4('ContactType', 'create', {
-                        values: { "name": "billingOrganization", "label": "Billing Organization", "description": "Organization that will pay,  e.g.,  registration fees", "parent_id:name": "Organization", "is_active": true }
+                        values: { "name": "billingOrganization", "label": "Billing Organization", "description": "Organization that will pay, e.g.,  registration fees", "parent_id:name": "Organization", "is_active": true }
                     }).then(
                         (contactType) => {
                             return contactType.id;

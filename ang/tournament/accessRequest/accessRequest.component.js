@@ -7,7 +7,7 @@ angular.module('tournament').component('trnAccessRequest', {
     bindings: {
         requestorId: '@',
     },
-    controller: ['billingOrganizations', '$scope',
+    controller: ['billingOrganization', '$scope',
         function (organizations, $scope) {
             var self = this;
             self.showOrganizationRequest = false;
