@@ -344,15 +344,11 @@ function crmApi(entityType, action, params) {
                                         "last_name": "Steigerwald",
                                         "middle_name": "F",
                                         "prefix_id": 3,
-                                        "suffix_id": null,
                                         "gender_id": 2,
                                         "birth_date": "1961-02-04",
                                         "modified_date": "2021-05-16 11:56:19",
                                         "address.street_address": "1870 Shady Beach Ave",
                                         "address.id": 2,
-                                        "address.supplemental_address_1": null,
-                                        "address.supplemental_address_2": null,
-                                        "address.supplemental_address_3": null,
                                         "address.city": "Roseville",
                                         "address.state_province_id": 1022,
                                         "address.country_id": 1228,
@@ -555,10 +551,22 @@ function crmApi(entityType, action, params) {
             case "RelationshipType": {
                 switch (action) {
                     default:
-                        resolve({
+                        resolve(
                             [
                                 {
-                                    "id": "13"
+                                    id: "13"
+                                }
+                            ]
+                        )
+                }
+            }
+            case "ContactType": {
+                switch (action) {
+                    default:
+                        resolve(
+                            [
+                                {
+                                    id: "6"
                                 }
                             ]
                         )
