@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Billing Organization service', function () {
-  var organization;
+  var billingOrganization;
   var CRM;
 
   beforeEach(function () {
@@ -10,31 +10,31 @@ describe('Billing Organization service', function () {
     module('tournament');
 
     // This ***HAS*** to go before the beforeEach(inject(...)) block
-    CRM = jasmine.createSpy('crmMock')
+    CRM = jasmine.createSpy('crmMock');
 
     module(function ($provide) {
       $provide.value('crmApi4', CRM);
     });
 
-    inject(function (_organization_) { organization = _organization_; });
+    inject(function (_billingOrganization_) { billingOrganization = _billingOrganization_; });
   });
 
   it('gets all contacts from CRM.', function () {
-    organization.get();
+    billingOrganization.get();
     expect(CRM).toHaveBeenCalledWith('Contact', 'get', {
       select: ['id', 'contact_sub_type', 'organization_name', 'modified_date', 'email.id', 'email.email', 'phone.id', 'phone.phone', 'address.id', 'address.street_address', 'address.supplemental_address_1', 'address.supplemental_address_2', 'address.supplemental_address_3', 'address.city', 'address.state_province_id', 'address.country_id', 'address.postal_code', 'address.postal_code_suffix'],
       join: [['Email AS email', false, null], ['Phone AS phone', false, null], ['Address AS address', false, null]],
-      where: [[1]]
+      where: [['contact_type', '=', 'Organization'], ['contact_sub_type', '=', 'billingOrganization']]
     });
   });
 
   it('gets contact by id from CRM.', function () {
     const id = 6;
-    organization.get(id);
+    billingOrganization.get(id);
     expect(CRM).toHaveBeenCalledWith('Contact', 'get', {
       select: ['id', 'contact_sub_type', 'organization_name', 'modified_date', 'email.id', 'email.email', 'phone.id', 'phone.phone', 'address.id', 'address.street_address', 'address.supplemental_address_1', 'address.supplemental_address_2', 'address.supplemental_address_3', 'address.city', 'address.state_province_id', 'address.country_id', 'address.postal_code', 'address.postal_code_suffix'],
       join: [['Email AS email', false, null], ['Phone AS phone', false, null], ['Address AS address', false, null]],
-      where: [['id', '=', id]]
+      where: [['contact_type', '=', 'Organization'], ['contact_sub_type', '=', 'billingOrganization'], ['id', '=', 6]]
     });
   });
 
@@ -42,9 +42,10 @@ describe('Billing Organization service', function () {
     const testOrganization = {
       id: 1,
       organization_name: "organization_name",
+      contact_sub_type: 6
     };
 
-    organization.save(testOrganization);
+    billingOrganization.save(testOrganization);
     expect(CRM).toHaveBeenCalledWith('Contact', 'save', {
       records: [{
         "id": testOrganization.id,
@@ -71,7 +72,7 @@ describe('Billing Organization service', function () {
 
   it('deletes organization from CRM.', () => {
     const id = 6;
-    organization.delete(id);
+    billingOrganization.delete(id);
     expect(CRM).toHaveBeenCalledWith('Contact', 'delete', { where: [["id", "=", id]] });
   });
 
