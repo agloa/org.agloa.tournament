@@ -10,7 +10,18 @@ describe('Billing Organization service', function () {
     module('tournament');
 
     // This ***HAS*** to go before the beforeEach(inject(...)) block
-    CRM = jasmine.createSpy('crmMock');
+    CRM = jasmine.createSpy('crmMock').and.returnValue(new Promise(
+      function (resolve) {
+        resolve(
+          [
+              {
+                  id: "6"
+              }
+          ]
+        )
+      }
+      )
+      );
 
     module(function ($provide) {
       $provide.value('crmApi4', CRM);
@@ -43,6 +54,37 @@ describe('Billing Organization service', function () {
       id: 1,
       organization_name: "organization_name",
       contact_sub_type: 6
+    };
+
+    billingOrganization.save(testOrganization);
+    expect(CRM).toHaveBeenCalledWith('Contact', 'save', {
+      records: [{
+        "id": testOrganization.id,
+        "contact_type": testOrganization.contact_type,
+        "contact_sub_type": testOrganization.contact_sub_type,
+        "organization_name": testOrganization.organization_name,
+      }],
+      chain: {
+        "emailSave": ["Email", "save", { "records": [{ "contact_id": testOrganization.id, "id": testOrganization.emailId, "email": testOrganization.email }] }],
+        "phoneSave": ["Phone", "save", { "records": [{ "contact_id": testOrganization.id, "id": testOrganization.phoneId, "phone": testOrganization.phone }] }],
+        "addressSave": ["Address", "save", {
+          "records": [{
+            "contact_id": testOrganization.id, "id": testOrganization.addressId,
+            "street_address": testOrganization.street_address,
+            "supplemental_address_1": testOrganization.supplemental_address_1, "supplemental_address_2": testOrganization.supplemental_address_2, "supplemental_address_3": testOrganization.supplemental_address_3,
+            "city": testOrganization.city, "state_province_id": testOrganization.state_province_id, "country_id": testOrganization.country_id,
+            "postal_code": testOrganization.postal_code, "postal_code_suffix": testOrganization.postal_code_suffix
+          }]
+        }]
+
+      }
+    });
+  });
+
+  it('creates contact_sub_type in CRM.', () => {
+    const testOrganization = {
+      id: 1,
+      organization_name: "organization_name",
     };
 
     billingOrganization.save(testOrganization);
