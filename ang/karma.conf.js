@@ -7,7 +7,8 @@ module.exports = function (config) {
       'karma-chrome-launcher',
       'karma-firefox-launcher',
       'karma-jasmine',
-      'karma-coverage' // required for coverage
+      'karma-coverage', // required for coverage
+      'karma-jasmine-html-reporter'
     ],
 
     basePath: './',
@@ -19,7 +20,7 @@ module.exports = function (config) {
       'app/lib/angular-route/angular-route.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'app.js',
-      'tournament/core/*.js',
+      // 'tournament/core/*.js',
       'tournament/**/*.js',
       'crmUtil.js',
       'unit-tests/**/*.js'

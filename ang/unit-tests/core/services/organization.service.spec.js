@@ -1,6 +1,6 @@
 'use strict';
 
-describe('organization', function () {
+describe('Organization service', function () {
   var organization;
   var CRM;
 

@@ -3,6 +3,7 @@
 describe('Billing Organization service', function () {
   var billingOrganization;
   var CRM;
+  const billingOrganizationContactSubType = 6;
 
   beforeEach(function () {
     // Add a custom equality tester before each test
@@ -14,14 +15,13 @@ describe('Billing Organization service', function () {
       function (resolve) {
         resolve(
           [
-              {
-                  id: "6"
-              }
+            {
+              id: billingOrganizationContactSubType
+            }
           ]
         )
       }
-      )
-      );
+    ));
 
     module(function ($provide) {
       $provide.value('crmApi4', CRM);
@@ -53,7 +53,7 @@ describe('Billing Organization service', function () {
     const testOrganization = {
       id: 1,
       organization_name: "organization_name",
-      contact_sub_type: 6
+      contact_sub_type: billingOrganizationContactSubType
     };
 
     billingOrganization.save(testOrganization);
@@ -91,9 +91,9 @@ describe('Billing Organization service', function () {
     expect(CRM).toHaveBeenCalledWith('Contact', 'save', {
       records: [{
         "id": testOrganization.id,
-        "contact_type": testOrganization.contact_type,
-        "contact_sub_type": testOrganization.contact_sub_type,
         "organization_name": testOrganization.organization_name,
+        "contact_type": "Organization",
+        "contact_sub_type": billingOrganizationContactSubType,
       }],
       chain: {
         "emailSave": ["Email", "save", { "records": [{ "contact_id": testOrganization.id, "id": testOrganization.emailId, "email": testOrganization.email }] }],
