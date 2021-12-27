@@ -1,19 +1,4 @@
 angular.module('tournament').factory('address', function (crmApi) {
-    var returnFields = ["id"
-        , "contact_id"
-        , "location_type_id"
-        , "is_primary"
-        , "is_billing"
-        , "street_address"
-        , "supplemental_address_1"
-        , "supplemental_address_2"
-        , "supplemental_address_3"
-        , "city", "postal_code"
-        , "postal_code_suffix"
-        , "country_id"
-        , "state_province_id"
-    ];
-
     //
     // Get the IDs of countries limited to this domain.
     //
@@ -29,33 +14,6 @@ angular.module('tournament').factory('address', function (crmApi) {
     }
 
     return {
-        // Get an address record
-        // @param id Contact id  (per APIv3)
-        // @param id (per APIv3)
-        // @return Promise of address (per APIv3)
-        get: (contact_id, id) => {
-            if (contact_id) {
-                return crmApi('Address', 'get', {
-                    "sequential": 1,
-                    "return": returnFields,
-                    "contact_id": contact_id,
-                    "is_primary": 1
-                });
-            }
-            if (id) {
-                return crmApi('Address', 'get', {
-                    "sequential": 1,
-                    "return": returnFields,
-                    "id": id,
-                    "is_primary": 1
-                });
-            }
-            return crmApi('Address', 'get', {
-                "sequential": 1,
-                "return": returnFields
-            });
-        },
-
         // Get values/labels for option groups: countries
         // @return Promise of option groups/values (per APIv3)
         getCountries: () => {
@@ -103,24 +61,5 @@ angular.module('tournament').factory('address', function (crmApi) {
                 function (result) { CRM.alert(ts('Unable to get available countries.'), ts('Not Found'), 'error'); },
             );
         },
-
-        save: (address) => {
-            return crmApi('Address', 'create', {
-                "id": address.id
-                , "contact_id": address.contact_id
-                , "location_type_id": address.location_type_id
-                , "is_primary": address.is_primary
-                , "is_billing": address.is_billing,
-                "street_address": address.street_address,
-                "supplemental_address_1": address.supplemental_address_1,
-                "supplemental_address_2": address.supplemental_address_2,
-                "supplemental_address_3": address.supplemental_address_3,
-                "city": address.city,
-                "state_province_id": address.state_province_id,
-                "postal_code": address.postal_code,
-                "postal_code_suffix": address.postal_code_suffix,
-                "country_id": address.country_id
-            });
-        }
     }
 });
