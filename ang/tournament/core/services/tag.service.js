@@ -6,7 +6,7 @@ angular.module('tournament').factory('tag', function (crmApi4) {
                 where: (id) ? ["id", "=", id] : undefined
             });
         },
-        get: (name) => {
+        getByName: (name) => {
             return crmApi4('Tag', 'get', {
                 select: ["id", "name", "description"],
                 where: (name) ? ["name", "=", name] : undefined
