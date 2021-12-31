@@ -1,14 +1,23 @@
-angular.module('tournament').factory('entityTag', function (crmApi) {
+angular.module('tournament').factory('entityTag', function (crmApi4) {
   return {
-    get: (name) => {
-      // Get an array of entity id/name pairs matching a tag name
-      // @param name (per APIv3)
-      // @return Promise of Entity Array (per APIv3)
-      return crmApi('EntityTag', 'get', {
-        "sequential": 1,
-        "return": ["entity_id.id", "entity_id.display_name"],
-        "tag_id.name": name
+    get: (id) => {
+      return crmApi4('EntityTag', 'get', {
+        select: ["id", "entity_table", "entity_id", "tag_id"],
+        where: (id) ? ["id", "=", id] : undefined
       });
     },
+    save: (entityTag) => {
+      return crmApi4('EntityTag', 'save', {
+        records: [{
+          "id": entityTag.id,
+          "entity_table": entityTag.entity_table,
+          "entity_id": entityTag.entity_id,
+          "tag_id": entityTag.tag_id,
+        }],
+      })
+    },
+    delete: (id) => {
+      return crmApi4('EntityTag', 'delete', { where: [["id", "=", id]] });
+    }
   }
 });

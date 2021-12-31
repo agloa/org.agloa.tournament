@@ -20,7 +20,6 @@ module.exports = function (config) {
       'app/lib/angular-route/angular-route.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'app.js',
-      // 'tournament/core/*.js',
       'tournament/**/*.js',
       'crmUtil.js',
       'unit-tests/**/*.js'
