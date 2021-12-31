@@ -56,19 +56,9 @@ describe('Tag service', function () {
             "id": 6,
             "name": "Requires Approval",
             "description": "Contact requires approval from administrator",
-            "parent_id": null,
-            "is_selectable": true,
-            "is_reserved": true,
-            "is_tagset": false,
-            "used_for": [
-                "civicrm_contact"
-            ],
-            "created_id": 2,
-            "color": null,
-            "created_date": "2020-11-24 18:05:10"
         };
 
-        testTag.save(testTag);
+        tag.save(testTag);
         expect(CRM).toHaveBeenCalledWith('Tag', 'save', {
             records: [{
                 "id": testTag.id,

@@ -16,6 +16,7 @@ angular.module('tournament').factory('tag', function (crmApi4) {
             if (!tag.is_reserved) {
                 tag.is_reserved = true;
             }
+            
             if (!tag.used_for) {
                 tag.used_for = ["civicrm_contact"];
             }
