@@ -1,10 +1,10 @@
 'use strict';
 
-describe('person component', function () {
+fdescribe('person component', function () {
     const personMock = jasmine.createSpy('personMock').and.returnValue(Promise.resolve({}));
     let personService;
 
-    let genders = [
+    const genders = [
         {
             value: 'M',
             label: 'Male'
@@ -13,10 +13,9 @@ describe('person component', function () {
             value: 'F',
             label: 'Female'
         },
-    ]
-        ;
+    ];
 
-    let prefixes = [
+    const prefixes = [
         {
             value: 1,
             label: "Mrs."
@@ -33,10 +32,9 @@ describe('person component', function () {
             value: 4,
             label: "Dr."
         }
-    ]
-        ;
+    ];
 
-    let suffixes = [
+    const suffixes = [
         {
             label: "Jr.",
             value: 1
@@ -69,10 +67,9 @@ describe('person component', function () {
             label: "VII",
             value: 8
         }
-    ]
-        ;
+    ];
 
-    let person = [{
+    const person = [{
         "contact_id": "2",
         "contact_type": "Individual",
         "sort_name": "Steigerwald, Michael",
@@ -110,7 +107,7 @@ describe('person component', function () {
         "id": "2"
     }]
 
-    let countries = [
+    const countries = [
         {
             id: "1101",
             name: "India",
@@ -134,7 +131,7 @@ describe('person component', function () {
         }
     ]
 
-    let states_provinces = [
+    const states_provinces = [
         {
             id: "1005",
             name: "Colorado",
@@ -202,28 +199,28 @@ describe('person component', function () {
 
         // This ***MUST*** go before the inject(...) block
         personService = {
-            get: function () {
-                return Promise.resolve(person);
+            get: async function () {
+                return person;
             },
-            getGenders: function () {
-                return Promise.resolve(genders);
+            getGenders: async function () {
+                return genders;
             },
-            getPrefixes: function () {
-                return Promise.resolve(prefixes);
+            getPrefixes: async function () {
+                return prefixes;
             },
-            getSuffixes: function () {
-                return Promise.resolve(suffixes);
+            getSuffixes: async function () {
+                return suffixes;
             },
             save: personMock,
             delete: personMock
         };
 
         let address = {
-            getCountries: function () {
-                return Promise.resolve(countries);
+            getCountries: async function () {
+                return countries;
             },
-            getStateProvinces: function () {
-                return Promise.resolve(states_provinces);
+            getStateProvinces: async function () {
+                return states_provinces;
             }
         };
 

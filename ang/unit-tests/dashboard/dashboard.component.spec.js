@@ -1,13 +1,15 @@
 'use strict';
 
-describe('dashboard component', function () {
+describe('Dashboard component', function () {
     let contactId = 1;
 
-    let person = {
-        id: contactId
+    const person = {
+        id: contactId,
+        display_name: "Display Name",
+        modified_date: "2022-01-01"
     };
 
-    let genders = [
+    const genders = [
         {
             "id": 60,
             "value": "1",
@@ -25,7 +27,7 @@ describe('dashboard component', function () {
         }
     ];
 
-    let prefixes = [
+    const prefixes = [
         {
             value: "1",
             label: "Mrs."
@@ -44,7 +46,7 @@ describe('dashboard component', function () {
         }
     ];
 
-    let suffixes = [
+    const suffixes = [
         {
             label: "Jr.",
             value: "1"
@@ -79,7 +81,7 @@ describe('dashboard component', function () {
         }
     ];
 
-    let countries = [
+    const countries = [
         {
             id: "1101",
             name: "India",
@@ -103,7 +105,7 @@ describe('dashboard component', function () {
         }
     ];
 
-    let states_provinces = [
+    const states_provinces = [
         {
             id: "1000",
             name: "Alabama",
@@ -478,26 +480,26 @@ describe('dashboard component', function () {
 
         // This ***MUST*** go before the inject(...) block
         personService = {
-            get: function () {
-                return Promise.resolve(person);
+            get: async function () {
+                return [person];
             },
-            getGenders: function () {
-                return Promise.resolve(genders);
+            getGenders: async function () {
+                return genders;
             },
-            getPrefixes: function () {
-                return Promise.resolve(prefixes);
+            getPrefixes: async function () {
+                return prefixes;
             },
-            getSuffixes: function () {
-                return Promise.resolve(suffixes);
+            getSuffixes: async function () {
+                return suffixes;
             }
         };
 
         let addressService = {
-            getCountries: function () {
-                return Promise.resolve(countries);
+            getCountries: async function () {
+                return countries;
             },
-            getStateProvinces: function () {
-                return Promise.resolve(states_provinces);
+            getStateProvinces: async function () {
+                return states_provinces;
             }
         };
 
@@ -518,10 +520,13 @@ describe('dashboard component', function () {
 
         // Act
         var controller = await $componentController('trnDashboard', null);
+        controller.$onInit();
 
         // Assert
         expect(controller).toBeDefined();
-        expect(controller.contactId).toBe(contactId);
+        expect(controller.contactId).toBe(person.id);
+        expect(controller.display_name).toBe(person.display_name);
+        expect(controller.modified_date).toBe(person.modified_date);
     });
 
     it('should display Person', async function () {

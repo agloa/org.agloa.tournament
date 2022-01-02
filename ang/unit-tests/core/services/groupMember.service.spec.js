@@ -1,6 +1,6 @@
 'use strict';
 
-xdescribe('groupMember', function () {
+describe('groupMember', function () {
   var groupMember;
 
   // Add a custom equality tester before each test

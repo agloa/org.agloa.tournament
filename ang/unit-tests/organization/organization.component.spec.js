@@ -1,10 +1,10 @@
 'use strict';
 
-describe('organization component', function () {
+fdescribe('organization component', function () {
     const organizationMock = jasmine.createSpy('organizationMock').and.returnValue(Promise.resolve({}));
     let organizationService;
 
-    let organization = [{
+    const organization = [{
         organization_name: "AGLOA.org",
         modified_date: "2020-09-21 17:52:19",
         id: 1,
@@ -78,7 +78,7 @@ describe('organization component', function () {
         "id": 1
     }]
 
-    let countries = [
+    const countries = [
         {
             id: "1101",
             name: "India",
@@ -102,7 +102,7 @@ describe('organization component', function () {
         }
     ]
 
-    let states_provinces = [
+    const states_provinces = [
         {
             id: "1005",
             name: "Colorado",
@@ -170,19 +170,19 @@ describe('organization component', function () {
 
         // This ***MUST*** go before the inject(...) block
         organizationService = {
-            get: function () {
-                return Promise.resolve(organization);
+            get: async function () {
+                return organization;
             },
             save: organizationMock,
             delete: organizationMock
         };
 
         let address = {
-            getCountries: function () {
-                return Promise.resolve(countries);
+            getCountries: async function () {
+                return countries;
             },
-            getStateProvinces: function () {
-                return Promise.resolve(states_provinces);
+            getStateProvinces: async function () {
+                return states_provinces;
             }
         };
 
