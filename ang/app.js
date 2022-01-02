@@ -1,7 +1,7 @@
 
 (function (angular) {
     // Declare a list of dependencies.
-    angular.module('tournament', ['ngRoute']);    
+    angular.module('tournament', ['ngRoute']);
     angular.module('tournament').value('version', '0.1');
 
     angular.module('tournament').config(['$routeProvider', ($routeProvider) => {
@@ -17,24 +17,6 @@
             })
             .when('/tournament/organization/:contactId', {
                 template: '<trn-organization></trn-organization>'
-            })
-            .when('/tournament/address/:id', {
-                template: '<trn-address></trn-address>'
-            })
-            .when('/tournament/person/address/:contactId', {
-                template: '<trn-address></trn-address>'
-            })
-            .when('/tournament/phone/:id', {
-                template: '<trn-phone></trn-phone>'
-            })
-            .when('/tournament/person/phone/:contactId', {
-                template: '<trn-phone></trn-phone>'
-            })
-            .when('/tournament/email/:id', {
-                template: '<trn-email></trn-email>'
-            })
-            .when('/tournament/person/email/:contactId', {
-                template: '<trn-email></trn-email>'
             })
             .when('/tournament/person/relationships/:contactId?', {
                 template: '<trn-relationships></trn-relationships>'
