@@ -520,7 +520,7 @@ describe('Dashboard component', function () {
 
         // Act
         var controller = await $componentController('trnDashboard', null);
-        controller.$onInit();
+        await controller.$onInit();
 
         // Assert
         expect(controller).toBeDefined();
