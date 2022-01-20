@@ -13,42 +13,47 @@ angular.module('tournament').component('trnPerson', {
         self.contactId = $routeParams.contactId;
       }
 
-      self.setSelectedPerson = (person) => {
-        self.last_name = person[0].last_name;
-        self.first_name = person[0].first_name;
-        self.middle_name = person[0].middle_name;
-        if (person[0].prefix_id != null) {
-          self.prefix = person[0].prefix_id.toString();
-        }
-        if (person[0].suffix_id != null) {
-          self.suffix = person[0].suffix_id.toString();
-        }
-        if (person[0].gender_id != null) {
-          self.gender = person[0].gender_id.toString();
-        }
-        self.birth_date = new Date(person[0].birth_date);
+      self.setSelectedPerson = (person) => {        
+        const selectedPerson = person[0];
 
-        self.contact_type = person[0].contact_type;
-        self.contact_sub_type = person[0].contact_sub_type;
-        self.modified_date = person[0].modified_date;
-        self.emailId = person[0]["email.id"];
-        self.email = person[0]["email.email"];
-        self.phoneId = person[0]["phone.id"];
-        self.phone = person[0]["phone.phone"];
+        self.last_name = selectedPerson.last_name;
+        self.first_name = selectedPerson.first_name;
+        self.middle_name = selectedPerson.middle_name;
 
-        self.addressId = person[0]["address.id"];
-        self.street_address = person[0]["address.street_address"];
-        self.supplemental_address_1 = person[0]["address.supplemental_address_1"];
-        self.supplemental_address_2 = person[0]["address.supplemental_address_2"];
-        self.supplemental_address_3 = person[0]["address.supplemental_address_3"];
-        self.city = person[0]["address.city"];
-        self.postal_code = person[0]["address.postal_code"];
-        self.postal_code_suffix = person[0]["address.postal_code_suffix"];
-        if (person[0]["address.country_id"] != null) {
-          self.country_id = person[0]["address.country_id"].toString();
+        if (selectedPerson.prefix_id != null) {
+          self.prefix = selectedPerson.prefix_id.toString();
         }
-        if (person[0]["address.state_province_id"] != null) {
-          self.state_province_id = person[0]["address.state_province_id"].toString();
+        if (selectedPerson.suffix_id != null) {
+          self.suffix = selectedPerson.suffix_id.toString();
+        }
+        if (selectedPerson.gender_id != null) {
+          self.gender = selectedPerson.gender_id.toString();
+        }
+
+        self.birth_date = new Date(selectedPerson.birth_date);
+
+        self.contact_type = selectedPerson.contact_type;
+        self.contact_sub_type = selectedPerson.contact_sub_type;
+        self.modified_date = selectedPerson.modified_date;
+        
+        self.emailId = selectedPerson["email.id"];
+        self.email = selectedPerson["email.email"];
+        self.phoneId = selectedPerson["phone.id"];
+        self.phone = selectedPerson["phone.phone"];
+
+        self.addressId = selectedPerson["address.id"];
+        self.street_address = selectedPerson["address.street_address"];
+        self.supplemental_address_1 = selectedPerson["address.supplemental_address_1"];
+        self.supplemental_address_2 = selectedPerson["address.supplemental_address_2"];
+        self.supplemental_address_3 = selectedPerson["address.supplemental_address_3"];
+        self.city = selectedPerson["address.city"];
+        self.postal_code = selectedPerson["address.postal_code"];
+        self.postal_code_suffix = selectedPerson["address.postal_code_suffix"];
+        if (selectedPerson["address.country_id"] != null) {
+          self.country_id = selectedPerson["address.country_id"].toString();
+        }
+        if (selectedPerson["address.state_province_id"] != null) {
+          self.state_province_id = selectedPerson["address.state_province_id"].toString();
         }
       };
 
