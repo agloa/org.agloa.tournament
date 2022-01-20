@@ -1,6 +1,6 @@
 'use strict';
 
-fdescribe('organization component', function () {
+describe('organization component', function () {
     const organizationMock = jasmine.createSpy('organizationMock').and.returnValue(Promise.resolve({}));
     let organizationService;
 
