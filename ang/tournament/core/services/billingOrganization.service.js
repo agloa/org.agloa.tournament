@@ -81,7 +81,7 @@ angular.module('tournament').factory('billingOrganization', function (crmApi4) {
                     },
                     (error) => {
                         CRM.alert(
-                            ts("Could get contact type error = " + error.error_message),
+                            ts("Could not get contact type error = " + error.error_message),
                             ts("Database error"),
                             "error"
                         );
