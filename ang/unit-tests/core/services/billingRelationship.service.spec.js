@@ -77,7 +77,7 @@ describe('Billing Relationship service', function () {
       contact_id_a: 1,
       contact_id_b: 2,
       start_date: Date.now(),
-      relationship_type_id: "billingContactFor"
+      relationship_type_id: billingRelationshipType
     };
 
     billingRelationship.save(relationship);
@@ -87,7 +87,7 @@ describe('Billing Relationship service', function () {
         "id": relationship.id,
         "contact_id_a": relationship.contact_id_a,
         "contact_id_b": relationship.contact_id_b,
-        "relationship_type_id": "billingContactFor",
+        "relationship_type_id": billingRelationshipType,
         "start_date": relationship.start_date,
         "is_active": true,
         "description": "Person id = " +
@@ -100,7 +100,7 @@ describe('Billing Relationship service', function () {
     });
   });
 
-  it('creates relationship_type in CRM.', () => {
+  it('creates relationship_type in CRM.', async () => {
     const relationship = {
       id: 1,
       contact_id_a: 1,
@@ -108,14 +108,14 @@ describe('Billing Relationship service', function () {
       start_date: Date.now()
     };
 
-    billingRelationship.save(relationship);
+    await billingRelationship.save(relationship);
 
     expect(CRM).toHaveBeenCalledWith('Relationship', 'save', {
       records: [{
         "id": relationship.id,
         "contact_id_a": relationship.contact_id_a,
         "contact_id_b": relationship.contact_id_b,
-        "relationship_type_id": "billingContactFor",
+        "relationship_type_id": billingRelationshipType,
         "start_date": relationship.start_date,
         "end_date": undefined,
         "is_active": true,

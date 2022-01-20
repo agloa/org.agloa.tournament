@@ -81,13 +81,13 @@ describe('Billing Organization service', function () {
     });
   });
 
-  it('creates contact_sub_type in CRM.', () => {
+  it('creates contact_sub_type in CRM.', async () => {
     const testOrganization = {
       id: 1,
       organization_name: "organization_name",
     };
 
-    billingOrganization.save(testOrganization);
+    await billingOrganization.save(testOrganization);
     expect(CRM).toHaveBeenCalledWith('Contact', 'save', {
       records: [{
         "id": testOrganization.id,
