@@ -13,7 +13,7 @@ angular.module('tournament').component('trnPerson', {
         self.contactId = $routeParams.contactId;
       }
 
-      self.setSelectedPerson = (person) => {        
+      self.setSelectedPerson = (person) => {
         const selectedPerson = person[0];
 
         self.last_name = selectedPerson.last_name;
@@ -35,7 +35,7 @@ angular.module('tournament').component('trnPerson', {
         self.contact_type = selectedPerson.contact_type;
         self.contact_sub_type = selectedPerson.contact_sub_type;
         self.modified_date = selectedPerson.modified_date;
-        
+
         self.emailId = selectedPerson["email.id"];
         self.email = selectedPerson["email.email"];
         self.phoneId = selectedPerson["phone.id"];
@@ -50,10 +50,10 @@ angular.module('tournament').component('trnPerson', {
         self.postal_code = selectedPerson["address.postal_code"];
         self.postal_code_suffix = selectedPerson["address.postal_code_suffix"];
         if (selectedPerson["address.country_id"] != null) {
-          self.country_id = selectedPerson["address.country_id"].toString();
+          self.country_id = selectedPerson["address.country_id"];
         }
         if (selectedPerson["address.state_province_id"] != null) {
-          self.state_province_id = selectedPerson["address.state_province_id"].toString();
+          self.state_province_id = selectedPerson["address.state_province_id"];
         }
       };
 
@@ -135,13 +135,11 @@ angular.module('tournament').component('trnPerson', {
         self.id = self.contactId;
 
         person.get(self.contactId).then(
-          // Success
-          (result) => {
-            self.setSelectedPerson(result);
+          (selectedPerson) => {
+            self.setSelectedPerson(selectedPerson);
           },
-          // Failure
           (error) => {
-            CRM.alert(ts('Could not get person record ID = ' + self.contactId + ', error = ' + error.error_message), ts('Not Found'), 'error');
+            CRM.alert(ts(`Could not get person record ID = ${self.contactId}, error = ${error.error_message}`), ts('Not Found'), 'error');
           }
         );
 

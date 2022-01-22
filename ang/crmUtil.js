@@ -372,7 +372,8 @@ function crmApi(entityType, action, params) {
                                         "email.hold_date": null,
                                         "email.reset_date": null,
                                         "email.signature_text": null,
-                                        "email.signature_html": null
+                                        "email.signature_html": null,
+                                        "modified_date": "2021-12-31 15:47:05"
                                     }
                                 ])
                         }
@@ -1160,34 +1161,6 @@ function crmApi(entityType, action, params) {
         }
     });
 };
-
-angular.module('tournament').factory('crmApi', function ($q) {
-    return function (entity, action, params) {
-        if (typeof entity === 'string') {
-            entityType = entity;
-        } else {
-            entityType = JSON.stringify(entity);
-        }
-
-        var deferred = $q.defer();
-        var p = crmApi(entityType, action, params);
-
-        p.then(
-            function (result) {
-                if (result.is_error) {
-                    deferred.reject(result);
-                } else {
-                    deferred.resolve(result);
-                }
-            },
-            function (error) {
-                deferred.reject(error);
-            }
-        );
-
-        return deferred.promise;
-    };
-});
 
 angular.module('tournament').factory('crmApi4', function ($q) {
     return function (entity, action, params) {

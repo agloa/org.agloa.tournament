@@ -1,6 +1,6 @@
 'use strict';
 
-fdescribe('person component', function () {
+describe('person component', function () {
     const personMock = jasmine.createSpy('personMock').and.returnValue(Promise.resolve({}));
     let personService;
 
@@ -70,28 +70,28 @@ fdescribe('person component', function () {
     ];
 
     const person = [{
-        "contact_id": "2",
+        "contact_id": 2,
         "contact_type": "Individual",
         "sort_name": "Steigerwald, Michael",
         "display_name": "Mr. Michael Steigerwald",
         "first_name": "Michael",
         "middle_name": "Francis",
         "last_name": "Steigerwald",
-        "prefix_id": "3",
+        "prefix_id": 3,
         "suffix_id": "",
         "formal_title": "",
         "gender_id": "2",
         "birth_date": "1961-02-04",
         "address_id": "10",
-        "street_address": "1870 Shady Beach Ave.",
-        "supplemental_address_1": "",
-        "supplemental_address_2": "",
-        "supplemental_address_3": "",
-        "city": "Roseville",
-        "postal_code_suffix": "6900",
-        "postal_code": "55113",
-        "state_province_id": "1022",
-        "country_id": "1228",
+        "address.street_address": "1870 Shady Beach Ave.",
+        "address.supplemental_address_1": "",
+        "address.supplemental_address_2": "",
+        "address.supplemental_address_3": "",
+        "address.city": "Roseville",
+        "address.postal_code_suffix": "6900",
+        "address.postal_code": "55113",
+        "address.address.state_province_id": "1022",
+        "address.country_id": "1228",
         "phone_id": "1",
         "phone_type_id": "2",
         "phone": "(612) 875-1888",
@@ -249,10 +249,10 @@ fdescribe('person component', function () {
         expect(controller.id).toBe(contactId);
     });
 
-    it('Gets contact id from routeParams.', async function () {
+    it('Gets contact from routeParams.', async function () {
         // Assemble
-        let contactId = 1;
-        $routeParams.contactId = contactId;
+        const selectedPerson = person[0];
+        $routeParams.contactId = selectedPerson.contact_id;
 
         // Act
         var controller = await $componentController('trnPerson', null);
@@ -260,7 +260,41 @@ fdescribe('person component', function () {
 
         // Assert
         expect(controller).toBeDefined();
-        expect(controller.id).toBe(contactId);
+        expect(controller.id).toBe(selectedPerson.contact_id);
+        expect(controller.first_name).toBe(selectedPerson.first_name);
+        expect(controller.last_name).toBe(selectedPerson.last_name);
+        expect(controller.middle_name).toBe(selectedPerson.middle_name);
+
+        expect(controller.prefix).toBe(selectedPerson.prefix_id.toString());
+        expect(controller.suffix).toBe(selectedPerson.suffix_id.toString());
+        expect(controller.gender).toBe(selectedPerson.gender_id.toString());
+
+        expect(controller.birth_date).toEqual(new Date(selectedPerson.birth_date));
+
+        expect(controller.contact_type).toBe(selectedPerson.contact_type);
+        expect(controller.contact_sub_type).toBe(selectedPerson.contact_sub_type);
+        expect(controller.modified_date).toEqual(selectedPerson.modified_date);
+
+        expect(controller.emailId).toBe(selectedPerson.email.id);
+        expect(controller.email).toBe(selectedPerson.email.email);
+
+        expect(controller.phoneId).toBe(selectedPerson.phone.id);
+        expect(controller.phone).toBe(selectedPerson.phone.phone);
+
+        expect(controller.addressId).toBe(selectedPerson.address.id);
+        expect(controller.last_name).toBe(selectedPerson.last_name);
+        expect(controller.last_name).toBe(selectedPerson.last_name);
+        expect(controller.last_name).toBe(selectedPerson.last_name);
+        expect(controller.last_name).toBe(selectedPerson.last_name);
+        expect(controller.last_name).toBe(selectedPerson.last_name);
+        expect(controller.last_name).toBe(selectedPerson.last_name);
+        expect(controller.last_name).toBe(selectedPerson.last_name);
+        expect(controller.last_name).toBe(selectedPerson.last_name);
+        expect(controller.last_name).toBe(selectedPerson.last_name);
+        expect(controller.last_name).toBe(selectedPerson.last_name);
+        expect(controller.last_name).toBe(selectedPerson.last_name);
+        expect(controller.last_name).toBe(selectedPerson.last_name);
+        expect(controller.last_name).toBe(selectedPerson.last_name);
     });
 
     it('Saves by calling person service save.', async function () {
