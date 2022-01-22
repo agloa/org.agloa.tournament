@@ -9,7 +9,7 @@ angular.module('tournament').factory('address', function (crmApi4) {
             select: ["countryLimit"]
         }).then(
             function (result) { return result[0].value; },
-            function (error) { CRM.alert(ts(`Unable to load available countries. Error = [error.error_message]`), ts('Not Found'), 'error'); }
+            function (error) { CRM.alert(ts(`Unable to load available countries. Error = ${error.error_message}`), ts('Not Found'), 'error'); }
         );
     }
 
@@ -24,7 +24,7 @@ angular.module('tournament').factory('address', function (crmApi4) {
                         where: [["id", "IN", availableCountries]]
                     }).then(
                         function (countries) { return countries; },
-                        function (error) { CRM.alert(ts(`Unable to get countries. Error = {error.error_message}`), ts('Not Found'), 'error'); }
+                        function (error) { CRM.alert(ts(`Unable to get countries. Error = ${error.error_message}`), ts('Not Found'), 'error'); }
                     );
                 },
 
@@ -41,7 +41,7 @@ angular.module('tournament').factory('address', function (crmApi4) {
                     where: [["country_id", "=", country_id]]
                 }).then(
                     function (stateProvinces) { return stateProvinces; },
-                    function (error) { CRM.alert(ts(`Unable to get states/provinces. Error= {error.error_message}`), ts('Not Found'), 'error'); },
+                    function (error) { CRM.alert(ts(`Unable to get states/provinces. Error= ${error.error_message}`), ts('Not Found'), 'error'); },
                 );
             }
             return getAvailableCountries().then(
@@ -51,11 +51,11 @@ angular.module('tournament').factory('address', function (crmApi4) {
                         where: [["country_id", "IN", availableCountries]]
                     }).then(
                         function (stateProvinces) { return stateProvinces; },
-                        function (error) { CRM.alert(ts('Unable to get states/provinces. Error:' + error.error_message), ts('Not Found'), 'error'); },
+                        function (error) { CRM.alert(ts(`Unable to get states/provinces. Error = ${error.error_message}`), ts('Not Found'), 'error'); },
                     );
                 },
 
-                function (error) { CRM.alert(ts(`Unable to get available countries. Error = {error.error_message}`), ts('Not Found'), 'error'); },
+                function (error) { CRM.alert(ts(`Unable to get available countries. Error = ${error.error_message}`), ts('Not Found'), 'error'); },
             );
         },
     }
