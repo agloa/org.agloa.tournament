@@ -336,136 +336,48 @@ function crmApi(entityType, action, params) {
                                 }]);
                                 break;
                             default:
-                                resolve(
-                                    [{
+                                resolve([
+                                    {
                                         "id": 2,
+                                        "contact_type": "Individual",
+                                        "contact_sub_type": null,
                                         "display_name": "Mr. Michael Steigerwald",
+                                        "sort_name": "Steigerwald, Michael",
                                         "first_name": "Michael",
+                                        "middle_name": "F.",
                                         "last_name": "Steigerwald",
-                                        "middle_name": "F",
+                                        "suffix_id": null,
                                         "prefix_id": 3,
                                         "gender_id": 2,
-                                        "birth_date": "1961-02-04",
-                                        "modified_date": "2021-05-16 11:56:19",
-                                        "address.street_address": "1870 Shady Beach Ave",
-                                        "address.id": 2,
+                                        "birth_date": "1961-02-05",
+                                        "address.is_primary": true,
+                                        "address.street_address": "1870 Shady Beach Ave.",
+                                        "address.is_billing": false,
                                         "address.city": "Roseville",
                                         "address.state_province_id": 1022,
                                         "address.country_id": 1228,
                                         "address.postal_code": "55113",
                                         "address.postal_code_suffix": "6900",
-                                        "email.email": "cio@agloa.org",
-                                        "email.id": 1,
-                                        "phone.phone": "(612)875-1888",
-                                        "phone.id": 1
-                                    }])
+                                        "phone.is_primary": true,
+                                        "phone.phone": "(612) 875-1888",
+                                        "phone.is_billing": false,
+                                        "email.id": 2,
+                                        "email.contact_id": 2,
+                                        "email.location_type_id": 3,
+                                        "email.email": "steiger@umich.edu",
+                                        "email.is_primary": true,
+                                        "email.is_billing": false,
+                                        "email.on_hold": 0,
+                                        "email.is_bulkmail": false,
+                                        "email.hold_date": null,
+                                        "email.reset_date": null,
+                                        "email.signature_text": null,
+                                        "email.signature_html": null
+                                    }
+                                ])
                         }
                 };
                 break;
-            case "Address":
-                switch (action) {
-                    default:
-                        switch (params.contact_id) {
-                            case "1":
-                                resolve({
-                                    values: [{
-                                        id: "3",
-                                        contact_id: "1",
-                                        location_type_id: "3",
-                                        is_primary: "1",
-                                        is_billing: "0",
-                                        street_address: "P. O. Box 3142",
-                                        city: "Tequesta",
-                                        state_province_id: "1008",
-                                        postal_code: "33469",
-                                        country_id: "1228"
-                                    }]
-                                })
-                            case "2":
-                                resolve({
-                                    values: [{
-                                        id: "1",
-                                        contact_id: "2",
-                                        location_type_id: "3",
-                                        is_primary: "1",
-                                        is_billing: "0",
-                                        street_address: "1870 Shady Beach Ave.",
-                                        city: "Minneapolis",
-                                        state_province_id: "1022",
-                                        postal_code_suffix: "6900",
-                                        postal_code: "55113",
-                                        country_id: "1228"
-                                    }]
-                                })
-                        }
-                }
-            case "Phone":
-                switch (action) {
-                    default:
-                        switch (params.contact_id) {
-                            case "2":
-                                resolve({
-                                    values: [
-                                        {
-                                            id: 1,
-                                            contact_id: 2,
-                                            location_type_id: 3,
-                                            is_primary: 1,
-                                            is_billing: 0,
-                                            phone: "612.875.1888",
-                                            phone_numeric: "6128751888",
-                                            phone_type_id: 2
-                                        }
-                                    ]
-                                })
-                            case "1":
-                                resolve({
-                                    values: [
-                                        {
-                                            id: 3,
-                                            contact_id: 1,
-                                            location_type_id: 3,
-                                            is_primary: 1,
-                                            is_billing: 0,
-                                            phone: "(313) 595-7560",
-                                            phone_numeric: "3135957560",
-                                            phone_type_id: 2
-                                        }
-                                    ]
-                                })
-                        }
-                }
-            case "Email":
-                switch (action) {
-                    default: switch (params.contact_id) {
-                        case "1":
-                            resolve({
-                                values: [{
-                                    id: 1,
-                                    contact_id: 1,
-                                    location_type_id: 3,
-                                    email: "info@agloa.org",
-                                    is_primary: 1,
-                                    is_billing: 0,
-                                    on_hold: 0,
-                                    is_bulkmail: 0
-                                }]
-                            })
-                        case "2":
-                            resolve({
-                                values: [{
-                                    id: 1,
-                                    contact_id: 2,
-                                    location_type_id: 3,
-                                    email: "cio@agloa.org",
-                                    is_primary: 1,
-                                    is_billing: 0,
-                                    on_hold: 0,
-                                    is_bulkmail: 0
-                                }]
-                            })
-                    }
-                }
             case "OptionValue":
                 switch (action) {
                     default:
@@ -621,410 +533,630 @@ function crmApi(entityType, action, params) {
                 }
             }
             case "Setting":
-                switch (action) {
-                    default:
-                        switch (params.return[0]) {
-                            case "countryLimit":
-                                resolve({ values: [{ countryLimit: ["1228", "1101", "1208"] }] })
-                        }
-                }
+                resolve([
+                    {
+                        "name": "countryLimit",
+                        "value": [
+                            "1228",
+                            "1101",
+                            "1208"
+                        ],
+                        "domain_id": 1
+                    }
+                ])
             case "Country":
-                switch (action) {
-                    default:
-                        resolve({
-                            values: [
-                                {
-                                    id: "1101",
-                                    name: "India",
-                                    iso_code: "IN",
-                                    region_id: "4",
-                                    is_province_abbreviated: "0"
-                                },
-                                {
-                                    id: "1208",
-                                    name: "Taiwan",
-                                    iso_code: "TW",
-                                    region_id: "4",
-                                    is_province_abbreviated: "0"
-                                },
-                                {
-                                    id: "1228",
-                                    name: "United States",
-                                    iso_code: "US",
-                                    region_id: "2",
-                                    is_province_abbreviated: "1"
-                                }
-                            ]
-                        })
-                }
+                resolve([
+                    {
+                        "id": 1101,
+                        "name": "India"
+                    },
+                    {
+                        "id": 1208,
+                        "name": "Taiwan"
+                    },
+                    {
+                        "id": 1228,
+                        "name": "United States"
+                    }
+                ])
             case "StateProvince":
-                switch (action) {
-                    default:
-                        resolve({
-                            values: [
-                                {
-                                    id: "1000",
-                                    name: "Alabama",
-                                    abbreviation: "AL",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1001",
-                                    name: "Alaska",
-                                    abbreviation: "AK",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1002",
-                                    name: "Arizona",
-                                    abbreviation: "AZ",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1003",
-                                    name: "Arkansas",
-                                    abbreviation: "AR",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1004",
-                                    name: "California",
-                                    abbreviation: "CA",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1005",
-                                    name: "Colorado",
-                                    abbreviation: "CO",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1006",
-                                    name: "Connecticut",
-                                    abbreviation: "CT",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1007",
-                                    name: "Delaware",
-                                    abbreviation: "DE",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1008",
-                                    name: "Florida",
-                                    abbreviation: "FL",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1009",
-                                    name: "Georgia",
-                                    abbreviation: "GA",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1010",
-                                    name: "Hawaii",
-                                    abbreviation: "HI",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1011",
-                                    name: "Idaho",
-                                    abbreviation: "ID",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1012",
-                                    name: "Illinois",
-                                    abbreviation: "IL",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1013",
-                                    name: "Indiana",
-                                    abbreviation: "IN",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1014",
-                                    name: "Iowa",
-                                    abbreviation: "IA",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1015",
-                                    name: "Kansas",
-                                    abbreviation: "KS",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1016",
-                                    name: "Kentucky",
-                                    abbreviation: "KY",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1017",
-                                    name: "Louisiana",
-                                    abbreviation: "LA",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1018",
-                                    name: "Maine",
-                                    abbreviation: "ME",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1019",
-                                    name: "Maryland",
-                                    abbreviation: "MD",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1020",
-                                    name: "Massachusetts",
-                                    abbreviation: "MA",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1021",
-                                    name: "Michigan",
-                                    abbreviation: "MI",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1022",
-                                    name: "Minnesota",
-                                    abbreviation: "MN",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1023",
-                                    name: "Mississippi",
-                                    abbreviation: "MS",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1024",
-                                    name: "Missouri",
-                                    abbreviation: "MO",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1025",
-                                    name: "Montana",
-                                    abbreviation: "MT",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1026",
-                                    name: "Nebraska",
-                                    abbreviation: "NE",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1027",
-                                    name: "Nevada",
-                                    abbreviation: "NV",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1028",
-                                    name: "New Hampshire",
-                                    abbreviation: "NH",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1029",
-                                    name: "New Jersey",
-                                    abbreviation: "NJ",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1030",
-                                    name: "New Mexico",
-                                    abbreviation: "NM",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1031",
-                                    name: "New York",
-                                    abbreviation: "NY",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1032",
-                                    name: "North Carolina",
-                                    abbreviation: "NC",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1033",
-                                    name: "North Dakota",
-                                    abbreviation: "ND",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1034",
-                                    name: "Ohio",
-                                    abbreviation: "OH",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1035",
-                                    name: "Oklahoma",
-                                    abbreviation: "OK",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1036",
-                                    name: "Oregon",
-                                    abbreviation: "OR",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1037",
-                                    name: "Pennsylvania",
-                                    abbreviation: "PA",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1038",
-                                    name: "Rhode Island",
-                                    abbreviation: "RI",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1039",
-                                    name: "South Carolina",
-                                    abbreviation: "SC",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1040",
-                                    name: "South Dakota",
-                                    abbreviation: "SD",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1041",
-                                    name: "Tennessee",
-                                    abbreviation: "TN",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1042",
-                                    name: "Texas",
-                                    abbreviation: "TX",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1043",
-                                    name: "Utah",
-                                    abbreviation: "UT",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1044",
-                                    name: "Vermont",
-                                    abbreviation: "VT",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1045",
-                                    name: "Virginia",
-                                    abbreviation: "VA",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1046",
-                                    name: "Washington",
-                                    abbreviation: "WA",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1047",
-                                    name: "West Virginia",
-                                    abbreviation: "WV",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1048",
-                                    name: "Wisconsin",
-                                    abbreviation: "WI",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1049",
-                                    name: "Wyoming",
-                                    abbreviation: "WY",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1050",
-                                    name: "District of Columbia",
-                                    abbreviation: "DC",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1052",
-                                    name: "American Samoa",
-                                    abbreviation: "AS",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1053",
-                                    name: "Guam",
-                                    abbreviation: "GU",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1055",
-                                    name: "Northern Mariana Islands",
-                                    abbreviation: "MP",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1056",
-                                    name: "Puerto Rico",
-                                    abbreviation: "PR",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1057",
-                                    name: "Virgin Islands",
-                                    abbreviation: "VI",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1058",
-                                    name: "United States Minor Outlying Islands",
-                                    abbreviation: "UM",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1059",
-                                    name: "Armed Forces Europe",
-                                    abbreviation: "AE",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1060",
-                                    name: "Armed Forces Americas",
-                                    abbreviation: "AA",
-                                    country_id: "1228"
-                                },
-                                {
-                                    id: "1061",
-                                    name: "Armed Forces Pacific",
-                                    abbreviation: "AP",
-                                    country_id: "1228"
-                                }
-                            ]
-                        })
-                }
+                resolve([
+                    {
+                        "id": 1200,
+                        "name": "Maharashtra",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1201,
+                        "name": "Karnataka",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1202,
+                        "name": "Andhra Pradesh",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1203,
+                        "name": "Arunachal Pradesh",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1204,
+                        "name": "Assam",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1205,
+                        "name": "Bihar",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1206,
+                        "name": "Chhattisgarh",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1207,
+                        "name": "Goa",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1208,
+                        "name": "Gujarat",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1209,
+                        "name": "Haryana",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1210,
+                        "name": "Himachal Pradesh",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1211,
+                        "name": "Jammu and Kashmir",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1212,
+                        "name": "Jharkhand",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1213,
+                        "name": "Kerala",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1214,
+                        "name": "Madhya Pradesh",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1215,
+                        "name": "Manipur",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1216,
+                        "name": "Meghalaya",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1217,
+                        "name": "Mizoram",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1218,
+                        "name": "Nagaland",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1219,
+                        "name": "Orissa",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1220,
+                        "name": "Punjab",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1221,
+                        "name": "Rajasthan",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1222,
+                        "name": "Sikkim",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1223,
+                        "name": "Tamil Nadu",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1224,
+                        "name": "Tripura",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1225,
+                        "name": "Uttarakhand",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1226,
+                        "name": "Uttar Pradesh",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1227,
+                        "name": "West Bengal",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1228,
+                        "name": "Andaman and Nicobar Islands",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1229,
+                        "name": "Dadra and Nagar Haveli",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1230,
+                        "name": "Daman and Diu",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1231,
+                        "name": "Delhi",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1232,
+                        "name": "Lakshadweep",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 1233,
+                        "name": "Pondicherry",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 10267,
+                        "name": "Telangana",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 10321,
+                        "name": "Chandigarh",
+                        "country_id": 1101
+                    },
+                    {
+                        "id": 4848,
+                        "name": "Changhua County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4849,
+                        "name": "Chiayi County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4850,
+                        "name": "Hsinchu County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4851,
+                        "name": "Hualien County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4852,
+                        "name": "Ilan County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4853,
+                        "name": "Kaohsiung County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4854,
+                        "name": "Miaoli County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4855,
+                        "name": "Nantou County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4856,
+                        "name": "Penghu County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4857,
+                        "name": "Pingtung County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4858,
+                        "name": "Taichung County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4859,
+                        "name": "Tainan County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4860,
+                        "name": "Taipei County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4861,
+                        "name": "Taitung County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4862,
+                        "name": "Taoyuan County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4863,
+                        "name": "Yunlin County",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 4864,
+                        "name": "Keelung City",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 5219,
+                        "name": "Taichung City",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 5220,
+                        "name": "Kaohsiung City",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 5221,
+                        "name": "Taipei City",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 5222,
+                        "name": "Chiayi City",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 5223,
+                        "name": "Hsinchu City",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 5224,
+                        "name": "Tainan City",
+                        "country_id": 1208
+                    },
+                    {
+                        "id": 1000,
+                        "name": "Alabama",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1001,
+                        "name": "Alaska",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1002,
+                        "name": "Arizona",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1003,
+                        "name": "Arkansas",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1004,
+                        "name": "California",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1005,
+                        "name": "Colorado",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1006,
+                        "name": "Connecticut",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1007,
+                        "name": "Delaware",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1008,
+                        "name": "Florida",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1009,
+                        "name": "Georgia",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1010,
+                        "name": "Hawaii",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1011,
+                        "name": "Idaho",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1012,
+                        "name": "Illinois",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1013,
+                        "name": "Indiana",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1014,
+                        "name": "Iowa",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1015,
+                        "name": "Kansas",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1016,
+                        "name": "Kentucky",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1017,
+                        "name": "Louisiana",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1018,
+                        "name": "Maine",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1019,
+                        "name": "Maryland",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1020,
+                        "name": "Massachusetts",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1021,
+                        "name": "Michigan",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1022,
+                        "name": "Minnesota",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1023,
+                        "name": "Mississippi",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1024,
+                        "name": "Missouri",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1025,
+                        "name": "Montana",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1026,
+                        "name": "Nebraska",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1027,
+                        "name": "Nevada",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1028,
+                        "name": "New Hampshire",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1029,
+                        "name": "New Jersey",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1030,
+                        "name": "New Mexico",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1031,
+                        "name": "New York",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1032,
+                        "name": "North Carolina",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1033,
+                        "name": "North Dakota",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1034,
+                        "name": "Ohio",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1035,
+                        "name": "Oklahoma",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1036,
+                        "name": "Oregon",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1037,
+                        "name": "Pennsylvania",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1038,
+                        "name": "Rhode Island",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1039,
+                        "name": "South Carolina",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1040,
+                        "name": "South Dakota",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1041,
+                        "name": "Tennessee",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1042,
+                        "name": "Texas",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1043,
+                        "name": "Utah",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1044,
+                        "name": "Vermont",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1045,
+                        "name": "Virginia",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1046,
+                        "name": "Washington",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1047,
+                        "name": "West Virginia",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1048,
+                        "name": "Wisconsin",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1049,
+                        "name": "Wyoming",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1050,
+                        "name": "District of Columbia",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1052,
+                        "name": "American Samoa",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1053,
+                        "name": "Guam",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1055,
+                        "name": "Northern Mariana Islands",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1056,
+                        "name": "Puerto Rico",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1057,
+                        "name": "Virgin Islands",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1058,
+                        "name": "United States Minor Outlying Islands",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1059,
+                        "name": "Armed Forces Europe",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1060,
+                        "name": "Armed Forces Americas",
+                        "country_id": 1228
+                    },
+                    {
+                        "id": 1061,
+                        "name": "Armed Forces Pacific",
+                        "country_id": 1228
+                    }
+                ])
         }
     });
 };
