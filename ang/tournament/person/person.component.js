@@ -9,7 +9,7 @@ angular.module('tournament').component('trnPerson', {
     function ($routeParams, person, address) {
       var self = this;
 
-      if ($routeParams.contactId !== undefined) {
+      if ($routeParams.contactId) {
         self.contactId = $routeParams.contactId;
       }
 
@@ -20,13 +20,13 @@ angular.module('tournament').component('trnPerson', {
         self.first_name = selectedPerson.first_name;
         self.middle_name = selectedPerson.middle_name;
 
-        if (selectedPerson.prefix_id != null) {
+        if (selectedPerson.prefix_id) {
           self.prefix = selectedPerson.prefix_id.toString();
         }
-        if (selectedPerson.suffix_id != null) {
+        if (selectedPerson.suffix_id) {
           self.suffix = selectedPerson.suffix_id.toString();
         }
-        if (selectedPerson.gender_id != null) {
+        if (selectedPerson.gender_id) {
           self.gender = selectedPerson.gender_id.toString();
         }
 
@@ -118,7 +118,7 @@ angular.module('tournament').component('trnPerson', {
           // Success
           () => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
           // Failure
-          (error) => { CRM.alert(ts('Could not save person record ID = ' + self.contactId + ', error = ' + error.error_message), ts('Database Error'), 'error'); }
+          (error) => { CRM.alert(ts(`Could not save person record ID = ' + self.contactId + ', error = ${error.error_message}`), ts('Database Error'), 'error'); }
         );
       };
 
@@ -127,7 +127,7 @@ angular.module('tournament').component('trnPerson', {
           // Success
           () => { CRM.alert(ts("Deleted"), ts("Deleted"), 'info'); },
           // Failure
-          (error) => { CRM.alert(ts('Could not delete person record ID = ' + self.contactId + ', error = ' + error.error_message), ts('Database Error'), 'error'); }
+          (error) => { CRM.alert(ts(`Could not delete person record ID = ' + self.contactId + ', error = ${error.error_message}`), ts('Database Error'), 'error'); }
         )
       };
 
@@ -149,7 +149,7 @@ angular.module('tournament').component('trnPerson', {
             self.setGenders(result);
           },
           // Failure
-          (error) => { CRM.alert(ts('Could not get gender options error = ' + error), ts('Not Found'), 'error'); }
+          (error) => { CRM.alert(ts(`Could not get gender options, error = ${error.error_message}`), ts('Not Found'), 'error'); }
         );
 
         person.getPrefixes().then(
@@ -158,7 +158,7 @@ angular.module('tournament').component('trnPerson', {
             self.setPrefixes(result);
           },
           // Failure
-          (error) => { CRM.alert(ts('Could not get prefix options error = ' + error), ts('Not Found'), 'error'); }
+          (error) => { CRM.alert(ts(`Could not get prefix options, error = ${error.error_message}`), ts('Not Found'), 'error'); }
         );
 
         person.getSuffixes().then(
@@ -167,16 +167,16 @@ angular.module('tournament').component('trnPerson', {
             self.setSuffixes(result);
           },
           // Failure
-          (error) => { CRM.alert(ts('Could not get suffix options error = ' + error.error_message), ts('Not Found'), 'error'); }
+          (error) => { CRM.alert(ts(`Could not get suffix options error = ${error.error_message}`), ts('Not Found'), 'error'); }
         );
 
         address.getCountries().then(
           // Success
-          (result) => {
-            self.setCountries(result);
+          (countries) => {
+            self.setCountries(countries);
           },
           // Failure
-          (error) => { CRM.alert(ts('Could not get countries, error = ' + error.error_message), ts('Not Found'), 'error'); }
+          (error) => { CRM.alert(ts(`Could not get countries, error = ${error.error_message}`), ts('Not Found'), 'error'); }
         );
 
         address.getStateProvinces().then(
@@ -185,7 +185,7 @@ angular.module('tournament').component('trnPerson', {
             self.setRegions(result);
           },
           // Failure
-          (error) => { CRM.alert(ts('Could not get states/provinces, error = ' + error.error_message), ts('Not Found'), 'error'); }
+          (error) => { CRM.alert(ts(`Could not get states/provinces, error = ${error.error_message}`), ts('Not Found'), 'error'); }
         );
       };
     }
