@@ -70,41 +70,35 @@ describe('person component', function () {
     ];
 
     const person = [{
-        "contact_id": 2,
+        "id": 2,
         "contact_type": "Individual",
-        "sort_name": "Steigerwald, Michael",
         "display_name": "Mr. Michael Steigerwald",
+        "sort_name": "Steigerwald, Michael",
         "first_name": "Michael",
-        "middle_name": "Francis",
+        "middle_name": "F.",
         "last_name": "Steigerwald",
-        "prefix_id": 3,
-        "suffix_id": "",
-        "formal_title": "",
+        "prefix_id": "3",
         "gender_id": "2",
-        "birth_date": "1961-02-04",
-        "address_id": "10",
+        "birth_date": "1961-02-05",
+        "address.is_primary": true,
         "address.street_address": "1870 Shady Beach Ave.",
-        "address.supplemental_address_1": "",
-        "address.supplemental_address_2": "",
-        "address.supplemental_address_3": "",
+        "address.is_billing": false,
         "address.city": "Roseville",
-        "address.postal_code_suffix": "6900",
+        "address.state_province_id": 1022,
+        "address.country_id": 1228,
         "address.postal_code": "55113",
-        "address.address.state_province_id": "1022",
-        "address.country_id": "1228",
-        "phone_id": "1",
-        "phone_type_id": "2",
-        "phone": "(612) 875-1888",
-        "email_id": "2",
-        "email": "cio@agloa.org",
-        "individual_prefix": "Mr.",
-        "individual_suffix": "",
-        "communication_style": "Formal",
-        "gender": "Male",
-        "state_province_name": "Minnesota",
-        "state_province": "MN",
-        "country": "United States",
-        "id": "2"
+        "address.postal_code_suffix": "6900",
+        "phone.is_primary": true,
+        "phone.phone": "(612) 875-1888",
+        "phone.is_billing": false,
+        "email.id": 2,
+        "email.contact_id": 2,
+        "email.location_type_id": 3,
+        "email.email": "steiger@umich.edu",
+        "email.is_primary": true,
+        "email.is_billing": false,
+
+        "modified_date": "2021-12-31 15:47:05"
     }]
 
     const countries = [
@@ -252,7 +246,7 @@ describe('person component', function () {
     it('Gets contact from routeParams.', async function () {
         // Assemble
         const selectedPerson = person[0];
-        $routeParams.contactId = selectedPerson.contact_id;
+        $routeParams.contactId = selectedPerson.id;
 
         // Act
         var controller = await $componentController('trnPerson', null);
@@ -260,14 +254,13 @@ describe('person component', function () {
 
         // Assert
         expect(controller).toBeDefined();
-        expect(controller.id).toBe(selectedPerson.contact_id);
+        expect(controller.id).toBe(selectedPerson.id);
         expect(controller.first_name).toBe(selectedPerson.first_name);
         expect(controller.last_name).toBe(selectedPerson.last_name);
         expect(controller.middle_name).toBe(selectedPerson.middle_name);
 
-        expect(controller.prefix).toBe(selectedPerson.prefix_id.toString());
-        expect(controller.suffix).toBe(selectedPerson.suffix_id.toString());
-        expect(controller.gender).toBe(selectedPerson.gender_id.toString());
+        expect(controller.prefix).toBe(selectedPerson.prefix_id);
+        expect(controller.gender).toBe(selectedPerson.gender_id);
 
         expect(controller.birth_date).toEqual(new Date(selectedPerson.birth_date));
 
@@ -275,26 +268,22 @@ describe('person component', function () {
         expect(controller.contact_sub_type).toBe(selectedPerson.contact_sub_type);
         expect(controller.modified_date).toEqual(selectedPerson.modified_date);
 
-        expect(controller.emailId).toBe(selectedPerson.email.id);
-        expect(controller.email).toBe(selectedPerson.email.email);
+        expect(controller.emailId).toBe(selectedPerson["email.id"]);
+        expect(controller.email).toBe(selectedPerson["email.email"]);
 
-        expect(controller.phoneId).toBe(selectedPerson.phone.id);
-        expect(controller.phone).toBe(selectedPerson.phone.phone);
+        expect(controller.phoneId).toBe(selectedPerson["phone.id"]);
+        expect(controller.phone).toBe(selectedPerson["phone.phone"]);
 
-        expect(controller.addressId).toBe(selectedPerson.address.id);
-        expect(controller.last_name).toBe(selectedPerson.last_name);
-        expect(controller.last_name).toBe(selectedPerson.last_name);
-        expect(controller.last_name).toBe(selectedPerson.last_name);
-        expect(controller.last_name).toBe(selectedPerson.last_name);
-        expect(controller.last_name).toBe(selectedPerson.last_name);
-        expect(controller.last_name).toBe(selectedPerson.last_name);
-        expect(controller.last_name).toBe(selectedPerson.last_name);
-        expect(controller.last_name).toBe(selectedPerson.last_name);
-        expect(controller.last_name).toBe(selectedPerson.last_name);
-        expect(controller.last_name).toBe(selectedPerson.last_name);
-        expect(controller.last_name).toBe(selectedPerson.last_name);
-        expect(controller.last_name).toBe(selectedPerson.last_name);
-        expect(controller.last_name).toBe(selectedPerson.last_name);
+        expect(controller.addressId).toBe(selectedPerson["address.id"]);
+        expect(controller.street_address).toBe(selectedPerson["address.street_address"]);
+        expect(controller.supplemental_address_1).toBe(selectedPerson["address.supplemental_address_1"]);
+        expect(controller.supplemental_address_2).toBe(selectedPerson["address.supplemental_address_2"]);
+        expect(controller.supplemental_address_3).toBe(selectedPerson["address.supplemental_address_3"]);
+        expect(controller.city).toBe(selectedPerson["address.city"]);
+        expect(controller.postal_code).toBe(selectedPerson["address.postal_code"]);
+        expect(controller.postal_code_suffix).toBe(selectedPerson["address.postal_code_suffix"]);
+        expect(controller.country_id).toBe(selectedPerson["address.country_id"]);
+        expect(controller.state_province_id).toBe(selectedPerson["address.state_province_id"]);
     });
 
     it('Saves by calling person service save.', async function () {
