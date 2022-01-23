@@ -39,13 +39,8 @@ angular.module('tournament').component('trnOrganization', {
         self.postal_code = organization["address.postal_code"];
         self.postal_code_suffix = organization["address.postal_code_suffix"];
 
-        if (organization["address.country_id"] != null) {
-          self.country_id = organization["address.country_id"].toString();
-        }
-
-        if (organization["address.state_province_id"] != null) {
-          self.state_province_id = organization["address.state_province_id"].toString();
-        }
+        self.country_id = organization["address.country_id"];
+        self.state_province_id = organization["address.state_province_id"];
       };
 
       self.setCountries = (options) => {
@@ -88,19 +83,15 @@ angular.module('tournament').component('trnOrganization', {
         }
 
         organization.save(organizationRecord).then(
-          // Success
           (result) => { CRM.alert(ts("Saved"), ts("Saved"), 'info'); },
-          // Failure
-          (error) => { CRM.alert(ts('Could not save organization record ID = ' + self.id + ', error = ' + error.error_message), ts('Database Error'), 'error'); }
+          (error) => { CRM.alert(ts(`Could not save organization record ID = ${self.id} , error = ${error.error_message}`), ts('Database Error'), 'error'); }
         );
       }
 
       self.delete = () => {
         organization.delete(self.id).then(
-          // Success
           () => { CRM.alert(ts("Deleted"), ts("Deleted"), 'info'); },
-          // Failure
-          (error) => { CRM.alert(ts('Could not delete organization record ID = ' + self.id + ', error = ' + error.error_message), ts('Database Error'), 'error'); }
+          (error) => { CRM.alert(ts(`Could not delete organization record ID = ${self.id} , error = ${error.error_message}`), ts('Database Error'), 'error'); }
         )
       }
 
@@ -110,32 +101,26 @@ angular.module('tournament').component('trnOrganization', {
         }
 
         organization.get(self.id).then(
-          // Success
           (result) => {
             self.setSelectedOrganization(result[0]);
           },
-          // Failure
           (error) => {
-            CRM.alert(ts('Could not get organization record ID = ' + self.id + ', error = ' + error.error_message), ts('Not Found'), 'error');
+            CRM.alert(ts(`Could not get organization record ID = ${self.id} , error = ${error.error_message}`), ts('Not Found'), 'error');
           }
         );
       };
 
       address.getCountries().then(
-        // Success
         (result) => {
           self.setCountries(result);
         },
-        // Failure
-        (error) => { CRM.alert(ts('Could not get countries, error = ' + error.error_message), ts('Not Found'), 'error'); }
+        (error) => { CRM.alert(ts(`Could not get countries, error = ${error.error_message}`), ts('Not Found'), 'error'); }
       )
 
       address.getStateProvinces().then(
-        // Success
         (result) => {
           self.setRegions(result);
         },
-        // Failure
         (error) => { CRM.alert(ts('Could not get states/provinces, error = ' + error.error_message), ts('Not Found'), 'error'); }
       )
     }

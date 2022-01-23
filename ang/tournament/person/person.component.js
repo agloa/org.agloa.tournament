@@ -20,15 +20,9 @@ angular.module('tournament').component('trnPerson', {
         self.first_name = selectedPerson.first_name;
         self.middle_name = selectedPerson.middle_name;
 
-        if (selectedPerson.prefix_id) {
-          self.prefix = selectedPerson.prefix_id.toString();
-        }
-        if (selectedPerson.suffix_id) {
-          self.suffix = selectedPerson.suffix_id.toString();
-        }
-        if (selectedPerson.gender_id) {
-          self.gender = selectedPerson.gender_id.toString();
-        }
+        self.prefix = selectedPerson.prefix_id?.toString();
+        self.suffix = selectedPerson.suffix_id?.toString();
+        self.gender = selectedPerson.gender_id?.toString();
 
         self.birth_date = new Date(selectedPerson.birth_date);
 
@@ -49,12 +43,8 @@ angular.module('tournament').component('trnPerson', {
         self.city = selectedPerson["address.city"];
         self.postal_code = selectedPerson["address.postal_code"];
         self.postal_code_suffix = selectedPerson["address.postal_code_suffix"];
-        if (selectedPerson["address.country_id"] != null) {
-          self.country_id = selectedPerson["address.country_id"];
-        }
-        if (selectedPerson["address.state_province_id"] != null) {
-          self.state_province_id = selectedPerson["address.state_province_id"];
-        }
+        self.country_id = selectedPerson["address.country_id"];
+        self.state_province_id = selectedPerson["address.state_province_id"];
       };
 
       self.setGenders = (options) => {
