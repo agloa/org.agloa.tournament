@@ -20,7 +20,7 @@ Welcome, {{$ctrl.display_name}}. This app will guide you through the steps of to
         title="The next step is to double-check your organization's (e.g., school/district) contact information. You probably only need to do this once, ever.">
         Update your organization's information.
     </details>
-    <trn-relationships ng-if="$ctrl.displayOrganizations" contact-id="{{$ctrl.contactId}}"></trn-relationships>
+    <trn-billingRelationships ng-if="$ctrl.displayOrganizations" contact-id="{{$ctrl.contactId}}"></trn-billingRelationships>
   </li>
   <li>
     <details id="registrationGroupsDetails" ng-click="$ctrl.registrationGroupsClicked()">
