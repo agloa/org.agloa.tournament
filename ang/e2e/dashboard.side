@@ -77,43 +77,22 @@
       "targets": [],
       "value": ""
     }, {
-      "id": "d2e33810-8208-4041-8dc3-78ce94860707",
+      "id": "135194bd-1aa6-43d9-8118-90adeeea2a95",
       "comment": "",
       "command": "waitForElementEditable",
-      "target": "id=postal_code_suffixInput",
+      "target": "id=state_provinceSelect",
       "targets": [],
       "value": "1"
     }, {
-      "id": "0cc572ca-4741-45ce-af67-c21c8d7be550",
+      "id": "d0300ca7-5554-4438-9792-4a8dd749663d",
       "comment": "",
       "command": "waitForElementEditable",
       "target": "id=prefixSelect",
       "targets": [],
       "value": "1"
     }, {
-      "id": "7f62c644-f1fa-4aba-bb73-a545c207e7c9",
-      "comment": "",
-      "command": "assertValue",
-      "target": " id=emailInput",
-      "targets": [],
-      "value": "steiger@umich.edu"
-    }, {
-      "id": "0a8e29ba-dfb7-479e-b756-f77a64ff9bad",
-      "comment": "",
-      "command": "assertValue",
-      "target": " id=phoneInput",
-      "targets": [],
-      "value": "(612) 875-1888"
-    }, {
-      "id": "a3919686-3883-4b2a-b283-661140f2adc2",
-      "comment": "",
-      "command": "assertValue",
-      "target": " id=postal_code_suffixInput",
-      "targets": [],
-      "value": "6900"
-    }, {
-      "id": "aaacc7b4-3aa8-40a4-8a3c-25fdf5ede98f",
-      "comment": "",
+      "id": "7b5728e7-51f5-40de-b0e4-533550ccc5f5",
+      "comment": "Mr.",
       "command": "assertSelectedValue",
       "target": "id=prefixSelect",
       "targets": [
@@ -125,6 +104,104 @@
         ["xpath=//select", "xpath:position"]
       ],
       "value": "string:3"
+    }, {
+      "id": "5dd3daaf-d4e9-48b5-becb-9884651b3ee6",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=first_nameInput",
+      "targets": [],
+      "value": "Michael"
+    }, {
+      "id": "f2ec9d8c-a928-48c6-b280-026a447c9d20",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=middle_nameInput",
+      "targets": [],
+      "value": "F."
+    }, {
+      "id": "83cbda0e-4720-4389-9037-2a7b81058585",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=last_nameInput",
+      "targets": [],
+      "value": "Steigerwald"
+    }, {
+      "id": "0590f697-2da4-464f-acd3-4103c5a6a8bb",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=birth_dateInput",
+      "targets": [],
+      "value": "1961-02-04"
+    }, {
+      "id": "aaacc7b4-3aa8-40a4-8a3c-25fdf5ede98f",
+      "comment": "Male",
+      "command": "assertSelectedValue",
+      "target": "id=genderSelect",
+      "targets": [
+        ["id=prefixSelect", "id"],
+        ["name=prefixSelect", "name"],
+        ["css=#prefixSelect", "css:finder"],
+        ["xpath=//select[@id='prefixSelect']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "string:2"
+    }, {
+      "id": "7f62c644-f1fa-4aba-bb73-a545c207e7c9",
+      "comment": "",
+      "command": "assertValue",
+      "target": " id=emailInput",
+      "targets": [],
+      "value": "steiger@umich.edu"
+    }, {
+      "id": "4ec8c9ee-8a56-4fa5-a92a-8306403bc0ab",
+      "comment": "",
+      "command": "assertValue",
+      "target": " id=phoneInput",
+      "targets": [],
+      "value": "(612) 875-1888"
+    }, {
+      "id": "26f9a350-efe8-4099-8088-568f5ef59d24",
+      "comment": "",
+      "command": "assertValue",
+      "target": " id=street_addressInput",
+      "targets": [],
+      "value": "1870 Shady Beach Ave"
+    }, {
+      "id": "0a8e29ba-dfb7-479e-b756-f77a64ff9bad",
+      "comment": "",
+      "command": "assertValue",
+      "target": " id=cityInput",
+      "targets": [],
+      "value": "Roseville"
+    }, {
+      "id": "cdf7837e-3d46-46af-a8ef-2ac7e5c9eb56",
+      "comment": "Minnesota",
+      "command": "assertSelectedValue",
+      "target": "id=state_provinceSelect",
+      "targets": [],
+      "value": "number:1022"
+    }, {
+      "id": "f7a6a60e-f746-4520-8fa6-5cfaa7d3050b",
+      "comment": "United States",
+      "command": "assertSelectedValue",
+      "target": "id=countrySelect",
+      "targets": [],
+      "value": "number:1228"
+    }, {
+      "id": "53b7e380-0b3f-4c3b-bd7c-d0aa918735e8",
+      "comment": "",
+      "command": "assertValue",
+      "target": " id=postal_codeInput",
+      "targets": [],
+      "value": "55113"
+    }, {
+      "id": "a3919686-3883-4b2a-b283-661140f2adc2",
+      "comment": "",
+      "command": "assertValue",
+      "target": " id=postal_code_suffixInput",
+      "targets": [],
+      "value": "6900"
     }]
   }],
   "suites": [{
