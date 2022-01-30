@@ -64,11 +64,39 @@
       "value": ""
     }, {
       "id": "9f8a0f01-bdf8-4ec5-ab20-9ea2d3323d7c",
-      "comment": "test user should be logged in",
-      "command": "assertText",
-      "target": "css=.ng-isolate-scope",
+      "comment": "Welcome test user",
+      "command": "waitForText",
+      "target": "id=welcome",
       "targets": [],
-      "value": "Mr. Michael Steigerwald"
+      "value": "Welcome, Mr. Michael Steigerwald. This app will guide you through the steps of tournament registration."
+    }, {
+      "id": "858da4ef-f190-4fc5-b50e-7e3260f06268",
+      "comment": "",
+      "command": "click",
+      "target": "id=personSummary",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2f19a39a-eb24-4485-a506-f474f4526891",
+      "comment": "",
+      "command": "waitForElementEditable",
+      "target": "id=postal_code_suffixInput",
+      "targets": [],
+      "value": "1"
+    }, {
+      "id": "0a8e29ba-dfb7-479e-b756-f77a64ff9bad",
+      "comment": "",
+      "command": "assertValue",
+      "target": " id=emailInput",
+      "targets": [],
+      "value": "steiger@umich.edu"
+    }, {
+      "id": "a3919686-3883-4b2a-b283-661140f2adc2",
+      "comment": "",
+      "command": "assertValue",
+      "target": " id=postal_code_suffixInput",
+      "targets": [],
+      "value": "6900"
     }]
   }],
   "suites": [{
