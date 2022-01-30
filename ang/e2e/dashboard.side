@@ -77,19 +77,33 @@
       "targets": [],
       "value": ""
     }, {
-      "id": "2f19a39a-eb24-4485-a506-f474f4526891",
+      "id": "d2e33810-8208-4041-8dc3-78ce94860707",
       "comment": "",
       "command": "waitForElementEditable",
       "target": "id=postal_code_suffixInput",
       "targets": [],
       "value": "1"
     }, {
-      "id": "0a8e29ba-dfb7-479e-b756-f77a64ff9bad",
+      "id": "0cc572ca-4741-45ce-af67-c21c8d7be550",
+      "comment": "",
+      "command": "waitForElementEditable",
+      "target": "id=prefixSelect",
+      "targets": [],
+      "value": "1"
+    }, {
+      "id": "7f62c644-f1fa-4aba-bb73-a545c207e7c9",
       "comment": "",
       "command": "assertValue",
       "target": " id=emailInput",
       "targets": [],
       "value": "steiger@umich.edu"
+    }, {
+      "id": "0a8e29ba-dfb7-479e-b756-f77a64ff9bad",
+      "comment": "",
+      "command": "assertValue",
+      "target": " id=phoneInput",
+      "targets": [],
+      "value": "(612) 875-1888"
     }, {
       "id": "a3919686-3883-4b2a-b283-661140f2adc2",
       "comment": "",
@@ -97,6 +111,20 @@
       "target": " id=postal_code_suffixInput",
       "targets": [],
       "value": "6900"
+    }, {
+      "id": "aaacc7b4-3aa8-40a4-8a3c-25fdf5ede98f",
+      "comment": "",
+      "command": "assertSelectedValue",
+      "target": "id=prefixSelect",
+      "targets": [
+        ["id=prefixSelect", "id"],
+        ["name=prefixSelect", "name"],
+        ["css=#prefixSelect", "css:finder"],
+        ["xpath=//select[@id='prefixSelect']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "string:3"
     }]
   }],
   "suites": [{
