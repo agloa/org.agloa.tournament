@@ -1,0 +1,84 @@
+{
+  "id": "8b141bae-81de-4608-b370-fd1da9e0bc9c",
+  "version": "2.0",
+  "name": "org.agloa.tournament",
+  "url": "https://www.dev.agloa.org",
+  "tests": [{
+    "id": "f2f276ef-80a4-4f2a-9101-8ab2d464f80f",
+    "name": "LoginOut",
+    "commands": [{
+      "id": "34b3b2d2-6f80-4f26-acd7-842928e23ce2",
+      "comment": "",
+      "command": "open",
+      "target": "/wp-login.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0d0b48ca-516f-4bb1-8e98-44303709e679",
+      "comment": "",
+      "command": "type",
+      "target": "id=user_login",
+      "targets": [
+        ["id=user_login", "id"],
+        ["name=log", "name"],
+        ["css=#user_login", "css:finder"],
+        ["xpath=//input[@id='user_login']", "xpath:attributes"],
+        ["xpath=//form[@id='loginform']/p/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "AGLOA"
+    }, {
+      "id": "70424c39-7dba-428e-b34b-7a3258391da2",
+      "comment": "",
+      "command": "type",
+      "target": "id=user_pass",
+      "targets": [
+        ["id=user_pass", "id"],
+        ["name=pwd", "name"],
+        ["css=#user_pass", "css:finder"],
+        ["xpath=//input[@id='user_pass']", "xpath:attributes"],
+        ["xpath=//form[@id='loginform']/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Insight43"
+    }, {
+      "id": "37266752-4388-408d-ad0c-547e4c38b4a5",
+      "comment": "",
+      "command": "click",
+      "target": "id=wp-submit",
+      "targets": [
+        ["id=wp-submit", "id"],
+        ["name=wp-submit", "name"],
+        ["css=#wp-submit", "css:finder"],
+        ["xpath=//input[@id='wp-submit']", "xpath:attributes"],
+        ["xpath=//form[@id='loginform']/p[3]/input", "xpath:idRelative"],
+        ["xpath=//p[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ff3a931e-3488-4dda-800a-954426062ee0",
+      "comment": "",
+      "command": "open",
+      "target": "/wp-admin/admin.php?page=CiviCRM&q=civicrm%2Fa%2F#/tournament",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9f8a0f01-bdf8-4ec5-ab20-9ea2d3323d7c",
+      "comment": "test user should be logged in",
+      "command": "assertText",
+      "target": "css=.ng-isolate-scope",
+      "targets": [],
+      "value": "Mr. Michael Steigerwald"
+    }]
+  }],
+  "suites": [{
+    "id": "d05bb546-6122-4113-a192-2626d5fe2b02",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f2f276ef-80a4-4f2a-9101-8ab2d464f80f"]
+  }],
+  "urls": ["https://www.dev.agloa.org/"],
+  "plugins": []
+}
