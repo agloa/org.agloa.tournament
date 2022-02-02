@@ -13,7 +13,7 @@ angular.module('tournament').component('trnOrganization', {
     function ($routeParams, organization, address) {
       var self = this;
 
-      if ($routeParams.organizationId !== undefined) {
+      if ($routeParams.organizationId) {
         self.contactId = $routeParams.organizationId;
       }
 
