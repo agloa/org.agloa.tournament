@@ -77,19 +77,12 @@
       "targets": [],
       "value": ""
     }, {
-      "id": "135194bd-1aa6-43d9-8118-90adeeea2a95",
-      "comment": "",
-      "command": "waitForElementEditable",
-      "target": "id=state_provinceSelect",
-      "targets": [],
-      "value": "1"
-    }, {
       "id": "d0300ca7-5554-4438-9792-4a8dd749663d",
       "comment": "",
       "command": "waitForElementEditable",
       "target": "id=prefixSelect",
       "targets": [],
-      "value": "1"
+      "value": "2000"
     }, {
       "id": "7b5728e7-51f5-40de-b0e4-533550ccc5f5",
       "comment": "Mr.",
@@ -202,6 +195,310 @@
       "target": " id=postal_code_suffixInput",
       "targets": [],
       "value": "6900"
+    }, {
+      "id": "f79f4e69-b736-4dcc-8520-a5674daf6ce2",
+      "comment": "",
+      "command": "select",
+      "target": "id=prefixSelect",
+      "targets": [],
+      "value": "label="
+    }, {
+      "id": "2518aa62-5b33-4b99-9811-a4c6e5e3cabc",
+      "comment": "",
+      "command": "select",
+      "target": "id=genderSelect",
+      "targets": [],
+      "value": "label="
+    }, {
+      "id": "5dbe3199-14b4-437b-8503-9a7d2ab7042d",
+      "comment": "",
+      "command": "type",
+      "target": "id=first_nameInput",
+      "targets": [
+        ["id=first_nameInput", "id"],
+        ["name=first_nameInput", "name"],
+        ["css=#first_nameInput", "css:finder"],
+        ["xpath=//input[@id='first_nameInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Mike"
+    }, {
+      "id": "ac2d5b2e-95a3-4aea-9ef1-01213377fe1f",
+      "comment": "",
+      "command": "type",
+      "target": "id=middle_nameInput",
+      "targets": [
+        ["id=middle_nameInput", "id"],
+        ["name=middle_nameInput", "name"],
+        ["css=#middle_nameInput", "css:finder"],
+        ["xpath=//input[@id='middle_nameInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2de29531-bb26-4b14-97c7-35aebec61b9e",
+      "comment": "",
+      "command": "click",
+      "target": "id=street_addressInput",
+      "targets": [
+        ["id=street_addressInput", "id"],
+        ["name=street_addressInput", "name"],
+        ["css=#street_addressInput", "css:finder"],
+        ["xpath=//input[@id='street_addressInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d50000b-9cda-410e-8757-489d668bd4bf",
+      "comment": "",
+      "command": "type",
+      "target": "id=street_addressInput",
+      "targets": [
+        ["id=street_addressInput", "id"],
+        ["name=street_addressInput", "name"],
+        ["css=#street_addressInput", "css:finder"],
+        ["xpath=//input[@id='street_addressInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "1870 Shady Beach Ave."
+    }, {
+      "id": "ee423859-fcb1-4bdc-8d08-0e2e05591616",
+      "comment": "",
+      "command": "type",
+      "target": "id=postal_code_suffixInput",
+      "targets": [
+        ["id=postal_code_suffixInput", "id"],
+        ["name=postal_code_suffixInput", "name"],
+        ["css=#postal_code_suffixInput", "css:finder"],
+        ["xpath=//input[@id='postal_code_suffixInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/div[5]/input[2]", "xpath:idRelative"],
+        ["xpath=//div[5]/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "51e6c929-95f1-45cc-8391-45e0bc7f9f2f",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(20)",
+      "targets": [
+        ["css=button:nth-child(20)", "css:finder"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Save')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "16d57c46-53e6-4baa-a990-b58e27e448eb",
+      "comment": "",
+      "command": "click",
+      "target": "id=personSummary",
+      "targets": [
+        ["id=personSummary", "id"],
+        ["css=#personSummary", "css:finder"],
+        ["xpath=//summary[@id='personSummary']", "xpath:attributes"],
+        ["xpath=//details[@id='personDetails']/summary", "xpath:idRelative"],
+        ["xpath=//summary", "xpath:position"],
+        ["xpath=//summary[contains(.,'Update your contact information, last updated on 2022-02-01 17:24:55.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "62ee5e9b-aad5-4829-9329-45ac2b2a78d4",
+      "comment": "",
+      "command": "click",
+      "target": "id=personSummary",
+      "targets": [
+        ["id=personSummary", "id"],
+        ["css=#personSummary", "css:finder"],
+        ["xpath=//summary[@id='personSummary']", "xpath:attributes"],
+        ["xpath=//details[@id='personDetails']/summary", "xpath:idRelative"],
+        ["xpath=//summary", "xpath:position"],
+        ["xpath=//summary[contains(.,'Update your contact information, last updated on 2022-02-01 17:24:55.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c41ddc26-8413-4031-ac42-4417470fb6b7",
+      "comment": "",
+      "command": "click",
+      "target": "id=prefixSelect",
+      "targets": [
+        ["id=prefixSelect", "id"],
+        ["name=prefixSelect", "name"],
+        ["css=#prefixSelect", "css:finder"],
+        ["xpath=//select[@id='prefixSelect']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6a215205-51d2-447c-91ea-d0ee29301c93",
+      "comment": "",
+      "command": "select",
+      "target": "id=prefixSelect",
+      "targets": [],
+      "value": "label=Mr."
+    }, {
+      "id": "94a425a2-2297-4543-8b3a-b675422ae5a5",
+      "comment": "",
+      "command": "click",
+      "target": "id=first_nameInput",
+      "targets": [
+        ["id=first_nameInput", "id"],
+        ["name=first_nameInput", "name"],
+        ["css=#first_nameInput", "css:finder"],
+        ["xpath=//input[@id='first_nameInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "641642e7-8d6f-48ed-97dc-eeb94ef2196b",
+      "comment": "",
+      "command": "click",
+      "target": "id=first_nameInput",
+      "targets": [
+        ["id=first_nameInput", "id"],
+        ["name=first_nameInput", "name"],
+        ["css=#first_nameInput", "css:finder"],
+        ["xpath=//input[@id='first_nameInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d9637664-4ddb-43e3-bd7e-51155257c0f0",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "id=first_nameInput",
+      "targets": [
+        ["id=first_nameInput", "id"],
+        ["name=first_nameInput", "name"],
+        ["css=#first_nameInput", "css:finder"],
+        ["xpath=//input[@id='first_nameInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "32fb03fa-5435-40bc-bf46-536413635fab",
+      "comment": "",
+      "command": "type",
+      "target": "id=first_nameInput",
+      "targets": [
+        ["id=first_nameInput", "id"],
+        ["name=first_nameInput", "name"],
+        ["css=#first_nameInput", "css:finder"],
+        ["xpath=//input[@id='first_nameInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Michael"
+    }, {
+      "id": "760993b3-aa44-43d7-8053-a7a68e40c7bb",
+      "comment": "",
+      "command": "type",
+      "target": "id=middle_nameInput",
+      "targets": [
+        ["id=middle_nameInput", "id"],
+        ["name=middle_nameInput", "name"],
+        ["css=#middle_nameInput", "css:finder"],
+        ["xpath=//input[@id='middle_nameInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "F."
+    }, {
+      "id": "30d13af2-8c76-47b6-9028-3b10fa1f34cb",
+      "comment": "",
+      "command": "click",
+      "target": "id=genderSelect",
+      "targets": [
+        ["id=genderSelect", "id"],
+        ["name=genderSelect", "name"],
+        ["css=#genderSelect", "css:finder"],
+        ["xpath=//select[@id='genderSelect']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/select[3]", "xpath:idRelative"],
+        ["xpath=//select[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1fcf85f3-ad1e-42c5-ac67-23489839f26d",
+      "comment": "",
+      "command": "select",
+      "target": "id=genderSelect",
+      "targets": [],
+      "value": "label=Male"
+    }, {
+      "id": "9f3bf636-df5b-4a2a-a80d-36f12cf04d06",
+      "comment": "",
+      "command": "click",
+      "target": "id=street_addressInput",
+      "targets": [
+        ["id=street_addressInput", "id"],
+        ["name=street_addressInput", "name"],
+        ["css=#street_addressInput", "css:finder"],
+        ["xpath=//input[@id='street_addressInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d391916f-726b-4ea1-a84d-fdf0c3dd327f",
+      "comment": "",
+      "command": "type",
+      "target": "id=street_addressInput",
+      "targets": [
+        ["id=street_addressInput", "id"],
+        ["name=street_addressInput", "name"],
+        ["css=#street_addressInput", "css:finder"],
+        ["xpath=//input[@id='street_addressInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "1870 Shady Beach Ave"
+    }, {
+      "id": "cc446568-304b-4c64-945b-39ef67091a7d",
+      "comment": "",
+      "command": "click",
+      "target": "id=postal_code_suffixInput",
+      "targets": [
+        ["id=postal_code_suffixInput", "id"],
+        ["name=postal_code_suffixInput", "name"],
+        ["css=#postal_code_suffixInput", "css:finder"],
+        ["xpath=//input[@id='postal_code_suffixInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/div[5]/input[2]", "xpath:idRelative"],
+        ["xpath=//div[5]/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1183fe16-9f55-4692-b292-bf6cc20a0f3f",
+      "comment": "",
+      "command": "type",
+      "target": "id=postal_code_suffixInput",
+      "targets": [
+        ["id=postal_code_suffixInput", "id"],
+        ["name=postal_code_suffixInput", "name"],
+        ["css=#postal_code_suffixInput", "css:finder"],
+        ["xpath=//input[@id='postal_code_suffixInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/div[5]/input[2]", "xpath:idRelative"],
+        ["xpath=//div[5]/input[2]", "xpath:position"]
+      ],
+      "value": "6900"
+    }, {
+      "id": "a697f0a9-7881-4904-ac00-eeb57f2f3a3f",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(20)",
+      "targets": [
+        ["css=button:nth-child(20)", "css:finder"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Save')]", "xpath:innerText"]
+      ],
+      "value": ""
     }]
   }],
   "suites": [{
