@@ -81,9 +81,9 @@ angular.module('tournament').component('trnPerson', {
           last_name: self.last_name,
           first_name: self.first_name,
           middle_name: self.middle_name,
-          prefix: self.prefix_id,
-          suffix: self.suffix_id,
-          gender: self.gender_id,
+          prefix_id: self.prefix,
+          suffix_id: self.suffix,
+          gender_id: self.gender,
           birth_date: new Date(self.birth_date),
 
           email: self.email,
