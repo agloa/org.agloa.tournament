@@ -64,7 +64,7 @@
       "value": ""
     }, {
       "id": "9f8a0f01-bdf8-4ec5-ab20-9ea2d3323d7c",
-      "comment": "Welcome test user",
+      "comment": "",
       "command": "waitForText",
       "target": "id=welcome",
       "targets": [],
@@ -79,24 +79,17 @@
     }, {
       "id": "d0300ca7-5554-4438-9792-4a8dd749663d",
       "comment": "",
-      "command": "waitForElementEditable",
-      "target": "id=prefixSelect",
+      "command": "//waitForElementEditable",
+      "target": "xpath=//*[@id=\"prefixSelect\"]",
       "targets": [],
-      "value": "2000"
+      "value": "1000"
     }, {
-      "id": "7b5728e7-51f5-40de-b0e4-533550ccc5f5",
-      "comment": "Mr.",
-      "command": "assertSelectedValue",
-      "target": "id=prefixSelect",
-      "targets": [
-        ["id=prefixSelect", "id"],
-        ["name=prefixSelect", "name"],
-        ["css=#prefixSelect", "css:finder"],
-        ["xpath=//select[@id='prefixSelect']", "xpath:attributes"],
-        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/select", "xpath:idRelative"],
-        ["xpath=//select", "xpath:position"]
-      ],
-      "value": "string:3"
+      "id": "a9bd15f0-739f-488e-98ca-1d762b65b6df",
+      "comment": "",
+      "command": "assertSelectedLabel",
+      "target": "xpath=//*[@id=\"prefixSelect\"]",
+      "targets": [],
+      "value": "Mr."
     }, {
       "id": "5dd3daaf-d4e9-48b5-becb-9884651b3ee6",
       "comment": "",
@@ -127,8 +120,8 @@
       "value": "1961-02-04"
     }, {
       "id": "aaacc7b4-3aa8-40a4-8a3c-25fdf5ede98f",
-      "comment": "Male",
-      "command": "assertSelectedValue",
+      "comment": "",
+      "command": "assertSelectedLabel",
       "target": "id=genderSelect",
       "targets": [
         ["id=prefixSelect", "id"],
@@ -138,7 +131,7 @@
         ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/select", "xpath:idRelative"],
         ["xpath=//select", "xpath:position"]
       ],
-      "value": "string:2"
+      "value": "Male"
     }, {
       "id": "7f62c644-f1fa-4aba-bb73-a545c207e7c9",
       "comment": "",
@@ -169,18 +162,18 @@
       "value": "Roseville"
     }, {
       "id": "cdf7837e-3d46-46af-a8ef-2ac7e5c9eb56",
-      "comment": "Minnesota",
-      "command": "assertSelectedValue",
+      "comment": "",
+      "command": "assertSelectedLabel",
       "target": "id=state_provinceSelect",
       "targets": [],
-      "value": "number:1022"
+      "value": "Minnesota"
     }, {
       "id": "f7a6a60e-f746-4520-8fa6-5cfaa7d3050b",
-      "comment": "United States",
-      "command": "assertSelectedValue",
+      "comment": "",
+      "command": "assertSelectedLabel",
       "target": "id=countrySelect",
       "targets": [],
-      "value": "number:1228"
+      "value": "United States"
     }, {
       "id": "53b7e380-0b3f-4c3b-bd7c-d0aa918735e8",
       "comment": "",
@@ -238,20 +231,6 @@
       ],
       "value": ""
     }, {
-      "id": "2de29531-bb26-4b14-97c7-35aebec61b9e",
-      "comment": "",
-      "command": "click",
-      "target": "id=street_addressInput",
-      "targets": [
-        ["id=street_addressInput", "id"],
-        ["name=street_addressInput", "name"],
-        ["css=#street_addressInput", "css:finder"],
-        ["xpath=//input[@id='street_addressInput']", "xpath:attributes"],
-        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/div[3]/input", "xpath:idRelative"],
-        ["xpath=//div[3]/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
       "id": "1d50000b-9cda-410e-8757-489d668bd4bf",
       "comment": "",
       "command": "type",
@@ -283,7 +262,7 @@
       "id": "51e6c929-95f1-45cc-8391-45e0bc7f9f2f",
       "comment": "",
       "command": "click",
-      "target": "css=button:nth-child(20)",
+      "target": "id=savePersonButton",
       "targets": [
         ["css=button:nth-child(20)", "css:finder"],
         ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/button", "xpath:idRelative"],
@@ -291,6 +270,13 @@
         ["xpath=//button[contains(.,'Save')]", "xpath:innerText"]
       ],
       "value": ""
+    }, {
+      "id": "c4ed1c14-2995-46ab-942d-b4f614ef6c19",
+      "comment": "",
+      "command": "waitForText",
+      "target": "//*[@id=\"crm-notification-container\"]/div/h1",
+      "targets": [],
+      "value": "Saved"
     }, {
       "id": "16d57c46-53e6-4baa-a990-b58e27e448eb",
       "comment": "",
@@ -320,9 +306,16 @@
       ],
       "value": ""
     }, {
-      "id": "c41ddc26-8413-4031-ac42-4417470fb6b7",
+      "id": "6d02f3ea-9f49-4a56-8be4-fc6038258eed",
       "comment": "",
-      "command": "click",
+      "command": "//waitForElementEditable",
+      "target": "id=prefixSelect",
+      "targets": [],
+      "value": "8000"
+    }, {
+      "id": "9d6544a1-ec56-4b42-821c-b45a31fe9371",
+      "comment": "",
+      "command": "assertSelectedValue",
       "target": "id=prefixSelect",
       "targets": [
         ["id=prefixSelect", "id"],
@@ -332,58 +325,58 @@
         ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/select", "xpath:idRelative"],
         ["xpath=//select", "xpath:position"]
       ],
-      "value": ""
+      "value": "?"
+    }, {
+      "id": "94a425a2-2297-4543-8b3a-b675422ae5a5",
+      "comment": "",
+      "command": "assertSelectedValue",
+      "target": "id=genderSelect",
+      "targets": [],
+      "value": "?"
+    }, {
+      "id": "943cf4bd-abe6-4e86-8e77-f942aa5e7a8b",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=first_nameInput",
+      "targets": [],
+      "value": "Mike"
     }, {
       "id": "6a215205-51d2-447c-91ea-d0ee29301c93",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=middle_nameInput",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c41ddc26-8413-4031-ac42-4417470fb6b7",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=street_addressInput",
+      "targets": [],
+      "value": "1870 Shady Beach Ave."
+    }, {
+      "id": "641642e7-8d6f-48ed-97dc-eeb94ef2196b",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=postal_code_suffixInput",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ea8e740e-359a-47d1-829e-dc43f3161461",
       "comment": "",
       "command": "select",
       "target": "id=prefixSelect",
       "targets": [],
       "value": "label=Mr."
     }, {
-      "id": "94a425a2-2297-4543-8b3a-b675422ae5a5",
+      "id": "c1a9e479-202b-4fb0-9716-3c1337a5d201",
       "comment": "",
-      "command": "click",
-      "target": "id=first_nameInput",
-      "targets": [
-        ["id=first_nameInput", "id"],
-        ["name=first_nameInput", "name"],
-        ["css=#first_nameInput", "css:finder"],
-        ["xpath=//input[@id='first_nameInput']", "xpath:attributes"],
-        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/input", "xpath:idRelative"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
+      "command": "select",
+      "target": "id=genderSelect",
+      "targets": [],
+      "value": "label=Male"
     }, {
-      "id": "641642e7-8d6f-48ed-97dc-eeb94ef2196b",
-      "comment": "",
-      "command": "click",
-      "target": "id=first_nameInput",
-      "targets": [
-        ["id=first_nameInput", "id"],
-        ["name=first_nameInput", "name"],
-        ["css=#first_nameInput", "css:finder"],
-        ["xpath=//input[@id='first_nameInput']", "xpath:attributes"],
-        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/input", "xpath:idRelative"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "d9637664-4ddb-43e3-bd7e-51155257c0f0",
-      "comment": "",
-      "command": "doubleClick",
-      "target": "id=first_nameInput",
-      "targets": [
-        ["id=first_nameInput", "id"],
-        ["name=first_nameInput", "name"],
-        ["css=#first_nameInput", "css:finder"],
-        ["xpath=//input[@id='first_nameInput']", "xpath:attributes"],
-        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/input", "xpath:idRelative"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "32fb03fa-5435-40bc-bf46-536413635fab",
+      "id": "8c5455b8-c544-470d-be73-0c3527f05fe7",
       "comment": "",
       "command": "type",
       "target": "id=first_nameInput",
@@ -397,107 +390,46 @@
       ],
       "value": "Michael"
     }, {
-      "id": "760993b3-aa44-43d7-8053-a7a68e40c7bb",
+      "id": "6cbe4dbb-1c75-4632-9138-039992a0f9f4",
       "comment": "",
       "command": "type",
       "target": "id=middle_nameInput",
       "targets": [
-        ["id=middle_nameInput", "id"],
-        ["name=middle_nameInput", "name"],
-        ["css=#middle_nameInput", "css:finder"],
-        ["xpath=//input[@id='middle_nameInput']", "xpath:attributes"],
-        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/input[2]", "xpath:idRelative"],
-        ["xpath=//input[2]", "xpath:position"]
+        ["id=first_nameInput", "id"],
+        ["name=first_nameInput", "name"],
+        ["css=#first_nameInput", "css:finder"],
+        ["xpath=//input[@id='first_nameInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
       ],
       "value": "F."
     }, {
-      "id": "30d13af2-8c76-47b6-9028-3b10fa1f34cb",
-      "comment": "",
-      "command": "click",
-      "target": "id=genderSelect",
-      "targets": [
-        ["id=genderSelect", "id"],
-        ["name=genderSelect", "name"],
-        ["css=#genderSelect", "css:finder"],
-        ["xpath=//select[@id='genderSelect']", "xpath:attributes"],
-        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/select[3]", "xpath:idRelative"],
-        ["xpath=//select[3]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "1fcf85f3-ad1e-42c5-ac67-23489839f26d",
-      "comment": "",
-      "command": "select",
-      "target": "id=genderSelect",
-      "targets": [],
-      "value": "label=Male"
-    }, {
-      "id": "9f3bf636-df5b-4a2a-a80d-36f12cf04d06",
-      "comment": "",
-      "command": "click",
-      "target": "id=street_addressInput",
-      "targets": [
-        ["id=street_addressInput", "id"],
-        ["name=street_addressInput", "name"],
-        ["css=#street_addressInput", "css:finder"],
-        ["xpath=//input[@id='street_addressInput']", "xpath:attributes"],
-        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/div[3]/input", "xpath:idRelative"],
-        ["xpath=//div[3]/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "d391916f-726b-4ea1-a84d-fdf0c3dd327f",
+      "id": "e3c5c3ed-5072-4546-aaa8-11f6315c5ba1",
       "comment": "",
       "command": "type",
       "target": "id=street_addressInput",
       "targets": [
-        ["id=street_addressInput", "id"],
-        ["name=street_addressInput", "name"],
-        ["css=#street_addressInput", "css:finder"],
-        ["xpath=//input[@id='street_addressInput']", "xpath:attributes"],
-        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/div[3]/input", "xpath:idRelative"],
-        ["xpath=//div[3]/input", "xpath:position"]
+        ["id=first_nameInput", "id"],
+        ["name=first_nameInput", "name"],
+        ["css=#first_nameInput", "css:finder"],
+        ["xpath=//input[@id='first_nameInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
       ],
       "value": "1870 Shady Beach Ave"
     }, {
-      "id": "cc446568-304b-4c64-945b-39ef67091a7d",
-      "comment": "",
-      "command": "click",
-      "target": "id=postal_code_suffixInput",
-      "targets": [
-        ["id=postal_code_suffixInput", "id"],
-        ["name=postal_code_suffixInput", "name"],
-        ["css=#postal_code_suffixInput", "css:finder"],
-        ["xpath=//input[@id='postal_code_suffixInput']", "xpath:attributes"],
-        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/div[5]/input[2]", "xpath:idRelative"],
-        ["xpath=//div[5]/input[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "1183fe16-9f55-4692-b292-bf6cc20a0f3f",
+      "id": "e33fc0da-7dd7-4cf6-8d08-29d72eec900d",
       "comment": "",
       "command": "type",
       "target": "id=postal_code_suffixInput",
-      "targets": [
-        ["id=postal_code_suffixInput", "id"],
-        ["name=postal_code_suffixInput", "name"],
-        ["css=#postal_code_suffixInput", "css:finder"],
-        ["xpath=//input[@id='postal_code_suffixInput']", "xpath:attributes"],
-        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/div[5]/input[2]", "xpath:idRelative"],
-        ["xpath=//div[5]/input[2]", "xpath:position"]
-      ],
+      "targets": [],
       "value": "6900"
     }, {
-      "id": "a697f0a9-7881-4904-ac00-eeb57f2f3a3f",
+      "id": "8b9bd801-ed2f-4ebb-a9b5-bb14a024348c",
       "comment": "",
       "command": "click",
-      "target": "css=button:nth-child(20)",
-      "targets": [
-        ["css=button:nth-child(20)", "css:finder"],
-        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/button", "xpath:idRelative"],
-        ["xpath=//form/button", "xpath:position"],
-        ["xpath=//button[contains(.,'Save')]", "xpath:innerText"]
-      ],
+      "target": "id=savePersonButton",
+      "targets": [],
       "value": ""
     }]
   }],
