@@ -1,1 +1,10 @@
-{{$ctrl.contactId}}
+<span id="billingRelationshipsIntro"
+  >You are the billing contact for these organizations:</span>
+  <ol id="billingRelationshipsOrderedList">
+    <li id="organizationListItem-{{relationship.organizationId}}" ng-repeat="relationship in $ctrl.relationships track by relationship.relationshipId">        
+        <details id="organizationDetails-{{relationship.organizationId}}" ng-click="$ctrl.organizationClicked(relationship.organizationId)">
+            <summary id="organizationSummary-{{relationship.organizationId}}">{{relationship.organizationName}}</summary>
+          </details>
+      <trn-organization id="{{relationship.organizationId}}" ng-if="$ctrl.displayOrganizations[relationship.organizationId]"></trn-organization>
+    </li>
+  </ul>
