@@ -52,7 +52,7 @@ angular.module('tournament').factory('billingRelationship', function (crmApi4) {
                 : ["relationship_type_id", "=", "billingContactFor"];
 
             return crmApi4('Relationship', 'get', {
-                select: ["contact_id_b", "contact_b.modified_date", "contact_b.display_name", "start_date", "end_date", "description"],
+                select: ["id", "contact_id_b", "contact_b.modified_date", "contact_b.display_name", "start_date", "end_date", "description"],
                 where: where
             });
         },
