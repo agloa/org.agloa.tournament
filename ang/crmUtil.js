@@ -242,6 +242,51 @@ function crmApi(entityType, action, params) {
                                         "phone.phone_type_id": null
                                     }]);
                                 break;
+                            case "15":
+                                resolve(
+                                    [
+                                        {
+                                            "id": 15,
+                                            "contact_type": "Organization",
+                                            "contact_sub_type": null,
+                                            "do_not_email": false,
+                                            "do_not_phone": false,
+                                            "do_not_mail": false,
+                                            "do_not_sms": false,
+                                            "do_not_trade": false,
+                                            "is_opt_out": false,
+                                            "legal_identifier": null,
+                                            "external_identifier": null,
+                                            "sort_name": "North Texas League of Academic Games",
+                                            "display_name": "North Texas League of Academic Games",
+                                            "nick_name": null,
+                                            "legal_name": null,
+                                            "image_URL": null,
+                                            "preferred_communication_method": null,
+                                            "preferred_language": "en_US",
+                                            "preferred_mail_format": "Both",
+                                            "hash": "16e44fdb85cf5247c8ac6ccdeda248fe",
+                                            "api_key": null,
+                                            "source": "Account Registration",
+                                            "communication_style_id": 1,
+                                            "email_greeting_id": null,
+                                            "email_greeting_custom": null,
+                                            "email_greeting_display": null,
+                                            "postal_greeting_id": null,
+                                            "postal_greeting_custom": null,
+                                            "postal_greeting_display": null,
+                                            "addressee_id": 3,
+                                            "addressee_custom": null,
+                                            "addressee_display": "North Texas League of Academic Games",
+                                            "organization_name": "North Texas League of Academic Games",
+                                            "sic_code": null,
+                                            "user_unique_id": null,
+                                            "is_deleted": false,
+                                            "created_date": "2021-05-08 15:03:35",
+                                            "modified_date": "2021-07-27 16:06:39"
+                                        }
+                                    ]);
+                                break;
                             case "billingOrganization":
                                 resolve([{
                                     "id": 15,
@@ -461,30 +506,32 @@ function crmApi(entityType, action, params) {
                                 break;
                         }
                 };
-            case "RelationshipType": {
-                switch (action) {
-                    default:
-                        resolve(
-                            [
-                                {
-                                    id: "13"
-                                }
-                            ]
-                        )
+            case "RelationshipType":
+                {
+                    switch (action) {
+                        default:
+                            resolve(
+                                [
+                                    {
+                                        id: "13"
+                                    }
+                                ]
+                            )
+                    }
                 }
-            }
-            case "ContactType": {
-                switch (action) {
-                    default:
-                        resolve(
-                            [
-                                {
-                                    id: "6"
-                                }
-                            ]
-                        )
+            case "ContactType":
+                {
+                    switch (action) {
+                        default:
+                            resolve(
+                                [
+                                    {
+                                        id: "6"
+                                    }
+                                ]
+                            )
+                    }
                 }
-            }
             case "Relationship": {
                 switch (action) {
                     default:
