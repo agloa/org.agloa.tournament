@@ -32,19 +32,9 @@ describe('Billing Relationship service', function () {
     billingRelationship.get();
 
     expect(CRM).toHaveBeenCalledWith(
-      "Relationship",
-      "get",
-      {
-        select: [
-          "contact_id_b",
-          "contact_b.modified_date",
-          "contact_b.display_name",
-          "start_date",
-          "end_date",
-          "description",
-        ],
-        where: ["relationship_type_id", "=", "billingContactFor"]
-      },
+      'Relationship', 'get', {
+        select: ['id', 'contact_id_b', 'contact_b.modified_date', 'contact_b.display_name', 'start_date', 'end_date', 'description'], where: [['is_active', '=', true], ['contact_b.contact_type', '=', 'Organization'], ['relationship_type_id:name', '=', 'Billing contact for']]
+    },
     );
   });
 
@@ -52,22 +42,9 @@ describe('Billing Relationship service', function () {
     const contact_id = 1;
     billingRelationship.get(contact_id);
     expect(CRM).toHaveBeenCalledWith(
-      "Relationship",
-      "get",
-      {
-        select: [
-          "contact_id_b",
-          "contact_b.modified_date",
-          "contact_b.display_name",
-          "start_date",
-          "end_date",
-          "description",
-        ],
-        where: [["contact_id_a", "=", contact_id],
-        ["is_permission_a_b", "=", true],
-        ["contact_b.contact_type", "=", "Organization"],
-        ["relationship_type_id", "=", "billingContactFor"]]
-      },
+      'Relationship', 'get', {
+      select: ['id', 'contact_id_b', 'contact_b.modified_date', 'contact_b.display_name', 'start_date', 'end_date', 'description'], where: [['contact_id_a', '=', 1], ['is_permission_a_b', '=', true], ['is_active', '=', true], ['contact_b.contact_type', '=', 'Organization'], ['relationship_type_id:name', '=', 'Billing contact for']]
+    },
     );
   });
 
