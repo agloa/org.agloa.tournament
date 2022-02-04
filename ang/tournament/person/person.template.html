@@ -1,80 +1,80 @@
-<form name="personForm">
-    <label for="prefixSelect" class="sr-only">Prefix</label>
-    <select id="prefixSelect" name="prefixSelect" class="crm-form-select" select="{placeholder: '', allowClear:true}"
+<form name="personForm-{{$ctrl.id}}">
+    <label for="prefixSelect-{{$ctrl.id}}" class="sr-only">Prefix</label>
+    <select id="prefixSelect-{{$ctrl.id}}" name="prefixSelect-{{$ctrl.id}}" class="crm-form-select" select="{placeholder: '', allowClear:true}"
         ng-options="option.value as option.label for option in $ctrl.prefixes" ng-model="$ctrl.prefix">
     </select>
 
-    <label for="first_nameInput" class="sr-only">First</label>
-    <input id="first_nameInput" name="first_nameInput" type="text" ng-model="$ctrl.first_name" class="crm-form-text"
+    <label for="first_nameInput-{{$ctrl.id}}" class="sr-only">First</label>
+    <input id="first_nameInput-{{$ctrl.id}}" name="first_nameInput-{{$ctrl.id}}" type="text" ng-model="$ctrl.first_name" class="crm-form-text"
         placeholder="First" required>
     </input>
 
-    <label for="middle_nameInput" class="sr-only">Middle</label>
-    <input type="text" id="middle_nameInput" name="middle_nameInput" ng-model="$ctrl.middle_name" class="crm-form-text"
+    <label for="middle_nameInput-{{$ctrl.id}}" class="sr-only">Middle</label>
+    <input type="text" id="middle_nameInput-{{$ctrl.id}}" name="middle_nameInput-{{$ctrl.id}}" ng-model="$ctrl.middle_name" class="crm-form-text"
         placeholder="Middle">
     </input>
 
-    <label for="last_nameInput" class="sr-only">Last</label>
-    <input type="text" id="last_nameInput" name="last_nameInput" ng-model="$ctrl.last_name" class="crm-form-text"
+    <label for="last_nameInput-{{$ctrl.id}}" class="sr-only">Last</label>
+    <input type="text" id="last_nameInput-{{$ctrl.id}}" name="last_nameInput-{{$ctrl.id}}" ng-model="$ctrl.last_name" class="crm-form-text"
         placeholder="Last" required>
     </input>
 
-    <label for="suffixSelect" class="sr-only">Suffix</label>
-    <select id="suffixSelect" name="suffixSelect" class="crm-form-select" select="{placeholder: '', allowClear:true}"
+    <label for="suffixSelect-{{$ctrl.id}}" class="sr-only">Suffix</label>
+    <select id="suffixSelect-{{$ctrl.id}}" name="suffixSelect-{{$ctrl.id}}" class="crm-form-select" select="{placeholder: '', allowClear:true}"
         ng-options="option.value as option.label for option in $ctrl.suffixes" ng-model="$ctrl.suffix">
     </select>
 
-    <label for="birth_dateInput" class="sr-only">Birth Date</label>
-    <input type="date" id="birth_dateInput" class="crm-form-text crm-form-date" name="birth_dateInput"
+    <label for="birth_dateInput-{{$ctrl.id}}" class="sr-only">Birth Date</label>
+    <input type="date" id="birth_dateInput-{{$ctrl.id}}" class="crm-form-text crm-form-date" name="birth_dateInput-{{$ctrl.id}}"
         ng-model="$ctrl.birth_date">
     </input>
 
-    <label for="genderSelect" class="sr-only">Gender</label>
-    <select id="genderSelect" name="genderSelect" class="crm-form-select"
+    <label for="genderSelect-{{$ctrl.id}}" class="sr-only">Gender</label>
+    <select id="genderSelect-{{$ctrl.id}}" name="genderSelect-{{$ctrl.id}}" class="crm-form-select"
         ng-options="option.value as option.label for option in $ctrl.genders" ng-model="$ctrl.gender">
     </select>
 
-    <div><label for="emailInput">Email</label>
-        <input id="emailInput" name="emailInput" ng-model="$ctrl.email" placeholder="email" required type="email"
+    <div><label for="emailInput-{{$ctrl.id}}">Email</label>
+        <input id="emailInput-{{$ctrl.id}}" name="emailInput-{{$ctrl.id}}" ng-model="$ctrl.email" placeholder="email" required type="email"
             class="crm-form-text"></input>
     </div>
 
-    <div><label for="phoneInput">Phone</label>
-        <input id="phoneInput" name="phoneInput" ng-model="$ctrl.phone" placeholder="Phone" required type="tel"
+    <div><label for="phoneInput-{{$ctrl.id}}">Phone</label>
+        <input id="phoneInput-{{$ctrl.id}}" name="phoneInput-{{$ctrl.id}}" ng-model="$ctrl.phone" placeholder="Phone" required type="tel"
             class="crm-form-text"></input>
     </div>
 
     <div>
-        <label for="street_addressInput">Address</label>
-        <input id="street_addressInput" name="street_addressInput" ng-model="$ctrl.street_address" class="crm-form-text"
+        <label for="street_addressInput-{{$ctrl.id}}">Address</label>
+        <input id="street_addressInput-{{$ctrl.id}}" name="street_addressInput-{{$ctrl.id}}" ng-model="$ctrl.street_address" class="crm-form-text"
             placeholder="Address" required>
         </input>
-        <label for="supplemental_address_1Input" class="sr-only">Address 1</label>
-        <input id="supplemental_address_1Input" name="supplemental_address_1Input"
+        <label for="supplemental_address_1Input-{{$ctrl.id}}" class="sr-only">Address 1</label>
+        <input id="supplemental_address_1Input-{{$ctrl.id}}" name="supplemental_address_1Input-{{$ctrl.id}}"
             ng-model="$ctrl.supplemental_address_1" class="crm-form-text" placeholder="cont.">
         </input>
-        <label for="supplemental_address_2Input" class="sr-only">Address 2</label>
-        <input id="supplemental_address_2Input" name="supplemental_address_2Input"
+        <label for="supplemental_address_2Input-{{$ctrl.id}}" class="sr-only">Address 2</label>
+        <input id="supplemental_address_2Inpu-{{$ctrl.id}}t" name="supplemental_address_2Input-{{$ctrl.id}}"
             ng-model="$ctrl.supplemental_address_2" class="crm-form-text" placeholder="cont.">
         </input>
-        <label for="supplemental_address_3Input" class="sr-only">Address 3</label>
-        <input id="supplemental_address_3Input" name="supplemental_address_3Input"
+        <label for="supplemental_address_3Input-{{$ctrl.id}}" class="sr-only">Address 3</label>
+        <input id="supplemental_address_3Input-{{$ctrl.id}}" name="supplemental_address_3Input-{{$ctrl.id}}"
             ng-model="$ctrl.supplemental_address_3" class="crm-form-text" placeholder="cont.">
         </input>
     </div>
 
     <div>
-        <label for="cityInput">City</label>
-        <input id="cityInput" name="cityInput" ng-model="$ctrl.city" class="crm-form-text" placeholder="City" required>
+        <label for="cityInput-{{$ctrl.id}}">City</label>
+        <input id="cityInput-{{$ctrl.id}}" name="cityInput-{{$ctrl.id}}" ng-model="$ctrl.city" class="crm-form-text" placeholder="City" required>
         </input>
-        <label for="countrySelect">Country</label>
-        <select required id="countrySelect" name="countrySelect" class="big crm-form-select"
+        <label for="countrySelect-{{$ctrl.id}}">Country</label>
+        <select required id="countrySelect-{{$ctrl.id}}" name="countrySelect-{{$ctrl.id}}" class="big crm-form-select"
             select="{placeholder: '', allowClear:true}"
             ng-options="option.id as option.name for option in $ctrl.countries" ng-model="$ctrl.country_id">
         </select>
         <div ng-show="$ctrl.country_id" class="inline">
-            <label for="state_provinceSelect">State/Province</label>
-            <select required id="state_provinceSelect" name="state_provinceSelect" class="big crm-form-select"
+            <label for="state_provinceSelect-{{$ctrl.id}}">State/Province</label>
+            <select required id="state_provinceSelect-{{$ctrl.id}}" name="state_provinceSelect-{{$ctrl.id}}" class="big crm-form-select"
                 select="{placeholder: '', allowClear:true}"
                 ng-options="option.id as option.name for option in $ctrl.regions | filter:{country_id:$ctrl.country_id}"
                 ng-model="$ctrl.state_province_id">
@@ -83,15 +83,15 @@
     </div>
 
     <div>
-        <label for="postal_codeInput">Postal Code</label>
-        <input id="postal_codeInput" name="postal_codeInput" ng-model="$ctrl.postal_code" class="crm-form-text"
+        <label for="postal_codeInput-{{$ctrl.id}}">Postal Code</label>
+        <input id="postal_codeInput-{{$ctrl.id}}" name="postal_codeInput-{{$ctrl.id}}" ng-model="$ctrl.postal_code" class="crm-form-text"
             placeholder="Postal Code" required>
         </input>
-        <label for="postal_code_suffix">Postal Code Suffix</label>
-        <input id="postal_code_suffixInput" name="postal_code_suffixInput" ng-model="$ctrl.postal_code_suffix"
+        <label for="postal_code_suffix-{{$ctrl.id}}">Postal Code Suffix</label>
+        <input id="postal_code_suffixInput-{{$ctrl.id}}" name="postal_code_suffixInput-{{$ctrl.id}}" ng-model="$ctrl.postal_code_suffix"
             class="crm-form-text" placeholder="Postal Code Suffix">
         </input>
     </div>
 
-    <button id="savePersonButton" ng-click="$ctrl.save()">Save</button>
+    <button id="savePersonButton-{{$ctrl.id}}" ng-click="$ctrl.save()">Save</button>
 </form>
