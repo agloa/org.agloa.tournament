@@ -5,7 +5,7 @@
   "url": "https://www.dev.agloa.org",
   "tests": [{
     "id": "f2f276ef-80a4-4f2a-9101-8ab2d464f80f",
-    "name": "LoginOut",
+    "name": "UserContactInformation",
     "commands": [{
       "id": "34b3b2d2-6f80-4f26-acd7-842928e23ce2",
       "comment": "",
@@ -77,52 +77,52 @@
       "targets": [],
       "value": ""
     }, {
-      "id": "d0300ca7-5554-4438-9792-4a8dd749663d",
+      "id": "9bfdecab-13fa-4930-a17e-f9658caba188",
       "comment": "",
-      "command": "//waitForElementEditable",
-      "target": "xpath=//*[@id=\"prefixSelect\"]",
+      "command": "waitForElementEditable",
+      "target": " id=postal_code_suffixInput-2",
       "targets": [],
-      "value": "1000"
+      "value": "3000"
     }, {
       "id": "a9bd15f0-739f-488e-98ca-1d762b65b6df",
       "comment": "",
-      "command": "assertSelectedLabel",
-      "target": "xpath=//*[@id=\"prefixSelect\"]",
+      "command": "//assertSelectedLabel",
+      "target": "id=prefixSelect-2",
       "targets": [],
       "value": "Mr."
     }, {
       "id": "5dd3daaf-d4e9-48b5-becb-9884651b3ee6",
       "comment": "",
       "command": "assertValue",
-      "target": "id=first_nameInput",
+      "target": "id=first_nameInput-2",
       "targets": [],
       "value": "Michael"
     }, {
       "id": "f2ec9d8c-a928-48c6-b280-026a447c9d20",
       "comment": "",
       "command": "assertValue",
-      "target": "id=middle_nameInput",
+      "target": "id=middle_nameInput-2",
       "targets": [],
       "value": "F."
     }, {
       "id": "83cbda0e-4720-4389-9037-2a7b81058585",
       "comment": "",
       "command": "assertValue",
-      "target": "id=last_nameInput",
+      "target": "id=last_nameInput-2",
       "targets": [],
       "value": "Steigerwald"
     }, {
       "id": "0590f697-2da4-464f-acd3-4103c5a6a8bb",
       "comment": "",
       "command": "assertValue",
-      "target": "id=birth_dateInput",
+      "target": "id=birth_dateInput-2",
       "targets": [],
       "value": "1961-02-04"
     }, {
       "id": "aaacc7b4-3aa8-40a4-8a3c-25fdf5ede98f",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=genderSelect",
+      "target": "id=genderSelect-2",
       "targets": [
         ["id=prefixSelect", "id"],
         ["name=prefixSelect", "name"],
@@ -136,77 +136,77 @@
       "id": "7f62c644-f1fa-4aba-bb73-a545c207e7c9",
       "comment": "",
       "command": "assertValue",
-      "target": " id=emailInput",
+      "target": " id=emailInput-2",
       "targets": [],
       "value": "steiger@umich.edu"
     }, {
       "id": "4ec8c9ee-8a56-4fa5-a92a-8306403bc0ab",
       "comment": "",
       "command": "assertValue",
-      "target": " id=phoneInput",
+      "target": " id=phoneInput-2",
       "targets": [],
       "value": "(612) 875-1888"
     }, {
       "id": "26f9a350-efe8-4099-8088-568f5ef59d24",
       "comment": "",
       "command": "assertValue",
-      "target": " id=street_addressInput",
+      "target": " id=street_addressInput-2",
       "targets": [],
       "value": "1870 Shady Beach Ave"
-    }, {
-      "id": "0a8e29ba-dfb7-479e-b756-f77a64ff9bad",
-      "comment": "",
-      "command": "assertValue",
-      "target": " id=cityInput",
-      "targets": [],
-      "value": "Roseville"
     }, {
       "id": "cdf7837e-3d46-46af-a8ef-2ac7e5c9eb56",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=state_provinceSelect",
+      "target": "id=state_provinceSelect-2",
       "targets": [],
       "value": "Minnesota"
     }, {
       "id": "f7a6a60e-f746-4520-8fa6-5cfaa7d3050b",
       "comment": "",
       "command": "assertSelectedLabel",
-      "target": "id=countrySelect",
+      "target": "id=countrySelect-2",
       "targets": [],
       "value": "United States"
+    }, {
+      "id": "0a8e29ba-dfb7-479e-b756-f77a64ff9bad",
+      "comment": "",
+      "command": "assertValue",
+      "target": " id=cityInput-2",
+      "targets": [],
+      "value": "Roseville"
     }, {
       "id": "53b7e380-0b3f-4c3b-bd7c-d0aa918735e8",
       "comment": "",
       "command": "assertValue",
-      "target": " id=postal_codeInput",
+      "target": " id=postal_codeInput-2",
       "targets": [],
       "value": "55113"
     }, {
       "id": "a3919686-3883-4b2a-b283-661140f2adc2",
       "comment": "",
       "command": "assertValue",
-      "target": " id=postal_code_suffixInput",
+      "target": " id=postal_code_suffixInput-2",
       "targets": [],
       "value": "6900"
     }, {
       "id": "f79f4e69-b736-4dcc-8520-a5674daf6ce2",
       "comment": "",
       "command": "select",
-      "target": "id=prefixSelect",
+      "target": "id=prefixSelect-2",
       "targets": [],
       "value": "label="
     }, {
       "id": "2518aa62-5b33-4b99-9811-a4c6e5e3cabc",
       "comment": "",
       "command": "select",
-      "target": "id=genderSelect",
+      "target": "id=genderSelect-2",
       "targets": [],
       "value": "label="
     }, {
       "id": "5dbe3199-14b4-437b-8503-9a7d2ab7042d",
       "comment": "",
       "command": "type",
-      "target": "id=first_nameInput",
+      "target": "id=first_nameInput-2",
       "targets": [
         ["id=first_nameInput", "id"],
         ["name=first_nameInput", "name"],
@@ -220,7 +220,7 @@
       "id": "ac2d5b2e-95a3-4aea-9ef1-01213377fe1f",
       "comment": "",
       "command": "type",
-      "target": "id=middle_nameInput",
+      "target": "id=middle_nameInput-2",
       "targets": [
         ["id=middle_nameInput", "id"],
         ["name=middle_nameInput", "name"],
@@ -234,7 +234,7 @@
       "id": "1d50000b-9cda-410e-8757-489d668bd4bf",
       "comment": "",
       "command": "type",
-      "target": "id=street_addressInput",
+      "target": "id=street_addressInput-2",
       "targets": [
         ["id=street_addressInput", "id"],
         ["name=street_addressInput", "name"],
@@ -248,7 +248,7 @@
       "id": "ee423859-fcb1-4bdc-8d08-0e2e05591616",
       "comment": "",
       "command": "type",
-      "target": "id=postal_code_suffixInput",
+      "target": "id=postal_code_suffixInput-2",
       "targets": [
         ["id=postal_code_suffixInput", "id"],
         ["name=postal_code_suffixInput", "name"],
@@ -262,7 +262,7 @@
       "id": "51e6c929-95f1-45cc-8391-45e0bc7f9f2f",
       "comment": "",
       "command": "click",
-      "target": "id=savePersonButton",
+      "target": "id=savePersonButton-2",
       "targets": [
         ["css=button:nth-child(20)", "css:finder"],
         ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/button", "xpath:idRelative"],
@@ -306,17 +306,10 @@
       ],
       "value": ""
     }, {
-      "id": "6d02f3ea-9f49-4a56-8be4-fc6038258eed",
-      "comment": "",
-      "command": "//waitForElementEditable",
-      "target": "id=prefixSelect",
-      "targets": [],
-      "value": "8000"
-    }, {
       "id": "9d6544a1-ec56-4b42-821c-b45a31fe9371",
       "comment": "",
       "command": "assertSelectedValue",
-      "target": "id=prefixSelect",
+      "target": "id=prefixSelect-2",
       "targets": [
         ["id=prefixSelect", "id"],
         ["name=prefixSelect", "name"],
@@ -330,56 +323,56 @@
       "id": "94a425a2-2297-4543-8b3a-b675422ae5a5",
       "comment": "",
       "command": "assertSelectedValue",
-      "target": "id=genderSelect",
+      "target": "id=genderSelect-2",
       "targets": [],
       "value": "?"
     }, {
       "id": "943cf4bd-abe6-4e86-8e77-f942aa5e7a8b",
       "comment": "",
       "command": "assertValue",
-      "target": "id=first_nameInput",
+      "target": "id=first_nameInput-2",
       "targets": [],
       "value": "Mike"
     }, {
       "id": "6a215205-51d2-447c-91ea-d0ee29301c93",
       "comment": "",
       "command": "assertValue",
-      "target": "id=middle_nameInput",
+      "target": "id=middle_nameInput-2",
       "targets": [],
       "value": ""
     }, {
       "id": "c41ddc26-8413-4031-ac42-4417470fb6b7",
       "comment": "",
       "command": "assertValue",
-      "target": "id=street_addressInput",
+      "target": "id=street_addressInput-2",
       "targets": [],
       "value": "1870 Shady Beach Ave."
     }, {
       "id": "641642e7-8d6f-48ed-97dc-eeb94ef2196b",
       "comment": "",
       "command": "assertValue",
-      "target": "id=postal_code_suffixInput",
+      "target": "id=postal_code_suffixInput-2",
       "targets": [],
       "value": ""
     }, {
       "id": "ea8e740e-359a-47d1-829e-dc43f3161461",
       "comment": "",
       "command": "select",
-      "target": "id=prefixSelect",
+      "target": "id=prefixSelect-2",
       "targets": [],
       "value": "label=Mr."
     }, {
       "id": "c1a9e479-202b-4fb0-9716-3c1337a5d201",
       "comment": "",
       "command": "select",
-      "target": "id=genderSelect",
+      "target": "id=genderSelect-2",
       "targets": [],
       "value": "label=Male"
     }, {
       "id": "8c5455b8-c544-470d-be73-0c3527f05fe7",
       "comment": "",
       "command": "type",
-      "target": "id=first_nameInput",
+      "target": "id=first_nameInput-2",
       "targets": [
         ["id=first_nameInput", "id"],
         ["name=first_nameInput", "name"],
@@ -393,7 +386,7 @@
       "id": "6cbe4dbb-1c75-4632-9138-039992a0f9f4",
       "comment": "",
       "command": "type",
-      "target": "id=middle_nameInput",
+      "target": "id=middle_nameInput-2",
       "targets": [
         ["id=first_nameInput", "id"],
         ["name=first_nameInput", "name"],
@@ -407,7 +400,7 @@
       "id": "e3c5c3ed-5072-4546-aaa8-11f6315c5ba1",
       "comment": "",
       "command": "type",
-      "target": "id=street_addressInput",
+      "target": "id=street_addressInput-2",
       "targets": [
         ["id=first_nameInput", "id"],
         ["name=first_nameInput", "name"],
@@ -421,14 +414,14 @@
       "id": "e33fc0da-7dd7-4cf6-8d08-29d72eec900d",
       "comment": "",
       "command": "type",
-      "target": "id=postal_code_suffixInput",
+      "target": "id=postal_code_suffixInput-2",
       "targets": [],
       "value": "6900"
     }, {
       "id": "8b9bd801-ed2f-4ebb-a9b5-bb14a024348c",
       "comment": "",
       "command": "click",
-      "target": "id=savePersonButton",
+      "target": "id=savePersonButton-2",
       "targets": [],
       "value": ""
     }]
