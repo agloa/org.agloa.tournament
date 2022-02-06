@@ -86,7 +86,7 @@
     }, {
       "id": "a9bd15f0-739f-488e-98ca-1d762b65b6df",
       "comment": "",
-      "command": "//assertSelectedLabel",
+      "command": "assertSelectedLabel",
       "target": "id=prefixSelect-2",
       "targets": [],
       "value": "Mr."
@@ -274,7 +274,7 @@
       "id": "c4ed1c14-2995-46ab-942d-b4f614ef6c19",
       "comment": "",
       "command": "waitForText",
-      "target": "//*[@id=\"crm-notification-container\"]/div/h1",
+      "target": "xpath=//*[@id=\"crm-notification-container\"]/div/h1",
       "targets": [],
       "value": "Saved"
     }, {
@@ -305,6 +305,13 @@
         ["xpath=//summary[contains(.,'Update your contact information, last updated on 2022-02-01 17:24:55.')]", "xpath:innerText"]
       ],
       "value": ""
+    }, {
+      "id": "c4b54010-870d-4c82-a8ad-d64217534179",
+      "comment": "",
+      "command": "waitForElementEditable",
+      "target": " id=postal_code_suffixInput-2",
+      "targets": [],
+      "value": "3000"
     }, {
       "id": "9d6544a1-ec56-4b42-821c-b45a31fe9371",
       "comment": "",
@@ -424,6 +431,215 @@
       "target": "id=savePersonButton-2",
       "targets": [],
       "value": ""
+    }, {
+      "id": "b0948539-055c-45bd-961d-af507fa7c5e0",
+      "comment": "",
+      "command": "click",
+      "target": "id=organizationsSummary",
+      "targets": [
+        ["id=organizationsSummary", "id"],
+        ["css=#organizationsSummary", "css:finder"],
+        ["xpath=//summary[@id='organizationsSummary']", "xpath:attributes"],
+        ["xpath=//details[@id='organizationsDetails']/summary", "xpath:idRelative"],
+        ["xpath=//li[2]/details/summary", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "92165679-52a7-4d7d-afde-7d9da154c221",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "id=organizationSummary-1",
+      "targets": [],
+      "value": "3000"
+    }, {
+      "id": "a36db1e8-ed6c-4d69-ad0c-fd70299db7a6",
+      "comment": "",
+      "command": "click",
+      "target": "id=organizationSummary-1",
+      "targets": [
+        ["id=organizationSummary-1", "id"],
+        ["css=#organizationSummary-1", "css:finder"],
+        ["xpath=//summary[@id='organizationSummary-1']", "xpath:attributes"],
+        ["xpath=//details[@id='organizationDetails-1']/summary", "xpath:idRelative"],
+        ["xpath=//trn-billingrelationships/ol/li/details/summary", "xpath:position"],
+        ["xpath=//summary[contains(.,'AGLOA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "30db3314-6a4e-4c1a-88ee-096cb305817c",
+      "comment": "",
+      "command": "waitForElementEditable",
+      "target": " id=postal_codeInput-1",
+      "targets": [],
+      "value": "3000"
+    }, {
+      "id": "e9cb743d-42fa-451e-ab73-ca1cc48cd7bc",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=organization_nameInput-1",
+      "targets": [],
+      "value": "AGLOA"
+    }, {
+      "id": "c98b8abb-fa18-451a-afce-848349612a33",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=street_addressInput-1",
+      "targets": [],
+      "value": "P.O. Box 3142"
+    }, {
+      "id": "be2449ef-7805-40eb-a721-23b8d35ecf76",
+      "comment": "",
+      "command": "assertSelectedLabel",
+      "target": "id=countrySelect-1",
+      "targets": [],
+      "value": "United States"
+    }, {
+      "id": "b48814e6-69ac-4df3-8c9a-83b8e76d54f0",
+      "comment": "",
+      "command": "assertSelectedLabel",
+      "target": "id=state_provinceSelect-1",
+      "targets": [],
+      "value": "Florida"
+    }, {
+      "id": "a075ffd7-5ab7-4ef7-b396-6edcd860fe64",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=cityInput-1",
+      "targets": [],
+      "value": "Tequesta"
+    }, {
+      "id": "61e630a1-72dc-4876-b8a7-249c65b9d39e",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=postal_codeInput-1",
+      "targets": [],
+      "value": "33469"
+    }, {
+      "id": "c737d943-e238-404b-9093-e80e575ee162",
+      "comment": "",
+      "command": "type",
+      "target": "id=organization_nameInput-1",
+      "targets": [
+        ["id=first_nameInput", "id"],
+        ["name=first_nameInput", "name"],
+        ["css=#first_nameInput", "css:finder"],
+        ["xpath=//input[@id='first_nameInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Academic Games Leagues of America, Inc."
+    }, {
+      "id": "4c7f3850-8bfb-4480-ab09-98ec96e9b5ab",
+      "comment": "",
+      "command": "type",
+      "target": "id=street_addressInput-1",
+      "targets": [
+        ["id=street_addressInput", "id"],
+        ["name=street_addressInput", "name"],
+        ["css=#street_addressInput", "css:finder"],
+        ["xpath=//input[@id='street_addressInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "PO Box 3142"
+    }, {
+      "id": "aa5c002c-60cd-4051-b249-6539f1c6001f",
+      "comment": "",
+      "command": "click",
+      "target": "saveOrganizationButton-1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5672dfed-393e-4114-a6d1-15e533b9632e",
+      "comment": "",
+      "command": "waitForText",
+      "target": "xpath=//*[@id=\"crm-notification-container\"]/div/h1",
+      "targets": [],
+      "value": "Saved"
+    }, {
+      "id": "b1695593-17a9-4e17-beb6-e400b3cc9e23",
+      "comment": "",
+      "command": "click",
+      "target": "id=organizationSummary-1",
+      "targets": [
+        ["id=organizationSummary-1", "id"],
+        ["css=#organizationSummary-1", "css:finder"],
+        ["xpath=//summary[@id='organizationSummary-1']", "xpath:attributes"],
+        ["xpath=//details[@id='organizationDetails-1']/summary", "xpath:idRelative"],
+        ["xpath=//trn-billingrelationships/ol/li/details/summary", "xpath:position"],
+        ["xpath=//summary[contains(.,'AGLOA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "97b12acf-4232-4566-b0a6-ef5e56af2b5a",
+      "comment": "",
+      "command": "click",
+      "target": "id=organizationSummary-1",
+      "targets": [
+        ["id=organizationSummary-1", "id"],
+        ["css=#organizationSummary-1", "css:finder"],
+        ["xpath=//summary[@id='organizationSummary-1']", "xpath:attributes"],
+        ["xpath=//details[@id='organizationDetails-1']/summary", "xpath:idRelative"],
+        ["xpath=//trn-billingrelationships/ol/li/details/summary", "xpath:position"],
+        ["xpath=//summary[contains(.,'AGLOA')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "55bccddf-6d18-4830-af23-2fb685141856",
+      "comment": "",
+      "command": "waitForElementEditable",
+      "target": " id=postal_codeInput-1",
+      "targets": [],
+      "value": "3000"
+    }, {
+      "id": "854815d3-0094-45b0-92c8-22579929916e",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=organization_nameInput-1",
+      "targets": [],
+      "value": "Academic Games Leagues of America, Inc."
+    }, {
+      "id": "9a9caf3a-7462-4c9b-a7ab-9f8539b6e227",
+      "comment": "",
+      "command": "assertValue",
+      "target": "id=street_addressInput-1",
+      "targets": [],
+      "value": "PO Box 3142"
+    }, {
+      "id": "f77ea2da-b0ff-458a-998d-ca347cf16eb3",
+      "comment": "",
+      "command": "type",
+      "target": "id=organization_nameInput-1",
+      "targets": [],
+      "value": "AGLOA"
+    }, {
+      "id": "1c1b42e9-2ea2-43bc-bd39-fec282de76d6",
+      "comment": "",
+      "command": "type",
+      "target": "id=street_addressInput-1",
+      "targets": [
+        ["id=street_addressInput", "id"],
+        ["name=street_addressInput", "name"],
+        ["css=#street_addressInput", "css:finder"],
+        ["xpath=//input[@id='street_addressInput']", "xpath:attributes"],
+        ["xpath=//div[@id='crm-main-content-wrapper']/div/div/trn-dashboard/ol/li/trn-person/form/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "P.O. Box 3142"
+    }, {
+      "id": "7e939d84-78b8-4f7f-ad49-a6d233a4e2a8",
+      "comment": "",
+      "command": "click",
+      "target": "saveOrganizationButton-1",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "08c558e5-c086-43b3-837f-a769f279f0f4",
+      "comment": "",
+      "command": "waitForText",
+      "target": "xpath=//*[@id=\"crm-notification-container\"]/div/h1",
+      "targets": [],
+      "value": "Saved"
     }]
   }],
   "suites": [{
