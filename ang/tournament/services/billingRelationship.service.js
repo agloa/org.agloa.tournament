@@ -48,7 +48,8 @@ angular.module('tournament').factory('billingRelationship', function (crmApi4) {
                 ["is_permission_a_b", "=", true],
                 ["is_active", "=", true],
                 ["contact_b.contact_type", "=", "Organization"],
-                ["relationship_type_id:name", "=", "Billing contact for"]
+                // Note: commenting this out means each person will see ANY organization they have permissions for.
+                // ["relationship_type_id:name", "=", "Billing contact for"]
             ]
                 : [["is_active", "=", true],
                 ["contact_b.contact_type", "=", "Organization"],
