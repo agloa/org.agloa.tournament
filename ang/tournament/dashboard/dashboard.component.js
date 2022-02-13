@@ -37,11 +37,11 @@ angular.module('tournament').component('trnDashboard', {
         self.modified_date = contact.modified_date;
       };
 
-      self.$onInit = function () {
-        self.user = person.get(self.contactId).then(
+      self.$onInit = () => {
+        person.get(self.contactId).then(
           // Success
-          (result) => {
-            self.setContact(result[0]);
+          (contacts) => {
+            self.setContact(contacts[0]);
           },
           // Failure
           (error) => {

@@ -1,5 +1,5 @@
 <span id="billingRelationshipsIntro"
-  >You are the billing contact for these organizations:</span>
+  >You are a billing contact for these organizations:</span>
   <ol id="billingRelationshipsOrderedList">
     <li id="organizationListItem-{{relationship.organizationId}}" ng-repeat="relationship in $ctrl.relationships track by relationship.relationshipId">        
         <details id="organizationDetails-{{relationship.organizationId}}" ng-click="$ctrl.organizationClicked(relationship.organizationId)">
