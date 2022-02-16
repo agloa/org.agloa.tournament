@@ -1,0 +1,18 @@
+<span id="registrationGroupsIntro"
+  >You have access to contacts in these groups:</span
+>
+<ol id="registrationGroupsList">
+  <li
+    id="registrationGroupListItem-{{group.id}}"
+    ng-repeat="group in $ctrl.groups track by group.id"
+  >
+    <details
+      id="registrationGroupDetails-{{group.id}}"
+      ng-click="$ctrl.groupClicked(group.id)"
+    >
+      <summary id="registrationGroupSummary-{{group.id}}">
+        {{group.name}}
+      </summary>
+    </details>
+  </li>
+</ol>
