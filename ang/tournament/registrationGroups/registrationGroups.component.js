@@ -1,7 +1,7 @@
 'use strict';
 
 const registrationGroupsTemplateUrl =
-    `${location.search.includes("?page=CiviCrm") ? "~" : location.origin}/tournament/registrationGroups/registrationGroups.template.html`;
+    `${location.search.includes("?page=CiviCRM") ? "~" : location.origin}/tournament/registrationGroups/registrationGroups.template.html`;
 
 angular.module('tournament').component('trnRegistrationgroups', {
     templateUrl: registrationGroupsTemplateUrl,
