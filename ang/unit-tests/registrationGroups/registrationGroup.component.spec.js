@@ -5,7 +5,8 @@ describe('Registration groups component', function () {
     let $routeParams;
 
     const contactId = 1;
-    const groups = [{ id: 1 }, { id: 2 }];
+    const groups = [{ "contacts_group.id": contactId, "contacts_group.title": "one" }, { "contacts_group.id": 2, "contacts_group.title": "two" }];
+    const mappedGroups = [{ groupId: contactId, groupName: 'one' }, { groupId: 2, groupName: 'two' }];
 
     beforeEach(function () {
         // Add a custom equality tester before each test
@@ -48,8 +49,8 @@ describe('Registration groups component', function () {
         // Assert
         expect(controller).toBeDefined();
         expect(controller.contactId).toBe(contactId);
-        expect(controller.groups).toEqual(groups);
-        expect(controller.displayGroups[1]).toBe(false);
+        expect(controller.groups).toEqual(mappedGroups);
+        expect(controller.displayGroups[contactId]).toBe(false);
         expect(controller.displayGroups[2]).toBe(false);
     });
 

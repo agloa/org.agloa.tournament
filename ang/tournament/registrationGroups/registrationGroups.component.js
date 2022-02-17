@@ -15,13 +15,18 @@ angular.module('tournament').component('trnRegistrationgroups', {
             }
 
             self.setGroups = (groups) => {
-                self.groups = groups;
+                self.groups = groups.map((group) => {
+                    return {
+                        groupId: group["contacts_group.id"],
+                        groupName: group["contacts_group.title"]
+                    }
+                });
             }
 
             self.setDisplayGroups = (groups) => {
                 self.displayGroups = [];
                 groups.forEach((group) => {
-                    self.displayGroups[group.id] = false;
+                    self.displayGroups[group.groupId] = false;
                 });
             }
 
@@ -29,7 +34,7 @@ angular.module('tournament').component('trnRegistrationgroups', {
                 accessControl.get(self.contactId).then(
                     (groups) => {
                         self.setGroups(groups);
-                        self.setDisplayGroups(groups);
+                        self.setDisplayGroups(self.groups);
                     },
                     (error) => {
                         CRM.alert(ts(`Could not get registration groups for contact: ${self.contactId}, error = ${error.error_message}`), ts('Not Found'), 'error');

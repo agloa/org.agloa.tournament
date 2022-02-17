@@ -3,14 +3,14 @@
 >
 <ol id="registrationGroupsList">
   <li
-    id="registrationGroupListItem-{{group.id}}"
-    ng-repeat="group in $ctrl.groups track by group.id"
+    id="registrationGroupListItem-{{group.groupId}}"
+    ng-repeat="group in $ctrl.groups track by group.groupId"
   >
     <details
-      id="registrationGroupDetails-{{group.id}}"
-      ng-click="$ctrl.groupClicked(group.id)"
+      id="registrationGroupDetails-{{group.groupId}}"
+      ng-click="$ctrl.groupClicked(group.groupId)"
     >
-      <summary id="registrationGroupSummary-{{group.id}}">
+      <summary id="registrationGroupSummary-{{group.groupId}}">
         {{group.name}}
       </summary>
     </details>
