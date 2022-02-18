@@ -4,3 +4,5 @@ node_modules
 ang/.vscode/settings.json
 ang/debug.log
 ang/coverage
+e2e/dashboard.side
+e2e/org.agloa.tournament.side
