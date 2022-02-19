@@ -1,4 +1,4 @@
-angular.module('tournament').factory('organization', function (crmApi4) {
+angular.module('tournament').factory('registrationGroup', function (crmApi4) {
     function getRegistrationGroupType() {
         return crmApi4('')
     }
