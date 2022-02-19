@@ -18,6 +18,20 @@ CRM.alert = (message) => {
 function crmApi(entityType, action, params) {
     return new Promise(function (resolve) {
         switch (entityType) {
+            case "ACL": {
+                resolve([
+                    {
+                        "id": 72,
+                        "operation": "Edit",
+                        "access_group.id": 65,
+                        "access_group.title": "Char-Meck Academic Games League District Contacts",
+                        "contacts_group.id": 29,
+                        "contacts_group.title": "Char-Meck Academic Games League",
+                        "contacts.contact_id": 2
+                    }
+                ]);
+                break;
+            }
             case "Contact":
                 switch (action) {
                     default:
