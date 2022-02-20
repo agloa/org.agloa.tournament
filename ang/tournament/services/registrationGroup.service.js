@@ -1,28 +1,17 @@
 angular.module('tournament').factory('registrationGroup', function (crmApi4) {
-    function getRegistrationGroupType() {
-        return crmApi4('')
-    }
-
-    function createRegistrationGroupType() {
-        crmApi4('OptionValue', 'create', {
-            values: { "label": "Registration Group", "name": "registrationGroup", "option_group_id": 22 },
-            checkPermissions: false // IGNORED: permissions are always enforced from client-side requests
-        }).then(function (results) {
-            // do something with results array
-        }, function (failure) {
-            // handle failure
-        });
-    }
+    const registrationGroupType = 4;
     return {
-        get: (id) => {
-
-        },
-        save: (registrationGroup) => {
-
-        },
-
-        delete: (id) => {
-
+        get: (groupId) => {
+            let where = [["is_active", "=", true], ["is_hidden", "=", false], ["group_type", "CONTAINS", registrationGroupType]];
+            if (groupId) {
+                where.push(["id.contact_id", "=", groupId]);
+            }
+            crmApi4('Group', 'get', {
+                select: ["id", "title", "created_id", "modified_id", "group_contact.group_id:label", "group_contact.contact_id"],
+                join: [["GroupContact AS group_contact", "LEFT", ["id", "=", "group_contact.group_id"]]],
+                where: where,
+                limit: 800
+            });
         }
     }
 });
