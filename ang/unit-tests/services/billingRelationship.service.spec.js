@@ -3,7 +3,7 @@
 describe('Billing Relationship service', function () {
   var billingRelationship;
   var CRM;
-  const billingRelationshipType = 13;
+  const relationship_type_id = 13;
 
   beforeEach(function () {
     // Add a custom equality tester before each test
@@ -15,7 +15,7 @@ describe('Billing Relationship service', function () {
       new Promise(function (resolve) {
         resolve([
           {
-            id: billingRelationshipType,
+            id: relationship_type_id,
           },
         ]);
       })
@@ -28,14 +28,15 @@ describe('Billing Relationship service', function () {
     inject(function (_billingRelationship_) { billingRelationship = _billingRelationship_; });
   });
 
-  it('gets all relationships from CRM.', function () {
-    billingRelationship.get();
+  it('gets all relationships from CRM.', async function () {
+    await billingRelationship.get();
 
-    expect(CRM).toHaveBeenCalledWith(
-      'Relationship', 'get', {
-      select: ['id', 'contact_id_b', 'contact_b.modified_date', 'contact_b.display_name', 'start_date', 'end_date', 'description'], where: [['is_active', '=', true], ['contact_b.contact_type', '=', 'Organization'], ['relationship_type_id:name', '=', 'Billing contact for']]
-    },
-    );
+    expect(CRM).toHaveBeenCalledWith('Relationship', 'get', {
+      select: ["id", "contact_id_b", "contact_b.modified_date", "contact_b.display_name", "start_date", "end_date", "description"],
+      where: [["is_active", "=", true],
+      ["contact_b.contact_type", "=", "Organization"],
+      ["relationship_type_id", "=", relationship_type_id]]
+    });
   });
 
   it('gets relationships by contact id from CRM.', function () {
@@ -56,7 +57,7 @@ describe('Billing Relationship service', function () {
       contact_id_a: 1,
       contact_id_b: 2,
       start_date: Date.now(),
-      relationship_type_id: billingRelationshipType
+      relationship_type_id: relationship_type_id
     };
 
     billingRelationship.save(relationship);
@@ -66,7 +67,7 @@ describe('Billing Relationship service', function () {
         "id": relationship.id,
         "contact_id_a": relationship.contact_id_a,
         "contact_id_b": relationship.contact_id_b,
-        "relationship_type_id": billingRelationshipType,
+        "relationship_type_id": relationship_type_id,
         "start_date": relationship.start_date,
         "is_active": true,
         "description": "Person id = " +
@@ -94,7 +95,7 @@ describe('Billing Relationship service', function () {
         "id": relationship.id,
         "contact_id_a": relationship.contact_id_a,
         "contact_id_b": relationship.contact_id_b,
-        "relationship_type_id": billingRelationshipType,
+        "relationship_type_id": relationship_type_id,
         "start_date": relationship.start_date,
         "end_date": undefined,
         "is_active": true,

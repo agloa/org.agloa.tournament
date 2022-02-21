@@ -43,22 +43,36 @@ angular.module('tournament').factory('billingRelationship', function (crmApi4) {
 
     return {
         get: (contact_id) => {
-            let where = (contact_id) ? [
-                ["contact_id_a", "=", contact_id],
-                ["is_permission_a_b", "=", true],
-                ["is_active", "=", true],
-                ["contact_b.contact_type", "=", "Organization"],
-                // Note: commenting this out means each person will see ANY organization they have permissions for.
-                // ["relationship_type_id:name", "=", "Billing contact for"]
-            ]
-                : [["is_active", "=", true],
-                ["contact_b.contact_type", "=", "Organization"],
-                ["relationship_type_id:name", "=", "Billing contact for"]];
+            if (contact_id) {
+                return crmApi4('Relationship', 'get', {
+                    select: ["id", "contact_id_b", "contact_b.modified_date", "contact_b.display_name", "start_date", "end_date", "description"],
+                    where: [
+                        ["contact_id_a", "=", contact_id],
+                        ["is_permission_a_b", "=", true],
+                        ["is_active", "=", true],
+                        ["contact_b.contact_type", "=", "Organization"],
+                    ]
+                });
+            }
 
-            return crmApi4('Relationship', 'get', {
-                select: ["id", "contact_id_b", "contact_b.modified_date", "contact_b.display_name", "start_date", "end_date", "description"],
-                where: where
-            });
+            return getRelationshipType().then(
+                (relationship_type_id) => {
+                    return crmApi4('Relationship', 'get', {
+                        select: ["id", "contact_id_b", "contact_b.modified_date", "contact_b.display_name", "start_date", "end_date", "description"],
+                        where: [["is_active", "=", true],
+                        ["contact_b.contact_type", "=", "Organization"],
+                        ["relationship_type_id", "=", relationship_type_id]]
+                    });
+                },
+                (error) => {
+                    CRM.alert(
+                        ts(`Could not get relationshipe type. Error message = ${error.error_message}`),
+                        ts("Database error"),
+                        "error"
+                    );
+                }
+            )
+
         },
         save: (relationship) => {
             if (!relationship.start_date) {
@@ -78,11 +92,7 @@ angular.module('tournament').factory('billingRelationship', function (crmApi4) {
             }
 
             if (!relationship.description) {
-                relationship.description =
-                    "Person id = " +
-                    relationship.contact_id_a +
-                    " is the contact for billing organization with id = " +
-                    relationship.contact_id_b;
+                relationship.description = `Person id = ${relationship.contact_id_a} is the contact for billing organization with id = ${relationship.contact_id_b}`;
             }
 
             if (!relationship.relationship_type_id) {
@@ -93,10 +103,7 @@ angular.module('tournament').factory('billingRelationship', function (crmApi4) {
                     },
                     (error) => {
                         CRM.alert(
-                            ts(
-                                "Could not get relationshipe type error = " +
-                                error.error_message
-                            ),
+                            ts(`Could not get relationshipe type. Error message = ${error.error_message}`),
                             ts("Database error"),
                             "error"
                         );
