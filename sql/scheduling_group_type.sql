@@ -1,0 +1,1 @@
+CREATE ALGORITHM=UNDEFINED DEFINER=`agloa`@`%` SQL SECURITY DEFINER VIEW `agloa`.`scheduling_group_type` AS select `agloa`.`group_types`.`value` AS `value` from `agloa`.`group_types` where (`agloa`.`group_types`.`value_label` like 'Scheduling Group');
