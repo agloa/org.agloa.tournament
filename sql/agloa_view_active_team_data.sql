@@ -1,0 +1,10 @@
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `active_team_data`
+--
+DROP TABLE IF EXISTS `active_team_data`;
+
+DROP VIEW IF EXISTS `active_team_data`;
+CREATE OR REPLACE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `active_team_data`  AS SELECT `active_teams`.`id` AS `team_id`, `active_teams`.`title` AS `title`, `active_teams`.`created_id` AS `created_id`, `active_teams`.`created_by` AS `created_by`, `active_teams`.`modified_id` AS `modified_id`, `active_teams`.`modified_by` AS `modified_by`, `argc`.`group_id` AS `registration_group_id`, `argc`.`title` AS `registration_group`, `team_data`.`id` AS `id`, `team_data`.`entity_id` AS `entity_id`, `team_data`.`equations_21` AS `equations_21`, `team_data`.`on_sets_22` AS `on_sets_22`, `team_data`.`linguishtik_23` AS `linguishtik_23`, `team_data`.`propaganda_24` AS `propaganda_24`, `team_data`.`presidents_25` AS `presidents_25`, `team_data`.`world_events_26` AS `world_events_26`, `team_data`.`wff_n_proof_27` AS `wff_n_proof_27`, `team_data`.`district_equations_seed_29` AS `district_equations_seed_29`, `team_data`.`league_equations_seed_30` AS `league_equations_seed_30`, `team_data`.`district_on_sets_seed_31` AS `district_on_sets_seed_31`, `team_data`.`league_on_sets_seed_32` AS `league_on_sets_seed_32`, `team_data`.`district_linguishtik_seed_33` AS `district_linguishtik_seed_33`, `team_data`.`league_linguishtik_seed_34` AS `league_linguishtik_seed_34`, `team_data`.`district_wff_n_proof_seed_35` AS `district_wff_n_proof_seed_35`, `team_data`.`league_wff_n_proof_seed_36` AS `league_wff_n_proof_seed_36`, `team_data`.`current_events_74` AS `current_events_74`, `team_data`.`equations_section_75` AS `equations_section_75`, `team_data`.`on_sets_section_76` AS `on_sets_section_76`, `team_data`.`linguishtik_section_77` AS `linguishtik_section_77`, `team_data`.`wff_n_proof_section_78` AS `wff_n_proof_section_78` FROM ((`active_teams` left join `team_data` on((`active_teams`.`id` = `team_data`.`entity_id`))) left join `active_registration_group_contacts` `argc` on((`argc`.`contact_id` = `active_teams`.`created_id`))) ;
