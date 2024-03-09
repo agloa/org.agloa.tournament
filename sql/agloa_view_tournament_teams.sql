@@ -1,10 +1,1 @@
-
--- --------------------------------------------------------
-
---
--- Structure for view `tournament_teams`
---
-DROP TABLE IF EXISTS `tournament_teams`;
-
-DROP VIEW IF EXISTS `tournament_teams`;
-CREATE OR REPLACE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `tournament_teams`  AS SELECT `tournament_groups`.`id` AS `id`, `tournament_groups`.`name` AS `name`, `tournament_groups`.`title` AS `title`, `tournament_groups`.`description` AS `description`, `tournament_groups`.`group_type` AS `group_type`, `tournament_groups`.`is_active` AS `is_active`, `tournament_groups`.`is_hidden` AS `is_hidden`, `tournament_groups`.`created_id` AS `created_id`, `tournament_groups`.`frontend_title` AS `frontend_title`, `tournament_groups`.`frontend_description` AS `frontend_description` FROM `tournament_groups` WHERE (`tournament_groups`.`group_type` like (select concat('%',`team_group_type`.`value`,'%') from `team_group_type`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`agloa`@`%` SQL SECURITY DEFINER VIEW `agloa`.`tournament_teams` AS select `agloa`.`tournament_groups`.`id` AS `id`,`agloa`.`tournament_groups`.`name` AS `name`,`agloa`.`tournament_groups`.`title` AS `title`,`agloa`.`tournament_groups`.`description` AS `description`,`agloa`.`tournament_groups`.`group_type` AS `group_type`,`agloa`.`tournament_groups`.`is_active` AS `is_active`,`agloa`.`tournament_groups`.`is_hidden` AS `is_hidden`,`agloa`.`tournament_groups`.`created_id` AS `created_id`,`agloa`.`tournament_groups`.`frontend_title` AS `frontend_title`,`agloa`.`tournament_groups`.`frontend_description` AS `frontend_description`,`agloa`.`tournament_people`.`sort_name` AS `created_name` from (`agloa`.`tournament_groups` join `agloa`.`tournament_people` on((`agloa`.`tournament_people`.`id` = `agloa`.`tournament_groups`.`created_id`))) where (`agloa`.`tournament_groups`.`group_type` like (select concat('%',`agloa`.`team_group_type`.`value`,'%') from `agloa`.`team_group_type`));
