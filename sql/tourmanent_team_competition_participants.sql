@@ -5,8 +5,8 @@ CREATE
 VIEW `tourmanent_team_competition_participants` AS
     SELECT 
         `team`.`id` AS `team_id`,
-        `team`.`number` AS `number`,
-        `team`.`name` AS `name`,
+        `team`.`number` AS `team_number`,
+        `team`.`name` AS `team_name`,
         `team_competition_registration`.`competition_id` AS `competition_id`,
         `tournament_team_participant`.`participant_id` AS `participant_id`
     FROM
